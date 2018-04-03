@@ -7,5 +7,7 @@
 	<Label Text="Welcome to Xamarin.Forms!" 
            VerticalOptions="Center" 
            HorizontalOptions="Center" />
+    
+    <Button x:Name="btnTest" Text="CREATE DATABASE"/>
 
 </ContentPage>
