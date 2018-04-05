@@ -94,7 +94,6 @@ D:\Projects\Xamarin\TrackerApp\ClientSide\client\TrackerApp\TrackerApp\TrackerAp
 D:\Projects\Xamarin\TrackerApp\ClientSide\client\TrackerApp\TrackerApp\TrackerApp.Android\obj\Debug\android\assets\System.IO.Compression.FileSystem.pdb
 D:\Projects\Xamarin\TrackerApp\ClientSide\client\TrackerApp\TrackerApp\TrackerApp.Android\obj\Debug\android\assets\System.Web.Services.pdb
 D:\Projects\Xamarin\TrackerApp\ClientSide\client\TrackerApp\TrackerApp\TrackerApp.Android\bin\Debug\TrackerApp.Android.dll
-D:\Projects\Xamarin\TrackerApp\ClientSide\client\TrackerApp\TrackerApp\TrackerApp.Android\obj\Debug\linksrc\TrackerApp.pdb
 D:\Projects\Xamarin\TrackerApp\ClientSide\client\TrackerApp\TrackerApp\TrackerApp.Android\obj\Debug\linksrc\TrackerApp.Android.dll.mdb
 D:\Projects\Xamarin\TrackerApp\ClientSide\client\TrackerApp\TrackerApp\TrackerApp.Android\obj\Debug\linksrc\FormsViewGroup.dll.mdb
 D:\Projects\Xamarin\TrackerApp\ClientSide\client\TrackerApp\TrackerApp\TrackerApp.Android\obj\Debug\linksrc\Xamarin.Forms.Core.dll.mdb

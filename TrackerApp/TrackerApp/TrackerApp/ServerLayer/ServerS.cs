@@ -13,13 +13,13 @@ namespace TrackerApp.ServerLayer
     {
         private static ServerS instance;
 
-        private DocumentClient dcServer;
+        private DocumentClient client;
 
         private ServerS()
         {
             try
             {
-                dcServer = new DocumentClient(ServerConst.endPointUri, ServerConst.primaryKey);
+                client = new DocumentClient(ServerConst.endPointUri, ServerConst.primaryKey);
             }
             catch (DocumentClientException de)
             {
@@ -48,8 +48,8 @@ namespace TrackerApp.ServerLayer
         {
             try
             {
-                if (dcServer != null)
-                    return await this.dcServer.CreateDatabaseIfNotExistsAsync(new Database {Id = name});
+                if (client != null)
+                    return await client.CreateDatabaseIfNotExistsAsync(new Database {Id = name});
             }
             catch (ArgumentNullException e)
             {
@@ -80,10 +80,10 @@ namespace TrackerApp.ServerLayer
 
         public async Task<ResourceResponse<DocumentCollection>> CreateCollection(string databaseName, string collectionName)
         {
-            if(dcServer != null)
+            if(client != null)
                 try
                 {
-                    return await dcServer.CreateDocumentCollectionIfNotExistsAsync(
+                    return await client.CreateDocumentCollectionIfNotExistsAsync(
                         UriFactory.CreateDatabaseUri(databaseName), new DocumentCollection {Id = collectionName});
                 }
                 catch (ArgumentNullException e)

@@ -17,8 +17,4 @@
       <DependentUpon>*.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="NewFolder\" />
-  </ItemGroup>
 </Project>
