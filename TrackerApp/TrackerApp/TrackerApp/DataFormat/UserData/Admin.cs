@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TrackerApp.DataFormat
+﻿namespace TrackerApp.DataFormat.UserData
 {
     public class Admin : User
     {

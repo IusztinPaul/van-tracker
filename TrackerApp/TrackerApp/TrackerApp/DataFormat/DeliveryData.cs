@@ -4,8 +4,8 @@ using System.Text;
 
 namespace TrackerApp.DataFormat
 {
-    public abstract class ISaveData
+    public class DeliveryData 
     {
-        public abstract void SaveData();
+        public List<RouteData> DataToGenerate { get; set; }
     }
 }

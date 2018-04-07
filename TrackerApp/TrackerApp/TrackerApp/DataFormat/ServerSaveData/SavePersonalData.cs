@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using TrackerApp.DataFormat.UserData;
 
-namespace TrackerApp.DataFormat
+namespace TrackerApp.DataFormat.ServerSaveData
 {
     public class SavePersonalData : ISaveData
     {
