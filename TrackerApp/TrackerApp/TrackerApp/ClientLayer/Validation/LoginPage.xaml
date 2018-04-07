@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TrackerApp.ClientLayer.CustomUI;assembly=TrackerApp"
+             x:Class="TrackerApp.ClientLayer.Validation.LoginPage"
+             Title="Login"
+             BackgroundColor="White"
+             >
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="UsernameLabel">Username</x:String>
+            <x:String x:Key="PasswordLabel">Password</x:String>
+            <x:String x:Key="ButtonLabel">Login</x:String>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <ScrollView >
+            <StackLayout VerticalOptions="CenterAndExpand" 
+                         x:Name="StackLayoutContent">
+
+                <Image Source="vantrackerlogo.png"
+                       Margin ="{StaticResource Margins}"
+                       Aspect = "AspectFit"/>
+
+
+                <Label Text= "{StaticResource  UsernameLabel}"
+                       FontSize="{StaticResource LabelFontSize}"
+                       TextColor="{StaticResource  TextColor}" 
+                       Margin ="{StaticResource  LabelMargins}"/>
+                <local:CustomEntry 
+                                   Placeholder="{StaticResource  UsernameLabel}"
+                                   Margin ="{StaticResource  Margins}"/>
+
+                <Label Text="{StaticResource  PasswordLabel}" 
+                       FontSize="{StaticResource LabelFontSize}"
+                       TextColor="{StaticResource  TextColor}"
+                       Margin ="{StaticResource  LabelMargins}"/>
+                <local:CustomEntry 
+                                   Placeholder="{StaticResource  PasswordLabel}"
+                                   IsPassword="true"
+                                   Margin ="{StaticResource  Margins}"/>
+
+                <Button Text="{StaticResource  ButtonLabel}" 
+                        BackgroundColor="{StaticResource LifeColour}"
+                        Margin ="{StaticResource  Margins}"/>
+                
+                
+                
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

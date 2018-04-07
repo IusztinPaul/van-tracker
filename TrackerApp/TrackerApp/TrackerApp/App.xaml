@@ -2,9 +2,27 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TrackerApp.App">
-	<Application.Resources>
 
-		<!-- Application resource dictionary -->
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="TextColor">Gray</Color>
+            <Color x:Key="LifeColour">LightBlue</Color>
 
-	</Application.Resources>
+            <OnPlatform x:Key="Margins"
+	                        x:TypeArguments="Thickness"
+	                        iOS="5"
+	                        Android="15"/>
+            <OnPlatform x:Key="LabelMargins"
+                        x:TypeArguments="Thickness"
+                        iOS="5"
+                        Android="15, 15, 15, 3"/>
+
+            <OnPlatform x:Key="LabelFontSize"
+	                    x:TypeArguments="Font"
+	                    iOS="22"
+	                    Android="22"/>
+
+        </ResourceDictionary>
+    </Application.Resources>
+
 </Application>

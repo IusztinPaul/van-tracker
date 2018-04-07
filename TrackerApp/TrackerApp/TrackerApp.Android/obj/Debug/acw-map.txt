@@ -1,3 +1,7 @@
+TrackerApp.Droid.CustomEntryRenderer, TrackerApp.Android;md589832fff2759844b01a87ddc37990b41.CustomEntryRenderer
+TrackerApp.Droid.CustomEntryRenderer, TrackerApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md589832fff2759844b01a87ddc37990b41.CustomEntryRenderer
+TrackerApp.Droid.CustomEntryRenderer;md589832fff2759844b01a87ddc37990b41.CustomEntryRenderer
+trackerapp.droid.CustomEntryRenderer;md589832fff2759844b01a87ddc37990b41.CustomEntryRenderer
 TrackerApp.Droid.MainActivity, TrackerApp.Android;md589832fff2759844b01a87ddc37990b41.MainActivity
 TrackerApp.Droid.MainActivity, TrackerApp.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md589832fff2759844b01a87ddc37990b41.MainActivity
 TrackerApp.Droid.MainActivity;md589832fff2759844b01a87ddc37990b41.MainActivity

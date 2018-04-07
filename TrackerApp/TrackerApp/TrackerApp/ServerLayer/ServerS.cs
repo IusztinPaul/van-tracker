@@ -16,7 +16,7 @@ namespace TrackerApp.ServerLayer
 
         private static ServerS instance;
 
-        private DocumentClient client;
+        private readonly DocumentClient client;
 
         private ServerS()
         {
@@ -40,13 +40,10 @@ namespace TrackerApp.ServerLayer
         }
 
         public static ServerS GetInstance()
-        {
+        {   
             if (instance == null)
                 instance = new ServerS();
 
-            instance.DeleteDocument("TEST", "TESTCOLLL", "id7" );
-
-          
             return instance;
         }
 

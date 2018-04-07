@@ -88,6 +88,7 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CustomEntryRenderer.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
@@ -130,5 +131,8 @@
       <Project>{D7B5AA15-A122-49AE-838A-53E6E489C856}</Project>
       <Name>TrackerApp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\vantrackerlogo.png" />
   </ItemGroup>
 </Project>

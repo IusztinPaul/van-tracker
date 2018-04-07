@@ -3,9 +3,14 @@ D:\Projects\Xamarin\TrackerApp\ClientSide\client\TrackerApp\TrackerApp\TrackerAp
 D:\Projects\Xamarin\TrackerApp\ClientSide\client\TrackerApp\TrackerApp\TrackerApp\obj\Debug\netstandard2.0\TrackerApp.csprojResolveAssemblyReference.cache
 D:\Projects\Xamarin\TrackerApp\ClientSide\client\TrackerApp\TrackerApp\TrackerApp\obj\Debug\netstandard2.0\TrackerApp.csproj.CoreCompileInputs.cache
 D:\Projects\Xamarin\TrackerApp\ClientSide\client\TrackerApp\TrackerApp\TrackerApp\obj\Debug\netstandard2.0\TrackerApp.App.xaml.g.cs
-D:\Projects\Xamarin\TrackerApp\ClientSide\client\TrackerApp\TrackerApp\TrackerApp\obj\Debug\netstandard2.0\TrackerApp.MainPage.xaml.g.cs
 D:\Projects\Xamarin\TrackerApp\ClientSide\client\TrackerApp\TrackerApp\TrackerApp\obj\Debug\netstandard2.0\TrackerApp.AssemblyInfoInputs.cache
 D:\Projects\Xamarin\TrackerApp\ClientSide\client\TrackerApp\TrackerApp\TrackerApp\obj\Debug\netstandard2.0\TrackerApp.AssemblyInfo.cs
 D:\Projects\Xamarin\TrackerApp\ClientSide\client\TrackerApp\TrackerApp\TrackerApp\bin\Debug\netstandard2.0\TrackerApp.pdb
 D:\Projects\Xamarin\TrackerApp\ClientSide\client\TrackerApp\TrackerApp\TrackerApp\obj\Debug\netstandard2.0\TrackerApp.dll
 D:\Projects\Xamarin\TrackerApp\ClientSide\client\TrackerApp\TrackerApp\TrackerApp\obj\Debug\netstandard2.0\TrackerApp.pdb
+D:\Projects\Xamarin\TrackerApp\ClientSide\client\TrackerApp\TrackerApp\TrackerApp\obj\Debug\netstandard2.0\TrackerApp.ClientLayer.MainPage.xaml.g.cs
+D:\Projects\Xamarin\TrackerApp\ClientSide\client\TrackerApp\TrackerApp\TrackerApp\obj\Debug\netstandard2.0\TrackerApp.ClientLayer.Validation.LoginPage.xaml.g.cs
+D:\Projects\Xamarin\TrackerApp\ClientSide\client\TrackerApp\TrackerApp\TrackerApp\bin\Debug\netstandard2.0\Mono.Android.dll
+D:\Projects\Xamarin\TrackerApp\ClientSide\client\TrackerApp\TrackerApp\TrackerApp\bin\Debug\netstandard2.0\Mono.Android.pdb
+D:\Projects\Xamarin\TrackerApp\ClientSide\client\TrackerApp\TrackerApp\TrackerApp\bin\Debug\netstandard2.0\Mono.Android.xml
+D:\Projects\Xamarin\TrackerApp\ClientSide\client\TrackerApp\TrackerApp\TrackerApp\obj\Debug\netstandard2.0\TrackerApp.csproj.CopyComplete
