@@ -16,20 +16,19 @@ namespace TrackerApp.ClientLayer.Validation
 		{
 			InitializeComponent ();
 		  
-		  
+          // click listener for the bottom label
+		  LabelGoToSignUp.GestureRecognizers.Add(
+		      new TapGestureRecognizer() { 
+		          Command = new Command( () => OnLabelGoToSignUpClicked())
+		      });
         }
 
-	    void OnSliderValueChanged(object sender, ValueChangedEventArgs args)
+	    private async Task OnLabelGoToSignUpClicked()
 	    {
-	      //  ValueLabel.Text = args.NewValue.ToString("F5");
-	    }
+	        await Navigation.PushAsync(new NavigationPage(new MainPage()));
 
-	    async void OnButtonClicked(object sender, EventArgs args)
-	    {
-	        Button button = (Button)sender;
-	        await DisplayAlert("Clicked!",
-	            "The button labeled '" + button.Text + "' has been clicked",
-	            "OK");
-	    }
+        }
+
     }
+
 }

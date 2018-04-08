@@ -15,7 +15,7 @@ namespace TrackerApp
 		{
 			InitializeComponent();
 
-			MainPage = new ClientLayer.Validation.LoginPage();
+			MainPage = new NavigationPage(new ClientLayer.Validation.LoginPage());
 		}
 
 		protected override void OnStart ()
