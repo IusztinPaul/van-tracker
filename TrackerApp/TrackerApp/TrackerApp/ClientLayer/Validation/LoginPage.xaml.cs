@@ -25,8 +25,7 @@ namespace TrackerApp.ClientLayer.Validation
 
 	    private async Task OnLabelGoToSignUpClicked()
 	    {
-	        await Navigation.PushAsync(new NavigationPage(new MainPage()));
-
+	        await Navigation.PushAsync(new NavigationPage(new SignUpPage()));
         }
 
     }

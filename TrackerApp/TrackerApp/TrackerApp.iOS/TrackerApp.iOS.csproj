@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0593779A-D747-4C77-959E-F5D467C507A5}</ProjectGuid>
+    <ProjectGuid>{2FE0FB4F-78F3-460E-A0AF-DF443AF4A9C3}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
     <RootNamespace>TrackerApp.iOS</RootNamespace>
@@ -88,7 +88,6 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="CustomEntryRenderer.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
@@ -123,12 +122,12 @@
     <PackageReference Include="Microsoft.Azure.DocumentDB.Core">
       <Version>1.9.1</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="2.5.0.280555" />
+    <PackageReference Include="Xamarin.Forms" Version="2.5.1.444934" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\TrackerApp\TrackerApp.csproj">
-      <Project>{D7B5AA15-A122-49AE-838A-53E6E489C856}</Project>
+      <Project>{0BF6EC18-AB42-4548-B425-920A0816F8B9}</Project>
       <Name>TrackerApp</Name>
     </ProjectReference>
   </ItemGroup>

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customui="clr-namespace:TrackerApp.ClientLayer.CustomUI;assembly=TrackerApp"
+             x:Class="TrackerApp.ClientLayer.Validation.SignUpPage"
+             BackgroundColor="{StaticResource BgColor}"
+             Title="Inregistrare">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="DescriptionLabel">Toate campurile sunt obligatorii</x:String>
+            <x:String x:Key="Username">Nume cont</x:String>
+            <x:String x:Key="FirstName">Prenume</x:String>
+            <x:String x:Key="LastName">Nume familie</x:String>
+            <x:String x:Key="Password">Parola</x:String>
+            <x:String x:Key="Email">Email</x:String>
+            <x:String x:Key="Phone">Telefon</x:String>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical" 
+                         Margin="{StaticResource Margins}"
+                         Spacing="15"
+                         >
+
+                <Label Text="{StaticResource DescriptionLabel}" FontSize="{StaticResource InfoFontSize}"/>
+
+
+                <customui:CustomEntry x:Name="EntryUsername"
+                                              Placeholder="{StaticResource Username}"
+                                              />
+                <customui:CustomEntry x:Name="EntryFirstName"
+                                          Placeholder="{StaticResource FirstName}"
+                                          />
+                <customui:CustomEntry x:Name="EntryLastName"
+                                          Placeholder="{StaticResource LastName}"
+                                         />
+                <customui:CustomEntry x:Name="EntryPassword"
+                                          Placeholder="{StaticResource Password}"
+                                          />
+                <customui:CustomEntry x:Name="EntryPhone"
+                                          Placeholder="{StaticResource Phone}"
+                                          />
+                <customui:CustomEntry x:Name="EntryEmail"
+                                          Placeholder="{StaticResource Email}"
+                                         />
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

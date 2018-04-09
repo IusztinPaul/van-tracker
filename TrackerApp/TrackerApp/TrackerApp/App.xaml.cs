@@ -5,8 +5,6 @@ using System.Text;
 
 using Xamarin.Forms;
 
-using TrackerApp.ClientLayer;
-
 namespace TrackerApp
 {
 	public partial class App : Application
@@ -15,8 +13,8 @@ namespace TrackerApp
 		{
 			InitializeComponent();
 
-			MainPage = new NavigationPage(new ClientLayer.Validation.LoginPage());
-		}
+		    MainPage = new NavigationPage(new ClientLayer.Validation.LoginPage());
+        }
 
 		protected override void OnStart ()
 		{

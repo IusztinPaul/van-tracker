@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:TrackerApp.ClientLayer.CustomUI;assembly=TrackerApp"
              x:Class="TrackerApp.ClientLayer.Validation.LoginPage"
              Title="Logare"
-             BackgroundColor="White"
+             BackgroundColor="{StaticResource BgColor}"
              >
 
     <ContentPage.Resources>
@@ -24,7 +24,8 @@
             <StackLayout VerticalOptions="CenterAndExpand" 
                          x:Name="StackLayoutContent">
 
-                <Image Source="vantrackerlogo.png"
+                <Image HorizontalOptions="Center"
+                       Source="vantrackerlogo.png"
                        Margin ="{StaticResource Margins}"
                        Aspect = "AspectFit"/>
 
