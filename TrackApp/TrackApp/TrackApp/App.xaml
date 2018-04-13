@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TrackApp.App">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <!-- Colors -->
+            <Color x:Key="TextColor">Gray</Color>
+            <Color x:Key="LifeColour">LightBlue</Color>
+            <Color x:Key="BgColor">White</Color>
+
+            <!-- Margins -->
+            <OnPlatform x:Key="Margins"
+                        x:TypeArguments="Thickness"
+                        iOS="15"
+                        Android="15"/>
+            <OnPlatform x:Key="LabelMargins"
+                        x:TypeArguments="Thickness"
+                        iOS="15, 15, 15, 3"
+                        Android="15, 15, 15, 3"/>
+            <OnPlatform x:Key="InfoLabelMargins"
+                        x:TypeArguments="Thickness"
+                        iOS="15, 3, 15, 15"
+                        Android="15, 3, 15, 15"/>
+            <OnPlatform x:TypeArguments="Thickness"
+                        x:Key="ItemMargins">
+                <On Platform="Android" Value="5"/>
+                <On Platform="IOS" Value="5"/>
+            </OnPlatform>
+
+            <!-- FontSize -->
+            <OnPlatform x:Key="LabelFontSize"
+                        x:TypeArguments="x:Double"
+                        iOS="22"
+                        Android="22"/>
+            <OnPlatform x:Key="InfoFontSize"
+                        x:TypeArguments="x:Double"
+                        iOS="18"
+                        Android="18"/>
+
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

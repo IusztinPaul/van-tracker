@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{C4DA05C5-27BD-41A7-982A-13F63FD44B71}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>TrackApp</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\MainPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Validation\LoginPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Validation\SignUpPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\ClientConsts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\CustomUI\CustomEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\CustomUI\IMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Exceptions\ValidationException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Validation\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Validation\SignUpPage.xaml.cs">
+      <DependentUpon>SignUpPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)DataFormat\DataConsts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataFormat\DBIdObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataFormat\Location.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataFormat\LocationTypeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataFormat\UserData\TrackUser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Query\QueryUser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\ISaveData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\SaveUser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\ServerConsts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\AwsUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)ClientLayer\Validation\LoginPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ClientLayer\Validation\SignUpPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\vantrackerlogo.png" />
+  </ItemGroup>
+</Project>

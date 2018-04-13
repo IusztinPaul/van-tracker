@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customUi="clr-namespace:TrackApp.ClientLayer.CustomUI"
+             x:Class="TrackApp.ClientLayer.Validation.SignUpPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="DescriptionLabel">Toate campurile sunt obligatorii</x:String>
+            <x:String x:Key="Username">Nume cont</x:String>
+            <x:String x:Key="FirstName">Prenume</x:String>
+            <x:String x:Key="LastName">Nume familie</x:String>
+            <x:String x:Key="Password">Parola</x:String>
+            <x:String x:Key="Email">Email</x:String>
+            <x:String x:Key="Phone">Numar telefon</x:String>
+            <x:String x:Key="BtnText">Salveaza</x:String>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical" 
+                         Margin="{StaticResource Margins}"
+                         Spacing="15"
+                         >
+
+                <Label Text="{StaticResource DescriptionLabel}" FontSize="{StaticResource InfoFontSize}"/>
+
+
+                <customUi:CustomEntry x:Name="EntryUsername"
+                                              Placeholder="{StaticResource Username}"
+                                      VerticalOptions="CenterAndExpand"
+                                              />
+                <customUi:CustomEntry x:Name="EntryFirstName"
+                                          Placeholder="{StaticResource FirstName}"
+                                      VerticalOptions="CenterAndExpand"
+                                          />
+                <customUi:CustomEntry x:Name="EntryLastName"
+                                          Placeholder="{StaticResource LastName}"
+                                      VerticalOptions="CenterAndExpand"
+                                         />
+                <customUi:CustomEntry x:Name="EntryPassword"
+                                          Placeholder="{StaticResource Password}"
+                                      VerticalOptions="CenterAndExpand"
+                                          />
+                <customUi:CustomEntry x:Name="EntryPhoneNumber"
+                                          Placeholder="{StaticResource Phone}"
+                                      VerticalOptions="CenterAndExpand"
+                                          />
+                <customUi:CustomEntry x:Name="EntryEmail"
+                                          Placeholder="{StaticResource Email}"
+                                      VerticalOptions="CenterAndExpand"
+                                         />
+
+                <Button x:Name="BtnSaveUser"
+                        Text="{StaticResource BtnText}"
+                        VerticalOptions="CenterAndExpand"/>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
