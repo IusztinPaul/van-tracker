@@ -7,7 +7,8 @@
 
             <!-- Colors -->
             <Color x:Key="TextColor">Gray</Color>
-            <Color x:Key="LifeColour">LightBlue</Color>
+            <Color x:Key="AccentColor">LightBlue</Color>
+            <Color x:Key="ConstrastColor">Indigo</Color>
             <Color x:Key="BgColor">White</Color>
 
             <!-- Margins -->
@@ -38,6 +39,9 @@
                         x:TypeArguments="x:Double"
                         iOS="18"
                         Android="18"/>
+            
+            <!-- Heights -->
+            <x:Double x:Key="BorderHeight">2</x:Double>
 
 
         </ResourceDictionary>

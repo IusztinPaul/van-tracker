@@ -2,14 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:customUi="clr-namespace:TrackApp.ClientLayer.CustomUI"
-             x:Class="TrackApp.ClientLayer.Validation.SignUpPage">
+             xmlns:consts="clr-namespace:TrackApp.ClientLayer"
+             x:Class="TrackApp.ClientLayer.Validation.SignUpPage"
+             Title="Inscriere">
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <x:String x:Key="DescriptionLabel">Toate campurile sunt obligatorii</x:String>
             <x:String x:Key="Username">Nume cont</x:String>
             <x:String x:Key="FirstName">Prenume</x:String>
             <x:String x:Key="LastName">Nume familie</x:String>
-            <x:String x:Key="Password">Parola</x:String>
             <x:String x:Key="Email">Email</x:String>
             <x:String x:Key="Phone">Numar telefon</x:String>
             <x:String x:Key="BtnText">Salveaza</x:String>
@@ -18,12 +20,30 @@
 
     <ContentPage.Content>
         <ScrollView>
+            
             <StackLayout Orientation="Vertical" 
                          Margin="{StaticResource Margins}"
                          Spacing="15"
                          >
 
-                <Label Text="{StaticResource DescriptionLabel}" FontSize="{StaticResource InfoFontSize}"/>
+                <ProgressBar x:Name="ProgBarSaveBtn"
+                             Progress="0.0"
+                             Margin="{StaticResource Margins}"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="CenterAndExpand"
+                             WidthRequest="320"
+                             HeightRequest="20"
+                             
+                             IsVisible="False"/>
+
+                <Label Text="{StaticResource DescriptionLabel}" FontSize="{StaticResource LabelFontSize}"/>
+                
+                <BoxView Color="{StaticResource TextColor}"
+                         HeightRequest="{StaticResource BorderHeight}"
+                         WidthRequest="380"
+                         HorizontalOptions="CenterAndExpand"
+                         VerticalOptions = "Center"
+                         />
 
 
                 <customUi:CustomEntry x:Name="EntryUsername"
@@ -36,12 +56,20 @@
                                           />
                 <customUi:CustomEntry x:Name="EntryLastName"
                                           Placeholder="{StaticResource LastName}"
-                                      VerticalOptions="CenterAndExpand"
-                                         />
+                                      VerticalOptions="CenterAndExpand"/>
+                                      
+
                 <customUi:CustomEntry x:Name="EntryPassword"
-                                          Placeholder="{StaticResource Password}"
-                                      VerticalOptions="CenterAndExpand"
-                                          />
+                                          Placeholder="{x:Static consts:ClientConsts.PASSWORD_LENGTH_STRING}"
+                                      VerticalOptions="CenterAndExpand" />
+
+                <BoxView Color="{StaticResource TextColor}"
+                         HeightRequest="{StaticResource BorderHeight}"
+                         WidthRequest="380"
+                         HorizontalOptions="CenterAndExpand"
+                         VerticalOptions = "Center"
+                />
+                                         
                 <customUi:CustomEntry x:Name="EntryPhoneNumber"
                                           Placeholder="{StaticResource Phone}"
                                       VerticalOptions="CenterAndExpand"
@@ -52,6 +80,7 @@
                                          />
 
                 <Button x:Name="BtnSaveUser"
+                        BackgroundColor="{StaticResource AccentColor}"
                         Text="{StaticResource BtnText}"
                         VerticalOptions="CenterAndExpand"/>
 

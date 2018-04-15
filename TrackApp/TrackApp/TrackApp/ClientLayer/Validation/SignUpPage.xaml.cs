@@ -4,12 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Threading;
 using TrackApp.ClientLayer.CustomUI;
 using TrackApp.ClientLayer.Exceptions;
 using TrackApp.DataFormat.UserData;
 using TrackApp.ServerLayer.Save;
+using TrackApp.ServerLayer.Query;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Net.Mail;
 
 namespace TrackApp.ClientLayer.Validation
 {
@@ -19,56 +22,85 @@ namespace TrackApp.ClientLayer.Validation
 		public SignUpPage ()
 		{
 			InitializeComponent ();
-		    BtnSaveUser.Clicked += (source, args) => { BtnSaveUserListener(); };
-        }
+		    BtnSaveUser.Clicked += async (source, args) =>
+		    {
+                //reset the progess bar 
+		        ProgBarSaveBtn.Progress = 0d;
+                ProgBarSaveBtn.IsVisible = true;
+		        
+                await BtnSaveUserListener();
 
-        private string GetEntryUsername()
+                // make the prog bar invisible
+		        ProgBarSaveBtn.IsVisible = false;
+            };
+
+        
+            //to avoid internal null pointer exception
+		    EntryUsername.Text = "";
+		    EntryFirstName.Text = "";
+		    EntryLastName.Text = "";
+		    EntryPassword.Text = "";
+		    EntryPhoneNumber.Text = "";
+		    EntryEmail.Text = "";
+
+		}
+
+        private async Task<string> GetEntryUsername()
         {
             string username = EntryUsername.Text.Trim();
-            if (username.Length > 0)
-                return username;
 
-            throw new ValidationException("No valid username!");
+            if (String.IsNullOrEmpty(username))
+                throw new ValidationException("Nume cont incorent!");
+
+            QueryUser query = new QueryUser();
+            var user = await query.LoadData(username);
+            if(user != null) // username is unique 
+                throw new ValidationException("Acest nume de cont exista deja!");
+
+            return username;
         }
 
         private string GetEntryFirstName()
         {
             string firstName = EntryFirstName.Text.Trim();
-            if (firstName.Length > 0)
-                return firstName;
+            if (String.IsNullOrEmpty(firstName))
+                throw new ValidationException("Prenume incorent!");
 
-            throw new ValidationException("No valid first name!");
+            return firstName;
         }
 
         private string GetEntryLastName()
         {
             string lastName = EntryLastName.Text.Trim();
-            if (lastName.Length > 0)
-                return lastName;
+            if (String.IsNullOrEmpty(lastName))
+                throw new ValidationException("Nume familie incorent!");
 
-            throw new ValidationException("No valid last name!");
+            return lastName;
         }
 
         private string GetEntryPassword()
         {
             string password = EntryPassword.Text.Trim();
-            if (password.Length > ClientConsts.PASSWORD_LENGTH)
-                return password;
+            if(String.IsNullOrEmpty(password))
+                throw new ValidationException("Parola incorenta!");
 
-            throw new ValidationException("No valid password!");
+            if (password.Length < ClientConsts.PASSWORD_LENGTH)
+                throw new ValidationException("Parola de minim " + ClientConsts.PASSWORD_LENGTH + "!");
+
+            return password;
         }
 
         private string GetEntryPhoneNumber()
         {
             string phoneNumber = EntryPhoneNumber.Text.Trim();
 
-            if (phoneNumber.Length == 0) //length validation
-                throw new ValidationException("No valid phone number");
+            if (String.IsNullOrEmpty(phoneNumber)) //length validation
+                throw new ValidationException("Introduce numar telefon!");
 
-            Match match = Regex.Match(phoneNumber, @"(\+4)?([0-9]{4})(\s?)([0-9]{3})\3([0-9]{3})");
+            Match match = Regex.Match(phoneNumber, @"(\+4)?([0-9]{4})\s?([0-9]{3})\s?([0-9]{3})");
 
             if (!match.Success) //regex validation
-                throw new ValidationException("No valid phone number");
+                throw new ValidationException("Numar telefon incorect!");
 
             return phoneNumber;
         }
@@ -77,40 +109,75 @@ namespace TrackApp.ClientLayer.Validation
         {
             string email = EntryEmail.Text.Trim();
 
-            if (email.Length == 0) //length validation
-                throw new ValidationException("No valid email");
+            if (String.IsNullOrEmpty(email)) //length validation
+                throw new ValidationException("Introduce email!");
 
-            Match match = Regex.Match(email, @"^[0-9A-Za-z]*?@[0-9A-Za-z]*?\.[0-9A-Za-z]*?$");
-            if (match.Success) // regex validation
-                throw new ValidationException("No valid email");
+            Match match = Regex.Match(email.ToLower(), @"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|""(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*"")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])");
+            if (!match.Success) // regex validation
+                throw new ValidationException("Email introdus incorect!");
 
             return email;
         }
 
-        public async void BtnSaveUserListener()
+        public async Task BtnSaveUserListener()
         {
-            string username, firstName, lastName, password, phoneNumber, Email;
+            double progBarIncrementRate = 1d / 4d;
+            double progBarCurentValue = 0d;
 
             try
             {
-                username = GetEntryUsername();
+                string username, firstName, lastName, password, phoneNumber, Email;
+
+                // grab the data and animate the progress bar 
+                username = await GetEntryUsername();
+                progBarCurentValue += progBarIncrementRate;
+                await InscreaseProgBar(progBarCurentValue);
+
                 firstName = GetEntryFirstName();
+
                 lastName = GetEntryLastName();
+                progBarCurentValue += progBarIncrementRate;
+                await InscreaseProgBar(progBarCurentValue);
+
                 password = GetEntryPassword();
+
                 phoneNumber = GetEntryPhoneNumber();
+
                 Email = GetEntryEmail();
+                progBarCurentValue += progBarIncrementRate;
+                await InscreaseProgBar(progBarCurentValue);
+
+                // create user object
+                TrackUser user = new TrackUser()
+                {
+                    Email = Email,
+                    FirstName = firstName,
+                    LastName = lastName,
+                    Password = password,
+                    Phone = phoneNumber,
+                    Username = username
+                };
+                var saver = new SaveUser {TrackUser = user}; // create saver object
+                await saver.SaveData(); // save data async
+
+                progBarCurentValue += progBarIncrementRate;
+                await InscreaseProgBar(progBarCurentValue);
+
+
+                DependencyService.Get<IMessage>().LongAlert("Contul a fost creat!");
+                Thread.Sleep(100); // display message for 100 millisecond
+                Application.Current.MainPage = new MainPage(); // go to the main page of the app
+
             }
-            catch (ValidationException e)
+            catch (ValidationException e) // show error message to the user
             {
                 DependencyService.Get<IMessage>().ShortAlert(e.Message);
-                return;
-            }
-
-            
-
-            TrackUser user = new TrackUser() {Email = Email, FirstName = firstName, LastName = lastName, Password = password, Phone = phoneNumber, Username = username };
-            var saver = new SaveUser {TrackUser = user}; // create saver object
-            await saver.SaveData(); // save data async
+            }          
         }
+
+	    private async Task InscreaseProgBar(double currentValue)
+	    {
+	        await ProgBarSaveBtn.ProgressTo(currentValue, 250, Easing.Linear);
+	    }
     }
 }

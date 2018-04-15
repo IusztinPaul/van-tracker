@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TrackApp.ClientLayer.CustomUI"
-             x:Class="TrackApp.ClientLayer.Validation.LoginPage">
+             x:Class="TrackApp.ClientLayer.Validation.LoginPage"
+             Title="Logare">
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <x:String x:Key="UsernameLabel">Nume cont</x:String>
@@ -45,7 +47,7 @@
 
                 <Button x:Name="BtnLogin"
                         Text="{StaticResource  ButtonLabel}" 
-                        BackgroundColor="{StaticResource LifeColour}"
+                        BackgroundColor="{StaticResource AccentColor}"
                         Margin ="{StaticResource  Margins}"/>
 
 
