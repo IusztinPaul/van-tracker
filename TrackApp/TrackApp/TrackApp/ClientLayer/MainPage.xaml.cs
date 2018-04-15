@@ -23,11 +23,12 @@ namespace TrackApp
 
 
     public partial class MainPage : ContentPage
-	{
-        public MainPage()
+    {
+        private readonly TrackUser user;
+        public MainPage(TrackUser user)
         {
             InitializeComponent();
-
+            this.user = user;
         }
     }
 }

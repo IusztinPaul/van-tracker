@@ -32,7 +32,7 @@
                        FontSize="{StaticResource LabelFontSize}"
                        TextColor="{StaticResource  TextColor}" 
                        Margin ="{StaticResource  LabelMargins}"/>
-                <local:CustomEntry 
+                <local:CustomEntry x:Name="EntryUsername"
                                    Placeholder="{StaticResource  UsernameLabel}"
                                    Margin ="{StaticResource  Margins}"/>
 
@@ -40,7 +40,7 @@
                        FontSize="{StaticResource LabelFontSize}"
                        TextColor="{StaticResource  TextColor}"
                        Margin ="{StaticResource  LabelMargins}"/>
-                <local:CustomEntry 
+                <local:CustomEntry x:Name="EntryPassword"
                                    Placeholder="{StaticResource  PasswordLabel}"
                                    IsPassword="true"
                                    Margin ="{StaticResource  Margins}"/>

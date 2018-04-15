@@ -19,6 +19,10 @@ namespace TrackApp.ClientLayer.Validation
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SignUpPage : ContentPage
 	{
+        //TODO add custom renderer for the progress bar 
+        //TODO add a second password entry for validation
+        //TODO add placeholders that go up when you write something
+
 		public SignUpPage ()
 		{
 			InitializeComponent ();
@@ -166,7 +170,7 @@ namespace TrackApp.ClientLayer.Validation
 
                 DependencyService.Get<IMessage>().LongAlert("Contul a fost creat!");
                 Thread.Sleep(100); // display message for 100 millisecond
-                Application.Current.MainPage = new MainPage(); // go to the main page of the app
+                Application.Current.MainPage = new MainPage(user); // go to the main page of the app
 
             }
             catch (ValidationException e) // show error message to the user

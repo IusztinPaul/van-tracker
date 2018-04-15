@@ -61,7 +61,8 @@
 
                 <customUi:CustomEntry x:Name="EntryPassword"
                                           Placeholder="{x:Static consts:ClientConsts.PASSWORD_LENGTH_STRING}"
-                                      VerticalOptions="CenterAndExpand" />
+                                      VerticalOptions="CenterAndExpand" 
+                                     IsPassword="True"/>
 
                 <BoxView Color="{StaticResource TextColor}"
                          HeightRequest="{StaticResource BorderHeight}"
