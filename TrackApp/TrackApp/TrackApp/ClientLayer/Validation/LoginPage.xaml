@@ -42,7 +42,6 @@
 
                 <Label Text= "{StaticResource  UsernameLabel}"
                        FontSize="{StaticResource LabelFontSize}"
-                       TextColor="{StaticResource  TextColor}" 
                        Margin ="{StaticResource  LabelMargins}"/>
                 <local:CustomEntry x:Name="EntryUsername"
                                    Placeholder="{StaticResource  UsernameLabel}"
@@ -50,7 +49,6 @@
 
                 <Label Text="{StaticResource  PasswordLabel}" 
                        FontSize="{StaticResource LabelFontSize}"
-                       TextColor="{StaticResource  TextColor}"
                        Margin ="{StaticResource  LabelMargins}"/>
                 <local:CustomEntry x:Name="EntryPassword"
                                    Placeholder="{StaticResource  PasswordLabel}"
@@ -59,14 +57,12 @@
 
                 <Button x:Name="BtnLogin"
                         Text="{StaticResource  ButtonLabel}" 
-                        BackgroundColor="{StaticResource AccentColor}"
                         Margin ="{StaticResource  Margins}"/>
 
 
                 <Label x:Name= "LabelGoToSignUp"
                        FontSize="{StaticResource InfoFontSize}"
                        HorizontalOptions="Center"
-                       TextColor="{StaticResource  TextColor}"
                        Margin ="{StaticResource InfoLabelMargins}">
                     <Label.FormattedText>
                         <FormattedString>

@@ -19,16 +19,28 @@
                Source="vantrackerlogo.png"
                Margin ="{StaticResource Margins}"
                Aspect = "AspectFit"/>
-        
+
+
         <Label 
-                FontSize="{StaticResource InfoFontSize}"
-                x:Name="UsernameLabel"
-                HorizontalOptions="Start"/>
-        
+                HorizontalOptions="Start">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="{StaticResource UsernameDisplay}" FontSize="{StaticResource InfoFontSize}" FontAttributes="Bold"/>
+                    <Span x:Name="UsernameLabel" FontSize="{StaticResource InfoFontSize}"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+
         <Label
-            FontSize="{StaticResource InfoFontSize}"
-            x:Name="FullNameLabel"
-            HorizontalOptions="Start"/>
+            HorizontalOptions="Start">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="{StaticResource FullNameDisplay}" FontSize="{StaticResource InfoFontSize}" FontAttributes="Bold"/>
+                    <Span x:Name="FullNameLabel" FontSize="{StaticResource InfoFontSize}"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
 
         <BoxView Color="{StaticResource TextColor}"
                  HeightRequest="{StaticResource BorderHeight}"

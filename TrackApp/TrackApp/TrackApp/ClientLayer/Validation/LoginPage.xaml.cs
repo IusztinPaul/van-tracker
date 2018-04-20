@@ -14,7 +14,9 @@ namespace TrackApp.ClientLayer.Validation
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class LoginPage : ContentPage
 	{
-	    //TODO add custom renderer for the progress bar 
+        //TODO add custom renderer for the progress bar 
+        //TODO change exception message to public const string INTERNET_EXCEPTION_MESSAGE = "Nu este internet!"; from ClientConsts
+        //TODO if no internet show message instead of login page
 
         public LoginPage ()
 		{
@@ -97,7 +99,7 @@ namespace TrackApp.ClientLayer.Validation
 	        }
 	        catch (AmazonServiceException e) // if there are problems with the service or with the internet
 	        {
-	            DependencyService.Get<IMessage>().ShortAlert("Probleme cu internet-ul/server-ul!");
+	            DependencyService.Get<IMessage>().ShortAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE2);
 	        }
 	        catch (ValidationException e) // display error message to user
 	        {
@@ -105,12 +107,13 @@ namespace TrackApp.ClientLayer.Validation
 	        }
 	        catch (WebException e)
 	        {
-	            DependencyService.Get<IMessage>().LongAlert("Probleme cu internetul!");
+	            DependencyService.Get<IMessage>().LongAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE1);
             }
 	        catch (Exception e) // in case of unexpected error 
             {
                 Console.WriteLine("EXCEPTION COUGHT: " + e.Message);
-	            DependencyService.Get<IMessage>().LongAlert(e.Message);
+                Console.WriteLine("TYPE: " + e.GetType());
+                DependencyService.Get<IMessage>().LongAlert(e.Message);
             }
 
         }

@@ -80,7 +80,6 @@
                                          />
 
                 <Button x:Name="BtnSaveUser"
-                        BackgroundColor="{StaticResource AccentColor}"
                         Text="{StaticResource BtnText}"
                         VerticalOptions="CenterAndExpand"/>
 

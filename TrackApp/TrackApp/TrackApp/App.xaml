@@ -10,6 +10,17 @@
             <Color x:Key="AccentColor">LightBlue</Color>
             <Color x:Key="ConstrastColor">Indigo</Color>
             <Color x:Key="BgColor">White</Color>
+            
+            <!-- Universal Label Style -->
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+            </Style>
+
+            <!-- Universal Button Style -->
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}"/>
+            </Style>
+
 
             <!-- Margins -->
             <OnPlatform x:Key="Margins"
@@ -52,6 +63,9 @@
             <x:String x:Key="FriendsIconSource">friends_icon.jpg</x:String>
            <x:String x:Key="LogOut">Delogare</x:String>
             <x:String x:Key="LogOutIconSource">logout_icon.png</x:String>
+            
+            <x:String x:Key="UsernameDisplay">Nume cont:</x:String>
+            <x:String x:Key="FullNameDisplay">Nume:</x:String>
 
         </ResourceDictionary>
     </Application.Resources>

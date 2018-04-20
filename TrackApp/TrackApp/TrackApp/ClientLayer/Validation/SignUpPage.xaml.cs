@@ -166,14 +166,14 @@ namespace TrackApp.ClientLayer.Validation
                 await InscreaseProgBar(progBarCurentValue);
 
 
-                DependencyService.Get<IMessage>().LongAlert("Contul a fost creat!");
+                DependencyService.Get<IMessage>().LongAlert(ClientConsts.ACCOUNT_CREATED_MESSAGE);
                 Thread.Sleep(100); // display message for 100 millisecond
                 Application.Current.MainPage = new MainPage(user); // go to the main page of the app
 
             }
             catch (AmazonServiceException e) // if there are problems with the service or with the internet
             {
-                DependencyService.Get<IMessage>().ShortAlert("Probleme cu internet-ul/server-ul!");
+                DependencyService.Get<IMessage>().ShortAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE2);
             }
             catch (ValidationException e) // show error message to the user
             {
@@ -181,11 +181,11 @@ namespace TrackApp.ClientLayer.Validation
             }
             catch (WebException e)
             {
-                DependencyService.Get<IMessage>().LongAlert("Probleme cu internetul!");
+                DependencyService.Get<IMessage>().LongAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE1);
             }
             catch (Exception e) // in case of unexpected error like Error: NameResolutionFailure
             {
-                DependencyService.Get<IMessage>().ShortAlert("Probleme cu internet-ul");
+                DependencyService.Get<IMessage>().ShortAlert(ClientConsts.INTERNET_EXCEPTION_MESSAGE);
             }
         }
 
