@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Threading;
@@ -12,7 +10,7 @@ using TrackApp.ServerLayer.Save;
 using TrackApp.ServerLayer.Query;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Net.Mail;
+using Amazon.Runtime;
 
 namespace TrackApp.ClientLayer.Validation
 {
@@ -173,10 +171,22 @@ namespace TrackApp.ClientLayer.Validation
                 Application.Current.MainPage = new MainPage(user); // go to the main page of the app
 
             }
+            catch (AmazonServiceException e) // if there are problems with the service or with the internet
+            {
+                DependencyService.Get<IMessage>().ShortAlert("Probleme cu internet-ul/server-ul!");
+            }
             catch (ValidationException e) // show error message to the user
             {
                 DependencyService.Get<IMessage>().ShortAlert(e.Message);
-            }          
+            }
+            catch (WebException e)
+            {
+                DependencyService.Get<IMessage>().LongAlert("Probleme cu internetul!");
+            }
+            catch (Exception e) // in case of unexpected error like Error: NameResolutionFailure
+            {
+                DependencyService.Get<IMessage>().ShortAlert("Probleme cu internet-ul");
+            }
         }
 
 	    private async Task InscreaseProgBar(double currentValue)

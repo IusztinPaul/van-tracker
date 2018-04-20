@@ -7,10 +7,12 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <x:String x:Key="UsernameLabel">Nume cont</x:String>
+            <x:String x:Key="UsernameLabel">Nume account</x:String>
             <x:String x:Key="PasswordLabel">Parola</x:String>
             <x:String x:Key="ButtonLabel">Logare</x:String>
-            <x:String x:Key="GoToSignUpLabel">Nu ai un account? Inscrie-te aici!</x:String>
+            <x:String x:Key="GoToSignUpLabel1">Nu ai un account?</x:String>
+            <x:String x:Key="GoToSignUpLabel2"> Inscrie-te aici!</x:String>
+
 
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -26,6 +28,16 @@
                        Source="vantrackerlogo.png"
                        Margin ="{StaticResource Margins}"
                        Aspect = "AspectFit"/>
+
+
+                <ProgressBar x:Name="ProgBarLogBtn"
+                             Progress="0.0"
+                             Margin="{StaticResource Margins}"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="CenterAndExpand"
+                             WidthRequest="320"
+                             HeightRequest="20"
+                             IsVisible="False"/>
 
 
                 <Label Text= "{StaticResource  UsernameLabel}"
@@ -52,11 +64,19 @@
 
 
                 <Label x:Name= "LabelGoToSignUp"
-                       Text="{StaticResource  GoToSignUpLabel}" 
                        FontSize="{StaticResource InfoFontSize}"
                        HorizontalOptions="Center"
                        TextColor="{StaticResource  TextColor}"
-                       Margin ="{StaticResource InfoLabelMargins}"/>
+                       Margin ="{StaticResource InfoLabelMargins}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{StaticResource GoToSignUpLabel1}" FontSize="{StaticResource InfoFontSize}"/>
+                            <Span Text=" "/>
+                            <Span Text="{StaticResource GoToSignUpLabel2}" FontAttributes="Bold" FontSize="{StaticResource InfoFontSize}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                
 
             </StackLayout>
         </ScrollView>

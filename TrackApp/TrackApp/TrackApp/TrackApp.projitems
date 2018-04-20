@@ -10,9 +10,13 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\MainPage.xaml" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Validation\LoginPage.xaml" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Validation\SignUpPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\NavigationMasterPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\MapGroupsPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\FriendsPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Profile\ProfilePage.xaml" />
+    
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
@@ -22,6 +26,19 @@
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\CustomUI\CustomEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\CustomUI\IMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Exceptions\ValidationException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\FriendsPage.xaml.cs">
+      <DependentUpon>FriendsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\MapGroupsPage.xaml.cs">
+      <DependentUpon>MapGroupsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\MenuItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\NavigationMasterPage.xaml.cs">
+      <DependentUpon>NavigationMasterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Profile\ProfilePage.xaml.cs">
+      <DependentUpon>ProfilePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Validation\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -34,7 +51,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\LocationTypeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\UserData\TrackUser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Query\QueryUser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\ISaveData.cs" />
@@ -43,6 +59,33 @@
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\AwsUtils.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\FriendsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ClientLayer\MapGroupsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ClientLayer\MasterDetailPageNav.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ClientLayer\MasterDetailPageNavDetail.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ClientLayer\MasterDetailPageNavig.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ClientLayer\MasterDetailPageNavigation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ClientLayer\MasterDetailPageNavMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ClientLayer\NavigationMasterPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ClientLayer\Profile\ProfilePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)ClientLayer\Validation\LoginPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -52,5 +95,16 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\vantrackerlogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\friends_icon.jpg" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\group_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\logout_icon.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\user_icon.png" />
   </ItemGroup>
 </Project>

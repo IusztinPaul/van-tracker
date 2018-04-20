@@ -19,9 +19,23 @@ namespace TrackApp.ServerLayer.Save
                     var context = AwsUtils.GetContext();
                     await context.SaveAsync(TrackUser);
                 }
-                catch (AmazonDynamoDBException e) { Console.WriteLine(e.Message); }
-                catch (AmazonServiceException e) { Console.WriteLine(e.Message); }
-                catch (Exception e) { Console.WriteLine(e.Message); }
+                catch (AmazonDynamoDBException e)
+                {
+                    Console.WriteLine("AmazonDynamoDBException CAUGHT: " + e.Message);
+                    throw new AmazonServiceException("AmazonDynamoDBException CAUGHT: " + e.Message);
+                }
+                catch (AmazonServiceException e)
+                {
+                    Console.WriteLine("AmazonServiceException CAUGHT: " + e.Message);
+                    throw new AmazonServiceException("AmazonServiceException CAUGHT: " + e.Message);
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Exception CAUGHT: " + e.Message);
+                    throw new Exception("Exception CAUGHT: " + e.Message);
+
+                }
             }
             else
                 throw new Exception("TrackUser has no Id/Username!!!");

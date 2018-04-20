@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Net;
 using System.Threading.Tasks;
+using Amazon.Runtime;
 using TrackApp.ClientLayer.CustomUI;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,15 +14,24 @@ namespace TrackApp.ClientLayer.Validation
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class LoginPage : ContentPage
 	{
-		public LoginPage ()
+	    //TODO add custom renderer for the progress bar 
+
+        public LoginPage ()
 		{
 			InitializeComponent ();
 
             // logic button listener
-		    BtnLogin.Clicked += (source, args) =>
+		    BtnLogin.Clicked += async (source, args) =>
 		    {
-		        BtnLoginClickListener();
-		    };
+                //reset the progess bar 
+		        ProgBarLogBtn.Progress = 0d;
+		        ProgBarLogBtn.IsVisible = true;
+
+                await BtnLoginClickListener();
+
+                // make the prog bar invisible
+		        ProgBarLogBtn.IsVisible = false;
+            };
 
 		    // click listener for the bottom label
 		    LabelGoToSignUp.GestureRecognizers.Add(
@@ -31,7 +39,12 @@ namespace TrackApp.ClientLayer.Validation
 		        {
 		            Command = new Command(() => OnLabelGoToSignUpClicked())
 		        });
-        }
+
+            //escape some internal null exception
+		    EntryUsername.Text = "";
+		    EntryPassword.Text = "";
+
+		}
 
 	    private async Task OnLabelGoToSignUpClicked()
 	    {
@@ -66,18 +79,45 @@ namespace TrackApp.ClientLayer.Validation
 
 	    private async Task BtnLoginClickListener()
 	    {
+	        double progBarIncrementRate = 1d / 2d;
+	        double progBarCurentValue = 0d;
+
 	        try
 	        {
+	            // validate the data and show progress bar animation
 	            var user = await GetUserFromEntry();
-                CheckPasswordForUser(user);
+	            progBarCurentValue += progBarIncrementRate;
+	            await InscreaseProgBar(progBarCurentValue);
 
-                Application.Current.MainPage = new MainPage(user);
+	            CheckPasswordForUser(user);
+	            progBarCurentValue += progBarIncrementRate;
+	            await InscreaseProgBar(progBarCurentValue);
+
+	            Application.Current.MainPage = new MainPage(user);
+	        }
+	        catch (AmazonServiceException e) // if there are problems with the service or with the internet
+	        {
+	            DependencyService.Get<IMessage>().ShortAlert("Probleme cu internet-ul/server-ul!");
 	        }
 	        catch (ValidationException e) // display error message to user
 	        {
-                DependencyService.Get<IMessage>().ShortAlert(e.Message);
+	            DependencyService.Get<IMessage>().ShortAlert(e.Message);
 	        }
+	        catch (WebException e)
+	        {
+	            DependencyService.Get<IMessage>().LongAlert("Probleme cu internetul!");
+            }
+	        catch (Exception e) // in case of unexpected error 
+            {
+                Console.WriteLine("EXCEPTION COUGHT: " + e.Message);
+	            DependencyService.Get<IMessage>().LongAlert(e.Message);
+            }
 
+        }
+
+	    private async Task InscreaseProgBar(double currentValue)
+	    {
+	        await ProgBarLogBtn.ProgressTo(currentValue, 250, Easing.Linear);
 	    }
     }
 }

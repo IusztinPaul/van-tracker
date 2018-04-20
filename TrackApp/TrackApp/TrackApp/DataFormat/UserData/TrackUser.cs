@@ -21,6 +21,8 @@ namespace TrackApp.DataFormat.UserData
         public string Phone { get; set; }
         [DynamoDBProperty]
         public string Email { get; set; }
+        [DynamoDBProperty]
+        public string Icon { get; set; }
         [DynamoDBProperty(Converter = typeof(LocationTypeConverter))]
         public Location Location { get; set; }
 

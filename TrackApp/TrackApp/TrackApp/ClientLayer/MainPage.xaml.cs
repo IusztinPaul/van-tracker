@@ -17,18 +17,30 @@ using TrackApp.DataFormat.UserData;
 using TrackApp.ServerLayer;
 using TrackApp.ServerLayer.Query;
 
-namespace TrackApp
+namespace TrackApp.ClientLayer
 {
-
-
-
-    public partial class MainPage : ContentPage
+    
+    public class MainPage : MasterDetailPage
     {
         private readonly TrackUser user;
         public MainPage(TrackUser user)
         {
-            InitializeComponent();
+          
             this.user = user;
+            Master = new NavigationMasterPage(user, this);
+            Detail = new NavigationPage(new Maper.MapGroupsPage());
+
+            
+        }
+
+        public void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var item = e.SelectedItem as MenuItem;
+            if (item != null)
+            {
+                Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargeType));
+                IsPresented = false;
+            }
         }
     }
 }

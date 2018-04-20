@@ -135,6 +135,18 @@
   <ItemGroup>
     <BundleResource Include="Resources\vantrackerlogo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\friends_icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\group_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\user_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logout_icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\TrackApp\TrackApp.projitems" Label="Shared" />
 </Project>

@@ -19,6 +19,9 @@ namespace TrackApp.ClientLayer.Validation {
         private global::Xamarin.Forms.StackLayout StackLayoutContent;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.ProgressBar ProgBarLogBtn;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::TrackApp.ClientLayer.CustomUI.CustomEntry EntryUsername;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
@@ -34,6 +37,7 @@ namespace TrackApp.ClientLayer.Validation {
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(LoginPage));
             StackLayoutContent = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.StackLayout>(this, "StackLayoutContent");
+            ProgBarLogBtn = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ProgressBar>(this, "ProgBarLogBtn");
             EntryUsername = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TrackApp.ClientLayer.CustomUI.CustomEntry>(this, "EntryUsername");
             EntryPassword = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TrackApp.ClientLayer.CustomUI.CustomEntry>(this, "EntryPassword");
             BtnLogin = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "BtnLogin");

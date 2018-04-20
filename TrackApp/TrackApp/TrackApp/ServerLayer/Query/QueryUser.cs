@@ -14,12 +14,12 @@ namespace TrackApp.ServerLayer.Query
     {
         public TrackUser TrackUser { get; set; }
 
-        public async Task<TrackUser> LoadData(string Username)
+        public async Task<TrackUser> LoadData(string username)
         {
             try
             {
                 var context = AwsUtils.GetContext();
-                TrackUser = await context.LoadAsync<TrackUser>(Username, new DynamoDBContextConfig
+                TrackUser = await context.LoadAsync<TrackUser>(username, new DynamoDBContextConfig
                 {
                     ConsistentRead = true
                 });
@@ -27,19 +27,22 @@ namespace TrackApp.ServerLayer.Query
             }
             catch (AmazonDynamoDBException e)
             {
-                Console.WriteLine(e.Message);
-                return null;
+                Console.WriteLine("AmazonDynamoDBException CAUGHT: " + e.Message);
+                throw new AmazonServiceException("AmazonDynamoDBException CAUGHT: " + e.Message);
             }
             catch (AmazonServiceException e)
             {
-                Console.WriteLine(e.Message);
-                return null;
+                Console.WriteLine("AmazonServiceException CAUGHT: " + e.Message);
+                throw new AmazonServiceException("AmazonServiceException CAUGHT: " + e.Message);
+
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-                return null;
+                Console.WriteLine("Exception CAUGHT: " + e.Message);
+                throw new Exception("Exception CAUGHT: " + e.Message);
+
             }
+
         }
     }
 }

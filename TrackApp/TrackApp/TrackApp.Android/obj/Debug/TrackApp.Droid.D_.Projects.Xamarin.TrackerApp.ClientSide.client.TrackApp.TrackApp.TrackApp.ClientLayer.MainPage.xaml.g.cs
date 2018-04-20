@@ -8,20 +8,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TrackApp {
+namespace MasterDetailPageNavigation {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\Projects\\Xamarin\\TrackerApp\\ClientSide\\client\\TrackApp\\TrackApp\\TrackApp\\Clien" +
         "tLayer\\MainPage.xaml")]
-    public partial class MainPage : global::Xamarin.Forms.ContentPage {
+    public partial class MainPage : global::Xamarin.Forms.MasterDetailPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Button BtnCreate;
+        private global::TrackApp.ClientLayer.NavigationMasterPage NavigationMasterPage;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(MainPage));
-            BtnCreate = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "BtnCreate");
+            NavigationMasterPage = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TrackApp.ClientLayer.NavigationMasterPage>(this, "NavigationMasterPage");
         }
     }
 }

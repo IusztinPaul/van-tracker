@@ -43,6 +43,15 @@
             <!-- Heights -->
             <x:Double x:Key="BorderHeight">2</x:Double>
 
+           <!-- master from detailmasterpage constants -->
+           <x:String x:Key="Account">Account</x:String>
+            <x:String x:Key="AccountIconSource">user_icon.png</x:String>
+           <x:String x:Key="Groups">Grupuri</x:String>
+            <x:String x:Key="GroupsIconSource">group_icon.png</x:String>
+           <x:String x:Key="Friends">Prieteni</x:String>
+            <x:String x:Key="FriendsIconSource">friends_icon.jpg</x:String>
+           <x:String x:Key="LogOut">Delogare</x:String>
+            <x:String x:Key="LogOutIconSource">logout_icon.png</x:String>
 
         </ResourceDictionary>
     </Application.Resources>
