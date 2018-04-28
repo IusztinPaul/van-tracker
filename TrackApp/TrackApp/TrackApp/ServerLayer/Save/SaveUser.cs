@@ -41,28 +41,6 @@ namespace TrackApp.ServerLayer.Save
                 throw new Exception("TrackUser has no Id/Username!!!");
         }
 
-        public override async Task DeleteData(String id)
-        {
-            try
-            {
-                var context = AwsUtils.GetContext();
-                await context.DeleteAsync<TrackUser>(id, new DynamoDBContextConfig
-                {
-                    ConsistentRead = true
-                });
-            }
-            catch (AmazonDynamoDBException e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            catch (AmazonServiceException e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
+       
     }
 }

@@ -14,16 +14,17 @@ namespace TrackApp.ServerLayer.Query
     {
         public TrackUser TrackUser { get; set; }
 
-        public async Task<TrackUser> LoadData(string username)
+        public async Task<T> LoadData<T>(string username) //used to get values from the following tables: USERS_DB_NAME, USERS_FRIENDS_DB_NAME
+        // with the types TrackUser and UserFriends from the DataFormat.UserData types
         {
             try
             {
                 var context = AwsUtils.GetContext();
-                TrackUser = await context.LoadAsync<TrackUser>(username, new DynamoDBContextConfig
+                var returnedValue = await context.LoadAsync<T>(username, new DynamoDBContextConfig
                 {
                     ConsistentRead = true
                 });
-                return TrackUser;
+                return returnedValue;
             }
             catch (AmazonDynamoDBException e)
             {
@@ -43,6 +44,20 @@ namespace TrackApp.ServerLayer.Query
 
             }
 
+        }
+
+        public static async Task<List<TrackUser>> ScanAllTrackUsers()
+        {
+            
+            DynamoDBContext context = AwsUtils.GetContext();
+
+            var search = context.FromScanAsync<TrackUser>(new Amazon.DynamoDBv2.DocumentModel.ScanOperationConfig()
+            {
+                ConsistentRead = true
+            });
+
+             
+             return await search.GetRemainingAsync();
         }
     }
 }

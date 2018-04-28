@@ -17,8 +17,9 @@ namespace TrackApp.ClientLayer.Validation
         //TODO add custom renderer for the progress bar 
         //TODO change exception message to public const string INTERNET_EXCEPTION_MESSAGE = "Nu este internet!"; from ClientConsts
         //TODO if no internet show message instead of login page
+        //TODO save login state into a local db and send the currentUser to the main page if it already logged in from another time
 
-        public LoginPage ()
+        public LoginPage (TrackUser currentUser)
 		{
 			InitializeComponent ();
 
@@ -39,12 +40,22 @@ namespace TrackApp.ClientLayer.Validation
 		    LabelGoToSignUp.GestureRecognizers.Add(
 		        new TapGestureRecognizer()
 		        {
-		            Command = new Command(() => OnLabelGoToSignUpClicked())
+		            Command = new Command( async () => await OnLabelGoToSignUpClicked())
 		        });
 
-            //escape some internal null exception
-		    EntryUsername.Text = "";
-		    EntryPassword.Text = "";
+            //logout logic 
+		    if (currentUser != null)
+		    {
+		        EntryUsername.Text = currentUser.Username;
+		        EntryPassword.Text = currentUser.Password;
+            }
+		    else
+		    {
+		        //escape some internal null exception
+		        EntryUsername.Text = "";
+		        EntryPassword.Text = "";
+            }
+           
 
 		}
 
@@ -61,7 +72,7 @@ namespace TrackApp.ClientLayer.Validation
 	            throw new ValidationException("Introduce cont!");
 
 	        QueryUser query = new QueryUser();
-	        var user = await query.LoadData(username);
+	        var user = await query.LoadData<TrackUser>(username);
 
 	        if (user == null) // username is unique 
 	            throw new ValidationException("Contul nu exista!");
@@ -101,7 +112,7 @@ namespace TrackApp.ClientLayer.Validation
 	        {
 	            DependencyService.Get<IMessage>().ShortAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE2);
 	        }
-	        catch (ValidationException e) // display error message to user
+	        catch (ValidationException e) // display error message to currentUser
 	        {
 	            DependencyService.Get<IMessage>().ShortAlert(e.Message);
 	        }

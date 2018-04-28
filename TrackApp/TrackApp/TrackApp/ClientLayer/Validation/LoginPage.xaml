@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TrackApp.ClientLayer.CustomUI"
+             xmlns:c="clr-namespace:TrackApp.ClientLayer"
              x:Class="TrackApp.ClientLayer.Validation.LoginPage"
              Title="Logare">
 
@@ -25,7 +26,7 @@
                          x:Name="StackLayoutContent">
 
                 <Image HorizontalOptions="Center"
-                       Source="vantrackerlogo.png"
+                       Source="{x:Static c:ClientConsts.APP_LOGO}"
                        Margin ="{StaticResource Margins}"
                        Aspect = "AspectFit"/>
 

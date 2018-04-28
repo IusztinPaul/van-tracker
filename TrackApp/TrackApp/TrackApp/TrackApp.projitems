@@ -16,19 +16,33 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\MapGroupsPage.xaml" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\FriendsPage.xaml" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Profile\ProfilePage.xaml" />
-    
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\NotificationPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\AddFriendPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\ClientConsts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\CustomUI\CircleImage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\CustomUI\CustomEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\CustomUI\IMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Exceptions\ValidationException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Extensions\Extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\AbstractFriendsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\AddFriendPage.xaml.cs">
+      <DependentUpon>AddFriendPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\CurrentFriendsListViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\FriendsPage.xaml.cs">
       <DependentUpon>FriendsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\FriendsTabbedPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\NotificationPage.xaml.cs">
+      <DependentUpon>NotificationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\FriendsListViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\NotificationsModelView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\MapGroupsPage.xaml.cs">
       <DependentUpon>MapGroupsPage.xaml</DependentUpon>
     </Compile>
@@ -52,14 +66,25 @@
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\UserData\TrackUser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\MainPage.xaml.cs">
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)DataFormat\UserData\UserFriends.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Query\QueryUser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\ISaveData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\SaveUser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\SaveUserFriends.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\ServerConsts.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\AwsUtils.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\AddFriendPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\FriendsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\NotificationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\UserItemViewCell.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ClientLayer\MapGroupsPage.xaml">
@@ -106,5 +131,15 @@
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\logout_icon.png" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\user_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\avatar_placeholder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\add_item_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\follow_icon.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\unfollow_icon.png" />
   </ItemGroup>
 </Project>

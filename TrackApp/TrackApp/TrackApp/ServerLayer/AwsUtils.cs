@@ -66,9 +66,34 @@ namespace TrackApp.ServerLayer
             }
         }
 
+        public static DynamoDBContext DDBContextV2 //v2 allows duplicates in lists
+        {
+            get
+            {
+                if (_credentials == null)
+                    _credentials = new CognitoAWSCredentials(ServerConsts.POOL_IDENTITY_ID, ServerConsts.COGNITO_REGION);
+
+                if (_client == null)
+                    _client = new AmazonDynamoDBClient(Credentials, ServerConsts.DYNAMODB_REGION);
+
+                if (_context == null)
+                    _context = new DynamoDBContext(DynamoDBClient, new DynamoDBContextConfig
+                    {
+                        Conversion = DynamoDBEntryConversion.V2 //here is the setup
+                    });
+
+                return _context;
+            }
+        }
+
         public static DynamoDBContext GetContext()
         {
             return AwsUtils.DDBContext;
+        }
+
+        public static DynamoDBContext GetContextV2()
+        {
+            return DDBContextV2;
         }
     }
 }

@@ -1,0 +1,245 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
+using Amazon.Runtime;
+using TrackApp.ClientLayer.CustomUI;
+using TrackApp.ClientLayer.Exceptions;
+using TrackApp.DataFormat.UserData;
+using TrackApp.ServerLayer.Query;
+using TrackApp.ServerLayer.Save;
+using Xamarin.Forms;
+using TrackApp.ClientLayer.Extensions;
+
+namespace TrackApp.ClientLayer.Friends
+{
+    public class FriendsListViewModel : AbstractFriendsViewModel
+    {
+
+        //private fields
+        private List<TrackUser> _allUsers; //list that stores all users
+        
+       
+        //observable list
+        private ObservableCollection<TrackUser> _trackUsers; //bindable list that is filtered by the search bar
+        public ObservableCollection<TrackUser> TrackUsers
+        {
+            get => _trackUsers; set
+            {
+                _trackUsers = value;
+                OnPropertyChanged("TrackUsers");
+            }
+        }
+
+       
+        public FriendsListViewModel(TrackUser currentUser) : base(currentUser)
+        {
+            
+            //add commands
+            OnButtonTappedCommand = new Command(OnButtonTapped);
+            OnRefreshCommand = new Command( () => Device.BeginInvokeOnMainThread(async () => await PopulateAsync()), 
+                () => !IsBusy ); // repopulate the data, refresh command for the list
+
+            //populate
+           // Populate(); //async method to populate the view
+        }
+
+
+        public async override Task PopulateAsync()
+        {
+
+            // if already refreshing don't populate
+            if (IsBusy)
+                return;
+
+            //set the refresh state so another refresh wont be possible
+            IsBusy = true;
+            ((Command) OnRefreshCommand).ChangeCanExecute();
+
+            Console.Write("STARTED");
+
+        try
+
+        {
+                currentUserFriends = await new QueryUser().LoadData<UserFriends>(currentUser.Username);
+
+                var list = await QueryUser.ScanAllTrackUsers();
+
+                if (currentUserFriends != null && currentUserFriends.Friends != null)
+                    _allUsers = new List<TrackUser>(FilterAllUsers(list, currentUserFriends)); //filter data
+                else
+                    _allUsers = new List<TrackUser>(list.Where( (x) => x.Username != currentUser.Username)); 
+                // filter only for not displaying the current user
+
+                _allUsers.Sort((a, b) => a.Username.ToUpper().CompareTo(b.Username.ToUpper())); // sort stored list
+
+                TrackUsers = new ObservableCollection<TrackUser>(_allUsers); //bind listview
+
+            }
+            catch (AmazonServiceException e) // if there are problems with the service or with the internet
+            {
+                DependencyService.Get<IMessage>().ShortAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE2);
+            }
+            catch (ValidationException e) // display error message to currentUser
+            {
+                DependencyService.Get<IMessage>().ShortAlert(e.Message);
+            }
+            catch (WebException e)
+            {
+                DependencyService.Get<IMessage>().LongAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE1);
+            }
+            catch (Exception e) // in case of unexpected error 
+            {
+                Console.WriteLine("EXCEPTION COUGHT: " + e.Message);
+                Console.WriteLine("TYPE: " + e.GetType());
+                DependencyService.Get<IMessage>().LongAlert(e.Message);
+            }
+            finally
+            {
+                //allow another refreshes
+                IsBusy = false;
+                ((Command)OnRefreshCommand).ChangeCanExecute();
+            }
+
+            Console.Write("FINISHED");
+
+        }
+
+        private async void OnButtonTapped(object obj)
+        {
+            var item = obj as TrackUser;
+            if (item != null)
+            {
+                
+                //send message to the user that the logic started
+                DependencyService.Get<IMessage>().ShortAlert(ClientConsts.REQUEST_MESSAGE);
+
+                try
+                {
+                    await Task.Run( async () => { 
+                    await OnButtonTappedAsync(item);
+                });
+
+                }
+                catch (AmazonServiceException e) // if there are problems with the service or with the internet
+                {
+                    DependencyService.Get<IMessage>().ShortAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE2);
+                }
+                catch (ValidationException e) // display error message to currentUser
+                {
+                    DependencyService.Get<IMessage>().ShortAlert(e.Message);
+                }
+                catch (WebException e)
+                {
+                    DependencyService.Get<IMessage>().LongAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE1);
+                }
+                catch (Exception e) // in case of unexpected error 
+                {
+                    Console.WriteLine("EXCEPTION COUGHT: " + e.Message);
+                    Console.WriteLine("TYPE: " + e.GetType());
+                    DependencyService.Get<IMessage>().LongAlert(e.Message);
+                }
+
+                //if everything went ok send a message to the user
+                DependencyService.Get<IMessage>().ShortAlert(ClientConsts.ACHIEVED_MESSAGE);
+            }
+        }
+
+        private async Task OnButtonTappedAsync(TrackUser selectedUser)
+        {
+
+            //first refresh the view
+            TrackUsers.Remove(selectedUser);
+
+            //delete it also from the cached list
+            _allUsers.Remove(selectedUser);
+
+            var query = new QueryUser();
+
+            // add id in the current currentUser friendlist
+            var userList = await query.LoadData<UserFriends>(currentUser.Username);
+
+            if (userList != null && userList.Friends != null)
+            {
+                userList.Friends.Add(selectedUser.Username);
+            }
+            else
+            {
+                userList = new UserFriends { Username = currentUser.Username, Notifications = currentUserFriends?.Notifications };
+                userList.Friends = new List<string> { selectedUser.Username };
+            }
+
+            // add id in the selected currentUser notifications
+            var selectedUserList = await query.LoadData<UserFriends>(selectedUser.Username);
+
+            
+
+            string notifStorage = currentUser.Username +
+                                  ClientConsts.CONCAT_SPECIAL_CHARACTER +
+                                  ClientConsts.ADD_SIGNAL;
+
+            // the notification are stored with the following form: username#add
+            if (selectedUserList != null && selectedUserList.Notifications != null)
+            {
+                //add the real index of the item so we will display the items in the ordered they where 
+                //really added (dynamodb sorts the elements inside the db)
+                selectedUserList.Notifications.AddIndexedString(notifStorage);
+
+
+                //resize the notifications if the length exceeded the desired value
+                selectedUserList.Notifications = selectedUserList.Notifications.ResizeIfNeeded(sort: true);
+            }
+            else
+            {
+                selectedUserList = new UserFriends { Username = selectedUser.Username, Friends=selectedUserList?.Friends };
+                selectedUserList.Notifications = new List<string> { notifStorage + ClientConsts.CONCAT_SPECIAL_CHARACTER + "0"};
+            }
+
+
+            //save the current currentUser list
+            var saver = new SaveUserFriends { UserFriends = userList };
+            await saver.SaveData();
+
+            
+            //save the selected currentUser list
+            saver.UserFriends = selectedUserList;
+            await saver.SaveData();
+
+            //refresh the current user friends list
+            currentUserFriends = await new QueryUser().LoadData<UserFriends>(currentUser.Username);
+
+            
+            // after refresh the binded view
+           // TrackUsers = new ObservableCollection<TrackUser>(FilterAllUsers(TrackUsers, currentUserFriends));
+        }
+
+
+
+        
+
+        public IList<TrackUser> GetAllUsers()
+        {
+            return _allUsers;
+        }
+
+        private IEnumerable<TrackUser> FilterAllUsers(IEnumerable<TrackUser> allUsers, UserFriends friends)
+        {
+            if (allUsers != null)
+            {
+                if (friends == null)
+                    // it means we have no friends list to filter
+                    return allUsers.Where(x => x.Username != currentUser.Username);
+
+                // display only users that are not already friends of the current user 
+                // and users that are not the current user
+                return allUsers.Where(x => !friends.Friends.Contains(x.Username) && x.Username != currentUser.Username);
+            }
+
+            return null;
+        }
+
+       
+    }
+}

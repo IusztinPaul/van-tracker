@@ -1,12 +1,115 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TrackApp.ClientLayer.Friends.FriendsPage">
+             xmlns:custom="clr-namespace:TrackApp.ClientLayer.CustomUI"
+             x:Class="TrackApp.ClientLayer.Friends.FriendsPage"
+             >
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="ListViewHeaderTitle">Utilizatori</x:String>
+            <x:String x:Key="SearchBoxPlaceHolder">Cauta utilizatori</x:String>
+            <x:String x:Key="BtnText">Unfollow</x:String>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms! FRIENDS"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+
+        <StackLayout 
+            Orientation="Vertical"
+            Spacing="10"
+            Margin="2">
+
+            <SearchBar 
+                        Margin="5"
+                        Placeholder="{StaticResource SearchBoxPlaceHolder}"
+                        TextChanged="OnTextChanged"
+                       />
+
+
+            <ListView x:Name="FriendsList"
+                      CachingStrategy="RecycleElement"
+                      HasUnevenRows="True"
+                      ItemsSource="{Binding CurrentUserFriends}"
+                      IsPullToRefreshEnabled="True"
+                      RefreshCommand="{Binding OnRefreshCommand}"
+                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                      >
+
+                <ListView.Header>
+                    <Label 
+                        Text="{StaticResource ListViewHeaderTitle}" 
+                        HorizontalOptions="StartAndExpand" 
+                        Margin="{StaticResource Margins}" 
+                        TextColor="Black"
+                        FontSize="{StaticResource LabelFontSize}"/>
+                </ListView.Header>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <Grid
+                                Padding="5, 5, 0, 5"
+                                x:Name="Item"
+                                    >
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="25"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+
+                                <custom:CircleImage
+                                        Grid.Row="0"
+                                        Grid.RowSpan="2"    
+                                        Grid.Column="0"
+                                        Source="{Binding IconSource}"
+                                        Aspect="AspectFill"
+                                        HeightRequest="70"
+                                        WidthRequest="70"
+                                        />
+
+                                <Label 
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        TextColor="Black" 
+                                        Text="{Binding Username}"
+                                        FontSize="Medium"
+                                        FontAttributes="Bold"
+                                       />
+                                <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Text="{Binding FullName}" 
+                                        FontSize="Medium"
+                                        />
+
+                                <Button VerticalOptions="Center"
+                                        HorizontalOptions="End"
+                                        Grid.Row="0"
+                                        Grid.RowSpan="2"    
+                                        Grid.Column="2"
+                                        Margin="1"
+                                        TextColor="{StaticResource TextColor}"
+                                        Text="{StaticResource BtnText}"
+                                        BindingContext="{Binding Source={x:Reference FriendsList}, Path=BindingContext}"
+                                        Command="{Binding OnButtonTappedCommand}"
+                                        CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"
+                                        Scale="0.75"
+                                        />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
+

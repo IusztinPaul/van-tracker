@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TrackApp.ClientLayer.NavigationMasterPage"
+             xmlns:circleimg="clr-namespace:TrackApp.ClientLayer.CustomUI"
              xmlns:local="clr-namespace:TrackApp.ClientLayer"
              xmlns:friends="clr-namespace:TrackApp.ClientLayer.Friends"
              xmlns:profile="clr-namespace:TrackApp.ClientLayer.Profile"
@@ -12,12 +13,15 @@
     <StackLayout
         VerticalOptions="CenterAndExpand"
         Orientation="Vertical"
+        Padding="5,10"
         Margin="{StaticResource Margins}"
         Spacing="5">
 
-        <Image HorizontalOptions="Center"
-               Source="vantrackerlogo.png"
+        <circleimg:CircleImage HorizontalOptions="Center"
+               Source="{x:Static local:ClientConsts.USER_PLACEHOLDER}"
                Margin ="{StaticResource Margins}"
+               WidthRequest="150"
+               HeightRequest="150"             
                Aspect = "AspectFit"/>
 
 
@@ -52,10 +56,10 @@
 
             <ListView.ItemsSource>
                 <x:Array Type="{x:Type local:MenuItem}">
-                    <local:MenuItem Title="{StaticResource Account}" IconSource="{StaticResource AccountIconSource}" TargeType="{x:Type profile:ProfilePage}"/>
-                    <local:MenuItem Title="{StaticResource Groups}" IconSource="{StaticResource GroupsIconSource}" TargeType="{x:Type maps:MapGroupsPage}"/>
-                    <local:MenuItem Title="{StaticResource Friends}" IconSource="{StaticResource FriendsIconSource}" TargeType="{x:Type friends:FriendsPage}"/>
-                    <local:MenuItem Title="{StaticResource LogOut}" IconSource="{StaticResource LogOutIconSource}" TargeType="{x:Type login:LoginPage}"/>
+                    <local:MenuItem Title="{StaticResource Account}" IconSource="{x:Static local:ClientConsts.USER_ICON}" TargeType="{x:Type profile:ProfilePage}"/>
+                    <local:MenuItem Title="{StaticResource Groups}" IconSource="{x:Static local:ClientConsts.GROUP_ICON}" TargeType="{x:Type maps:MapGroupsPage}"/>
+                    <local:MenuItem Title="{StaticResource Friends}" IconSource="{x:Static local:ClientConsts.FRIENDS_ICON}" TargeType="{x:Type friends:FriendsTabbedPage}"/>
+                    <local:MenuItem Title="{StaticResource LogOut}" IconSource="{x:Static local:ClientConsts.LOGOUT_ICON}" TargeType="{x:Type login:LoginPage}"/>
                 </x:Array>
             </ListView.ItemsSource>
 
@@ -63,12 +67,17 @@
                 <DataTemplate>
                     <ViewCell>
                         <Grid Padding="5,10">
+
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="34"/>
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Image Source="{Binding IconSource}" />
-                            <Label Grid.Column="1" Text="{Binding Title}" />
+
+                            <Image Source="{Binding IconSource}" 
+                                   Aspect="AspectFit"/>
+                            <Label Grid.Column="1" Text="{Binding Title}" 
+                                   FontSize="{StaticResource InfoFontSize}"/>
+
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

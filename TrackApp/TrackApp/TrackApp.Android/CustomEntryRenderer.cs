@@ -11,9 +11,12 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using TrackApp.ClientLayer.CustomUI;
+using TrackApp.Droid;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms;
 
+[assembly: ExportRenderer(typeof(CustomEntry), typeof(CustomEntryRenderer))]
 namespace TrackApp.Droid
 {
     public class CustomEntryRenderer : EntryRenderer

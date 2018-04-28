@@ -27,8 +27,12 @@ namespace TrackApp.ClientLayer
 		    };
 
             // set custom labels
-		    UsernameLabel.Text = " " + user.Username;
-		    FullNameLabel.Text = String.Format(" {0} {1}",user.FirstName, user.LastName);
+		    if (user != null)
+		    {
+		        UsernameLabel.Text = " " + user.Username;
+		        FullNameLabel.Text = String.Format(" {0} {1}", user.FirstName, user.LastName);
+		    }
+
 		}
 
 

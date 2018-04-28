@@ -22,23 +22,25 @@ namespace TrackApp.ClientLayer
     
     public class MainPage : MasterDetailPage
     {
-        private readonly TrackUser user;
-        public MainPage(TrackUser user)
+        private readonly TrackUser currentUser;
+        public MainPage(TrackUser currentUser)
         {
+            Title = ClientConsts.MAIN_PAGE_TITLE;
           
-            this.user = user;
-            Master = new NavigationMasterPage(user, this);
-            Detail = new NavigationPage(new Maper.MapGroupsPage());
+            this.currentUser = currentUser;
+            Master = new NavigationMasterPage(currentUser, this);
+            Detail = new NavigationPage(new Maper.MapGroupsPage(currentUser));
 
             
         }
 
-        public void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        public void OnItemSelected(object sender, SelectedItemChangedEventArgs e) 
+            // function that is called within the NavigationMasterPage
         {
             var item = e.SelectedItem as MenuItem;
             if (item != null)
             {
-                Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargeType));
+                Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargeType, currentUser));
                 IsPresented = false;
             }
         }

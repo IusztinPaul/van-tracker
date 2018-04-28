@@ -54,8 +54,13 @@ namespace TrackApp.ClientLayer.Validation
             if (String.IsNullOrEmpty(username))
                 throw new ValidationException("Nume cont incorent!");
 
+            Match match = Regex.Match(username, @"^[^$#]+$"); // those special chars are needed
+            // for further concatenations so they have to be unique in the logic 
+            if (!match.Success)
+                throw new ValidationException("Exista '$' sau '#' in nume cont!");
+
             QueryUser query = new QueryUser();
-            var user = await query.LoadData(username);
+            var user = await query.LoadData<TrackUser>(username);
             if(user != null) // username is unique 
                 throw new ValidationException("Acest nume de cont exista deja!");
 

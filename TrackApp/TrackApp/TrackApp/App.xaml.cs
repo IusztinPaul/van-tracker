@@ -1,9 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Amazon.DynamoDBv2;
+using Amazon.Runtime;
 using TrackApp.ClientLayer;
-using TrackApp.ClientLayer.Validation;
+using TrackApp.ClientLayer.CustomUI;
+using TrackApp.ClientLayer.Friends;
+using TrackApp.DataFormat.UserData;
+using TrackApp.ServerLayer;
 using Xamarin.Forms;
 
 namespace TrackApp
@@ -16,23 +18,40 @@ namespace TrackApp
 		{
 			InitializeComponent();
 
-            // MainPage = new NavigationPage(new ClientLayer.Validation.LoginPage());
-
-            /*
-            MasterDetailPage = new MasterDetailPage
-		    {
-		        Master = new NavigationMasterPage(),
-		        Detail = new NavigationPage(new MapGroupsPage())
-
-		    }; */
-
-		    MainPage = new NavigationPage(new LoginPage());
+            
+              MainPage = new NavigationPage(new FriendsTabbedPage(new TrackUser() { Username = "PaulCelMare" }));
+              //MainPage = new NavigationPage(new LoginPage(new TrackUser(){Username = "PaulCelMare"}));
 		}
 
 		protected override void OnStart ()
 		{
-			// Handle when your app starts
-		}
+            // Handle when your app starts
+
+            //make connection with the dynamo DB
+            try
+            {
+                AwsUtils.GetContext();
+
+            }
+            catch (AmazonDynamoDBException e) // problems with the service
+            {
+                Console.WriteLine("AmazonDynamoDBException CAUGHT: " + e.Message);
+                DependencyService.Get<IMessage>().ShortAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE2);
+            }
+            catch (AmazonServiceException e) // if there are problems with the service or with the internet
+            {
+                DependencyService.Get<IMessage>().ShortAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE2);
+            }
+            catch (Exception e) // in case of unexpected error 
+            {
+                Console.WriteLine("EXCEPTION COUGHT: " + e.Message);
+                Console.WriteLine("TYPE: " + e.GetType());
+                DependencyService.Get<IMessage>().LongAlert(e.Message);
+            }
+
+
+            
+        }
 
 		protected override void OnSleep ()
 		{

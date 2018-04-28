@@ -5,10 +5,12 @@ using TrackApp.iOS;
 using UIKit;
 using Xamarin.Forms.Platform.iOS;
 using Xamarin.Forms;
+using TrackApp.ClientLayer.CustomUI;
 
+[assembly: ExportRenderer(typeof(CustomEntry), typeof(CustomEntryRenderer))]
 namespace TrackApp.iOS
 {
-    class CustomEntryRenderer : EntryRenderer
+    public class CustomEntryRenderer : EntryRenderer
     {
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
