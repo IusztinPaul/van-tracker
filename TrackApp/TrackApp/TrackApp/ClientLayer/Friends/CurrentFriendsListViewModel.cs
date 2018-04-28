@@ -188,19 +188,16 @@ namespace TrackApp.ClientLayer.Friends
 
             if (clickedUserFriendsObj == null || clickedUserFriendsObj.Notifications == null)
             {
-                clickedUserFriendsObj = new UserFriends { Username = clickUser.Username };
+                clickedUserFriendsObj = new UserFriends { Username = clickUser.Username , Friends = clickedUserFriendsObj?.Friends};
                 clickedUserFriendsObj.Notifications = new List<string>();
             }
-            else
-            {
-                //add the real index of the item so we will display the items in the ordered they where 
-                //really added (dynamodb sorts the elements inside the db)
-                clickedUserFriendsObj.Notifications.AddIndexedString(notifStorage);
+            
+            //add the real index of the item so we will display the items in the ordered they where 
+            //really added (dynamodb sorts the elements inside the db)
+            clickedUserFriendsObj.Notifications.AddIndexedString(notifStorage);
 
-                //resize the notifications if the length exceeded the desired value
-                clickedUserFriendsObj.Notifications = clickedUserFriendsObj.Notifications.ResizeIfNeeded(sort: true);
-            }
-
+            //resize the notifications if the length exceeded the desired value
+            clickedUserFriendsObj.Notifications = clickedUserFriendsObj.Notifications.ResizeIfNeeded(sort: true);
 
             //save the updated obj
             var saver = new SaveUserFriends { UserFriends = clickedUserFriendsObj };
