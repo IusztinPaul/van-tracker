@@ -17,6 +17,9 @@
                       CachingStrategy="RecycleElement"
                       HasUnevenRows="True"
                       ItemsSource="{Binding Notifications}"
+                      IsPullToRefreshEnabled="True"
+                      RefreshCommand="{Binding OnRefreshCommand}"
+                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                       >
 
             <ListView.Header>
@@ -31,12 +34,51 @@
 
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ImageCell 
-                        ImageSource="{Binding Icon}"
-                        Text="{Binding Username}"
-                        TextColor="Black"
-                        Detail="{Binding DisplayText}"
-                        />
+                    <ViewCell >
+                        <Grid
+                                Padding="5, 5, 0, 5"
+                                x:Name="Item"
+                                    >
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <custom:CircleImage
+                                        Grid.Row="0"
+                                        Grid.RowSpan="2"    
+                                        Grid.Column="0"
+                                        Source="{Binding Icon}"
+                                        Aspect="AspectFill"
+                                        HeightRequest="70"
+                                        WidthRequest="70"
+                                        />
+
+                            <Label 
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        TextColor="Black" 
+                                        Text="{Binding Username}"
+                                        FontSize="Medium"
+                                        FontAttributes="Bold"
+                                        Margin="0, 4, 0, 0"
+                                       />
+                            <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Text="{Binding DisplayText}" 
+                                        FontSize="Medium"
+                                        VerticalOptions="Start"
+                                        />
+                           
+                        </Grid>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
 

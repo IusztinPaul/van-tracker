@@ -19,6 +19,7 @@
 
             <!-- Universal Button Style -->
             <Style TargetType="Button">
+                <Setter Property="BorderRadius" Value="8"/>
                 <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}"/>
                 <Setter Property="TextColor" Value="White"/>
             </Style>

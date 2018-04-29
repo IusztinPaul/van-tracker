@@ -1,12 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:TrackApp.ClientLayer.CustomUI"
              x:Class="TrackApp.ClientLayer.Profile.ProfilePage">
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms! PROFILE"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <RelativeLayout>
+                
+                <BoxView Color="Gray"
+                         HeightRequest="100" 
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" />
+
+                <custom:CircleImage 
+                       HeightRequest="70"
+                       WidthRequest="70"
+                       RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent}"/>
+
+            </RelativeLayout>
+        </ScrollView>
     </ContentPage.Content>
+
 </ContentPage>

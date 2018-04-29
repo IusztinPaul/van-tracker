@@ -12,9 +12,13 @@ namespace TrackApp.ClientLayer.Profile
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ProfilePage : ContentPage
 	{
-		public ProfilePage (TrackUser currentUser)
+       
+
+        public ProfilePage (TrackUser currentUser)
 		{
 			InitializeComponent ();
 		}
-	}
+
+        
+    }
 }

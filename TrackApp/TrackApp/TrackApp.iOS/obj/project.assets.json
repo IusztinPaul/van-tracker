@@ -1257,21 +1257,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\peius\\.nuget\\packages\\": {}
+    "C:\\Users\\Paul\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "W:\\Projects\\Xamarin\\TrackerApp\\client\\TrackApp\\TrackApp\\TrackApp.iOS\\TrackApp.iOS.csproj",
+      "projectUniqueName": "D:\\Projects\\Xamarin\\TrackerApp\\client\\TrackApp\\TrackApp\\TrackApp.iOS\\TrackApp.iOS.csproj",
       "projectName": "TrackApp.iOS",
-      "projectPath": "W:\\Projects\\Xamarin\\TrackerApp\\client\\TrackApp\\TrackApp\\TrackApp.iOS\\TrackApp.iOS.csproj",
-      "packagesPath": "C:\\Users\\peius\\.nuget\\packages\\",
-      "outputPath": "W:\\Projects\\Xamarin\\TrackerApp\\client\\TrackApp\\TrackApp\\TrackApp.iOS\\obj\\",
+      "projectPath": "D:\\Projects\\Xamarin\\TrackerApp\\client\\TrackApp\\TrackApp\\TrackApp.iOS\\TrackApp.iOS.csproj",
+      "packagesPath": "C:\\Users\\Paul\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\Xamarin\\TrackerApp\\client\\TrackApp\\TrackApp\\TrackApp.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\peius\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Paul\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "originalTargetFrameworks": [
         "xamarinios10"

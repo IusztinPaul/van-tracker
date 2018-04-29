@@ -34,7 +34,7 @@ namespace TrackApp.ClientLayer.Friends
         { 
             //set commands
             this.OnButtonTappedCommand = new Command(OnButtonUnfollowCommand);
-            OnRefreshCommand = new Command(() => Device.BeginInvokeOnMainThread(async () => await PopulateAsync()));
+            OnRefreshCommand = new Command(() => Device.BeginInvokeOnMainThread(async () => await PopulateAsync()), () => !IsBusy);
         }
 
        
@@ -47,7 +47,8 @@ namespace TrackApp.ClientLayer.Friends
 
             //set the refresh state so another refresh wont be possible
             IsBusy = true;
-            ((Command)OnRefreshCommand).ChangeCanExecute();
+            (OnRefreshCommand as Command)?.ChangeCanExecute();
+
 
 
             try
@@ -105,7 +106,8 @@ namespace TrackApp.ClientLayer.Friends
             {
                 //allow another refreshes
                 IsBusy = false;
-                ((Command)OnRefreshCommand).ChangeCanExecute();
+                (OnRefreshCommand as Command)?.ChangeCanExecute();
+
             }
         }
 
@@ -115,34 +117,44 @@ namespace TrackApp.ClientLayer.Friends
             if (item != null)
             {
 
-                //send message to the user that the logic started
-                DependencyService.Get<IMessage>().ShortAlert(ClientConsts.REQUEST_MESSAGE);
+                if (!IsButtonTapped) //if button is not tapped continue logic
+                {
 
-                try
-                {
-                    await OnButtonUnfollowCommandAsync(item);
-                }
-                catch (AmazonServiceException e) // if there are problems with the service or with the internet
-                {
-                    DependencyService.Get<IMessage>().ShortAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE2);
-                }
-                catch (ValidationException e) // display error message to currentUser
-                {
-                    DependencyService.Get<IMessage>().ShortAlert(e.Message);
-                }
-                catch (WebException e)
-                {
-                    DependencyService.Get<IMessage>().LongAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE1);
-                }
-                catch (Exception e) // in case of unexpected error 
-                {
-                    Console.WriteLine("EXCEPTION COUGHT: " + e.Message);
-                    Console.WriteLine("TYPE: " + e.GetType());
-                    DependencyService.Get<IMessage>().LongAlert(e.Message);
-                }
+                    IsButtonTapped = true;
 
-                //if everything went ok send a message to the user
-                DependencyService.Get<IMessage>().ShortAlert(ClientConsts.ACHIEVED_MESSAGE);
+                    //send message to the user that the logic started
+                    DependencyService.Get<IMessage>().ShortAlert(ClientConsts.REQUEST_MESSAGE);
+
+                    try
+                    {
+                        await OnButtonUnfollowCommandAsync(item);
+                    }
+                    catch (AmazonServiceException e) // if there are problems with the service or with the internet
+                    {
+                        DependencyService.Get<IMessage>().ShortAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE2);
+                    }
+                    catch (ValidationException e) // display error message to currentUser
+                    {
+                        DependencyService.Get<IMessage>().ShortAlert(e.Message);
+                    }
+                    catch (WebException e)
+                    {
+                        DependencyService.Get<IMessage>().LongAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE1);
+                    }
+                    catch (Exception e) // in case of unexpected error 
+                    {
+                        Console.WriteLine("EXCEPTION COUGHT: " + e.Message);
+                        Console.WriteLine("TYPE: " + e.GetType());
+                        DependencyService.Get<IMessage>().LongAlert(e.Message);
+                    }
+                    finally
+                    {
+                        IsButtonTapped = false; //release the button in any situation
+                    }
+
+                    //if everything went ok send a message to the user
+                    DependencyService.Get<IMessage>().ShortAlert(ClientConsts.ACHIEVED_MESSAGE);
+                }
 
             }
         }
@@ -154,6 +166,8 @@ namespace TrackApp.ClientLayer.Friends
             AllCurrentFriends.Remove(clickUser);
             CurrentUserFriends.Remove(clickUser);
 
+            //after update the currentUser obj in case it was changed from a different device
+            currentUserFriends = await new QueryUser().LoadData<UserFriends>(currentUser.Username);
 
             //remove id from db object and after update it in the database (current user friend list)
             if (currentUserFriends.Friends != null && currentUserFriends.Friends.Count == 1)

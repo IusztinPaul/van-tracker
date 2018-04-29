@@ -84,27 +84,6 @@
     <Page Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\NotificationPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\UserItemViewCell.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ClientLayer\MapGroupsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ClientLayer\MasterDetailPageNav.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ClientLayer\MasterDetailPageNavDetail.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ClientLayer\MasterDetailPageNavig.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ClientLayer\MasterDetailPageNavigation.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ClientLayer\MasterDetailPageNavMaster.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)ClientLayer\NavigationMasterPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

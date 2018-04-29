@@ -20,8 +20,8 @@ namespace TrackApp.ClientLayer.Friends
 
         //private fields
         private List<TrackUser> _allUsers; //list that stores all users
-        
-       
+
+
         //observable list
         private ObservableCollection<TrackUser> _trackUsers; //bindable list that is filtered by the search bar
         public ObservableCollection<TrackUser> TrackUsers
@@ -33,17 +33,17 @@ namespace TrackApp.ClientLayer.Friends
             }
         }
 
-       
+
         public FriendsListViewModel(TrackUser currentUser) : base(currentUser)
         {
-            
+
             //add commands
             OnButtonTappedCommand = new Command(OnButtonTapped);
-            OnRefreshCommand = new Command( () => Device.BeginInvokeOnMainThread(async () => await PopulateAsync()), 
-                () => !IsBusy ); // repopulate the data, refresh command for the list
+            OnRefreshCommand = new Command(() => Device.BeginInvokeOnMainThread(async () => await PopulateAsync()),
+                () => !IsBusy); // repopulate the data, refresh command for the list
 
             //populate
-           // Populate(); //async method to populate the view
+            // Populate(); //async method to populate the view
         }
 
 
@@ -56,13 +56,13 @@ namespace TrackApp.ClientLayer.Friends
 
             //set the refresh state so another refresh wont be possible
             IsBusy = true;
-            ((Command) OnRefreshCommand).ChangeCanExecute();
+            ((Command)OnRefreshCommand).ChangeCanExecute();
 
             Console.Write("STARTED");
 
-        try
+            try
 
-        {
+            {
                 currentUserFriends = await new QueryUser().LoadData<UserFriends>(currentUser.Username);
 
                 var list = await QueryUser.ScanAllTrackUsers();
@@ -70,7 +70,7 @@ namespace TrackApp.ClientLayer.Friends
                 if (currentUserFriends != null && currentUserFriends.Friends != null)
                     _allUsers = new List<TrackUser>(FilterAllUsers(list, currentUserFriends)); //filter data
                 else
-                    _allUsers = new List<TrackUser>(list.Where( (x) => x.Username != currentUser.Username)); 
+                    _allUsers = new List<TrackUser>(list.Where((x) => x.Username != currentUser.Username));
                 // filter only for not displaying the current user
 
                 _allUsers.Sort((a, b) => a.Username.ToUpper().CompareTo(b.Username.ToUpper())); // sort stored list
@@ -109,41 +109,52 @@ namespace TrackApp.ClientLayer.Friends
 
         private async void OnButtonTapped(object obj)
         {
-            var item = obj as TrackUser;
-            if (item != null)
+
+            if (!IsButtonTapped) //if button is not tapped continue logic
             {
-                
-                //send message to the user that the logic started
-                DependencyService.Get<IMessage>().ShortAlert(ClientConsts.REQUEST_MESSAGE);
+                IsButtonTapped = true;
 
-                try
+                var item = obj as TrackUser;
+                if (item != null)
                 {
-                    await Task.Run( async () => { 
-                    await OnButtonTappedAsync(item);
-                });
 
-                }
-                catch (AmazonServiceException e) // if there are problems with the service or with the internet
-                {
-                    DependencyService.Get<IMessage>().ShortAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE2);
-                }
-                catch (ValidationException e) // display error message to currentUser
-                {
-                    DependencyService.Get<IMessage>().ShortAlert(e.Message);
-                }
-                catch (WebException e)
-                {
-                    DependencyService.Get<IMessage>().LongAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE1);
-                }
-                catch (Exception e) // in case of unexpected error 
-                {
-                    Console.WriteLine("EXCEPTION COUGHT: " + e.Message);
-                    Console.WriteLine("TYPE: " + e.GetType());
-                    DependencyService.Get<IMessage>().LongAlert(e.Message);
-                }
+                    //send message to the user that the logic started
+                    DependencyService.Get<IMessage>().ShortAlert(ClientConsts.REQUEST_MESSAGE);
 
-                //if everything went ok send a message to the user
-                DependencyService.Get<IMessage>().ShortAlert(ClientConsts.ACHIEVED_MESSAGE);
+                    try
+                    {
+                        await Task.Run(async () =>
+                        {
+                            await OnButtonTappedAsync(item);
+                        });
+
+                    }
+                    catch (AmazonServiceException e) // if there are problems with the service or with the internet
+                    {
+                        DependencyService.Get<IMessage>().ShortAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE2);
+                    }
+                    catch (ValidationException e) // display error message to currentUser
+                    {
+                        DependencyService.Get<IMessage>().ShortAlert(e.Message);
+                    }
+                    catch (WebException e)
+                    {
+                        DependencyService.Get<IMessage>().LongAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE1);
+                    }
+                    catch (Exception e) // in case of unexpected error 
+                    {
+                        Console.WriteLine("EXCEPTION COUGHT: " + e.Message);
+                        Console.WriteLine("TYPE: " + e.GetType());
+                        DependencyService.Get<IMessage>().LongAlert(e.Message);
+                    }
+                    finally
+                    {
+                        IsButtonTapped = false; //release the button in any situation
+                    }
+
+                    //if everything went ok send a message to the user
+                    DependencyService.Get<IMessage>().ShortAlert(ClientConsts.ACHIEVED_MESSAGE);
+                }
             }
         }
 
@@ -174,7 +185,7 @@ namespace TrackApp.ClientLayer.Friends
             // add id in the selected currentUser notifications
             var selectedUserList = await query.LoadData<UserFriends>(selectedUser.Username);
 
-            
+
 
             string notifStorage = currentUser.Username +
                                   ClientConsts.CONCAT_SPECIAL_CHARACTER +
@@ -193,8 +204,8 @@ namespace TrackApp.ClientLayer.Friends
             }
             else
             {
-                selectedUserList = new UserFriends { Username = selectedUser.Username, Friends=selectedUserList?.Friends };
-                selectedUserList.Notifications = new List<string> { notifStorage + ClientConsts.CONCAT_SPECIAL_CHARACTER + "0"};
+                selectedUserList = new UserFriends { Username = selectedUser.Username, Friends = selectedUserList?.Friends };
+                selectedUserList.Notifications = new List<string> { notifStorage + ClientConsts.CONCAT_SPECIAL_CHARACTER + "0" };
             }
 
 
@@ -202,7 +213,7 @@ namespace TrackApp.ClientLayer.Friends
             var saver = new SaveUserFriends { UserFriends = userList };
             await saver.SaveData();
 
-            
+
             //save the selected currentUser list
             saver.UserFriends = selectedUserList;
             await saver.SaveData();
@@ -210,14 +221,14 @@ namespace TrackApp.ClientLayer.Friends
             //refresh the current user friends list
             currentUserFriends = await new QueryUser().LoadData<UserFriends>(currentUser.Username);
 
-            
+
             // after refresh the binded view
-           // TrackUsers = new ObservableCollection<TrackUser>(FilterAllUsers(TrackUsers, currentUserFriends));
+            // TrackUsers = new ObservableCollection<TrackUser>(FilterAllUsers(TrackUsers, currentUserFriends));
         }
 
 
 
-        
+
 
         public IList<TrackUser> GetAllUsers()
         {
@@ -240,6 +251,6 @@ namespace TrackApp.ClientLayer.Friends
             return null;
         }
 
-       
+
     }
 }

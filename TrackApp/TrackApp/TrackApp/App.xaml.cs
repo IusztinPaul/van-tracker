@@ -4,6 +4,8 @@ using Amazon.Runtime;
 using TrackApp.ClientLayer;
 using TrackApp.ClientLayer.CustomUI;
 using TrackApp.ClientLayer.Friends;
+using TrackApp.ClientLayer.Profile;
+using TrackApp.ClientLayer.Validation;
 using TrackApp.DataFormat.UserData;
 using TrackApp.ServerLayer;
 using Xamarin.Forms;
@@ -19,8 +21,8 @@ namespace TrackApp
 			InitializeComponent();
 
             
-              MainPage = new NavigationPage(new FriendsTabbedPage(new TrackUser() { Username = "PaulCelMare" }));
-              //MainPage = new NavigationPage(new LoginPage(new TrackUser(){Username = "PaulCelMare"}));
+             // MainPage = new ProfilePage(new TrackUser() { Username = "PaulCelMare" });
+              MainPage = new NavigationPage(new LoginPage(new TrackUser(){Username = "PaulCelMare"}));
 		}
 
 		protected override void OnStart ()

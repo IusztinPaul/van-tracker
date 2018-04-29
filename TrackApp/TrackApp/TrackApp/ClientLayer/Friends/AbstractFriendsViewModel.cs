@@ -43,6 +43,8 @@ namespace TrackApp.ClientLayer.Friends
             }
         }
 
+        public bool IsButtonTapped { set; get; } = false; //control button flow so users can't tap more buttons at the same time
+
         protected AbstractFriendsViewModel(TrackUser currentUser)
         {
             IsBusy = false;
