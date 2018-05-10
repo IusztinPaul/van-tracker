@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Text;
+using System.IO;
+using Amazon.CognitoIdentity;
 using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.DataModel;
 using Amazon.Runtime;
 using TrackApp.ClientLayer;
 using TrackApp.ClientLayer.CustomUI;
@@ -14,21 +18,40 @@ namespace TrackApp
 {
 	public partial class App : Application
 	{
-	    public static MasterDetailPage MasterDetailPage;
 
 	    public App ()
 		{
 			InitializeComponent();
 
-            
-             // MainPage = new ProfilePage(new TrackUser() { Username = "PaulCelMare" });
-              MainPage = new NavigationPage(new LoginPage(new TrackUser(){Username = "PaulCelMare"}));
+             var user = new TrackUser()
+            {
+                Username = "PaulCelMare",
+                FirstName = "Paul",
+                LastName = "Iusztin",
+                Phone = "0732509516",
+                Email = "p.e.iusztin@gmail.com",
+                Location = new DataFormat.Location
+                {
+                    Country = "Romania",
+                    Region = "Timis",
+                    City = "Timisoara",
+                    Street = "Horia",
+                    Nr = "98",
+                    Block = "-"
+                }
+            }; 
+
+             //  MainPage = new NavigationPage(new ProfilePage(user)); 
+              MainPage = new NavigationPage(new LoginPage(null));
+             // MainPage = new DemoPickPage();
 		}
 
 		protected override void OnStart ()
 		{
             // Handle when your app starts
 
+            
+            
             //make connection with the dynamo DB
             try
             {
@@ -38,20 +61,18 @@ namespace TrackApp
             catch (AmazonDynamoDBException e) // problems with the service
             {
                 Console.WriteLine("AmazonDynamoDBException CAUGHT: " + e.Message);
-                DependencyService.Get<IMessage>().ShortAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE2);
             }
             catch (AmazonServiceException e) // if there are problems with the service or with the internet
             {
-                DependencyService.Get<IMessage>().ShortAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE2);
+                Console.WriteLine("AmazonDynamoDBException CAUGHT: " + e.Message);
             }
             catch (Exception e) // in case of unexpected error 
             {
                 Console.WriteLine("EXCEPTION COUGHT: " + e.Message);
                 Console.WriteLine("TYPE: " + e.GetType());
-                DependencyService.Get<IMessage>().LongAlert(e.Message);
             }
 
-
+            
             
         }
 

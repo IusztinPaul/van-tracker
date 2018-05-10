@@ -12,9 +12,8 @@ namespace TrackApp.DataFormat
         public string City { get; set; }
         public string Street { get; set; }
         public string Nr { get; set; }
-        public string Bl { get; set; }
-        public string Ap { get; set; }
-        public string Sc { get; set; }
+        public string Block { get; set; }
+       
 
         public Dictionary<string, DynamoDBEntry> toDict()
         {
@@ -24,9 +23,7 @@ namespace TrackApp.DataFormat
             dict.Add("City", new Primitive { Value = City });
             dict.Add("Street", new Primitive { Value = Street });
             dict.Add("Nr", new Primitive { Value = Nr });
-            dict.Add("Bl", new Primitive { Value = Bl });
-            dict.Add("Ap", new Primitive { Value = Ap });
-            dict.Add("Sc", new Primitive { Value = Sc });
+            dict.Add("Block", new Primitive { Value = Block });
             return dict;
         }
 
@@ -40,16 +37,14 @@ namespace TrackApp.DataFormat
             loc.City = dict["City"];
             loc.Street = dict["Street"];
             loc.Nr = dict["Nr"];
-            loc.Bl = dict["Bl"];
-            loc.Ap = dict["Ap"];
-            loc.Sc = dict["Sc"];
+            loc.Block = dict["Block"];
 
             return loc;
         }
 
         public override string ToString()
         {
-            return Country + " " + Region + " " + City + " " + Street + " " + Nr + " " + Bl + " " + Ap + " " + Sc;
+            return Country + " " + Region + " " + City + " " + Street + " " + Block;
         }
     }
 }

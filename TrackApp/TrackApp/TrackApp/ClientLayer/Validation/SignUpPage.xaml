@@ -14,6 +14,12 @@
             <x:String x:Key="LastName">Nume familie</x:String>
             <x:String x:Key="Email">Email</x:String>
             <x:String x:Key="Phone">Telefon: xxxx xxx xxx</x:String>
+            <x:String x:Key="Country">Tara</x:String>
+            <x:String x:Key="Region">Regiune</x:String>
+            <x:String x:Key="City">Oras</x:String>
+            <x:String x:Key="Street">Strada</x:String>
+            <x:String x:Key="Nr">Numar casa</x:String>
+            <x:String x:Key="Block">Detalii bloc('-' daca nu ai ce completa)</x:String>
             <x:String x:Key="BtnText">Salveaza</x:String>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -36,12 +42,24 @@
                              IsVisible="False"/>
 
                 <Label Text="{StaticResource DescriptionLabel}" FontSize="{StaticResource LabelFontSize}"/>
-                
+
+
+                <Image  
+                         HeightRequest="40"
+                         WidthRequest="40"
+                         Source="{x:Static consts:ClientConsts.USER_BLACK_ICON}"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Start"
+                         Margin="4,2"
+                        />
+
+
                 <BoxView Color="{StaticResource TextColor}"
                          HeightRequest="{StaticResource BorderHeight}"
                          WidthRequest="380"
                          HorizontalOptions="CenterAndExpand"
                          VerticalOptions = "Center"
+                         Margin="8"
                          />
 
 
@@ -63,13 +81,31 @@
                                       VerticalOptions="CenterAndExpand" 
                                      IsPassword="True"/>
 
+                <customUi:CustomEntry x:Name="EntryPassword2"
+                                          Placeholder="{x:Static consts:ClientConsts.PASSWORD_REPEAT}"
+                                      VerticalOptions="CenterAndExpand" 
+                                     IsPassword="True"/>
+
+
+                <Image  
+                         HeightRequest="40"
+                         WidthRequest="40"
+                         Source="{x:Static consts:ClientConsts.CONTACT_BLACK_ICON}"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Start"
+                         Margin="4,2"
+                        />
+
                 <BoxView Color="{StaticResource TextColor}"
                          HeightRequest="{StaticResource BorderHeight}"
                          WidthRequest="380"
                          HorizontalOptions="CenterAndExpand"
                          VerticalOptions = "Center"
+                         Margin="8"
                 />
-                                         
+
+               
+
                 <customUi:CustomEntry x:Name="EntryPhoneNumber"
                                           Placeholder="{StaticResource Phone}"
                                       VerticalOptions="CenterAndExpand"
@@ -79,9 +115,60 @@
                                       VerticalOptions="CenterAndExpand"
                                          />
 
+
+                <Image  
+                         HeightRequest="40"
+                         WidthRequest="40"
+                         Source="{x:Static consts:ClientConsts.LOCATION_BLACK_ICON}"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Start"
+                         Margin="4,2"
+                        />
+
+                <BoxView Color="{StaticResource TextColor}"
+                         HeightRequest="{StaticResource BorderHeight}"
+                         WidthRequest="380"
+                         HorizontalOptions="CenterAndExpand"
+                         VerticalOptions = "Center"
+                         Margin="8"
+                />
+
+               
+
+                <customUi:CustomEntry x:Name="EntryCountry"
+                                          Placeholder="{StaticResource Country}"
+                                      VerticalOptions="CenterAndExpand"
+                                         />
+
+                <customUi:CustomEntry x:Name="EntryRegion"
+                                          Placeholder="{StaticResource Region}"
+                                      VerticalOptions="CenterAndExpand"
+                                         />
+
+                <customUi:CustomEntry x:Name="EntryCity"
+                                          Placeholder="{StaticResource City}"
+                                      VerticalOptions="CenterAndExpand"
+                                         />
+
+                <customUi:CustomEntry x:Name="EntryStreet"
+                                          Placeholder="{StaticResource Street}"
+                                      VerticalOptions="CenterAndExpand"
+                                         />
+
+                <customUi:CustomEntry x:Name="EntryNr"
+                                          Placeholder="{StaticResource Nr}"
+                                      VerticalOptions="CenterAndExpand"
+                                         />
+
+                <customUi:CustomEntry x:Name="EntryBlock"
+                                          Placeholder="{StaticResource Block}"
+                                      VerticalOptions="CenterAndExpand"
+                                         />
+
                 <Button x:Name="BtnSaveUser"
                         Text="{StaticResource BtnText}"
-                        VerticalOptions="CenterAndExpand"/>
+                        VerticalOptions="CenterAndExpand"
+                        Margin="8"/>
 
             </StackLayout>
         </ScrollView>

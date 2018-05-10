@@ -1,21 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
-using Amazon.CognitoIdentity;
-using Amazon;
+﻿using Amazon.CognitoIdentity;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
-using TrackApp.DataFormat;
-using TrackApp.DataFormat.UserData;
-
 
 namespace TrackApp.ServerLayer
 {
 
     
-    public class AwsUtils
+    public static class AwsUtils
     {
         //TODO add if no internet logic to all methods (like NameResolutionFailure error message)
 
@@ -25,6 +16,7 @@ namespace TrackApp.ServerLayer
         {
             get
             {
+                
                 if (_credentials == null)
                     _credentials = new CognitoAWSCredentials(ServerConsts.POOL_IDENTITY_ID, ServerConsts.COGNITO_REGION);
                 return _credentials;

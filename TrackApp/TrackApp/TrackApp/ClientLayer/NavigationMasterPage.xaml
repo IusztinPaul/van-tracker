@@ -17,8 +17,8 @@
         Margin="{StaticResource Margins}"
         Spacing="5">
 
-        <circleimg:CircleImage HorizontalOptions="Center"
-               Source="{x:Static local:ClientConsts.USER_PLACEHOLDER}"
+        <circleimg:CircleImage HorizontalOptions="Start"
+               x:Name="ImgProfile"
                Margin ="{StaticResource Margins}"
                WidthRequest="150"
                HeightRequest="150"             
@@ -26,25 +26,19 @@
 
 
         <Label 
-                HorizontalOptions="Start">
-            <Label.FormattedText>
-                <FormattedString>
-                    <Span Text="{StaticResource UsernameDisplay}" FontSize="{StaticResource InfoFontSize}" FontAttributes="Bold"/>
-                    <Span x:Name="UsernameLabel" FontSize="{StaticResource InfoFontSize}"/>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
+            x:Name="UsernameLabel"
+            HorizontalOptions="Start"
+            FontSize="Medium" 
+            TextColor="Black"
+            FontAttributes="Italic, Bold"/>
 
 
         <Label
-            HorizontalOptions="Start">
-            <Label.FormattedText>
-                <FormattedString>
-                    <Span Text="{StaticResource FullNameDisplay}" FontSize="{StaticResource InfoFontSize}" FontAttributes="Bold"/>
-                    <Span x:Name="FullNameLabel" FontSize="{StaticResource InfoFontSize}"/>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
+            Margin="2,0,0,0"
+            x:Name="FullNameLabel"
+            HorizontalOptions="Start"
+            FontSize="Medium" 
+            FontAttributes="Bold"/>
 
         <BoxView Color="{StaticResource TextColor}"
                  HeightRequest="{StaticResource BorderHeight}"
@@ -59,7 +53,6 @@
                     <local:MenuItem Title="{StaticResource Account}" IconSource="{x:Static local:ClientConsts.USER_ICON}" TargeType="{x:Type profile:ProfilePage}"/>
                     <local:MenuItem Title="{StaticResource Groups}" IconSource="{x:Static local:ClientConsts.GROUP_ICON}" TargeType="{x:Type maps:MapGroupsPage}"/>
                     <local:MenuItem Title="{StaticResource Friends}" IconSource="{x:Static local:ClientConsts.FRIENDS_ICON}" TargeType="{x:Type friends:FriendsTabbedPage}"/>
-                    <local:MenuItem Title="{StaticResource LogOut}" IconSource="{x:Static local:ClientConsts.LOGOUT_ICON}" TargeType="{x:Type login:LoginPage}"/>
                 </x:Array>
             </ListView.ItemsSource>
 
@@ -76,7 +69,8 @@
                             <Image Source="{Binding IconSource}" 
                                    Aspect="AspectFit"/>
                             <Label Grid.Column="1" Text="{Binding Title}" 
-                                   FontSize="{StaticResource InfoFontSize}"/>
+                                   FontSize="{StaticResource InfoFontSize}"
+                                   TextColor="Black"/>
 
                         </Grid>
                     </ViewCell>
@@ -86,6 +80,6 @@
 
     </StackLayout>
 
-    
+
 
 </ContentPage>

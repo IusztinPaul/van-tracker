@@ -27,6 +27,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\CustomUI\CircleImage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\CustomUI\CustomEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\CustomUI\IMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\CustomUI\IPicturePicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Exceptions\ValidationException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Extensions\Extensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\AbstractFriendsViewModel.cs" />
@@ -52,6 +53,11 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Profile\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Profile\ProfileViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Profile\ResetPasswordPage.xaml.cs">
+      <DependentUpon>ResetPasswordPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Validation\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -90,6 +96,10 @@
     <Page Include="$(MSBuildThisFileDirectory)ClientLayer\Profile\ProfilePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Profile\ResetPasswordPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <Page Include="$(MSBuildThisFileDirectory)ClientLayer\Validation\LoginPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -120,5 +130,10 @@
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\follow_icon.png" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\unfollow_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\contact_icon_black.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\location_icon_black.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\profile_icon_black.png" />
   </ItemGroup>
 </Project>

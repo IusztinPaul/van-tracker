@@ -9,7 +9,7 @@
             <!-- Colors -->
             <Color x:Key="TextColor">Gray</Color>
             <Color x:Key="AccentColor">LightBlue</Color>
-            <Color x:Key="ConstrastColor">Indigo</Color>
+            <Color x:Key="ConstrastColor">DarkBlue</Color>
             <Color x:Key="BgColor">White</Color>
             
             <!-- Universal Label Style -->
@@ -19,7 +19,7 @@
 
             <!-- Universal Button Style -->
             <Style TargetType="Button">
-                <Setter Property="BorderRadius" Value="8"/>
+                <Setter Property="CornerRadius" Value="6"/> 
                 <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}"/>
                 <Setter Property="TextColor" Value="White"/>
             </Style>
@@ -55,7 +55,7 @@
                         Android="18"/>
             
             <!-- Heights -->
-            <x:Double x:Key="BorderHeight">2</x:Double>
+            <x:Double x:Key="BorderHeight">1</x:Double>
 
            <!-- master from detailmasterpage constants -->
            <x:String x:Key="Account">Account</x:String>

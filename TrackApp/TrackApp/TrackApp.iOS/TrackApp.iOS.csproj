@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{E983BC02-9233-4986-9C79-ACC2A10DB290}</ProjectGuid>
+    <ProjectGuid>{9E08DA76-1227-4044-88D3-A0D7239C43EF}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
     <RootNamespace>TrackApp.iOS</RootNamespace>
@@ -95,6 +95,7 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="MessageIOS.cs" />
+    <Compile Include="PicturePickerIOScs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -126,18 +127,48 @@
       <Version>3.3.2.22</Version>
     </PackageReference>
     <PackageReference Include="AWSSDK.Core">
-      <Version>3.3.22.2</Version>
+      <Version>3.3.22.5</Version>
     </PackageReference>
     <PackageReference Include="AWSSDK.DynamoDBv2">
-      <Version>3.3.7.3</Version>
+      <Version>3.3.8</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="2.5.1.444934" />
+    <PackageReference Include="Xamarin.Forms" Version="3.0.0.446417" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\follow_icon.png" />
+    <BundleResource Include="Resources\add_item_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\unfollow_icon.png" />
+    <BundleResource Include="Resources\avatar_placeholder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\contact_icon_black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\follow_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\friends_icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\group_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\location_icon_black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logout_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\profile_icon_black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\unfollow_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\user_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vantrackerlogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\TrackApp\TrackApp.projitems" Label="Shared" />

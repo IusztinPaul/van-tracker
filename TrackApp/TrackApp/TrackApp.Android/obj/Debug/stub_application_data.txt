@@ -1,2 +1,2 @@
 android.app.Application
-com.etheral.TrackApp
+com.companyname.TrackApp

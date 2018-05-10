@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Net;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Amazon.Runtime;
-using TrackApp.ClientLayer.CustomUI;
-using TrackApp.ClientLayer.Exceptions;
 using TrackApp.DataFormat.UserData;
-using TrackApp.ServerLayer.Query;
-using Xamarin.Forms;
+
 
 namespace TrackApp.ClientLayer.Friends
 {

@@ -15,10 +15,14 @@ namespace TrackApp.ClientLayer
 	    public const string USERNAME = "Nume cont: ";
 	    public const string FULL_NAME = "Nume:";
 
-        public NavigationMasterPage (TrackUser user, MainPage mainPage)
+        private TrackUser currentUser;
+        public static NavigationMasterPage Instance;
+
+        public NavigationMasterPage (TrackUser currentUser, MainPage mainPage)
 		{
 
 			InitializeComponent ();
+            this.currentUser = currentUser;
 
 		    listView.ItemSelected += (source, args) =>
 		    {
@@ -27,14 +31,27 @@ namespace TrackApp.ClientLayer
 		    };
 
             // set custom labels
-		    if (user != null)
+		    if (currentUser != null)
 		    {
-		        UsernameLabel.Text = " " + user.Username;
-		        FullNameLabel.Text = String.Format(" {0} {1}", user.FirstName, user.LastName);
+		        UsernameLabel.Text = " " + currentUser.Username;
+		        FullNameLabel.Text = String.Format(" {0} {1}", currentUser.FirstName, currentUser.LastName);
 		    }
 
-		}
+            if (Instance == null)
+                Instance = this;
+        }
 
 
-	}
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            //setup image source
+            ChangeProfilePhoto(currentUser.IconSource);
+        }
+
+        public void ChangeProfilePhoto(ImageSource img)
+        {
+            ImgProfile.Source = img;
+        }
+    }
 }

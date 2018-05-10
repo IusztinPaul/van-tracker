@@ -21,9 +21,10 @@
             Margin="2">
 
             <SearchBar 
-                        Margin="5"
+                        Margin="5, 10, 5, 5"
                         Placeholder="{StaticResource SearchBoxPlaceHolder}"
                         TextChanged="OnTextChanged"
+                        HeightRequest="40"
                        />
 
 
@@ -97,6 +98,7 @@
                                         Margin="1"
                                         TextColor="{StaticResource TextColor}"
                                         Text="{StaticResource BtnText}"
+                                        FontSize="Micro"
                                         BindingContext="{Binding Source={x:Reference FriendsList}, Path=BindingContext}"
                                         Command="{Binding OnButtonTappedCommand}"
                                         CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"

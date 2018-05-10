@@ -25,6 +25,7 @@
                        Placeholder="{StaticResource SearchBoxPlaceHolder}"
                         TextChanged="OnTextChanged"
                         Margin="2"
+                        HeightRequest="40"
                        />
 
 

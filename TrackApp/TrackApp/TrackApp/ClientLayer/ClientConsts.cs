@@ -27,10 +27,14 @@ namespace TrackApp.ClientLayer
         public const string ADD_ITEM_ICON = "add_item_icon.jpg";
         public const string FOLLOWED_ICON = "follow_icon.png";
         public const string UNFOLLWED_ICON = "unfollow_icon.png";
+        public const string USER_BLACK_ICON = "profile_icon_black.png";
+        public const string CONTACT_BLACK_ICON = "contact_icon_black.png";
+        public const string LOCATION_BLACK_ICON = "location_icon_black.png";
 
         // login and sign up constants 
-        public const int PASSWORD_LENGTH = 6;
-        public static readonly string PASSWORD_LENGTH_STRING = "Parola de minim " + PASSWORD_LENGTH + " caractere";
+        public const int PASSWORD_LENGTH_MINIMUM = 6;
+        public static readonly string PASSWORD_LENGTH_STRING = "Parola de minim " + PASSWORD_LENGTH_MINIMUM + " caractere";
+        public static readonly string PASSWORD_REPEAT = "Repeta parola";
         public const string ACCOUNT_CREATED_MESSAGE = "Contul a fost creat!";
         public const string INTERNET_EXCEPTION_MESSAGE = "Nu este internet!";
         public const string DYNAMODB_EXCEPTION_MESSAGE1 = "Probleme cu internet-ul!";
@@ -46,6 +50,10 @@ namespace TrackApp.ClientLayer
         public const string REQUEST_MESSAGE = "Cererea s-a trimis";
         public const string ACHIEVED_MESSAGE = "Cererea s-a inregistrat";
         public const string FAILURE_MESSAGE = "Cererea a esuat";
+
+        //user page
+        public const string NR = "nr. ";
+        public const string EDIT_FINALIZE_MESSAGE = "Datele au fost salvate!";
 
     }
 }

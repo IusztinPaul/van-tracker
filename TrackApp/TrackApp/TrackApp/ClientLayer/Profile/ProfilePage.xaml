@@ -2,22 +2,534 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:custom="clr-namespace:TrackApp.ClientLayer.CustomUI"
+             xmlns:main="clr-namespace:TrackApp.ClientLayer"
              x:Class="TrackApp.ClientLayer.Profile.ProfilePage">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="LbChangePhoto">Schimba poza</x:String>
+
+            <x:String x:Key="UsernameHint">Nume cont</x:String>
+            <x:String x:Key="FirstNameHint">Prenume</x:String>
+            <x:String x:Key="LastNameHint">Nume familie</x:String>
+
+            <x:String x:Key="EmailHint">Email</x:String>
+            <x:String x:Key="PhoneNumberHint">Numar telefon</x:String>
+
+            <x:String x:Key="CountryHint">Tara</x:String>
+            <x:String x:Key="RegionHint">Regiune</x:String>
+            <x:String x:Key="CityHint">Oras</x:String>
+            <x:String x:Key="AddressHint">Adresa</x:String>
+            <x:String x:Key="AddressNumberHint">Numar adresa</x:String>
+            <x:String x:Key="BlockHint">Bloc</x:String>
+
+            <x:String x:Key="BtnSaveEdit">Salveaza</x:String>
+
+            <x:String x:Key="TbEditUser">Editeaza</x:String>
+            <x:String x:Key="TbLogout">Delogeaza-te</x:String>
+            <x:String x:Key="TbResetPassword">Schimba parola</x:String>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="TbItemEdit" Text="{StaticResource TbEditUser}" Order="Secondary" Priority="0" Activated="TbItemEditListener"/>
+        <ToolbarItem Name="TbItemResetPassword" Text="{StaticResource TbResetPassword}" Order="Secondary" Priority="1" Activated="ResetPasswordListener"/>
+        <ToolbarItem Name="TbItemLogout" Text="{StaticResource TbLogout}" Order="Secondary" Priority="2" Activated="LogoutListener"/>
+    </ContentPage.ToolbarItems>
+
 
     <ContentPage.Content>
         <ScrollView>
-            <RelativeLayout>
-                
-                <BoxView Color="Gray"
-                         HeightRequest="100" 
-                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" />
+            <StackLayout
+                VerticalOptions="CenterAndExpand" 
+                Orientation="Vertical"
+                Spacing="5"
+                Margin="{StaticResource Margins}"
+                >
 
                 <custom:CircleImage 
-                       HeightRequest="70"
-                       WidthRequest="70"
-                       RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent}"/>
+                       x:Name="ImgProfile"
+                       HeightRequest="150"
+                       WidthRequest="150"
+                       Aspect="AspectFill"
+                       Source="{Binding CurrentUser.IconSource}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start"
+                       />
 
-            </RelativeLayout>
+                <Label 
+                    IsVisible="False"
+                    x:Name="LbChangePhoto"
+                    HorizontalOptions="Center"
+                    FontSize="Medium"
+                    Text="{StaticResource LbChangePhoto}"
+                    FontAttributes="Bold"
+                    TextColor="{StaticResource ConstrastColor}"
+                    />
+
+                <ActivityIndicator 
+                    HorizontalOptions="Center"
+                    VerticalOptions="StartAndExpand"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    IsRunning="{Binding IsSaving}" />
+
+
+                <Grid RowSpacing="18"
+                      ColumnSpacing="10"
+                      IsVisible="{Binding ShowGridData}"
+                      Margin="5, 12, 5, 5"
+                      >
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
+                        
+                        <RowDefinition Height="Auto" />
+
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
+
+                        <RowDefinition Height="Auto" />
+
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Image  
+                         Grid.Column="0"
+                         Grid.Row="0"
+                         HeightRequest="30"
+                         WidthRequest="30"
+                         x:Name="ImgGeneralInfo"
+                         Source="{x:Static main:ClientConsts.USER_BLACK_ICON}"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Start"
+                        />
+
+                    <StackLayout 
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Orientation="Vertical"
+                        HorizontalOptions="StartAndExpand"
+                        Spacing="2">
+
+                        <Label 
+                         x:Name="LbUsername"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{Binding CurrentUser.Username}"
+                        FontSize="Medium"
+                        TextColor="Black"
+                        IsVisible="True"
+                        />
+
+                        <Label 
+                        HorizontalOptions="StartAndExpand"
+                        Text="{StaticResource UsernameHint}"
+                        FontSize="Micro"
+                         Margin="0,0,0,3"
+                        />
+
+                    </StackLayout>
+
+                    <StackLayout 
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Orientation="Vertical"
+                        HorizontalOptions="StartAndExpand"
+                        Spacing="2">
+
+                        <Label 
+                         x:Name="LbFirstName"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{Binding CurrentUser.FirstName}"
+                        FontSize="Medium"
+                        TextColor="Black"
+                        IsVisible="True"
+                        />
+
+                        <custom:CustomEntry 
+                            x:Name="EtFirstName"
+                            Text="{Binding CurrentUser.FirstName}"
+                            TextColor="Black"
+                            HorizontalOptions="Fill"
+                            IsVisible="False"
+                            />
+
+                        <Label 
+                        HorizontalOptions="StartAndExpand"
+                        Text="{StaticResource FirstNameHint}"
+                        FontSize="Micro"
+                         Margin="0,0,0,3"
+                        />
+
+                    </StackLayout>
+
+                    <StackLayout 
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Orientation="Vertical"
+                        HorizontalOptions="StartAndExpand"
+                        Spacing="2">
+
+                        <Label 
+                         x:Name="LbLastName"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{Binding CurrentUser.LastName}"
+                        FontSize="Medium"
+                        TextColor="Black"
+                        IsVisible="True"
+                        />
+
+                        <custom:CustomEntry 
+                            x:Name="EtLastName"
+                            Text="{Binding CurrentUser.LastName}"
+                            TextColor="Black"
+                            HorizontalOptions="Fill"
+                            IsVisible="False"
+                            />
+
+                        <Label 
+                        HorizontalOptions="StartAndExpand"
+                        Text="{StaticResource LastNameHint}"
+                        FontSize="Micro"
+                         Margin="0,0,0,3"
+                        />
+
+                    </StackLayout>
+
+                    <BoxView 
+                         Grid.Row="3"
+                         Grid.Column="1"
+                         Color="{StaticResource TextColor}"
+                         HeightRequest="{StaticResource BorderHeight}"
+                         WidthRequest="380"
+                         HorizontalOptions="StartAndExpand"
+                         VerticalOptions = "Center"
+                         />
+
+                    <Image  
+                         Grid.Column="0"
+                         Grid.Row="4"
+                         HeightRequest="30"
+                         WidthRequest="30"
+                         Source="{x:Static main:ClientConsts.CONTACT_BLACK_ICON}"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Start"
+                        />
+
+                    <StackLayout 
+                        Grid.Column="1"
+                        Grid.Row="4"
+                        Orientation="Vertical"
+                        HorizontalOptions="StartAndExpand"
+                        Spacing="2">
+
+                        <Label
+                        x:Name="LbEmail"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{Binding CurrentUser.Email}"
+                        FontSize="Medium"
+                        TextColor="Black"
+                        IsVisible="True"
+                        />
+
+                        <custom:CustomEntry 
+                            x:Name="EtEmail"
+                            TextColor="Black"
+                            Text="{Binding CurrentUser.Email}"
+                            HorizontalOptions="Fill"
+                            IsVisible="False"
+                            />
+
+                        <Label 
+                        HorizontalOptions="StartAndExpand"
+                        Text="{StaticResource EmailHint}"
+                        FontSize="Micro"
+                         Margin="0,0,0,3"
+                        />
+
+                    </StackLayout>
+
+                    <StackLayout 
+                        Grid.Column="1"
+                        Grid.Row="5"
+                        Orientation="Vertical"
+                        HorizontalOptions="StartAndExpand"
+                        Spacing="2">
+
+                        <Label 
+                        x:Name="LbPhoneNumber"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{Binding CurrentUser.Phone}"
+                        FontSize="Medium"
+                        TextColor="Black"
+                        IsVisible="True"
+                        />
+
+                        <custom:CustomEntry 
+                            x:Name="EtPhoneNumber"
+                            TextColor="Black"
+                            Text="{Binding CurrentUser.Phone}"
+                            HorizontalOptions="Fill"
+                            IsVisible="False"
+                            />
+
+                        <Label 
+                        HorizontalOptions="StartAndExpand"
+                        Text="{StaticResource PhoneNumberHint}"
+                        FontSize="Micro"
+                         Margin="0,0,0,3"
+                        />
+
+                    </StackLayout>
+
+                    <BoxView 
+                         Grid.Row="6"
+                         Grid.Column="1"
+                         Color="{StaticResource TextColor}"
+                         HeightRequest="{StaticResource BorderHeight}"
+                         WidthRequest="380"
+                         HorizontalOptions="CenterAndExpand"
+                         VerticalOptions = "Center"
+                         />
+
+                    <Image  
+                         Grid.Column="0"
+                         Grid.Row="7"
+                         HeightRequest="30"
+                         WidthRequest="30"
+                         Source="{x:Static main:ClientConsts.LOCATION_BLACK_ICON}"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Start"
+                        />
+
+                    <StackLayout 
+                        Grid.Column="1"
+                        Grid.Row="7"
+                        Orientation="Vertical"
+                        HorizontalOptions="StartAndExpand"
+                        Spacing="2">
+
+                        <Label 
+                        x:Name="LbCountry"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{Binding  CurrentUser.Location.Country}"
+                        FontSize="Medium"
+                        TextColor="Black"
+                        IsVisible="True"
+                        />
+
+                        <custom:CustomEntry 
+                            x:Name="EtCountry"
+                            TextColor="Black"
+                            Text="{Binding CurrentUser.Location.Country}"
+                            HorizontalOptions="Fill"
+                            IsVisible="False"
+                            />
+
+                        <Label 
+                        HorizontalOptions="StartAndExpand"
+                        Text="{StaticResource CountryHint}"
+                        FontSize="Micro"
+                         Margin="0,0,0,3"
+                        />
+
+                    </StackLayout>
+
+                    <StackLayout 
+                        Grid.Column="1"
+                        Grid.Row="8"
+                        Orientation="Vertical"
+                        HorizontalOptions="StartAndExpand"
+                        Spacing="2">
+
+                        <Label 
+                        x:Name="LbRegion"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{Binding  CurrentUser.Location.Region}"
+                        FontSize="Medium"
+                        TextColor="Black"
+                        IsVisible="True"
+                        />
+
+                        <custom:CustomEntry 
+                            x:Name="EtRegion"
+                            TextColor="Black"
+                            Text="{Binding CurrentUser.Location.Region}"
+                            HorizontalOptions="Fill"
+                            IsVisible="False"
+                            />
+
+                        <Label 
+                        HorizontalOptions="StartAndExpand"
+                        Text="{StaticResource RegionHint}"
+                        FontSize="Micro"
+                         Margin="0,0,0,3"
+                        />
+
+                    </StackLayout>
+
+
+                    <StackLayout 
+                        Grid.Column="1"
+                        Grid.Row="9"
+                        Orientation="Vertical"
+                        HorizontalOptions="Fill"
+                        Spacing="2">
+
+                        <Label 
+                        x:Name="LbCity"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{Binding CurrentUser.Location.City}"
+                        FontSize="Medium"
+                        TextColor="Black"
+                        IsVisible="True"
+                        />
+
+                        <custom:CustomEntry 
+                            x:Name="EtCity"
+                            TextColor="Black"
+                            Text="{Binding CurrentUser.Location.City}"
+                            HorizontalOptions="Fill"
+                            IsVisible="False"
+                            />
+
+                        <Label 
+                        HorizontalOptions="StartAndExpand"
+                        Text="{StaticResource CityHint}"
+                        FontSize="Micro"
+                         Margin="0,0,0,3"
+                        />
+
+                    </StackLayout> 
+
+                    <StackLayout 
+                        Grid.Column="1"
+                        Grid.Row="10"
+                        Orientation="Vertical"
+                        HorizontalOptions="StartAndExpand"
+                        Spacing="2">
+
+                        <Label 
+                        x:Name="LbAddress"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{Binding CurrentUser.Location.Street}"
+                        FontSize="Medium"
+                        TextColor="Black"
+                        IsVisible="True"
+                        />
+
+                        <custom:CustomEntry 
+                            x:Name="EtAddress"
+                            TextColor="Black"
+                            Text="{Binding CurrentUser.Location.Street}"
+                            HorizontalOptions="Fill"
+                            IsVisible="False"
+                            />
+
+                        <Label 
+                        HorizontalOptions="StartAndExpand"
+                        Text="{StaticResource AddressHint}"
+                        FontSize="Micro"
+                         Margin="0,0,0,3"
+                        />
+
+                    </StackLayout>
+
+                    <StackLayout 
+                        Grid.Column="1"
+                        Grid.Row="11"
+                        Orientation="Vertical"
+                        HorizontalOptions="StartAndExpand"
+                        Spacing="2">
+
+                        <Label 
+                        x:Name="LbAddressNumber"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{Binding CurrentUser.Location.Nr}"
+                        FontSize="Medium"
+                        TextColor="Black"
+                        IsVisible="True"
+                        />
+
+                        <custom:CustomEntry 
+                            x:Name="EtAddressNumber"
+                            TextColor="Black"
+                            Text="{Binding CurrentUser.Location.Nr}"
+                            HorizontalOptions="Fill"
+                            IsVisible="False"
+                            />
+
+                        <Label 
+                        HorizontalOptions="StartAndExpand"
+                        Text="{StaticResource AddressNumberHint}"
+                        FontSize="Micro"
+                         Margin="0,0,0,3"
+                        />
+
+                    </StackLayout>
+
+                    <StackLayout 
+                        x:Name="StackLBlock"
+                        Grid.Column="1"
+                        Grid.Row="12"
+                        Orientation="Vertical"
+                        HorizontalOptions="StartAndExpand"
+                        Spacing="2">
+
+                        <Label 
+                        x:Name="LbBlock"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{Binding CurrentUser.Location.Block}"
+                        FontSize="Medium"
+                        TextColor="Black"
+                        IsVisible="True"
+                        />
+
+                        <custom:CustomEntry 
+                            x:Name="EtBlock"
+                            TextColor="Black"
+                            Text="{Binding CurrentUser.Location.Block}"
+                            HorizontalOptions="Fill"
+                            IsVisible="False"
+                            />
+
+                        <Label 
+                        HorizontalOptions="StartAndExpand"
+                        Text="{StaticResource BlockHint}"
+                        FontSize="Micro"
+                         Margin="0,0,0,3"
+                        />
+
+                    </StackLayout>
+
+                </Grid>
+
+                
+                <Button
+                    WidthRequest="250"
+                    x:Name="BtnSaveEdit"
+                    Text="{StaticResource BtnSaveEdit}"
+                    HorizontalOptions="CenterAndExpand"
+                    IsVisible="False"
+                    Clicked="ButtonSaveDataListener"
+                    Margin="8"
+                    />
+                
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 
