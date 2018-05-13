@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using Amazon.Runtime;
 using TrackApp.ClientLayer.CustomUI;
@@ -37,8 +35,8 @@ namespace TrackApp.ClientLayer.Friends
             OnRefreshCommand = new Command(() => Device.BeginInvokeOnMainThread(async () => await PopulateAsync()), () => !IsBusy);
         }
 
-       
-          public async override Task PopulateAsync()
+
+         public override async Task PopulateAsync()
         {
 
             // if already refreshing don't populate
@@ -48,8 +46,6 @@ namespace TrackApp.ClientLayer.Friends
             //set the refresh state so another refresh wont be possible
             IsBusy = true;
             (OnRefreshCommand as Command)?.ChangeCanExecute();
-
-
 
             try
             {
@@ -173,16 +169,20 @@ namespace TrackApp.ClientLayer.Friends
             if (currentUserFriends.Friends != null && currentUserFriends.Friends.Count == 1)
             {
                 // can't delete the last item in a list so we delete the whole row
-                await new SaveUserFriends().DeleteData<UserFriends>(currentUserFriends.Username);
+                await ISaveData.DeleteData<UserFriends>(currentUserFriends.Username);
 
                 // if there are any notifications save them again
-                if(currentUserFriends.Notifications != null && currentUserFriends.Notifications.Count != 0)
+                if( (currentUserFriends.Notifications != null && currentUserFriends.Notifications.Count != 0) || 
+                    (currentUserFriends.GroupRequests != null && currentUserFriends.GroupRequests.Count != 0) ||
+                    (currentUserFriends.Groups != null && currentUserFriends.Groups.Count != 0) )
                 {
                     var s = new SaveUserFriends { UserFriends = new UserFriends
                     {
                         Username = currentUserFriends.Username,
                         Friends = new List<string>(),
-                        Notifications = currentUserFriends.Notifications
+                        Notifications = currentUserFriends.Notifications,
+                        GroupRequests = currentUserFriends.GroupRequests,
+                        Groups = currentUserFriends.Groups
                     }
                     };
                     await s.SaveData();
@@ -200,11 +200,13 @@ namespace TrackApp.ClientLayer.Friends
             var clickedUserFriendsObj = await new QueryUser().LoadData<UserFriends>(clickUser.Username);
             var notifStorage = currentUser.Username + ClientConsts.CONCAT_SPECIAL_CHARACTER + ClientConsts.REMOVE_SIGNAL;
 
-            if (clickedUserFriendsObj == null || clickedUserFriendsObj.Notifications == null)
-            {
+            //create objects if needed
+            if (clickedUserFriendsObj == null)
                 clickedUserFriendsObj = new UserFriends { Username = clickUser.Username , Friends = clickedUserFriendsObj?.Friends};
+
+            //create objects if needed            
+            if(clickedUserFriendsObj != null && clickedUserFriendsObj.Notifications == null)
                 clickedUserFriendsObj.Notifications = new List<string>();
-            }
             
             //add the real index of the item so we will display the items in the ordered they where 
             //really added (dynamodb sorts the elements inside the db)

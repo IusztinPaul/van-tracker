@@ -29,9 +29,7 @@ namespace TrackApp.ClientLayer
           
             this.currentUser = currentUser;
             Master = new NavigationMasterPage(currentUser, this);
-            Detail = new NavigationPage(new Maper.MapGroupsPage(currentUser));
-
-            
+            Detail = new NavigationPage(new Maper.MapTabbedPage(currentUser));
         }
 
         public void OnItemSelected(object sender, SelectedItemChangedEventArgs e) 

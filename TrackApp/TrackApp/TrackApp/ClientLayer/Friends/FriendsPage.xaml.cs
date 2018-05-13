@@ -1,21 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using TrackApp.DataFormat.UserData;
-using TrackApp.ServerLayer.Query;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using TrackApp.ClientLayer.Extensions;
 using System.Collections.ObjectModel;
+using TrackApp.ClientLayer.Profile;
 
 namespace TrackApp.ClientLayer.Friends
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class FriendsPage : ContentPage
 	{
+        //TODO add activity indicator when a user clicks to go to a specific profile
+
         private TrackUser currentUser;
 
 		public FriendsPage (TrackUser trackUser)
@@ -24,7 +21,18 @@ namespace TrackApp.ClientLayer.Friends
             this.currentUser = trackUser;
             BindingContext = new CurrentFriendsListViewModel(trackUser);
 
-            FriendsList.ItemSelected += (source, args) => FriendsList.SelectedItem = null; // so the listview can't be selected
+            FriendsList.ItemSelected += async (sender, args) =>
+            {
+                if (args.SelectedItem != null)
+                {
+                    ((ListView)sender).SelectedItem = null;
+                    var tappedUser = args.SelectedItem as TrackUser;
+                    if (tappedUser != null)
+                    {
+                        await Navigation.PushAsync(new NavigationPage(new ProfilePageNoToolbar(tappedUser)));
+                    }
+                }
+            };
         }
 
         protected override void OnAppearing()
@@ -59,5 +67,6 @@ namespace TrackApp.ClientLayer.Friends
                 }
             }
         }
+        
 	}
 }

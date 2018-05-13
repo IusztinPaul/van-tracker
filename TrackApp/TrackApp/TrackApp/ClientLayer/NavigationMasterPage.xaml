@@ -6,7 +6,6 @@
              xmlns:local="clr-namespace:TrackApp.ClientLayer"
              xmlns:friends="clr-namespace:TrackApp.ClientLayer.Friends"
              xmlns:profile="clr-namespace:TrackApp.ClientLayer.Profile"
-             xmlns:login="clr-namespace:TrackApp.ClientLayer.Validation"
              xmlns:maps="clr-namespace:TrackApp.ClientLayer.Maper"
              Title="Optiuni">
 
@@ -51,7 +50,7 @@
             <ListView.ItemsSource>
                 <x:Array Type="{x:Type local:MenuItem}">
                     <local:MenuItem Title="{StaticResource Account}" IconSource="{x:Static local:ClientConsts.USER_ICON}" TargeType="{x:Type profile:ProfilePage}"/>
-                    <local:MenuItem Title="{StaticResource Groups}" IconSource="{x:Static local:ClientConsts.GROUP_ICON}" TargeType="{x:Type maps:MapGroupsPage}"/>
+                    <local:MenuItem Title="{StaticResource Groups}" IconSource="{x:Static local:ClientConsts.GROUP_ICON}" TargeType="{x:Type maps:MapTabbedPage}"/>
                     <local:MenuItem Title="{StaticResource Friends}" IconSource="{x:Static local:ClientConsts.FRIENDS_ICON}" TargeType="{x:Type friends:FriendsTabbedPage}"/>
                 </x:Array>
             </ListView.ItemsSource>

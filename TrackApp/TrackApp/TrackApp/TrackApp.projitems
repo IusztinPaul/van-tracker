@@ -28,6 +28,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\CustomUI\CustomEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\CustomUI\IMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\CustomUI\IPicturePicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Exceptions\TypeException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Exceptions\ValidationException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Extensions\Extensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\AbstractFriendsViewModel.cs" />
@@ -44,9 +45,21 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\FriendsListViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\NotificationsModelView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\BasicRefreshingModelView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\CreateGroupPage.xaml.cs">
+      <DependentUpon>CreateGroupPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\MapGroupsPage.xaml.cs">
       <DependentUpon>MapGroupsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\MapGroupsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\MapTabbedPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\RequestsPage.xaml.cs">
+      <DependentUpon>RequestsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\RequestsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\MenuItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\NavigationMasterPage.xaml.cs">
       <DependentUpon>NavigationMasterPage.xaml</DependentUpon>
@@ -54,6 +67,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Profile\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Profile\ProfilePageNoToolbar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Profile\ProfileViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Profile\ResetPasswordPage.xaml.cs">
       <DependentUpon>ResetPasswordPage.xaml</DependentUpon>
@@ -67,14 +81,19 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\DataConsts.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\DBIdObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataFormat\Group.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\Location.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\LocationTypeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataFormat\UserData\RoledTrackUser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\UserData\TrackUser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\MainPage.xaml.cs">
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\UserData\UserFriends.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\MultiTableBatchGroupsUserFriends.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Query\QueryHashLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Query\QueryUser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\ISaveData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\SaveGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\SaveUser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\SaveUserFriends.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\ServerConsts.cs" />
@@ -90,6 +109,14 @@
     <Page Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\NotificationPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\RequestsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\CreateGroupPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <Page Include="$(MSBuildThisFileDirectory)ClientLayer\NavigationMasterPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -109,9 +136,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\vantrackerlogo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\friends_icon.jpg" />
@@ -135,5 +159,9 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\contact_icon_black.png" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\location_icon_black.png" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\profile_icon_black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\administrator_icon.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\driver_icon.jpg" />
   </ItemGroup>
 </Project>

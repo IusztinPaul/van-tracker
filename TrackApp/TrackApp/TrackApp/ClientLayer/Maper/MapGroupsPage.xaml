@@ -2,11 +2,60 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TrackApp.ClientLayer.Maper.MapGroupsPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="ListViewHeaderTitle">Grupuri</x:String>
+            <x:String x:Key="SearchBoxPlaceHolder">Cauta grup</x:String>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms! MAPS"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout 
+            Orientation="Vertical"
+            Spacing="10"
+            Margin="{StaticResource Margins}">
+
+            <SearchBar 
+                       Placeholder="{StaticResource SearchBoxPlaceHolder}"
+                        Margin="2"
+                        HeightRequest="40"
+                       />
+
+
+            <ListView x:Name="UsersList"
+                      CachingStrategy="RecycleElement"
+                      HasUnevenRows="True"
+                      ItemsSource="{Binding Groups}"
+                      IsPullToRefreshEnabled="True"
+                      RefreshCommand="{Binding OnRefreshCommand}"
+                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                      >
+
+                <ListView.Header>
+                    <Label 
+                        Text="{StaticResource ListViewHeaderTitle}" 
+                        HorizontalOptions="StartAndExpand" 
+                        Margin="{StaticResource Margins}" 
+                        TextColor="Black"
+                        FontSize="{StaticResource LabelFontSize}"/>
+                </ListView.Header>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell 
+                                Text="{Binding Name}"
+                                Detail="{Binding Type}"
+                                ImageSource="{Binding UserTypeIcon}"
+                                TextColor="Black"
+                                DetailColor="{StaticResource TextColor}"
+                                />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
         </StackLayout>
     </ContentPage.Content>
+
 </ContentPage>

@@ -1,0 +1,24 @@
+﻿using Amazon.DynamoDBv2.DataModel;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using TrackApp.ServerLayer;
+
+namespace TrackApp.DataFormat
+{
+    [DynamoDBTable(ServerConsts.GROUPS_DB_NAME)]
+    public class Group
+    {
+        [DynamoDBHashKey]
+        public string Name { get; set; }
+
+        [DynamoDBProperty("Admins")]
+        public List<string> Admins { get; set; } // username#fullname
+
+        [DynamoDBProperty("Drivers")]
+        public List<string> Drivers { get; set; } //username#fullname
+
+        [DynamoDBProperty("Notifications")]
+        public List<string> Notifications { get; set; } //username#add/remove#index
+    }
+}

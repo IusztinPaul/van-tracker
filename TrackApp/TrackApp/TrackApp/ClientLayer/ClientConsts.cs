@@ -10,9 +10,12 @@ namespace TrackApp.ClientLayer
         //concat special caracter
         public const string CONCAT_SPECIAL_CHARACTER = "#";
 
-        //special notification  signal
+        //special notification signals
         public const string ADD_SIGNAL = "add";
         public const string REMOVE_SIGNAL = "remove";
+        //special type signals 
+        public const string ADMINISTRATOR_SIGNAL = "a";
+        public const string DRIVER_SIGNAL = "d";
 
         //main page consts
         public const string MAIN_PAGE_TITLE = "TrackApp";
@@ -30,6 +33,8 @@ namespace TrackApp.ClientLayer
         public const string USER_BLACK_ICON = "profile_icon_black.png";
         public const string CONTACT_BLACK_ICON = "contact_icon_black.png";
         public const string LOCATION_BLACK_ICON = "location_icon_black.png";
+        public const string ADMINISTRATOR_ICON = "administrator_icon.png";
+        public const string DRIVER_ICON = "driver_icon.jpg";
 
         // login and sign up constants 
         public const int PASSWORD_LENGTH_MINIMUM = 6;
@@ -54,6 +59,11 @@ namespace TrackApp.ClientLayer
         //user page
         public const string NR = "nr. ";
         public const string EDIT_FINALIZE_MESSAGE = "Datele au fost salvate!";
+
+        // map tabbed page
+        public const string MAP_PAGE_TITLE = "Grupuri";
+        public const string REQUEST_PAGE_TITLE = "Cereri";
+        public const string TOOL_BAR_ADD_GROUP = "Creaza grup";
 
     }
 }

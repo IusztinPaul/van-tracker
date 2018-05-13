@@ -15,6 +15,7 @@ namespace TrackApp.ServerLayer
         //aws database names
         public const string USERS_DB_NAME = "UserData";
         public const string USERS_FRIENDS_DB_NAME = "UserFriends";
+        public const string GROUPS_DB_NAME = "Groups";
 
         //aws databases hashkeys
         public const string USER_DATA_HASHKEY = "Username";

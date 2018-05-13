@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:TrackApp.ClientLayer.CustomUI"
+             x:Class="TrackApp.ClientLayer.Maper.CreateGroupPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="GroupNameLabel">Nume grup</x:String>
+            <x:String x:Key="GroupPlaceholder">Nume grup(fara '$' sau '#')</x:String>
+            <x:String x:Key="HintLabel">Participantii se adauga din pagina principala a grupului</x:String>
+            <x:String x:Key="BtnText">Salveaza</x:String>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+            Orientation="Vertical"
+            Spacing="5"
+            Margin="{StaticResource Margins}">
+
+                <ActivityIndicator 
+                    x:Name="ActIndSaveData"
+                    HorizontalOptions="Center"
+                    VerticalOptions="StartAndExpand"
+                    HeightRequest="30"
+                    WidthRequest="30"
+                    IsRunning="False"
+                    IsVisible="False"
+                     />
+
+                <Label Text= "{StaticResource  GroupNameLabel}"
+                       FontSize="{StaticResource LabelFontSize}"
+                       Margin ="0, 2"
+                    TextColor="Black"
+                   HorizontalOptions="StartAndExpand"
+                   VerticalOptions="Start"
+                   />
+
+                <custom:CustomEntry    x:Name="EntryGroupName"
+                                   Placeholder="{StaticResource GroupPlaceholder}"
+                                    Margin="8, 0"
+                                   HorizontalOptions="StartAndExpand"
+                   VerticalOptions="Start"
+                                   />
+
+                <Button 
+                x:Name="BtnSaveData"
+                Text="{StaticResource BtnText}"
+                HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="Start"
+                WidthRequest="250"
+                Margin="2, 2"
+                />
+
+
+                <Label Text= "{StaticResource  HintLabel}"
+                   HorizontalOptions="StartAndExpand"
+                   VerticalOptions="Start"
+                       FontSize="20"
+                        Margin ="2, 8"
+                       FontAttributes="Italic"/>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

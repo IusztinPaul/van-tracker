@@ -56,11 +56,11 @@ namespace TrackApp.ClientLayer.Validation
         private async Task<string> GetEntryUsername()
         {
             string username = EntryUsername.Text.Trim();
-            ValidateUsername(username);
+            await ValidateUsername(username);
             return username;
         }
 
-        public async static void ValidateUsername(string username)
+        public async static Task ValidateUsername(string username)
         {
             if (String.IsNullOrEmpty(username))
                 throw new ValidationException("Nume cont incorent!");

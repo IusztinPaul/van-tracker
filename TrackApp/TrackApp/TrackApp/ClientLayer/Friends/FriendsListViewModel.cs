@@ -178,8 +178,11 @@ namespace TrackApp.ClientLayer.Friends
             }
             else
             {
-                userList = new UserFriends { Username = currentUser.Username, Notifications = currentUserFriends?.Notifications };
-                userList.Friends = new List<string> { selectedUser.Username };
+                if(userList == null)
+                    userList = new UserFriends { Username = currentUser.Username, Notifications = currentUserFriends?.Notifications };
+
+                if(userList != null && userList.Friends == null)
+                    userList.Friends = new List<string> { selectedUser.Username };
             }
 
             // add id in the selected currentUser notifications
@@ -204,8 +207,11 @@ namespace TrackApp.ClientLayer.Friends
             }
             else
             {
-                selectedUserList = new UserFriends { Username = selectedUser.Username, Friends = selectedUserList?.Friends };
-                selectedUserList.Notifications = new List<string> { notifStorage + ClientConsts.CONCAT_SPECIAL_CHARACTER + "0" };
+                if(selectedUserList == null)
+                    selectedUserList = new UserFriends { Username = selectedUser.Username, Friends = selectedUserList?.Friends };
+
+                if(selectedUserList != null && selectedUserList.Notifications == null)
+                    selectedUserList.Notifications = new List<string> { notifStorage + ClientConsts.CONCAT_SPECIAL_CHARACTER + "0" };
             }
 
 
@@ -220,10 +226,7 @@ namespace TrackApp.ClientLayer.Friends
 
             //refresh the current user friends list
             currentUserFriends = await new QueryUser().LoadData<UserFriends>(currentUser.Username);
-
-
-            // after refresh the binded view
-            // TrackUsers = new ObservableCollection<TrackUser>(FilterAllUsers(TrackUsers, currentUserFriends));
+            
         }
 
 

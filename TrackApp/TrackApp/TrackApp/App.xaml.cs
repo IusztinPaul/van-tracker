@@ -13,6 +13,9 @@ using TrackApp.ClientLayer.Validation;
 using TrackApp.DataFormat.UserData;
 using TrackApp.ServerLayer;
 using Xamarin.Forms;
+using TrackApp.ClientLayer.Maper;
+using TrackApp.ServerLayer.Save;
+using System.Threading.Tasks;
 
 namespace TrackApp
 {
@@ -25,7 +28,7 @@ namespace TrackApp
 
              var user = new TrackUser()
             {
-                Username = "PaulCelMare",
+                Username = "PaulakaPaul",
                 FirstName = "Paul",
                 LastName = "Iusztin",
                 Phone = "0732509516",
@@ -39,11 +42,12 @@ namespace TrackApp
                     Nr = "98",
                     Block = "-"
                 }
-            }; 
+            };
 
-             //  MainPage = new NavigationPage(new ProfilePage(user)); 
-              MainPage = new NavigationPage(new LoginPage(null));
-             // MainPage = new DemoPickPage();
+            //  MainPage = new NavigationPage(new ProfilePage(user)); 
+          //   MainPage = new NavigationPage(new LoginPage(user));
+            MainPage = new NavigationPage(new MapTabbedPage(user));
+            // MainPage = new DemoPickPage();
 		}
 
 		protected override void OnStart ()

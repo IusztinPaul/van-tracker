@@ -62,7 +62,7 @@
                     IsVisible="False"
                     x:Name="LbChangePhoto"
                     HorizontalOptions="Center"
-                    FontSize="Medium"
+                    FontSize="{StaticResource Medium}"
                     Text="{StaticResource LbChangePhoto}"
                     FontAttributes="Bold"
                     TextColor="{StaticResource ConstrastColor}"
@@ -130,7 +130,7 @@
                          x:Name="LbUsername"
                         HorizontalOptions="StartAndExpand"
                         Text="{Binding CurrentUser.Username}"
-                        FontSize="Medium"
+                        FontSize="{StaticResource Medium}"
                         TextColor="Black"
                         IsVisible="True"
                         />
@@ -138,7 +138,7 @@
                         <Label 
                         HorizontalOptions="StartAndExpand"
                         Text="{StaticResource UsernameHint}"
-                        FontSize="Micro"
+                        FontSize="{StaticResource Small}"
                          Margin="0,0,0,3"
                         />
 
@@ -155,7 +155,7 @@
                          x:Name="LbFirstName"
                         HorizontalOptions="StartAndExpand"
                         Text="{Binding CurrentUser.FirstName}"
-                        FontSize="Medium"
+                        FontSize="{StaticResource Medium}"
                         TextColor="Black"
                         IsVisible="True"
                         />
@@ -171,7 +171,7 @@
                         <Label 
                         HorizontalOptions="StartAndExpand"
                         Text="{StaticResource FirstNameHint}"
-                        FontSize="Micro"
+                        FontSize="{StaticResource Small}"
                          Margin="0,0,0,3"
                         />
 
@@ -188,7 +188,7 @@
                          x:Name="LbLastName"
                         HorizontalOptions="StartAndExpand"
                         Text="{Binding CurrentUser.LastName}"
-                        FontSize="Medium"
+                        FontSize="{StaticResource Medium}"
                         TextColor="Black"
                         IsVisible="True"
                         />
@@ -204,7 +204,7 @@
                         <Label 
                         HorizontalOptions="StartAndExpand"
                         Text="{StaticResource LastNameHint}"
-                        FontSize="Micro"
+                        FontSize="{StaticResource Small}"
                          Margin="0,0,0,3"
                         />
 
@@ -241,7 +241,7 @@
                         x:Name="LbEmail"
                         HorizontalOptions="StartAndExpand"
                         Text="{Binding CurrentUser.Email}"
-                        FontSize="Medium"
+                        FontSize="{StaticResource Medium}"
                         TextColor="Black"
                         IsVisible="True"
                         />
@@ -257,7 +257,7 @@
                         <Label 
                         HorizontalOptions="StartAndExpand"
                         Text="{StaticResource EmailHint}"
-                        FontSize="Micro"
+                        FontSize="{StaticResource Small}"
                          Margin="0,0,0,3"
                         />
 
@@ -274,7 +274,7 @@
                         x:Name="LbPhoneNumber"
                         HorizontalOptions="StartAndExpand"
                         Text="{Binding CurrentUser.Phone}"
-                        FontSize="Medium"
+                        FontSize="{StaticResource Medium}"
                         TextColor="Black"
                         IsVisible="True"
                         />
@@ -290,7 +290,7 @@
                         <Label 
                         HorizontalOptions="StartAndExpand"
                         Text="{StaticResource PhoneNumberHint}"
-                        FontSize="Micro"
+                        FontSize="{StaticResource Small}"
                          Margin="0,0,0,3"
                         />
 
@@ -327,7 +327,7 @@
                         x:Name="LbCountry"
                         HorizontalOptions="StartAndExpand"
                         Text="{Binding  CurrentUser.Location.Country}"
-                        FontSize="Medium"
+                        FontSize="{StaticResource Medium}"
                         TextColor="Black"
                         IsVisible="True"
                         />
@@ -343,7 +343,7 @@
                         <Label 
                         HorizontalOptions="StartAndExpand"
                         Text="{StaticResource CountryHint}"
-                        FontSize="Micro"
+                        FontSize="{StaticResource Small}"
                          Margin="0,0,0,3"
                         />
 
@@ -360,7 +360,7 @@
                         x:Name="LbRegion"
                         HorizontalOptions="StartAndExpand"
                         Text="{Binding  CurrentUser.Location.Region}"
-                        FontSize="Medium"
+                        FontSize="{StaticResource Medium}"
                         TextColor="Black"
                         IsVisible="True"
                         />
@@ -376,7 +376,7 @@
                         <Label 
                         HorizontalOptions="StartAndExpand"
                         Text="{StaticResource RegionHint}"
-                        FontSize="Micro"
+                        FontSize="{StaticResource Small}"
                          Margin="0,0,0,3"
                         />
 
@@ -394,7 +394,7 @@
                         x:Name="LbCity"
                         HorizontalOptions="StartAndExpand"
                         Text="{Binding CurrentUser.Location.City}"
-                        FontSize="Medium"
+                        FontSize="{StaticResource Medium}"
                         TextColor="Black"
                         IsVisible="True"
                         />
@@ -410,7 +410,7 @@
                         <Label 
                         HorizontalOptions="StartAndExpand"
                         Text="{StaticResource CityHint}"
-                        FontSize="Micro"
+                        FontSize="{StaticResource Small}"
                          Margin="0,0,0,3"
                         />
 
@@ -427,7 +427,7 @@
                         x:Name="LbAddress"
                         HorizontalOptions="StartAndExpand"
                         Text="{Binding CurrentUser.Location.Street}"
-                        FontSize="Medium"
+                        FontSize="{StaticResource Medium}"
                         TextColor="Black"
                         IsVisible="True"
                         />
@@ -443,7 +443,7 @@
                         <Label 
                         HorizontalOptions="StartAndExpand"
                         Text="{StaticResource AddressHint}"
-                        FontSize="Micro"
+                        FontSize="{StaticResource Small}"
                          Margin="0,0,0,3"
                         />
 
@@ -460,7 +460,7 @@
                         x:Name="LbAddressNumber"
                         HorizontalOptions="StartAndExpand"
                         Text="{Binding CurrentUser.Location.Nr}"
-                        FontSize="Medium"
+                        FontSize="{StaticResource Medium}"
                         TextColor="Black"
                         IsVisible="True"
                         />
@@ -476,7 +476,7 @@
                         <Label 
                         HorizontalOptions="StartAndExpand"
                         Text="{StaticResource AddressNumberHint}"
-                        FontSize="Micro"
+                        FontSize="{StaticResource Small}"
                          Margin="0,0,0,3"
                         />
 
@@ -494,7 +494,7 @@
                         x:Name="LbBlock"
                         HorizontalOptions="StartAndExpand"
                         Text="{Binding CurrentUser.Location.Block}"
-                        FontSize="Medium"
+                        FontSize="{StaticResource Medium}"
                         TextColor="Black"
                         IsVisible="True"
                         />
@@ -510,7 +510,7 @@
                         <Label 
                         HorizontalOptions="StartAndExpand"
                         Text="{StaticResource BlockHint}"
-                        FontSize="Micro"
+                        FontSize="{StaticResource Small}"
                          Margin="0,0,0,3"
                         />
 

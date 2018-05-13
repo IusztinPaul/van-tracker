@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TrackApp.ClientLayer.CustomUI;
+using TrackApp.ClientLayer.Profile;
 using TrackApp.DataFormat.UserData;
+using TrackApp.ServerLayer.Query;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -21,7 +24,29 @@ namespace TrackApp.ClientLayer.Friends
 			InitializeComponent ();
             BindingContext = new NotificationsModelView(currentUser);
 
-            NotificationsList.ItemSelected += (source, args) => { NotificationsList.SelectedItem = null; };
+            NotificationsList.ItemSelected += async (sender, args) =>
+            {
+                if (args.SelectedItem != null)
+                {
+                    var tappedUserNotif = args.SelectedItem as Notification;
+                    if (tappedUserNotif != null)
+                    {
+                        ((ListView)sender).SelectedItem = null;
+
+                        try
+                        {
+                            var tappedUser = await new QueryUser().LoadData<TrackUser>(tappedUserNotif.Username);
+                            await Navigation.PushAsync(new NavigationPage(new ProfilePageNoToolbar(tappedUser)));
+                        }
+                        catch (Exception e)
+                        {
+                            DependencyService.Get<IMessage>().LongAlert("Cerere anulata. Incearca din nou in cateva momente!");
+                        }
+
+                    }
+                   
+                }
+            };
 
         }
 

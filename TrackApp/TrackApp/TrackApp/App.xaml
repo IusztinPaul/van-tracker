@@ -53,11 +53,22 @@
                         x:TypeArguments="x:Double"
                         iOS="18"
                         Android="18"/>
+            <OnPlatform x:TypeArguments="x:Double"
+                        x:Key="Medium">
+                <On Platform="Android" Value="21"/>
+                <On Platform="IOS" Value="21"/>
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:Double"
+                        x:Key="Small">
+                <On Platform="Android" Value="14"/>
+                <On Platform="IOS" Value="14"/>
+            </OnPlatform>
             
             <!-- Heights -->
             <x:Double x:Key="BorderHeight">1</x:Double>
+            
 
-           <!-- master from detailmasterpage constants -->
+            <!-- master from detailmasterpage constants -->
            <x:String x:Key="Account">Account</x:String>
            <x:String x:Key="Groups">Grupuri</x:String>
            <x:String x:Key="Friends">Prieteni</x:String>

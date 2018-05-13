@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TrackApp.ClientLayer.Profile;
 using TrackApp.DataFormat.UserData;
-using TrackApp.ServerLayer.Query;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,17 +11,30 @@ namespace TrackApp.ClientLayer.Friends
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AddFriendPage : ContentPage
 	{
-	   
-	   
 
-        public AddFriendPage (TrackUser currentUser)
-		{
-			InitializeComponent ();
-		    BindingContext = new FriendsListViewModel(currentUser);
 
-             UsersList.ItemSelected += (source, args) => UsersList.SelectedItem = null; // so the listview can't be selected
- 
-		}
+
+        public AddFriendPage(TrackUser currentUser)
+        {
+            InitializeComponent();
+            BindingContext = new FriendsListViewModel(currentUser);
+
+            UsersList.ItemSelected += async (sender, args) =>
+            {
+                if (args.SelectedItem != null)
+                {
+                    ((ListView)sender).SelectedItem = null;
+
+                    var tappedUser = args.SelectedItem as TrackUser;
+                    if (tappedUser != null)
+                    {
+                        await Navigation.PushAsync(new NavigationPage(new ProfilePageNoToolbar(tappedUser)));
+                    }
+                      
+                };
+
+            };
+        }
 
         protected override void OnAppearing()
         {

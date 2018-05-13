@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:TrackApp.ClientLayer.CustomUI"
+             x:Class="TrackApp.ClientLayer.Maper.RequestsPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+        <x:String x:Key="ListViewHeaderTitle">Cereri</x:String>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout
+            Orientation="Vertical"
+            Margin="{StaticResource Margins}"
+            >
+            <ListView x:Name="UserGroupRequests"
+                      CachingStrategy="RecycleElement"
+                      HasUnevenRows="True"
+                      ItemsSource="{Binding GroupRequests}"
+                      HorizontalOptions="Start"
+                      >
+                
+                <ListView.Header>
+                    <Label 
+                        Text="{StaticResource ListViewHeaderTitle}" 
+                        HorizontalOptions="StartAndExpand" 
+                        Margin="{StaticResource Margins}" 
+                        TextColor="Black"
+                        FontSize="{StaticResource LabelFontSize}"/>
+                </ListView.Header>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+
+                            <Grid
+                                Padding="5, 5, 0, 5"
+                                x:Name="Item"
+                                    >
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="25"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <custom:CircleImage
+                                        Grid.Row="0"
+                                        Grid.RowSpan="2"    
+                                        Grid.Column="0"
+                                        Source="{Binding Icon}"
+                                        Aspect="AspectFill"
+                                        HeightRequest="70"
+                                        WidthRequest="70"
+                                        />
+
+                                <Label 
+                                        HorizontalOptions="Start"
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        TextColor="Black" 
+                                        Text="{Binding Username}"
+                                        FontSize="20"
+                                        FontAttributes="Bold"
+                                        Margin="7,0"
+                                       />
+
+                                <Label
+                                        HorizontalOptions="Start"
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Text="{Binding GroupName, StringFormat='Te-a invitat in {0}'}" 
+                                        FontSize="14"
+                                        Margin="7,0"
+                                        />
+
+                                <Button VerticalOptions="Center"
+                                        HorizontalOptions="End"
+                                        Grid.Row="0"
+                                        Grid.RowSpan="2"    
+                                        Grid.Column="2"
+                                        Margin="1"
+                                        Text="+"
+                                        FontSize="7"
+                                        HeightRequest="35"
+                                        WidthRequest="35"
+                                        />
+
+                                <Button VerticalOptions="Center"
+                                        HorizontalOptions="End"
+                                        Grid.Row="0"
+                                        Grid.RowSpan="2"    
+                                        Grid.Column="3"
+                                        Margin="1"
+                                        Text="x"
+                                        FontSize="7"
+                                        HeightRequest="35"
+                                        WidthRequest="35"
+                                        />
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

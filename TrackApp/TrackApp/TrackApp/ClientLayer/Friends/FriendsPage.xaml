@@ -27,7 +27,6 @@
                         HeightRequest="40"
                        />
 
-
             <ListView x:Name="FriendsList"
                       CachingStrategy="RecycleElement"
                       HasUnevenRows="True"
@@ -96,7 +95,6 @@
                                         Grid.RowSpan="2"    
                                         Grid.Column="2"
                                         Margin="1"
-                                        TextColor="{StaticResource TextColor}"
                                         Text="{StaticResource BtnText}"
                                         FontSize="Micro"
                                         BindingContext="{Binding Source={x:Reference FriendsList}, Path=BindingContext}"
