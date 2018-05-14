@@ -17,13 +17,15 @@
             Margin="{StaticResource Margins}">
 
             <SearchBar 
+                        x:Name="SrcBarNames"
                        Placeholder="{StaticResource SearchBoxPlaceHolder}"
                         Margin="2"
                         HeightRequest="40"
-                       />
+                        TextChanged="OnTextChanged"       
+                />
 
 
-            <ListView x:Name="UsersList"
+            <ListView x:Name="GroupsList"
                       CachingStrategy="RecycleElement"
                       HasUnevenRows="True"
                       ItemsSource="{Binding Groups}"

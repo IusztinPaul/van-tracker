@@ -178,10 +178,10 @@ namespace TrackApp.ClientLayer.Friends
             }
             else
             {
-                if(userList == null)
+                if (userList == null)
                     userList = new UserFriends { Username = currentUser.Username, Notifications = currentUserFriends?.Notifications };
 
-                if(userList != null && userList.Friends == null)
+                if (userList != null && userList.Friends == null)
                     userList.Friends = new List<string> { selectedUser.Username };
             }
 
@@ -207,10 +207,10 @@ namespace TrackApp.ClientLayer.Friends
             }
             else
             {
-                if(selectedUserList == null)
+                if (selectedUserList == null)
                     selectedUserList = new UserFriends { Username = selectedUser.Username, Friends = selectedUserList?.Friends };
 
-                if(selectedUserList != null && selectedUserList.Notifications == null)
+                if (selectedUserList != null && selectedUserList.Notifications == null)
                     selectedUserList.Notifications = new List<string> { notifStorage + ClientConsts.CONCAT_SPECIAL_CHARACTER + "0" };
             }
 
@@ -226,7 +226,7 @@ namespace TrackApp.ClientLayer.Friends
 
             //refresh the current user friends list
             currentUserFriends = await new QueryUser().LoadData<UserFriends>(currentUser.Username);
-            
+
         }
 
 
@@ -235,7 +235,9 @@ namespace TrackApp.ClientLayer.Friends
 
         public IList<TrackUser> GetAllUsers()
         {
-            return _allUsers;
+            if (_allUsers != null)
+                return _allUsers;
+            else return new List<TrackUser>();
         }
 
         private IEnumerable<TrackUser> FilterAllUsers(IEnumerable<TrackUser> allUsers, UserFriends friends)

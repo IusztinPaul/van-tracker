@@ -46,6 +46,8 @@ namespace TrackApp.ClientLayer.Friends
            {
                await bindCont.PopulateAsync();
            });
+
+            SrcBarNames.Text = "";
         }
 
         public void OnTextChanged(object source, TextChangedEventArgs e)
@@ -54,6 +56,7 @@ namespace TrackApp.ClientLayer.Friends
 
             if (viewmodel != null)
             {
+
                 //filter the data 
                 if (String.IsNullOrEmpty(e.NewTextValue))
                 {

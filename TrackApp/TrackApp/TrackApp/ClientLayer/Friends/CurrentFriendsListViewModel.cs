@@ -16,7 +16,7 @@ namespace TrackApp.ClientLayer.Friends
 {
     public class CurrentFriendsListViewModel : AbstractFriendsViewModel
     {
-        public IList<TrackUser> AllCurrentFriends { get; private set; }
+        public IList<TrackUser> AllCurrentFriends { get; set; }
 
         public ObservableCollection<TrackUser> _currentUserFriends;
         public ObservableCollection<TrackUser> CurrentUserFriends

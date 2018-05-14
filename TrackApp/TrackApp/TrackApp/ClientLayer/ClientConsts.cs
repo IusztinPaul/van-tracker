@@ -41,7 +41,7 @@ namespace TrackApp.ClientLayer
         public static readonly string PASSWORD_LENGTH_STRING = "Parola de minim " + PASSWORD_LENGTH_MINIMUM + " caractere";
         public static readonly string PASSWORD_REPEAT = "Repeta parola";
         public const string ACCOUNT_CREATED_MESSAGE = "Contul a fost creat!";
-        public const string INTERNET_EXCEPTION_MESSAGE = "Nu este internet!";
+        public const string INTERNET_EXCEPTION_MESSAGE = "Nu este internet sau exista o problema!";
         public const string DYNAMODB_EXCEPTION_MESSAGE1 = "Probleme cu internet-ul!";
         public const string DYNAMODB_EXCEPTION_MESSAGE2 = "Probleme cu server-ul!";
 
@@ -64,6 +64,12 @@ namespace TrackApp.ClientLayer
         public const string MAP_PAGE_TITLE = "Grupuri";
         public const string REQUEST_PAGE_TITLE = "Cereri";
         public const string TOOL_BAR_ADD_GROUP = "Creaza grup";
+
+        //group tabbed page
+        public const string MEMBERS_PAGE_TITLE = "Membrii";
+        public const string NOTIFICATIONS_PAGE_TITLE = "Istoric";
+        public const string START_PROCESS_SIGNAL = "Asteptati sa se incarce datele!";
+        public const string GROUP_TITLE = "Grup";
 
     }
 }

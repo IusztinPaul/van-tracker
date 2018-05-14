@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Collections.ObjectModel;
 using TrackApp.ClientLayer.Profile;
+using System.Collections.Generic;
 
 namespace TrackApp.ClientLayer.Friends
 {
@@ -45,7 +46,9 @@ namespace TrackApp.ClientLayer.Friends
             {
                 await bindcont.PopulateAsync();
             });
-            
+
+            SrcBarNames.Text = "";
+
         } 
 
 
@@ -55,6 +58,10 @@ namespace TrackApp.ClientLayer.Friends
 
             if (viewmodel != null)
             {
+
+                if (viewmodel.AllCurrentFriends == null)
+                    viewmodel.AllCurrentFriends = new List<TrackUser>();
+
                 //filter the data 
                 if (String.IsNullOrEmpty(e.NewTextValue))
                 {

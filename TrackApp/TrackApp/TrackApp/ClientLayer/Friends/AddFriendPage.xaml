@@ -22,6 +22,7 @@
             Margin="{StaticResource Margins}">
 
             <SearchBar 
+                         x:Name="SrcBarNames"
                        Placeholder="{StaticResource SearchBoxPlaceHolder}"
                         TextChanged="OnTextChanged"
                         Margin="2"

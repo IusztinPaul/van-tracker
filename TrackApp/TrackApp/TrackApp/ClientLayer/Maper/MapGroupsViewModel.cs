@@ -2,9 +2,9 @@
 using TrackApp.DataFormat.UserData;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
+using System.Linq;
 using System.Threading.Tasks;
 using TrackApp.ServerLayer.Query;
-using TrackApp.ClientLayer.Extensions;
 using System.Net;
 using TrackApp.ClientLayer.Exceptions;
 using Amazon.Runtime;
@@ -17,6 +17,8 @@ namespace TrackApp.ClientLayer.Maper
     {
         public const string ADMINISTRATOR_DETAIL = "Administrator";
         public const string DRIVER_DETAIL = "Sofer";
+
+        private List<GroupListViewWrapper> _allGroups;
 
         private ObservableCollection<GroupListViewWrapper> _groups;
         public ObservableCollection<GroupListViewWrapper> Groups
@@ -32,7 +34,7 @@ namespace TrackApp.ClientLayer.Maper
 
         public MapGroupsViewModel(TrackUser currentUser) : base(currentUser)
         {
-           
+
         }
 
 
@@ -48,30 +50,39 @@ namespace TrackApp.ClientLayer.Maper
 
             try
             {
-                Groups = new ObservableCollection<GroupListViewWrapper>();
-            
-            // query and add data to Groups list
-            var userFriends = await QueryHashLoader.LoadData<UserFriends>(currentUser.Username);
-            if (userFriends != null)
-            {
-                foreach (var group in userFriends.Groups)
+                _allGroups = new List<GroupListViewWrapper>();
+
+                // query and add data to Groups list
+                var userFriends = await QueryHashLoader.LoadData<UserFriends>(currentUser.Username);
+                if (userFriends != null)
                 {
-                    string[] data = group.Split(ClientConsts.CONCAT_SPECIAL_CHARACTER[0]);
-                    if (data.Length >= 2)
+                    foreach (var group in userFriends.Groups)
                     {
+                        string[] data = group.Split(ClientConsts.CONCAT_SPECIAL_CHARACTER[0]);
+                        if (data.Length >= 2)
+                        {
                             var listItem = new GroupListViewWrapper
                             {
                                 Name = data[0],
                                 Type = data[1] == ClientConsts.ADMINISTRATOR_SIGNAL ? ADMINISTRATOR_DETAIL : DRIVER_DETAIL
                             };
 
-                            Groups.Add(listItem);
+                            _allGroups.Add(listItem);
+                        }
                     }
-                }
 
                     //sort by name
-                    Groups.Sort<GroupListViewWrapper>((a, b) => a.Name.CompareTo(b.Name));
-            }
+                    (_allGroups as List<GroupListViewWrapper>)?.Sort((a, b) => a.Name.CompareTo(b.Name));
+
+                    //bind view
+                    Groups = new ObservableCollection<GroupListViewWrapper>(_allGroups);
+
+                }
+                else
+                {
+                    _allGroups = new List<GroupListViewWrapper>();
+                    Groups = new ObservableCollection<GroupListViewWrapper>();
+                }
 
             }
             catch (AmazonServiceException e) // if there are problems with the service or with the internet
@@ -103,21 +114,42 @@ namespace TrackApp.ClientLayer.Maper
 
         }
 
+        public void SearchBarListener(string searchBarText)
+        {
+
+            if (_allGroups == null)
+                _allGroups = new List<GroupListViewWrapper>();
+
+            if(String.IsNullOrEmpty(searchBarText))
+            {
+                Groups = new ObservableCollection<GroupListViewWrapper>(_allGroups);
+            } else
+            {
+                Groups = new ObservableCollection<GroupListViewWrapper>( 
+                    _allGroups.Where( (x) => x.Name.ToUpper().StartsWith(searchBarText.ToUpper())) 
+                    );
+            }
+
+        }
+
     }
 
     public class GroupListViewWrapper
     {
         public string Name { get; set; }
         public string Type { get; set; }
-        public string UserTypeIcon {
-            get {
+        public string UserTypeIcon
+        {
+            get
+            {
                 if (Type != null && Type.Equals(MapGroupsViewModel.ADMINISTRATOR_DETAIL))
                     return ClientConsts.ADMINISTRATOR_ICON;
 
-                if (Type != null && Type.Equals(MapGroupsViewModel.DRIVER_DETAIL) )
+                if (Type != null && Type.Equals(MapGroupsViewModel.DRIVER_DETAIL))
                     return ClientConsts.DRIVER_ICON;
 
                 return ClientConsts.APP_LOGO;
-            } }
+            }
+        }
     }
 }

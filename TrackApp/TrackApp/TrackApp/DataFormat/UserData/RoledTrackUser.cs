@@ -5,12 +5,14 @@ using TrackApp.ClientLayer.Exceptions;
 
 namespace TrackApp.DataFormat.UserData
 {
-    public class RoledTrackUser
+    public class RoledTrackUser : TrackUser
     {
-        public const string TYPE_ADMINISTRATOR = "administrator";
-        public const string TYPE_DRIVER = "driver";
+        public const string TYPE_ADMINISTRATOR = "Administrator";
+        public const string TYPE_DRIVER = "Driver";
+        public const string TYPE_NONE = "none"; // if this type exists it means there is a error in logic
 
-        public TrackUser TrackUser { get; set; }
+        public RoledTrackUser(TrackUser trackUser) : base(trackUser) { }
+
         private string _role;
         public string Role
         {
