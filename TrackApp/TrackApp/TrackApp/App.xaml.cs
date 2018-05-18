@@ -16,6 +16,7 @@ using Xamarin.Forms;
 using TrackApp.ClientLayer.Maper;
 using TrackApp.ServerLayer.Save;
 using System.Threading.Tasks;
+using TrackApp.ClientLayer.Maper.Group;
 
 namespace TrackApp
 {
@@ -28,7 +29,7 @@ namespace TrackApp
 
              var user = new TrackUser()
             {
-                Username = "PaulakaPaul",
+                Username = "Arther",
                 FirstName = "Paul",
                 LastName = "Iusztin",
                 Phone = "0732509516",
@@ -42,6 +43,11 @@ namespace TrackApp
                     Nr = "98",
                     Block = "-"
                 }
+            };
+
+            var roledUser = new RoledTrackUser(user)
+            {
+                Role = "Administrator"
             };
 
             //  MainPage = new NavigationPage(new ProfilePage(user)); 

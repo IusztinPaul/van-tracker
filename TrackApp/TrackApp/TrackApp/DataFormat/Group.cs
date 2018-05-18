@@ -9,6 +9,9 @@ namespace TrackApp.DataFormat
     [DynamoDBTable(ServerConsts.GROUPS_DB_NAME)]
     public class Group
     {
+        public const string ACCEPTED_REQUEST_STATE = "a";
+        public const string DENIED_REQUEST_STATE = "d";
+
         [DynamoDBHashKey]
         public string Name { get; set; }
 

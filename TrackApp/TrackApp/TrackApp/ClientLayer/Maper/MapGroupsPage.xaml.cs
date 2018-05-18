@@ -24,7 +24,7 @@ namespace TrackApp.ClientLayer.Maper
             BindingContext = new MapGroupsViewModel(currentUser);
             this.currentUser = currentUser;
 
-            GroupsList.ItemSelected += async (source, args) => OnItemSelected(source, args);
+            GroupsList.ItemSelected += async (source, args) => await OnItemSelected(source, args);
         }
 
         protected override void OnAppearing()
@@ -49,7 +49,7 @@ namespace TrackApp.ClientLayer.Maper
         }
 
 
-        public async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        public async Task OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
             if (args.SelectedItem != null)
             {

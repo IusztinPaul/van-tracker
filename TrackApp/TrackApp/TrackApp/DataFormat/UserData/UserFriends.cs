@@ -12,9 +12,9 @@ namespace TrackApp.DataFormat.UserData
         [DynamoDBProperty("Friends")]
         public List<string> Friends { get; set; } //actual friends (list will hold currentUser ids/usernames)
         [DynamoDBProperty("Notifications")]
-        public List<string> Notifications { get; set; } // add or delete notifications (list item blueprint: username#add or username#delete)
+        public List<string> Notifications { get; set; } // add or delete notifications (list item blueprint: username#add#index or username#delete#index)
         [DynamoDBProperty("GroupRequests")]
-        public List<string> GroupRequests { get; set; } // username#groupname 
+        public List<string> GroupRequests { get; set; } // groupname#username#type(administrator/driver)#index  
 
         [DynamoDBProperty("Groups")]
         public List<string> Groups { get; set; } // groupname#a/d (administrator/driver) 

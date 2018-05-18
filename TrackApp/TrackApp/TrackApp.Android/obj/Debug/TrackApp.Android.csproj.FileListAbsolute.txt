@@ -110,6 +110,8 @@ D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\obj\Deb
 D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\obj\Debug\android\assets\System.Xml.pdb
 D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\obj\Debug\android\assets\Xamarin.Forms.Core.pdb
 D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.pdb
+D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\obj\Debug\res\drawable\thick_icon.png
+D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\obj\Debug\res\drawable\x_icon.png
 D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\bin\Debug\TrackApp.Android.dll
 D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\obj\Debug\linksrc\TrackApp.Android.dll.mdb
 D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\obj\Debug\linksrc\AWSSDK.Core.dll.mdb

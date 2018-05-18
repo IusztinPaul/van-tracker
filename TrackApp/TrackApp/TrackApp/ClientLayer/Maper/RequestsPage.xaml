@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:custom="clr-namespace:TrackApp.ClientLayer.CustomUI"
+             xmlns:consts="clr-namespace:TrackApp.ClientLayer"
              x:Class="TrackApp.ClientLayer.Maper.RequestsPage">
 
     <ContentPage.Resources>
@@ -15,11 +15,22 @@
             Orientation="Vertical"
             Margin="{StaticResource Margins}"
             >
+
+            <ActivityIndicator 
+                x:Name="AcIndicatorOnAdd"
+                IsRunning="False"
+                IsVisible="False"
+                Margin="{StaticResource Margins}"
+                />
+            
             <ListView x:Name="UserGroupRequests"
                       CachingStrategy="RecycleElement"
                       HasUnevenRows="True"
                       ItemsSource="{Binding GroupRequests}"
                       HorizontalOptions="Start"
+                      IsPullToRefreshEnabled="True"
+                      RefreshCommand="{Binding OnRefreshCommand}"
+                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                       >
                 
                 <ListView.Header>
@@ -52,7 +63,7 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
-                                <custom:CircleImage
+                                <Image
                                         Grid.Row="0"
                                         Grid.RowSpan="2"    
                                         Grid.Column="0"
@@ -64,21 +75,25 @@
 
                                 <Label 
                                         HorizontalOptions="Start"
+                                        VerticalOptions="End"
                                         Grid.Row="0"
                                         Grid.Column="1"
-                                        TextColor="Black" 
-                                        Text="{Binding Username}"
-                                        FontSize="20"
+                                        TextColor="DarkGray" 
+                                        Text="{Binding Username, StringFormat='{0} te-a invitat in'}"
                                         FontAttributes="Bold"
+                                        FontSize="15"
                                         Margin="7,0"
                                        />
 
                                 <Label
                                         HorizontalOptions="Start"
+                                        VerticalOptions="Start"
                                         Grid.Row="1"
                                         Grid.Column="1"
-                                        Text="{Binding GroupName, StringFormat='Te-a invitat in {0}'}" 
-                                        FontSize="14"
+                                        Text="{Binding BottomDisplayText}" 
+                                        FontSize="15"
+                                        TextColor="DarkGray" 
+                                        FontAttributes="Italic, Bold" 
                                         Margin="7,0"
                                         />
 
@@ -89,9 +104,12 @@
                                         Grid.Column="2"
                                         Margin="1"
                                         Text="+"
-                                        FontSize="7"
+                                        FontSize="14"
                                         HeightRequest="35"
                                         WidthRequest="35"
+                                        BindingContext="{Binding Source={x:Reference UserGroupRequests}, Path=BindingContext}"
+                                        Command="{Binding AcceptRequestCommand}"
+                                        CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"
                                         />
 
                                 <Button VerticalOptions="Center"
@@ -100,10 +118,17 @@
                                         Grid.RowSpan="2"    
                                         Grid.Column="3"
                                         Margin="1"
-                                        Text="x"
-                                        FontSize="7"
+                                        Text="X"
+                                        TextColor="Black"
+                                        FontSize="14"
                                         HeightRequest="35"
                                         WidthRequest="35"
+                                        BorderColor="Black"
+                                        BorderWidth="1"
+                                        BackgroundColor="White"
+                                        BindingContext="{Binding Source={x:Reference UserGroupRequests}, Path=BindingContext}"
+                                        Command="{Binding DenyRequestCommand}"
+                                        CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"
                                         />
 
                             </Grid>

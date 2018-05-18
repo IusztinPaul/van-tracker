@@ -213,7 +213,7 @@ namespace TrackApp.ClientLayer.Friends
             clickedUserFriendsObj.Notifications.AddIndexedString(notifStorage);
 
             //resize the notifications if the length exceeded the desired value
-            clickedUserFriendsObj.Notifications = clickedUserFriendsObj.Notifications.ResizeIfNeeded(sort: true);
+            clickedUserFriendsObj.Notifications = clickedUserFriendsObj.Notifications.ResizeIfNeeded(NotificationPage.NOTIFICATION_MAX_NUMBER, 2, sort: true);
 
             //save the updated obj
             var saver = new SaveUserFriends { UserFriends = clickedUserFriendsObj };

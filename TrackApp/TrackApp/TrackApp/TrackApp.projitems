@@ -35,6 +35,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\AddFriendPage.xaml.cs">
       <DependentUpon>AddFriendPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\AddMemberModelView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\CurrentFriendsListViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Friends\FriendsPage.xaml.cs">
       <DependentUpon>FriendsPage.xaml</DependentUpon>
@@ -50,10 +51,15 @@
       <DependentUpon>CreateGroupPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\AddMemberPage.xaml.cs">
+      <DependentUpon>AddMemberPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\GroupMembersPage.xaml.cs">
       <DependentUpon>GroupMembersPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\GroupNotificationPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\GroupNotificationsPage.xaml.cs">
       <DependentUpon>GroupNotificationsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -135,6 +141,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\AddMemberPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <Page Include="$(MSBuildThisFileDirectory)ClientLayer\NavigationMasterPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -181,5 +191,9 @@
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\administrator_icon.png" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\driver_icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\thick_icon.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\x_icon.png" />
   </ItemGroup>
 </Project>

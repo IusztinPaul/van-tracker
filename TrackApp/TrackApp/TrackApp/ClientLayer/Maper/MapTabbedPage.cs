@@ -17,7 +17,7 @@ namespace TrackApp.ClientLayer.Maper
             var groupsPage = new MapGroupsPage(currentUser);
             groupsPage.Title = ClientConsts.MAP_PAGE_TITLE;
 
-            var requestsPage = new RequestsPage();
+            var requestsPage = new RequestsPage(currentUser);
             requestsPage.Title = ClientConsts.REQUEST_PAGE_TITLE;
 
             //adding pages to the tabbed page
@@ -25,14 +25,14 @@ namespace TrackApp.ClientLayer.Maper
             Children.Add(requestsPage);
 
             //toolbar items
-            ToolbarItem addFriend = new ToolbarItem();
-            addFriend.Text = ClientConsts.TOOL_BAR_ADD_GROUP;
-            addFriend.Priority = 0;
-            addFriend.Order = ToolbarItemOrder.Primary;
-            addFriend.Icon = ClientConsts.ADD_ITEM_ICON;
-            addFriend.Command = new Command(() => Navigation.PushAsync(new CreateGroupPage(currentUser)));
+            ToolbarItem addGroup = new ToolbarItem();
+            addGroup.Text = ClientConsts.TOOL_BAR_ADD_GROUP;
+            addGroup.Priority = 0;
+            addGroup.Order = ToolbarItemOrder.Primary;
+            addGroup.Icon = ClientConsts.ADD_ITEM_ICON;
+            addGroup.Command = new Command(() => Navigation.PushAsync(new CreateGroupPage(currentUser)));
 
-            this.ToolbarItems.Add(addFriend);
+            this.ToolbarItems.Add(addGroup);
         }
     }
 }

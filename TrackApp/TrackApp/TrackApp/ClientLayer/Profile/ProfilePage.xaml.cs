@@ -16,9 +16,6 @@ namespace TrackApp.ClientLayer.Profile
     public partial class ProfilePage : ContentPage
     {
 
-        //TODO add image logic
-        //TODO add height to the searchbars
-
         private TrackUser currentUser;
 
         public ProfilePage(TrackUser currentUser)

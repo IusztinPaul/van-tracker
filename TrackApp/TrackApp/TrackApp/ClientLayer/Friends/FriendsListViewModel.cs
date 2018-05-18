@@ -203,7 +203,7 @@ namespace TrackApp.ClientLayer.Friends
 
 
                 //resize the notifications if the length exceeded the desired value
-                selectedUserList.Notifications = selectedUserList.Notifications.ResizeIfNeeded(sort: true);
+                selectedUserList.Notifications = selectedUserList.Notifications.ResizeIfNeeded(NotificationPage.NOTIFICATION_MAX_NUMBER, 2, sort: true);
             }
             else
             {

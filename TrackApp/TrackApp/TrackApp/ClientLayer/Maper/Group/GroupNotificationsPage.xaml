@@ -2,11 +2,46 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TrackApp.ClientLayer.Maper.Group.GroupNotificationsPage">
+
+        <ContentPage.Resources>
+            <ResourceDictionary>
+                <x:String x:Key="ListViewHeaderTitle">Istoric</x:String>
+            </ResourceDictionary>
+        </ContentPage.Resources>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ListView x:Name="GroupNotifications"
+                      CachingStrategy="RecycleElement"
+                      HasUnevenRows="True"
+                      ItemsSource="{Binding GroupNotifications}"
+                      HorizontalOptions="Start"
+                      IsPullToRefreshEnabled="True"
+                      RefreshCommand="{Binding OnRefreshCommand}"
+                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                      >
+
+            <ListView.Header>
+                <Label 
+                        Text="{StaticResource ListViewHeaderTitle}" 
+                        HorizontalOptions="StartAndExpand" 
+                        Margin="{StaticResource Margins}" 
+                        TextColor="Black"
+                        FontSize="{StaticResource LabelFontSize}"/>
+            </ListView.Header>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ImageCell 
+                         ImageSource="{Binding Icon}"
+                         Text="{Binding Username}"
+                         TextColor="Black"
+                         Detail="{Binding TypeDisplay}"
+                         DetailColor="DarkGray"
+                        />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
     </ContentPage.Content>
+    
 </ContentPage>

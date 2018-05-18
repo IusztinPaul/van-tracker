@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:TrackApp.ClientLayer.CustomUI"
+             x:Class="TrackApp.ClientLayer.Maper.Group.AddMemberPage">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="LabelTypeHint">Alege tipul utilizatorului</x:String>
+            <x:String x:Key="BtnAdministratorText">Administrator</x:String>
+            <x:String x:Key="BtnDriverText">Sofer</x:String>
+            <x:String x:Key="BtnGoBackText">Inapoi</x:String>
+            <x:String x:Key="BtnText">Adauga</x:String>
+
+            <x:String x:Key="ListViewHeaderTitle">Utilizatori</x:String>
+            <x:String x:Key="SearchBoxPlaceHolder">Cauta utilizatori</x:String>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout>
+
+            <ActivityIndicator 
+                x:Name="AcIndicatorOnAdd"
+                IsRunning="False"
+                IsVisible="False"
+                Margin="{StaticResource Margins}"
+                />
+
+            <ScrollView 
+                x:Name="ScrViewButtons"
+                Margin="{StaticResource Margins}">
+                <StackLayout
+                    Orientation="Vertical"
+                    Spacing="10">
+
+                    <Label
+                        Text="{StaticResource LabelTypeHint}"
+                        FontSize="{StaticResource Medium}"
+                        TextColor="Black"
+                        HorizontalOptions="StartAndExpand"
+                        Margin="5,5,5,10"
+                        />
+
+                    <Button
+                        x:Name="BtnAdministrator"
+                        Text="{StaticResource BtnAdministratorText}"
+                        Margin="2,5, 2, 2"
+                        HorizontalOptions="CenterAndExpand"
+                        WidthRequest="250"
+                        />
+
+                    <Button
+                        x:Name="BtnDriver"
+                        Text="{StaticResource BtnDriverText}"
+                        Margin="2,2, 2, 5"
+                        HorizontalOptions="CenterAndExpand"
+                        WidthRequest="250"
+                        />
+                    
+                </StackLayout>
+            </ScrollView>
+
+            <StackLayout
+                x:Name="StackUserLists"
+                Margin="{StaticResource Margins}"
+                Spacing="10"
+                IsVisible="False">
+
+                <Button
+                        x:Name="BtnGoBack"
+                        Text="{StaticResource BtnGoBackText}"
+                        Margin="3"
+                        HorizontalOptions="CenterAndExpand"
+                        WidthRequest="250"
+                        />
+
+                <SearchBar 
+                         x:Name="SrcBarNames"
+                       Placeholder="{StaticResource SearchBoxPlaceHolder}"
+                        TextChanged="OnTextChanged"
+                        Margin="2"
+                        HeightRequest="40"
+                       />
+
+
+                <ListView x:Name="UsersList"
+                      CachingStrategy="RecycleElement"
+                      HasUnevenRows="True"
+                      ItemsSource="{Binding Users}"
+                      IsPullToRefreshEnabled="True"
+                      RefreshCommand="{Binding OnRefreshCommand}"
+                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                      >
+
+                    <ListView.Header>
+                        <Label 
+                        Text="{StaticResource ListViewHeaderTitle}" 
+                        HorizontalOptions="StartAndExpand" 
+                        Margin="{StaticResource Margins}" 
+                        TextColor="Black"
+                        FontSize="{StaticResource LabelFontSize}"/>
+                    </ListView.Header>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell >
+
+                                <Grid
+                                Padding="5, 5, 0, 5"
+                                x:Name="Item"
+                                    >
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="25"/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <custom:CircleImage
+                                        Grid.Row="0"
+                                        Grid.RowSpan="2"    
+                                        Grid.Column="0"
+                                        Source="{Binding IconSource}"
+                                        Aspect="AspectFill"
+                                        HeightRequest="70"
+                                        WidthRequest="70"
+                                        />
+
+                                    <Label 
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        TextColor="Black" 
+                                        Text="{Binding Username}"
+                                        FontSize="{StaticResource Medium}"
+                                        FontAttributes="Bold"
+                                       />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Text="{Binding FullName}" 
+                                        FontSize="{StaticResource Medium}"
+                                        />
+
+                                    <Button VerticalOptions="Center"
+                                        HorizontalOptions="End"
+                                        Grid.Row="0"
+                                        Grid.RowSpan="2"    
+                                        Grid.Column="2"
+                                        Margin="1"
+                                        Text="{StaticResource BtnText}"
+                                        BindingContext="{Binding Source={x:Reference UsersList}, Path=BindingContext}"
+                                        Command="{Binding OnButtonTappedCommand}"
+                                        CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"
+                                        Scale="0.75"
+                                        />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+            </StackLayout>
+           
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

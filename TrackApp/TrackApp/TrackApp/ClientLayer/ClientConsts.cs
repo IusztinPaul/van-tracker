@@ -35,6 +35,8 @@ namespace TrackApp.ClientLayer
         public const string LOCATION_BLACK_ICON = "location_icon_black.png";
         public const string ADMINISTRATOR_ICON = "administrator_icon.png";
         public const string DRIVER_ICON = "driver_icon.jpg";
+        public const string THICK_ICON = "thick_icon.png";
+        public const string X_ICON = "x_icon.png";
 
         // login and sign up constants 
         public const int PASSWORD_LENGTH_MINIMUM = 6;

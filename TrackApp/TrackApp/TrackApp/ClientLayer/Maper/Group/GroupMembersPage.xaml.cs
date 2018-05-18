@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using TrackApp.DataFormat.UserData;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,10 +12,10 @@ namespace TrackApp.ClientLayer.Maper.Group
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class GroupMembersPage : ContentPage
 	{
-		public GroupMembersPage (string groupName, BasicRefreshingModelView bindingContext)
+		public GroupMembersPage (RoledTrackUser currentUser, string groupName)
 		{
 			InitializeComponent ();
-            BindingContext = bindingContext;
+            BindingContext = new GroupPageViewModel(currentUser, groupName);
         }
 
         protected override void OnAppearing()

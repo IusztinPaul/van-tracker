@@ -34,7 +34,7 @@ namespace TrackApp.ClientLayer.Maper
 
         public MapGroupsViewModel(TrackUser currentUser) : base(currentUser)
         {
-
+           
         }
 
 
@@ -54,7 +54,7 @@ namespace TrackApp.ClientLayer.Maper
 
                 // query and add data to Groups list
                 var userFriends = await QueryHashLoader.LoadData<UserFriends>(currentUser.Username);
-                if (userFriends != null)
+                if (userFriends != null && userFriends.Groups != null)
                 {
                     foreach (var group in userFriends.Groups)
                     {
