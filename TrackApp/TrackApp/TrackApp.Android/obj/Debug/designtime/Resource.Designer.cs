@@ -3034,7 +3034,13 @@ namespace TrackApp.Droid
 			public static int profile_icon_black = 0;
 			
 			// aapt resource value: 0
+			public static int red_cross_icon = 0;
+			
+			// aapt resource value: 0
 			public static int thick_icon = 0;
+			
+			// aapt resource value: 0
+			public static int thick_icon_black = 0;
 			
 			// aapt resource value: 2131296361
 			public static int tooltip_frame_dark = 2131296361;

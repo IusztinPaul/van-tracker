@@ -32,7 +32,6 @@ namespace TrackApp.ClientLayer.Maper.Group
             get => _users;
             set
             {
-
                 _users = value;
                 OnPropertyChanged("Users");
             }

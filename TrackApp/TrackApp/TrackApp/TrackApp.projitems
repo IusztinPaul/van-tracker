@@ -24,6 +24,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\ClientConsts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\CustomUI\AddAdressView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\CustomUI\CircleImage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\CustomUI\CustomEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\CustomUI\IMessage.cs" />
@@ -55,6 +56,18 @@
       <DependentUpon>AddMemberPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\CreateRouteGenericPage.xaml.cs">
+      <DependentUpon>CreateRouteGenericPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\CreateRoutePage.xaml.cs">
+      <DependentUpon>CreateRoutePage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\EditAddressPage.xaml.cs">
+      <DependentUpon>EditAddressPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\GroupMembersPage.xaml.cs">
       <DependentUpon>GroupMembersPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -66,6 +79,16 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\GroupPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\GroupTabbedPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\SingleRoutePage.xaml.cs">
+      <DependentUpon>SingleRoutePage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\SingleRouteViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\UserRoutesPage.xaml.cs">
+      <DependentUpon>UserRoutesPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\UserRoutesViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\MapGroupsPage.xaml.cs">
       <DependentUpon>MapGroupsPage.xaml</DependentUpon>
     </Compile>
@@ -80,6 +103,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\NavigationMasterPage.xaml.cs">
       <DependentUpon>NavigationMasterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\PermissionsCaller.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Profile\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
@@ -100,15 +124,20 @@
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\Group.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\Location.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\LocationTypeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataFormat\Route.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataFormat\RouteInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\UserData\RoledTrackUser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\UserData\TrackUser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\MainPage.xaml.cs">
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\UserData\UserFriends.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Query\QueryRoute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\GroupAndRouteSaver.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\MultiTableBatchGroupsUserFriends.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Query\QueryHashLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Query\QueryUser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\ISaveData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\RouteSaver.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\SaveGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\SaveUser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\SaveUserFriends.cs" />
@@ -142,6 +171,26 @@
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\AddMemberPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\UserRoutesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\CreateRoutePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\CreateRouteGenericPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\SingleRoutePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\EditAddressPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
@@ -195,5 +244,9 @@
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\thick_icon.png" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\x_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\red_cross_icon.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\thick_icon_black.png" />
   </ItemGroup>
 </Project>

@@ -142,9 +142,9 @@ namespace TrackApp.ClientLayer.Maper
 
                         else if (notif.Type.Equals(AddMemberPage.DRIVER_STATE_DISPLAY))
                             if (group.Drivers != null)
-                                group.Drivers.Add(currentUser.Username);
+                                group.Drivers.Add(currentUser.Username + ClientConsts.CONCAT_SPECIAL_CHARACTER + "0"); // username#numberOfRoutesInGroup
                             else
-                                group.Drivers = new List<string> { currentUser.Username };
+                                group.Drivers = new List<string> { currentUser.Username + ClientConsts.CONCAT_SPECIAL_CHARACTER + "0" };
                         else
                             throw new Exception("The user has a type that does not exist!");
 
@@ -185,7 +185,7 @@ namespace TrackApp.ClientLayer.Maper
                         if (currentUserFriends.GroupRequests.Count == 1)
                         {
                             currentUserFriends.GroupRequests.Clear();
-                            await ISaveData.DeleteData<UserFriends>(currentUser.Username); // delete it first otherwise if only one item remains in the request list it wont be delted from the db
+                            await ISaveData.DeleteOnlyHashKeyData<UserFriends>(currentUser.Username); // delete it first otherwise if only one item remains in the request list it wont be delted from the db
                         }
                         else
                         {
@@ -299,7 +299,7 @@ namespace TrackApp.ClientLayer.Maper
                         if (currentUserFriends.GroupRequests.Count == 1)
                         {
                             currentUserFriends.GroupRequests.Clear();
-                            await ISaveData.DeleteData<UserFriends>(currentUser.Username); // delete it first otherwise if only one item remains in the request list it wont be delted from the db
+                            await ISaveData.DeleteOnlyHashKeyData<UserFriends>(currentUser.Username); // delete it first otherwise if only one item remains in the request list it wont be delted from the db
                         }
                         else
                         {

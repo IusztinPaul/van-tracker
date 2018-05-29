@@ -12,7 +12,7 @@ namespace TrackApp.ServerLayer.Save
     public abstract class ISaveData
     {
         public abstract Task SaveData();
-        public static async Task DeleteData<T>(string id)
+        public static async Task DeleteOnlyHashKeyData<T>(string id)
         {
             try
             {

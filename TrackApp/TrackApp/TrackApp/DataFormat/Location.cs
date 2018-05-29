@@ -7,12 +7,12 @@ namespace TrackApp.DataFormat
 {
     public class Location
     {
-        public string Country { get ; set; }
-        public string Region { get; set; }
-        public string City { get; set; }
-        public string Street { get; set; }
-        public string Nr { get; set; }
-        public string Block { get; set; }
+        public string Country { get; set; } = "";
+        public string Region { get; set; } = "";
+        public string City { get; set; } = "";
+        public string Street { get; set; } = "";
+        public string Nr { get; set; } = "";
+        public string Block { get; set; } = "";
        
 
         public Dictionary<string, DynamoDBEntry> toDict()
@@ -37,14 +37,33 @@ namespace TrackApp.DataFormat
             loc.City = dict["City"];
             loc.Street = dict["Street"];
             loc.Nr = dict["Nr"];
-            loc.Block = dict["Block"];
+
+            if (dict.ContainsKey("Block"))
+                loc.Block = dict["Block"];
+            else
+                loc.Block = null;
 
             return loc;
         }
 
         public override string ToString()
         {
-            return Country + " " + Region + " " + City + " " + Street + " " + Block;
+            return Country + " " + Region + " " + City + " str. " + Street + " nr. " + Nr + " " + Block;
+        }
+
+        public override bool Equals(object obj)
+        {
+            var item = obj as Location;
+            if (item != null)
+                return item.Country.Equals(Country) && item.Region.Equals(Region) && item.City.Equals(City) && 
+                    item.Street.Equals(Street) && item.Nr.Equals(Nr) && item.Block.Equals(Block);
+
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return Country.GetHashCode() + Region.GetHashCode() + City.GetHashCode();
         }
     }
 }

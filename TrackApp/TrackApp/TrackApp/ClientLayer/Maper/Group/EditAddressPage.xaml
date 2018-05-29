@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customUi="clr-namespace:TrackApp.ClientLayer.CustomUI"
+             x:Class="TrackApp.ClientLayer.Maper.Group.EditAddressPage">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="DescriptionLabel">Schimba adresa</x:String>
+            <x:String x:Key="EntryAddressPlaceholder">Nume adresa</x:String>
+            <x:String x:Key="EntryAddressDetailPlaceholder">nr. * bl. * sc. *</x:String>
+            <x:String x:Key="BtnText">Salveaza</x:String>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout
+            x:Name="contentStackLayout"
+            Margin="{StaticResource Margins}"
+            Orientation="Vertical"
+            VerticalOptions="CenterAndExpand">
+            
+            <Label Text="{StaticResource DescriptionLabel}" FontSize="{StaticResource LabelFontSize}"/>
+            
+            <customUi:CustomEntry x:Name="EntryAddressName"
+                                              Placeholder="{StaticResource EntryAddressPlaceholder}"
+                                      VerticalOptions="CenterAndExpand"
+                                              />
+            <customUi:CustomEntry x:Name="EntryAddressDetail"
+                                          Placeholder="{StaticResource EntryAddressDetailPlaceholder}"
+                                      VerticalOptions="CenterAndExpand"
+                                          />
+            <Button x:Name="BtnSaveData"
+                        Text="{StaticResource BtnText}"
+                        VerticalOptions="CenterAndExpand"
+                        FontAttributes="Bold"
+                        Margin="8"/>
+
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+    
+    
+</ContentPage>

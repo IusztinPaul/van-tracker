@@ -17,6 +17,10 @@ namespace TrackApp.ClientLayer.Maper.Group
 {
     public class GroupPageViewModel : BasicRefreshingModelView
     {
+        public const string ADMINISTRATOR_DISPLAY_TEXT = "Administrator";
+        public const string DRIVER_DISPLAY_TEXT = "Sofer";
+
+
         private DataFormat.Group currentGroup;
         private string groupName;
 
@@ -104,7 +108,7 @@ namespace TrackApp.ClientLayer.Maper.Group
                 {
                     var member = new RoledUsername
                     {
-                        Username = username,
+                        Username = username.Split(ClientConsts.CONCAT_SPECIAL_CHARACTER[0])[0], //username#numberOfRoutesInGroup
                         Role = RoledTrackUser.TYPE_DRIVER
                     };
                     allMembers.Add(member);
@@ -150,6 +154,19 @@ namespace TrackApp.ClientLayer.Maper.Group
                     return ClientConsts.DRIVER_ICON;
 
                 return ClientConsts.USER_PLACEHOLDER;
+            }
+        }
+
+        public string ShowRole { get
+            {
+                if (Role == RoledTrackUser.TYPE_ADMINISTRATOR)
+                    return GroupPageViewModel.ADMINISTRATOR_DISPLAY_TEXT;
+
+                if (Role == RoledTrackUser.TYPE_DRIVER)
+                    return GroupPageViewModel.DRIVER_DISPLAY_TEXT;
+
+                return "";
+
             }
         }
     }

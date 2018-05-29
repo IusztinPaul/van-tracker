@@ -10,6 +10,8 @@ D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\obj\Deb
 D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\obj\Debug\android\assets\PCLCrypto.dll
 D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\obj\Debug\android\assets\PCLStorage.Abstractions.dll
 D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\obj\Debug\android\assets\PCLStorage.dll
+D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\obj\Debug\android\assets\Plugin.CurrentActivity.dll
+D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\obj\Debug\android\assets\Plugin.Permissions.dll
 D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\obj\Debug\android\assets\System.Core.dll
 D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\obj\Debug\android\assets\System.dll
 D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\obj\Debug\android\assets\System.Xml.dll

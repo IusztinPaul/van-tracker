@@ -238,6 +238,13 @@ namespace TrackApp.ClientLayer.Validation
 
         public async Task BtnSaveUserListener()
         {
+
+            BtnSaveUser.IsEnabled = false;
+
+            //first ask for permissions
+            await PermissionsCaller.PermissionLocationCaller(this);
+            await PermissionsCaller.PermissionStorageCaller(this);
+
             double progBarIncrementRate = 1d / 5d;
             double progBarCurentValue = 0d;
 
@@ -322,6 +329,10 @@ namespace TrackApp.ClientLayer.Validation
             catch (Exception e) // in case of unexpected error like Error: NameResolutionFailure
             {
                 DependencyService.Get<IMessage>().ShortAlert(ClientConsts.INTERNET_EXCEPTION_MESSAGE);
+            }
+            finally
+            {
+                BtnSaveUser.IsEnabled = true;
             }
         }
 

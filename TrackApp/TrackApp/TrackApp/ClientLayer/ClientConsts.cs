@@ -37,6 +37,8 @@ namespace TrackApp.ClientLayer
         public const string DRIVER_ICON = "driver_icon.jpg";
         public const string THICK_ICON = "thick_icon.png";
         public const string X_ICON = "x_icon.png";
+        public const string DELIVERED_ICON = "thick_icon_black.png";
+        public const string NOT_DELIVERED_ICON = "red_cross_icon.png";
 
         // login and sign up constants 
         public const int PASSWORD_LENGTH_MINIMUM = 6;
@@ -72,6 +74,9 @@ namespace TrackApp.ClientLayer
         public const string NOTIFICATIONS_PAGE_TITLE = "Istoric";
         public const string START_PROCESS_SIGNAL = "Asteptati sa se incarce datele!";
         public const string GROUP_TITLE = "Grup";
+
+        //group members and routes pages
+        public const string ADD_ROUTE_TOOL_BAR_TITLE = "Creaza ruta";
 
     }
 }

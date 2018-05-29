@@ -26,7 +26,7 @@
                 />
 
 
-            <ListView x:Name="GroupsList"
+            <ListView x:Name="MembersList"
                       CachingStrategy="RecycleElement"
                       HasUnevenRows="True"
                       ItemsSource="{Binding Members}"
@@ -48,7 +48,7 @@
                     <DataTemplate>
                         <ImageCell 
                                 Text="{Binding Username}"
-                                Detail="{Binding Role}"
+                                Detail="{Binding ShowRole}"
                                 ImageSource="{Binding Icon}"
                                 TextColor="Black"
                                 DetailColor="{StaticResource TextColor}"

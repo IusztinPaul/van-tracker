@@ -34,3 +34,5 @@ Xamarin.Forms.Xaml
 System.Reflection.Extensions
 System.Resources.ResourceManager
 netstandard
+Plugin.CurrentActivity
+Plugin.Permissions

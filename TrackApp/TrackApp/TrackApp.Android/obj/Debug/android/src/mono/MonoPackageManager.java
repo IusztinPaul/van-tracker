@@ -115,6 +115,8 @@ class MonoPackageManager_Resources {
 		"PCLCrypto.dll",
 		"PCLStorage.Abstractions.dll",
 		"PCLStorage.dll",
+		"Plugin.CurrentActivity.dll",
+		"Plugin.Permissions.dll",
 		"Validation.dll",
 		"Xamarin.Android.Arch.Core.Common.dll",
 		"Xamarin.Android.Arch.Lifecycle.Common.dll",

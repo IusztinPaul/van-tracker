@@ -29,7 +29,7 @@ namespace TrackApp
 
              var user = new TrackUser()
             {
-                Username = "Arther",
+                Username = "PaulakaPaul",
                 FirstName = "Paul",
                 LastName = "Iusztin",
                 Phone = "0732509516",
@@ -50,9 +50,9 @@ namespace TrackApp
                 Role = "Administrator"
             };
 
-            //  MainPage = new NavigationPage(new ProfilePage(user)); 
-          //   MainPage = new NavigationPage(new LoginPage(user));
-            MainPage = new NavigationPage(new MapTabbedPage(user));
+          //    MainPage = new NavigationPage(new GroupTabbedPage(roledUser, "TestGroup2")); 
+             MainPage = new NavigationPage(new LoginPage(user));
+           // MainPage = new NavigationPage(new CreateRoutePage("TestGroup2", "Leppar"));
             // MainPage = new DemoPickPage();
 		}
 

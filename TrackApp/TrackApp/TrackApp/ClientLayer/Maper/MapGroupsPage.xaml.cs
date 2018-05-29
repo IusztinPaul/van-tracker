@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using TrackApp.ClientLayer.CustomUI;
 using TrackApp.ClientLayer.Maper.Group;
 using TrackApp.DataFormat.UserData;
-using TrackApp.ServerLayer.Query;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Plugin.Permissions.Abstractions;
 
 namespace TrackApp.ClientLayer.Maper
 {
@@ -64,7 +60,13 @@ namespace TrackApp.ClientLayer.Maper
 
                     DependencyService.Get<IMessage>().ShortAlert(ClientConsts.START_PROCESS_SIGNAL);
 
-                    await Navigation.PushAsync(new GroupTabbedPage(roledUser, item.Name));
+                    //ask for permissions
+                    var result = await PermissionsCaller.PermissionLocationCaller(this);
+
+                    if (result.Equals(PermissionStatus.Granted) || roledUser.Equals(RoledTrackUser.TYPE_ADMINISTRATOR))
+                        await Navigation.PushAsync(new GroupTabbedPage(roledUser, item.Name));
+                    else
+                        await DisplayAlert("Atentie", "Nu va putem lasa sa accesati grupurile fara acces la locatia dumneavoastra!", "Ok");
                 }
                 
                     (sender as ListView).SelectedItem = null;

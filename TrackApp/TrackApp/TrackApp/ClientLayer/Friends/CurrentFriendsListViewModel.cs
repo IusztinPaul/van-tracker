@@ -169,7 +169,7 @@ namespace TrackApp.ClientLayer.Friends
             if (currentUserFriends.Friends != null && currentUserFriends.Friends.Count == 1)
             {
                 // can't delete the last item in a list so we delete the whole row
-                await ISaveData.DeleteData<UserFriends>(currentUserFriends.Username);
+                await ISaveData.DeleteOnlyHashKeyData<UserFriends>(currentUserFriends.Username);
 
                 // if there are any notifications save them again
                 if( (currentUserFriends.Notifications != null && currentUserFriends.Notifications.Count != 0) || 

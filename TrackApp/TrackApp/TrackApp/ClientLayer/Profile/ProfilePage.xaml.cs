@@ -9,6 +9,8 @@ using TrackApp.DataFormat.UserData;
 using TrackApp.ServerLayer.Save;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Plugin.Permissions.Abstractions;
+
 
 namespace TrackApp.ClientLayer.Profile
 {
@@ -104,46 +106,54 @@ namespace TrackApp.ClientLayer.Profile
             }
         }
 
-        public void TbItemEditListener(object source, EventArgs args)
+        public async void TbItemEditListener(object source, EventArgs args)
         {
-            // change view to entryfields and save button
-
-            EtFirstName.IsVisible = true;
-            EtLastName.IsVisible = true;
-            EtEmail.IsVisible = true;
-            EtPhoneNumber.IsVisible = true;
-            EtCountry.IsVisible = true;
-            EtRegion.IsVisible = true;
-            EtCity.IsVisible = true;
-            EtAddress.IsVisible = true;
-            EtAddressNumber.IsVisible = true;
-            EtBlock.IsVisible = true;
-
-            LbFirstName.IsVisible = false;
-            LbLastName.IsVisible = false;
-            LbEmail.IsVisible = false;
-            LbPhoneNumber.IsVisible = false;
-            LbCountry.IsVisible = false;
-            LbRegion.IsVisible = false;
-            LbCity.IsVisible = false;
-            LbAddress.IsVisible = false;
-            LbAddressNumber.IsVisible = false;
-            LbBlock.IsVisible = false;
-
-
-            // add pick image gesture recognizer
-            TapGestureRecognizer pickPictureRecognizer = new TapGestureRecognizer();
-            pickPictureRecognizer.Tapped += ChangeProfilePhotoListener;
-            ImgProfile.GestureRecognizers.Add(pickPictureRecognizer);
-
-            //setup hint label
-            LbChangePhoto.IsVisible = true;
-            LbChangePhoto.GestureRecognizers.Add(new TapGestureRecognizer
+            //first ask for storage permission
+            var result = await PermissionsCaller.PermissionStorageCaller(this);
+            if (result.Equals(PermissionStatus.Granted))
             {
-                Command = new Command( () => ChangeProfilePhotoListener(null, null))
-            });
+                // change view to entryfields and save button
+                EtFirstName.IsVisible = true;
+                EtLastName.IsVisible = true;
+                EtEmail.IsVisible = true;
+                EtPhoneNumber.IsVisible = true;
+                EtCountry.IsVisible = true;
+                EtRegion.IsVisible = true;
+                EtCity.IsVisible = true;
+                EtAddress.IsVisible = true;
+                EtAddressNumber.IsVisible = true;
+                EtBlock.IsVisible = true;
 
-            BtnSaveEdit.IsVisible = true;
+                LbFirstName.IsVisible = false;
+                LbLastName.IsVisible = false;
+                LbEmail.IsVisible = false;
+                LbPhoneNumber.IsVisible = false;
+                LbCountry.IsVisible = false;
+                LbRegion.IsVisible = false;
+                LbCity.IsVisible = false;
+                LbAddress.IsVisible = false;
+                LbAddressNumber.IsVisible = false;
+                LbBlock.IsVisible = false;
+
+
+                // add pick image gesture recognizer
+                TapGestureRecognizer pickPictureRecognizer = new TapGestureRecognizer();
+                pickPictureRecognizer.Tapped += ChangeProfilePhotoListener;
+                ImgProfile.GestureRecognizers.Add(pickPictureRecognizer);
+
+                //setup hint label
+                LbChangePhoto.IsVisible = true;
+                LbChangePhoto.GestureRecognizers.Add(new TapGestureRecognizer
+                {
+                    Command = new Command(() => ChangeProfilePhotoListener(null, null))
+                });
+
+                BtnSaveEdit.IsVisible = true;
+            }
+            else
+            {
+                await DisplayAlert("Atentie", "Nu va putem lasa sa va editati account-ul fara a ne oferi permisiunea de a citi din spatiul de stocare al telefonului dumneavoastra", "Ok");
+            }
         }
 
 

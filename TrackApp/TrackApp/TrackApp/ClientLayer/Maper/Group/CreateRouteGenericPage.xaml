@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customUi="clr-namespace:TrackApp.ClientLayer.CustomUI"
+             x:Class="TrackApp.ClientLayer.Maper.Group.CreateRouteGenericPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="DescriptionLabel">Toate campurile sunt obligatorii</x:String>
+            <x:String x:Key="GroupName">Nume grup ('$' si '#' excluse)</x:String>
+            <x:String x:Key="Country">Tara</x:String>
+            <x:String x:Key="Region">Regiune (ex. Timis)</x:String>
+            <x:String x:Key="City">Oras</x:String>
+            <x:String x:Key="ButtonText">Pasul urmator</x:String>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout x:Name="StackLayContent"
+                        Orientation="Vertical" 
+                         Margin="{StaticResource Margins}"
+                         Spacing="15">
+
+                <Label Text="{StaticResource DescriptionLabel}" FontSize="{StaticResource LabelFontSize}"/>
+
+                <customUi:CustomEntry x:Name="EntryGroupName"
+                                      Placeholder="{StaticResource GroupName}"
+                                      VerticalOptions="CenterAndExpand"
+                                              />
+                <customUi:CustomEntry x:Name="EntryCountry"
+                                      Placeholder="{StaticResource Country}"
+                                      VerticalOptions="CenterAndExpand"
+                                          />
+                <customUi:CustomEntry x:Name="EntryRegion"
+                                      Placeholder="{StaticResource Region}"
+                                      VerticalOptions="CenterAndExpand"/>
+
+
+                <customUi:CustomEntry x:Name="EntryCity"
+                                      Placeholder="{StaticResource City}"
+                                      VerticalOptions="CenterAndExpand" 
+                                      />
+
+                <Button
+                    x:Name="BtnProceed"
+                    Text="{StaticResource ButtonText}"
+                    VerticalOptions="CenterAndExpand"
+                    FontAttributes="Bold"
+                    />
+                
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

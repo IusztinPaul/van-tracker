@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TrackApp.ClientLayer.Maper.Group.SingleRoutePage">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="ListViewHeaderTitle">Adrese</x:String>
+            <x:String x:Key="TitleGeneralInfo">Informatii generale</x:String>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            
+            <Label 
+                        Text="{StaticResource TitleGeneralInfo}" 
+                        HorizontalOptions="StartAndExpand" 
+                        Margin="8,2" 
+                        TextColor="Black"
+                        FontSize="{StaticResource LabelFontSize}"/>
+
+            <Label 
+                        x:Name="LabelCountry"
+                        Text="{Binding Country, StringFormat='Tara: {0}'}" 
+                        HorizontalOptions="StartAndExpand" 
+                        Margin="8,2" 
+                        TextColor="Black"
+                        FontSize="{StaticResource InfoFontSize}"/>
+
+            <Label 
+                        x:Name="LabelRegion"
+                        Text="{Binding Region, StringFormat='Regiune: {0}'}" 
+                        HorizontalOptions="StartAndExpand" 
+                        Margin="8,2" 
+                        TextColor="Black"
+                        FontSize="{StaticResource InfoFontSize}"/>
+
+            <Label 
+                        x:Name="LabelCity"
+                        Text="{Binding City, StringFormat='Oras: {0}'}" 
+                        HorizontalOptions="StartAndExpand" 
+                        Margin="8,2,8,8" 
+                        TextColor="Black"
+                        FontSize="{StaticResource InfoFontSize}"/>
+
+            <ListView x:Name="AddressesListView"
+                      CachingStrategy="RecycleElement"
+                      HasUnevenRows="True"
+                      ItemsSource="{Binding AddressesList}"
+                      IsPullToRefreshEnabled="True"
+                      RefreshCommand="{Binding OnRefreshCommand}"
+                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                      >
+
+                <ListView.Header>
+                    <Label 
+                        Text="{StaticResource ListViewHeaderTitle}" 
+                        HorizontalOptions="StartAndExpand" 
+                        Margin="{StaticResource Margins}" 
+                        TextColor="Black"
+                        FontSize="{StaticResource LabelFontSize}"/>
+                </ListView.Header>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell
+                            Text="{Binding UpperRouteText}"
+                            Detail="{Binding BottomRouteText}"
+                            TextColor="Black"
+                            DetailColor="DarkGray"
+                            ImageSource="{Binding Icon}"
+                            />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

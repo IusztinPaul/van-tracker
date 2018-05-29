@@ -59,9 +59,13 @@ namespace TrackApp.ClientLayer.Validation
 
 		}
 
-	    private async Task OnLabelGoToSignUpClicked()
+        private async Task OnLabelGoToSignUpClicked()
 	    {
-	        await Navigation.PushAsync(new NavigationPage(new SignUpPage()));
+            //first ask for permissions
+            await PermissionsCaller.PermissionLocationCaller(this);
+            await PermissionsCaller.PermissionStorageCaller(this);
+
+            await Navigation.PushAsync(new SignUpPage());
 	    }
 
 	    private async Task<TrackUser> GetUserFromEntry()
@@ -92,10 +96,16 @@ namespace TrackApp.ClientLayer.Validation
 
 	    private async Task BtnLoginClickListener()
 	    {
-	        double progBarIncrementRate = 1d / 2d;
+            BtnLogin.IsEnabled = false;
+
+            double progBarIncrementRate = 1d / 2d;
 	        double progBarCurentValue = 0d;
 
-	        try
+            //first ask for permissions
+            await PermissionsCaller.PermissionLocationCaller(this);
+            await PermissionsCaller.PermissionStorageCaller(this);
+
+            try
 	        {
 	            // validate the data and show progress bar animation
 	            var user = await GetUserFromEntry();
@@ -125,6 +135,10 @@ namespace TrackApp.ClientLayer.Validation
                 Console.WriteLine("EXCEPTION COUGHT: " + e.Message);
                 Console.WriteLine("TYPE: " + e.GetType());
                 DependencyService.Get<IMessage>().LongAlert(e.Message);
+            }
+            finally
+            {
+                BtnLogin.IsEnabled = true;
             }
 
         }
