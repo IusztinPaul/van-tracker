@@ -68,6 +68,10 @@
       <DependentUpon>EditAddressPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\GeneralGroupPage.xaml.cs">
+      <DependentUpon>GeneralGroupPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\GroupMembersPage.xaml.cs">
       <DependentUpon>GroupMembersPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -79,6 +83,15 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\GroupPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\GroupTabbedPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\MapN\ActiveRoutePage.xaml.cs">
+      <DependentUpon>ActiveRoutePage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\MapN\MapPage.xaml.cs">
+      <DependentUpon>MapPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\MapN\ActualMapTabbedPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\SingleRoutePage.xaml.cs">
       <DependentUpon>SingleRoutePage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -191,6 +204,18 @@
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\EditAddressPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\GeneralGroupPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\MapN\MapPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\MapN\ActiveRoutePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

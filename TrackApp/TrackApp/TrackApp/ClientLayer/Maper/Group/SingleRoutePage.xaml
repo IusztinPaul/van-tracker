@@ -12,7 +12,8 @@
     </ContentPage.Resources>
     
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout
+            x:Name="contentStackLayout">
             
             <Label 
                         Text="{StaticResource TitleGeneralInfo}" 
@@ -20,6 +21,13 @@
                         Margin="8,2" 
                         TextColor="Black"
                         FontSize="{StaticResource LabelFontSize}"/>
+
+            <Label 
+                        Text="{Binding ActiveRouteText}"
+                        HorizontalOptions="StartAndExpand" 
+                        Margin="8,0, 8, 2" 
+                        TextColor="Red"
+                        FontSize="{StaticResource InfoFontSize}"/>
 
             <Label 
                         x:Name="LabelCountry"

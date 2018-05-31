@@ -11,11 +11,11 @@ namespace TrackApp.ClientLayer.Maper
 
         public MapTabbedPage(TrackUser currentUser)
         {
-            Title = ClientConsts.MAP_PAGE_TITLE;
+            Title = ClientConsts.MAPER_PAGE_TITLE;
 
             //creating pages 
             var groupsPage = new MapGroupsPage(currentUser);
-            groupsPage.Title = ClientConsts.MAP_PAGE_TITLE;
+            groupsPage.Title = ClientConsts.MAPER_PAGE_TITLE;
 
             var requestsPage = new RequestsPage(currentUser);
             requestsPage.Title = ClientConsts.REQUEST_PAGE_TITLE;

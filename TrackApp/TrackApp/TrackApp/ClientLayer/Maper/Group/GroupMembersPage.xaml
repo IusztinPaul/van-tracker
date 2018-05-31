@@ -9,8 +9,8 @@
             <x:String x:Key="SearchBoxPlaceHolder">Cauta membru</x:String>
         </ResourceDictionary>
     </ContentPage.Resources>
-    
-    
+
+
     <ContentPage.Content>
         <StackLayout 
             Orientation="Vertical"
@@ -22,10 +22,8 @@
                        Placeholder="{StaticResource SearchBoxPlaceHolder}"
                         Margin="2"
                         HeightRequest="40"
-                        TextChanged="OnTextChanged"       
-                />
-
-
+                        TextChanged="OnTextChanged" />
+                
             <ListView x:Name="MembersList"
                       CachingStrategy="RecycleElement"
                       HasUnevenRows="True"

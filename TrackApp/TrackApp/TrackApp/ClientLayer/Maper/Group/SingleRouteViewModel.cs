@@ -47,6 +47,17 @@ namespace TrackApp.ClientLayer.Maper.Group
             }
         }
 
+        private string _activeRouteText;
+        public string ActiveRouteText
+        {
+            get => _activeRouteText;
+            set
+            {
+                _activeRouteText = value;
+                OnPropertyChanged("ActiveRouteText");
+            }
+        }
+
         private ObservableCollection<Route> _addressesList;
         public ObservableCollection<Route> AddressesList
         {
@@ -59,14 +70,19 @@ namespace TrackApp.ClientLayer.Maper.Group
         }
 
         private RouteInfo routeInfo;
+        private string groupName;
+        private string tappedUsername;
 
-        public SingleRouteViewModel(RouteInfo routeInfo) : base(null)
+        public SingleRouteViewModel(RouteInfo routeInfo, string groupName, string tappedUsername) : base(null)
         {
             this.routeInfo = routeInfo;
+            this.groupName = groupName;
+            this.tappedUsername = tappedUsername;
 
             Country = "Se incarca...";
             Region = "Se incarca...";
             City = "Se incarca...";
+            ActiveRouteText = "Se incarca...";
         }
 
         public async override Task PopulateAsync()
@@ -81,6 +97,21 @@ namespace TrackApp.ClientLayer.Maper.Group
 
             try
             {
+                //grab group to see if it the route it's active or not
+                var group = await QueryHashLoader.LoadData<DataFormat.Group>(groupName);
+                if(group != null)
+                {
+
+                    if (group.ActiveDriverRoutes != null && group.ActiveDriverRoutes.Contains(tappedUsername.Trim() + ClientConsts.CONCAT_SPECIAL_CHARACTER + routeInfo.Count))
+                        ActiveRouteText = SingleRoutePage.TEXT_ACTIVE_ROUTE;
+                    else
+                        ActiveRouteText = SingleRoutePage.TEXT_UNACTIVE_ROUTE;
+                }
+                else
+                {
+                    ActiveRouteText = "Invalid";
+                }
+
                 //grab routes
                 var routeId = routeInfo.RouteId + ClientConsts.CONCAT_SPECIAL_CHARACTER + routeInfo.Count; // groupname#username#count
                 var routeData = await QueryRoute.QueryRoutes(routeId, routeInfo.CountRouteAddresses);

@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TrackApp.ClientLayer.Maper.Group.GeneralGroupPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="BtnText">Harta</x:String>
+            <x:String x:Key="ListViewHeaderTitle">Rute active</x:String>
+
+            <x:String x:Key="DriverTitleText">Ruta activa</x:String>
+            <x:String x:Key="NoDataText">Nu exista ruta curenta</x:String>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <ContentPage.Content>
+        <ScrollView
+            VerticalOptions="Start"
+            Margin="{StaticResource Margins}">
+
+            <StackLayout
+                VerticalOptions="Start"
+                HorizontalOptions="CenterAndExpand">
+
+                <Button 
+                    x:Name="BtnGoToMap"
+                    Text="{StaticResource BtnText}"
+                    WidthRequest="200"
+                    FontAttributes="Bold"
+                    HorizontalOptions="CenterAndExpand"
+                    Margin="6"
+                    />
+
+                <StackLayout
+                    x:Name="contentStackLayout"
+                    HorizontalOptions="StartAndExpand"
+                    VerticalOptions="Start">
+
+                    <StackLayout
+                        x:Name="StackLayoutDriver"
+                        VerticalOptions="StartAndExpand"
+                        HorizontalOptions="StartAndExpand"
+                        Orientation="Vertical"
+                        Spacing="2">
+
+                        <Label 
+                            x:Name="LabelActiveText"
+                            Text="{StaticResource DriverTitleText}"
+                            FontSize="{StaticResource Medium}"
+                            FontAttributes="Bold"
+                            HorizontalOptions="StartAndExpand"
+                            Margin="8,1"
+                            />
+
+                        <BoxView 
+                            x:Name="DriverBoxView"
+                            Color="{StaticResource TextColor}"
+                         HeightRequest="{StaticResource BorderHeight}"
+                         WidthRequest="380"
+                         HorizontalOptions="CenterAndExpand"
+                         VerticalOptions = "Center"
+                         Margin="8"
+                         />
+
+                        <Label 
+                            x:Name="LabelRouteName"
+                            Text="Se incarca..."
+                            FontSize="{StaticResource Medium}"
+                            FontAttributes="Bold, Italic" 
+                            TextColor="DarkGreen"
+                            HorizontalOptions="StartAndExpand"
+                            Margin="8,1"
+                            />
+
+                        <Label 
+                            x:Name="LabelAddressesNumber"
+                            Text="Se incarca..."
+                            FontSize="{StaticResource Medium}"
+                            HorizontalOptions="StartAndExpand"
+                            Margin="8,1"
+                            />
+
+                        <Label 
+                            x:Name="LabelNoData"
+                            IsVisible="False"
+                            TextColor="Black"
+                            Text="{StaticResource NoDataText}"
+                            FontSize="{StaticResource Medium}"
+                            FontAttributes="Bold"
+                            HorizontalOptions="StartAndExpand"
+                            Margin="8,1"
+                            />
+                    </StackLayout>
+
+                    <ListView x:Name="ActiveRoutesList"
+                      HeightRequest="0"
+                      IsVisible="False"
+                      CachingStrategy="RecycleElement"
+                      HasUnevenRows="True"
+                      >
+                        <ListView.Header>
+                            <Label 
+                        Text="{StaticResource ListViewHeaderTitle}" 
+                        HorizontalOptions="StartAndExpand" 
+                        Margin="{StaticResource Margins}" 
+                        TextColor="Black"
+                        FontSize="{StaticResource LabelFontSize}"/>
+                        </ListView.Header>
+                        
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell 
+                                Text="{Binding ActiveRouteText}"
+                                Detail="{Binding CountRouteAddresses, StringFormat='Ruta are {0} adrese'}"
+                                TextColor="Black"
+                                DetailColor="{StaticResource TextColor}"
+                                />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

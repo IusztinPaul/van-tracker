@@ -44,7 +44,7 @@ namespace TrackApp.ClientLayer.Maper.Group
                 {
                     var item = args.SelectedItem as RouteInfo;
                     if (item != null)
-                        await Navigation.PushAsync(new SingleRoutePage(item, currentUser));
+                        await Navigation.PushAsync(new SingleRoutePage(item, currentUser, groupName, tappedUser.Username));
 
                     (source as ListView).SelectedItem = null;
                 }

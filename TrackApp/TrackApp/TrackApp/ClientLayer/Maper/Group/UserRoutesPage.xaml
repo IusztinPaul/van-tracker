@@ -35,7 +35,7 @@
                         <TextCell
                             Text="{Binding RouteName}"
                             Detail="{Binding CountRouteAddresses, StringFormat='Ruta contine {0} adrese'}"
-                            TextColor="Black"
+                            TextColor="{Binding LabelColor}"
                             DetailColor="DarkGray"
                             />
                     </DataTemplate>

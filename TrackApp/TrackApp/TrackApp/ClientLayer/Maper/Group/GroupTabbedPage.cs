@@ -21,10 +21,13 @@ namespace TrackApp.ClientLayer.Maper.Group
             var notificationsPage = new GroupNotificationsPage(currentUser, groupName);
             notificationsPage.Title = ClientConsts.NOTIFICATIONS_PAGE_TITLE;
 
+            var generalGroupPage = new GeneralGroupPage(currentUser, groupName);
+            generalGroupPage.Title = ClientConsts.GENERAL_GROUP_PAGE_TITLE;
+
             //adding pages to the tabbed page
+            Children.Add(generalGroupPage);
             Children.Add(membersPage);
             Children.Add(notificationsPage);
-
 
             if (currentUser.Role == RoledTrackUser.TYPE_ADMINISTRATOR)
             {

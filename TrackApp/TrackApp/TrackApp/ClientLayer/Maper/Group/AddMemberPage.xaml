@@ -153,6 +153,7 @@
                                         Grid.RowSpan="2"    
                                         Grid.Column="2"
                                         Margin="1"
+                                        FontAttributes="Bold"
                                         Text="{StaticResource BtnText}"
                                         BindingContext="{Binding Source={x:Reference UsersList}, Path=BindingContext}"
                                         Command="{Binding OnButtonTappedCommand}"

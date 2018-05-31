@@ -23,10 +23,12 @@ namespace TrackApp.DataFormat
 
         [DynamoDBProperty("Notifications")]
         public List<string> Notifications { get; set; } //username#add/remove#index
+        [DynamoDBProperty("ActiveDriverRoutes")]
+        public List<string> ActiveDriverRoutes { get; set; } // username#countOfRouteInGroup
 
         public override String ToString()
         {
-            return "Name: "+ Name + "\nAdmins: " + Admins + "\nDrivers: " + Drivers + "\nNotifications: " + Notifications;
+            return "Name: "+ Name + "\nAdmins: " + Admins + "\nDrivers: " + Drivers + "\nNotifications: " + Notifications + "\nActiveDriverRoutes: " + ActiveDriverRoutes;
         }
     }
 }

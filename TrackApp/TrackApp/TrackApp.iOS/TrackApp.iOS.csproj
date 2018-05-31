@@ -157,7 +157,7 @@
       <Version>3.3.2.22</Version>
     </PackageReference>
     <PackageReference Include="AWSSDK.Core">
-      <Version>3.3.22.5</Version>
+      <Version>3.3.23</Version>
     </PackageReference>
     <PackageReference Include="AWSSDK.DynamoDBv2">
       <Version>3.3.8</Version>
@@ -165,7 +165,10 @@
     <PackageReference Include="Plugin.Permissions">
       <Version>3.0.0.12</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="3.0.0.446417" />
+    <PackageReference Include="Xamarin.Forms" Version="3.0.0.482510" />
+    <PackageReference Include="Xamarin.Forms.Maps">
+      <Version>3.0.0.482510</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\add_item_icon.png" />

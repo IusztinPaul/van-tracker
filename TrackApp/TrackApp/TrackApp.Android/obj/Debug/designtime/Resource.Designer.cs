@@ -215,6 +215,15 @@ namespace TrackApp.Droid
 			// aapt resource value: 2130968610
 			public static int activityChooserViewStyle = 2130968610;
 			
+			// aapt resource value: 1
+			public static int adSize = 1;
+			
+			// aapt resource value: 1
+			public static int adSizes = 1;
+			
+			// aapt resource value: 1
+			public static int adUnitId = 1;
+			
 			// aapt resource value: 2130968611
 			public static int alertDialogButtonGroupStyle = 2130968611;
 			
@@ -227,6 +236,9 @@ namespace TrackApp.Droid
 			// aapt resource value: 2130968614
 			public static int alertDialogTheme = 2130968614;
 			
+			// aapt resource value: 1
+			public static int allowShortcuts = 1;
+			
 			// aapt resource value: 2130968615
 			public static int allowStacking = 2130968615;
 			
@@ -235,6 +247,12 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 2130968617
 			public static int alphabeticModifiers = 2130968617;
+			
+			// aapt resource value: 1
+			public static int ambientEnabled = 1;
+			
+			// aapt resource value: 1
+			public static int appTheme = 1;
 			
 			// aapt resource value: 2130968618
 			public static int arrowHeadLength = 2130968618;
@@ -326,6 +344,9 @@ namespace TrackApp.Droid
 			// aapt resource value: 2130968647
 			public static int buttonPanelSideLayout = 2130968647;
 			
+			// aapt resource value: 1
+			public static int buttonSize = 1;
+			
 			// aapt resource value: 2130968648
 			public static int buttonStyle = 2130968648;
 			
@@ -337,6 +358,39 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 2130968651
 			public static int buttonTintMode = 2130968651;
+			
+			// aapt resource value: 1
+			public static int buyButtonAppearance = 1;
+			
+			// aapt resource value: 1
+			public static int buyButtonHeight = 1;
+			
+			// aapt resource value: 1
+			public static int buyButtonText = 1;
+			
+			// aapt resource value: 1
+			public static int buyButtonWidth = 1;
+			
+			// aapt resource value: 1
+			public static int cameraBearing = 1;
+			
+			// aapt resource value: 1
+			public static int cameraMaxZoomPreference = 1;
+			
+			// aapt resource value: 1
+			public static int cameraMinZoomPreference = 1;
+			
+			// aapt resource value: 1
+			public static int cameraTargetLat = 1;
+			
+			// aapt resource value: 1
+			public static int cameraTargetLng = 1;
+			
+			// aapt resource value: 1
+			public static int cameraTilt = 1;
+			
+			// aapt resource value: 1
+			public static int cameraZoom = 1;
 			
 			// aapt resource value: 2130968577
 			public static int cardBackgroundColor = 2130968577;
@@ -356,11 +410,104 @@ namespace TrackApp.Droid
 			// aapt resource value: 2130968582
 			public static int cardUseCompatPadding = 2130968582;
 			
+			// aapt resource value: 1
+			public static int castBackground = 1;
+			
+			// aapt resource value: 1
+			public static int castBackgroundColor = 1;
+			
+			// aapt resource value: 1
+			public static int castButtonBackgroundColor = 1;
+			
+			// aapt resource value: 1
+			public static int castButtonColor = 1;
+			
+			// aapt resource value: 1
+			public static int castButtonText = 1;
+			
+			// aapt resource value: 1
+			public static int castButtonTextAppearance = 1;
+			
+			// aapt resource value: 1
+			public static int castClosedCaptionsButtonDrawable = 1;
+			
+			// aapt resource value: 1
+			public static int castControlButtons = 1;
+			
+			// aapt resource value: 1
+			public static int castExpandedControllerStyle = 1;
+			
+			// aapt resource value: 1
+			public static int castExpandedControllerToolbarStyle = 1;
+			
+			// aapt resource value: 1
+			public static int castFocusRadius = 1;
+			
+			// aapt resource value: 1
+			public static int castForward30ButtonDrawable = 1;
+			
+			// aapt resource value: 1
+			public static int castIntroOverlayStyle = 1;
+			
+			// aapt resource value: 1
+			public static int castLargePauseButtonDrawable = 1;
+			
+			// aapt resource value: 1
+			public static int castLargePlayButtonDrawable = 1;
+			
+			// aapt resource value: 1
+			public static int castLargeStopButtonDrawable = 1;
+			
+			// aapt resource value: 1
+			public static int castMiniControllerStyle = 1;
+			
+			// aapt resource value: 1
+			public static int castMuteToggleButtonDrawable = 1;
+			
+			// aapt resource value: 1
+			public static int castPauseButtonDrawable = 1;
+			
+			// aapt resource value: 1
+			public static int castPlayButtonDrawable = 1;
+			
+			// aapt resource value: 1
+			public static int castProgressBarColor = 1;
+			
+			// aapt resource value: 1
+			public static int castRewind30ButtonDrawable = 1;
+			
+			// aapt resource value: 1
+			public static int castSeekBarProgressDrawable = 1;
+			
+			// aapt resource value: 1
+			public static int castSeekBarThumbDrawable = 1;
+			
+			// aapt resource value: 1
+			public static int castShowImageThumbnail = 1;
+			
+			// aapt resource value: 1
+			public static int castSkipNextButtonDrawable = 1;
+			
+			// aapt resource value: 1
+			public static int castSkipPreviousButtonDrawable = 1;
+			
+			// aapt resource value: 1
+			public static int castStopButtonDrawable = 1;
+			
+			// aapt resource value: 1
+			public static int castSubtitleTextAppearance = 1;
+			
+			// aapt resource value: 1
+			public static int castTitleTextAppearance = 1;
+			
 			// aapt resource value: 2130968652
 			public static int checkboxStyle = 2130968652;
 			
 			// aapt resource value: 2130968653
 			public static int checkedTextViewStyle = 2130968653;
+			
+			// aapt resource value: 1
+			public static int circleCrop = 1;
 			
 			// aapt resource value: 2130968654
 			public static int closeIcon = 2130968654;
@@ -410,6 +557,9 @@ namespace TrackApp.Droid
 			// aapt resource value: 2130968669
 			public static int colorPrimaryDark = 2130968669;
 			
+			// aapt resource value: 1
+			public static int colorScheme = 1;
+			
 			// aapt resource value: 2130968670
 			public static int colorSwitchThumbNormal = 2130968670;
 			
@@ -452,11 +602,20 @@ namespace TrackApp.Droid
 			// aapt resource value: 2130968587
 			public static int contentPaddingTop = 2130968587;
 			
+			// aapt resource value: 1
+			public static int contentProviderUri = 1;
+			
 			// aapt resource value: 2130968679
 			public static int contentScrim = 2130968679;
 			
 			// aapt resource value: 2130968680
 			public static int controlBackground = 2130968680;
+			
+			// aapt resource value: 1
+			public static int corpusId = 1;
+			
+			// aapt resource value: 1
+			public static int corpusVersion = 1;
 			
 			// aapt resource value: 2130968681
 			public static int counterEnabled = 2130968681;
@@ -472,6 +631,15 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 2130968685
 			public static int customNavigationLayout = 2130968685;
+			
+			// aapt resource value: 1
+			public static int defaultIntentAction = 1;
+			
+			// aapt resource value: 1
+			public static int defaultIntentActivity = 1;
+			
+			// aapt resource value: 1
+			public static int defaultIntentData = 1;
 			
 			// aapt resource value: 2130968686
 			public static int defaultQueryHint = 2130968686;
@@ -497,6 +665,9 @@ namespace TrackApp.Droid
 			// aapt resource value: 2130968693
 			public static int dividerVertical = 2130968693;
 			
+			// aapt resource value: 1
+			public static int documentMaxAgeSecs = 1;
+			
 			// aapt resource value: 2130968694
 			public static int drawableSize = 2130968694;
 			
@@ -520,6 +691,9 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 2130968701
 			public static int elevation = 2130968701;
+			
+			// aapt resource value: 1
+			public static int environment = 1;
 			
 			// aapt resource value: 2130968702
 			public static int errorEnabled = 2130968702;
@@ -575,6 +749,9 @@ namespace TrackApp.Droid
 			// aapt resource value: 2130968718
 			public static int fastScrollVerticalTrackDrawable = 2130968718;
 			
+			// aapt resource value: 1
+			public static int featureType = 1;
+			
 			// aapt resource value: 2130968577
 			public static int font = 2130968577;
 			
@@ -607,6 +784,12 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 2130968729
 			public static int foregroundInsidePadding = 2130968729;
+			
+			// aapt resource value: 1
+			public static int fragmentMode = 1;
+			
+			// aapt resource value: 1
+			public static int fragmentStyle = 1;
 			
 			// aapt resource value: 2130968730
 			public static int gapBetweenBars = 2130968730;
@@ -650,14 +833,26 @@ namespace TrackApp.Droid
 			// aapt resource value: 2130968742
 			public static int iconTintMode = 2130968742;
 			
+			// aapt resource value: 1
+			public static int imageAspectRatio = 1;
+			
+			// aapt resource value: 1
+			public static int imageAspectRatioAdjust = 1;
+			
 			// aapt resource value: 2130968744
 			public static int imageButtonStyle = 2130968744;
 			
 			// aapt resource value: 2130968745
 			public static int indeterminateProgressStyle = 2130968745;
 			
+			// aapt resource value: 1
+			public static int indexPrefixes = 1;
+			
 			// aapt resource value: 2130968746
 			public static int initialActivityCount = 2130968746;
+			
+			// aapt resource value: 1
+			public static int inputEnabled = 1;
 			
 			// aapt resource value: 2130968747
 			public static int insetForeground = 2130968747;
@@ -682,6 +877,18 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 2130968754
 			public static int keylines = 2130968754;
+			
+			// aapt resource value: 1
+			public static int latLngBoundsNorthEastLatitude = 1;
+			
+			// aapt resource value: 1
+			public static int latLngBoundsNorthEastLongitude = 1;
+			
+			// aapt resource value: 1
+			public static int latLngBoundsSouthWestLatitude = 1;
+			
+			// aapt resource value: 1
+			public static int latLngBoundsSouthWestLongitude = 1;
 			
 			// aapt resource value: 2130968755
 			public static int layout = 2130968755;
@@ -752,11 +959,38 @@ namespace TrackApp.Droid
 			// aapt resource value: 2130968777
 			public static int listPreferredItemPaddingRight = 2130968777;
 			
+			// aapt resource value: 1
+			public static int liteMode = 1;
+			
 			// aapt resource value: 2130968778
 			public static int logo = 2130968778;
 			
 			// aapt resource value: 2130968779
 			public static int logoDescription = 2130968779;
+			
+			// aapt resource value: 1
+			public static int mapType = 1;
+			
+			// aapt resource value: 1
+			public static int maskedWalletDetailsBackground = 1;
+			
+			// aapt resource value: 1
+			public static int maskedWalletDetailsButtonBackground = 1;
+			
+			// aapt resource value: 1
+			public static int maskedWalletDetailsButtonTextAppearance = 1;
+			
+			// aapt resource value: 1
+			public static int maskedWalletDetailsHeaderTextAppearance = 1;
+			
+			// aapt resource value: 1
+			public static int maskedWalletDetailsLogoImageType = 1;
+			
+			// aapt resource value: 1
+			public static int maskedWalletDetailsLogoTextColor = 1;
+			
+			// aapt resource value: 1
+			public static int maskedWalletDetailsTextAppearance = 1;
 			
 			// aapt resource value: 2130968780
 			public static int maxActionInlineWidth = 2130968780;
@@ -821,6 +1055,9 @@ namespace TrackApp.Droid
 			// aapt resource value: 2130968787
 			public static int navigationMode = 2130968787;
 			
+			// aapt resource value: 1
+			public static int noIndex = 1;
+			
 			// aapt resource value: 2130968788
 			public static int numericModifiers = 2130968788;
 			
@@ -848,6 +1085,12 @@ namespace TrackApp.Droid
 			// aapt resource value: 2130968796
 			public static int panelMenuListWidth = 2130968796;
 			
+			// aapt resource value: 1
+			public static int paramName = 1;
+			
+			// aapt resource value: 1
+			public static int paramValue = 1;
+			
 			// aapt resource value: 2130968797
 			public static int passwordToggleContentDescription = 2130968797;
 			
@@ -862,6 +1105,9 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 2130968801
 			public static int passwordToggleTintMode = 2130968801;
+			
+			// aapt resource value: 1
+			public static int perAccountTemplate = 1;
 			
 			// aapt resource value: 2130968802
 			public static int popupMenuStyle = 2130968802;
@@ -908,11 +1154,23 @@ namespace TrackApp.Droid
 			// aapt resource value: 2130968816
 			public static int rippleColor = 2130968816;
 			
+			// aapt resource value: 1
+			public static int schemaOrgProperty = 1;
+			
+			// aapt resource value: 1
+			public static int schemaOrgType = 1;
+			
+			// aapt resource value: 1
+			public static int scopeUris = 1;
+			
 			// aapt resource value: 2130968817
 			public static int scrimAnimationDuration = 2130968817;
 			
 			// aapt resource value: 2130968818
 			public static int scrimVisibleHeightTrigger = 2130968818;
+			
+			// aapt resource value: 1
+			public static int searchEnabled = 1;
 			
 			// aapt resource value: 2130968819
 			public static int searchHintIcon = 2130968819;
@@ -920,8 +1178,26 @@ namespace TrackApp.Droid
 			// aapt resource value: 2130968820
 			public static int searchIcon = 2130968820;
 			
+			// aapt resource value: 1
+			public static int searchLabel = 1;
+			
 			// aapt resource value: 2130968821
 			public static int searchViewStyle = 2130968821;
+			
+			// aapt resource value: 1
+			public static int sectionContent = 1;
+			
+			// aapt resource value: 1
+			public static int sectionFormat = 1;
+			
+			// aapt resource value: 1
+			public static int sectionId = 1;
+			
+			// aapt resource value: 1
+			public static int sectionType = 1;
+			
+			// aapt resource value: 1
+			public static int sectionWeight = 1;
 			
 			// aapt resource value: 2130968822
 			public static int seekBarStyle = 2130968822;
@@ -931,6 +1207,12 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 2130968824
 			public static int selectableItemBackgroundBorderless = 2130968824;
+			
+			// aapt resource value: 1
+			public static int semanticallySearchable = 1;
+			
+			// aapt resource value: 1
+			public static int settingsDescription = 1;
 			
 			// aapt resource value: 2130968825
 			public static int showAsAction = 2130968825;
@@ -946,6 +1228,9 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 2130968829
 			public static int singleChoiceItemLayout = 2130968829;
+			
+			// aapt resource value: 1
+			public static int sourceClass = 1;
 			
 			// aapt resource value: 2130968830
 			public static int spanCount = 2130968830;
@@ -988,6 +1273,9 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 2130968843
 			public static int submitBackground = 2130968843;
+			
+			// aapt resource value: 1
+			public static int subsectionSeparator = 1;
 			
 			// aapt resource value: 2130968844
 			public static int subtitle = 2130968844;
@@ -1163,6 +1451,9 @@ namespace TrackApp.Droid
 			// aapt resource value: 2130968901
 			public static int titleTextStyle = 2130968901;
 			
+			// aapt resource value: 1
+			public static int toAddressesSection = 1;
+			
 			// aapt resource value: 2130968902
 			public static int toolbarId = 2130968902;
 			
@@ -1171,6 +1462,9 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 2130968904
 			public static int toolbarStyle = 2130968904;
+			
+			// aapt resource value: 1
+			public static int toolbarTextColorStyle = 1;
 			
 			// aapt resource value: 2130968905
 			public static int tooltipForegroundColor = 2130968905;
@@ -1190,8 +1484,44 @@ namespace TrackApp.Droid
 			// aapt resource value: 2130968910
 			public static int trackTintMode = 2130968910;
 			
+			// aapt resource value: 1
+			public static int trimmable = 1;
+			
+			// aapt resource value: 1
+			public static int uiCompass = 1;
+			
+			// aapt resource value: 1
+			public static int uiMapToolbar = 1;
+			
+			// aapt resource value: 1
+			public static int uiRotateGestures = 1;
+			
+			// aapt resource value: 1
+			public static int uiScrollGestures = 1;
+			
+			// aapt resource value: 1
+			public static int uiTiltGestures = 1;
+			
+			// aapt resource value: 1
+			public static int uiZoomControls = 1;
+			
+			// aapt resource value: 1
+			public static int uiZoomGestures = 1;
+			
 			// aapt resource value: 2130968911
 			public static int useCompatPadding = 2130968911;
+			
+			// aapt resource value: 1
+			public static int userInputSection = 1;
+			
+			// aapt resource value: 1
+			public static int userInputTag = 1;
+			
+			// aapt resource value: 1
+			public static int userInputValue = 1;
+			
+			// aapt resource value: 1
+			public static int useViewLifecycle = 1;
 			
 			// aapt resource value: 2130968912
 			public static int voiceIcon = 2130968912;
@@ -1225,6 +1555,12 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 2130968922
 			public static int windowNoTitle = 2130968922;
+			
+			// aapt resource value: 1
+			public static int windowTransitionStyle = 1;
+			
+			// aapt resource value: 1
+			public static int zOrderOnTop = 1;
 			
 			static Attribute()
 			{
@@ -1393,6 +1729,39 @@ namespace TrackApp.Droid
 			// aapt resource value: 2131099652
 			public static int cardview_shadow_start_color = 2131099652;
 			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_ad_container_white_stripe_color = 1;
+			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_ad_label_background_color = 1;
+			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_background_color = 1;
+			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_progress_text_color = 1;
+			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_seek_bar_progress_background_tint_color = 1;
+			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_text_color = 1;
+			
+			// aapt resource value: 1
+			public static int cast_intro_overlay_background_color = 1;
+			
+			// aapt resource value: 1
+			public static int cast_intro_overlay_button_background_color = 1;
+			
+			// aapt resource value: 1
+			public static int cast_libraries_material_featurehighlight_outer_highlight_default_color = 1;
+			
+			// aapt resource value: 1
+			public static int cast_libraries_material_featurehighlight_text_body_color = 1;
+			
+			// aapt resource value: 1
+			public static int cast_libraries_material_featurehighlight_text_header_color = 1;
+			
 			// aapt resource value: 0
 			public static int colorAccent = 0;
 			
@@ -1401,6 +1770,39 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 0
 			public static int colorPrimaryDark = 0;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_text_dark = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_text_dark_default = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_text_dark_disabled = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_text_dark_focused = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_text_dark_pressed = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_text_light = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_text_light_default = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_text_light_disabled = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_text_light_focused = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_text_light_pressed = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_tint = 1;
 			
 			// aapt resource value: 2131099687
 			public static int design_bottom_navigation_shadow_color = 2131099687;
@@ -1510,6 +1912,24 @@ namespace TrackApp.Droid
 			// aapt resource value: 2131099721
 			public static int notification_material_background_media_default_color = 2131099721;
 			
+			// aapt resource value: 1
+			public static int place_autocomplete_prediction_primary_text = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_prediction_primary_text_highlight = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_prediction_secondary_text = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_search_hint = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_search_text = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_separator = 1;
+			
 			// aapt resource value: 2131099722
 			public static int primary_dark_material_dark = 2131099722;
 			
@@ -1575,6 +1995,45 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 2131099743
 			public static int tooltip_background_light = 2131099743;
+			
+			// aapt resource value: 1
+			public static int wallet_bright_foreground_disabled_holo_light = 1;
+			
+			// aapt resource value: 1
+			public static int wallet_bright_foreground_holo_dark = 1;
+			
+			// aapt resource value: 1
+			public static int wallet_bright_foreground_holo_light = 1;
+			
+			// aapt resource value: 1
+			public static int wallet_dim_foreground_disabled_holo_dark = 1;
+			
+			// aapt resource value: 1
+			public static int wallet_dim_foreground_holo_dark = 1;
+			
+			// aapt resource value: 1
+			public static int wallet_highlighted_text_holo_dark = 1;
+			
+			// aapt resource value: 1
+			public static int wallet_highlighted_text_holo_light = 1;
+			
+			// aapt resource value: 1
+			public static int wallet_hint_foreground_holo_dark = 1;
+			
+			// aapt resource value: 1
+			public static int wallet_hint_foreground_holo_light = 1;
+			
+			// aapt resource value: 1
+			public static int wallet_holo_blue_light = 1;
+			
+			// aapt resource value: 1
+			public static int wallet_link_text_light = 1;
+			
+			// aapt resource value: 1
+			public static int wallet_primary_text_holo_light = 1;
+			
+			// aapt resource value: 1
+			public static int wallet_secondary_text_holo_dark = 1;
 			
 			static Color()
 			{
@@ -1820,6 +2279,93 @@ namespace TrackApp.Droid
 			// aapt resource value: 2131230723
 			public static int cardview_default_radius = 2131230723;
 			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_ad_background_layout_height = 1;
+			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_ad_background_layout_width = 1;
+			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_ad_layout_height = 1;
+			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_ad_layout_width = 1;
+			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_control_button_margin = 1;
+			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_control_toolbar_min_height = 1;
+			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_margin_between_seek_bar_and_control_buttons = 1;
+			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_margin_between_status_text_and_seek_bar = 1;
+			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_seekbar_disabled_alpha = 1;
+			
+			// aapt resource value: 1
+			public static int cast_intro_overlay_button_margin_bottom = 1;
+			
+			// aapt resource value: 1
+			public static int cast_intro_overlay_focus_radius = 1;
+			
+			// aapt resource value: 1
+			public static int cast_intro_overlay_title_margin_top = 1;
+			
+			// aapt resource value: 1
+			public static int cast_libraries_material_featurehighlight_center_horizontal_offset = 1;
+			
+			// aapt resource value: 1
+			public static int cast_libraries_material_featurehighlight_center_threshold = 1;
+			
+			// aapt resource value: 1
+			public static int cast_libraries_material_featurehighlight_inner_margin = 1;
+			
+			// aapt resource value: 1
+			public static int cast_libraries_material_featurehighlight_inner_radius = 1;
+			
+			// aapt resource value: 1
+			public static int cast_libraries_material_featurehighlight_outer_padding = 1;
+			
+			// aapt resource value: 1
+			public static int cast_libraries_material_featurehighlight_text_body_size = 1;
+			
+			// aapt resource value: 1
+			public static int cast_libraries_material_featurehighlight_text_header_size = 1;
+			
+			// aapt resource value: 1
+			public static int cast_libraries_material_featurehighlight_text_horizontal_margin = 1;
+			
+			// aapt resource value: 1
+			public static int cast_libraries_material_featurehighlight_text_horizontal_offset = 1;
+			
+			// aapt resource value: 1
+			public static int cast_libraries_material_featurehighlight_text_max_width = 1;
+			
+			// aapt resource value: 1
+			public static int cast_libraries_material_featurehighlight_text_vertical_space = 1;
+			
+			// aapt resource value: 1
+			public static int cast_mini_controller_control_button_margin = 1;
+			
+			// aapt resource value: 1
+			public static int cast_mini_controller_icon_height = 1;
+			
+			// aapt resource value: 1
+			public static int cast_mini_controller_icon_width = 1;
+			
+			// aapt resource value: 1
+			public static int cast_notification_image_size = 1;
+			
+			// aapt resource value: 1
+			public static int cast_tracks_chooser_dialog_no_message_text_size = 1;
+			
+			// aapt resource value: 1
+			public static int cast_tracks_chooser_dialog_row_text_size = 1;
+			
 			// aapt resource value: 2131230721
 			public static int compat_button_inset_horizontal_material = 2131230721;
 			
@@ -2056,6 +2602,36 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 2131230740
 			public static int notification_top_pad_large_text = 2131230740;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_button_padding = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_powered_by_google_height = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_powered_by_google_start = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_prediction_height = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_prediction_horizontal_margin = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_prediction_primary_text = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_prediction_secondary_text = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_progress_horizontal_margin = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_progress_size = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_separator_start = 1;
 			
 			// aapt resource value: 2131230868
 			public static int tooltip_corner_radius = 2131230868;
@@ -2358,6 +2934,225 @@ namespace TrackApp.Droid
 			// aapt resource value: 2131296341
 			public static int avd_show_password = 2131296341;
 			
+			// aapt resource value: 1
+			public static int cast_abc_scrubber_control_off_mtrl_alpha = 1;
+			
+			// aapt resource value: 1
+			public static int cast_abc_scrubber_control_to_pressed_mtrl_000 = 1;
+			
+			// aapt resource value: 1
+			public static int cast_abc_scrubber_control_to_pressed_mtrl_005 = 1;
+			
+			// aapt resource value: 1
+			public static int cast_abc_scrubber_primary_mtrl_alpha = 1;
+			
+			// aapt resource value: 1
+			public static int cast_album_art_placeholder = 1;
+			
+			// aapt resource value: 1
+			public static int cast_album_art_placeholder_large = 1;
+			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_actionbar_bg_gradient_light = 1;
+			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_bg_gradient_light = 1;
+			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_seekbar_thumb = 1;
+			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_seekbar_track = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_expanded_controller_closed_caption = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_expanded_controller_forward30 = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_expanded_controller_mute = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_expanded_controller_pause = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_expanded_controller_play = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_expanded_controller_rewind30 = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_expanded_controller_skip_next = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_expanded_controller_skip_previous = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_expanded_controller_stop = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_mini_controller_closed_caption = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_mini_controller_forward30 = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_mini_controller_mute = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_mini_controller_pause = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_mini_controller_pause_large = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_mini_controller_play = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_mini_controller_play_large = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_mini_controller_rewind30 = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_mini_controller_skip_next = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_mini_controller_skip_prev = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_mini_controller_stop = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_mini_controller_stop_large = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_notification_0 = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_notification_1 = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_notification_2 = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_notification_connecting = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_notification_disconnect = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_notification_forward = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_notification_forward10 = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_notification_forward30 = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_notification_on = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_notification_pause = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_notification_play = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_notification_rewind = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_notification_rewind10 = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_notification_rewind30 = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_notification_skip_next = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_notification_skip_prev = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_notification_small_icon = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_notification_stop_live_stream = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_stop_circle_filled_grey600 = 1;
+			
+			// aapt resource value: 1
+			public static int cast_ic_stop_circle_filled_white = 1;
+			
+			// aapt resource value: 1
+			public static int cast_mini_controller_gradient_light = 1;
+			
+			// aapt resource value: 1
+			public static int cast_mini_controller_progress_drawable = 1;
+			
+			// aapt resource value: 1
+			public static int cast_skip_ad_label_border = 1;
+			
+			// aapt resource value: 1
+			public static int common_full_open_on_phone = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_icon_dark = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_icon_dark_focused = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_icon_dark_normal = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_icon_dark_normal_background = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_icon_disabled = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_icon_light = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_icon_light_focused = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_icon_light_normal = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_icon_light_normal_background = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_text_dark = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_text_dark_focused = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_text_dark_normal = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_text_dark_normal_background = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_text_disabled = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_text_light = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_text_light_focused = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_text_light_normal = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_signin_btn_text_light_normal_background = 1;
+			
 			// aapt resource value: 0
 			public static int contact_icon_black = 0;
 			
@@ -2387,6 +3182,12 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 0
 			public static int friends_icon = 0;
+			
+			// aapt resource value: 1
+			public static int googleg_disabled_color_18 = 1;
+			
+			// aapt resource value: 1
+			public static int googleg_standard_color_18 = 1;
 			
 			// aapt resource value: 0
 			public static int group_icon = 0;
@@ -2907,6 +3708,18 @@ namespace TrackApp.Droid
 			// aapt resource value: 2131296510
 			public static int ic_mr_button_grey = 2131296510;
 			
+			// aapt resource value: 1
+			public static int ic_plusone_medium_off_client = 1;
+			
+			// aapt resource value: 1
+			public static int ic_plusone_small_off_client = 1;
+			
+			// aapt resource value: 1
+			public static int ic_plusone_standard_off_client = 1;
+			
+			// aapt resource value: 1
+			public static int ic_plusone_tall_off_client = 1;
+			
 			// aapt resource value: 2131296511
 			public static int ic_vol_type_speaker_dark = 2131296511;
 			
@@ -3030,8 +3843,143 @@ namespace TrackApp.Droid
 			// aapt resource value: 2131296268
 			public static int notify_panel_notification_icon_bg = 2131296268;
 			
+			// aapt resource value: 1
+			public static int places_ic_clear = 1;
+			
+			// aapt resource value: 1
+			public static int places_ic_search = 1;
+			
+			// aapt resource value: 1
+			public static int powered_by_google_dark = 1;
+			
+			// aapt resource value: 1
+			public static int powered_by_google_light = 1;
+			
 			// aapt resource value: 0
 			public static int profile_icon_black = 0;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_art_track_grey600_48 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_bigtop_updates_white_24 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_cast_connected_white_24 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_cast_white_36 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_clear_white_24 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_closed_caption_grey600_36 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_closed_caption_white_36 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_forward_10_white_24 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_forward_30_grey600_36 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_forward_30_white_24 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_forward_30_white_36 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_keyboard_arrow_down_white_36 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_pause_circle_filled_grey600_36 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_pause_circle_filled_white_36 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_pause_grey600_36 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_pause_grey600_48 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_pause_white_24 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_play_arrow_grey600_36 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_play_arrow_grey600_48 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_play_arrow_white_24 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_play_circle_filled_grey600_36 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_play_circle_filled_white_36 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_refresh_white_24 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_replay_10_white_24 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_replay_30_grey600_36 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_replay_30_white_24 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_replay_30_white_36 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_replay_white_24 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_skip_next_grey600_36 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_skip_next_white_24 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_skip_next_white_36 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_skip_previous_grey600_36 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_skip_previous_white_24 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_skip_previous_white_36 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_stop_grey600_36 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_stop_grey600_48 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_stop_white_24 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_volume_off_grey600_36 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_volume_off_white_36 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_volume_up_grey600_36 = 1;
+			
+			// aapt resource value: 1
+			public static int quantum_ic_volume_up_white_36 = 1;
 			
 			// aapt resource value: 0
 			public static int red_cross_icon = 0;
@@ -3136,26 +4084,146 @@ namespace TrackApp.Droid
 			// aapt resource value: 2131492885
 			public static int add = 2131492885;
 			
+			// aapt resource value: 1
+			public static int adjust_height = 1;
+			
+			// aapt resource value: 1
+			public static int adjust_width = 1;
+			
+			// aapt resource value: 1
+			public static int ad_container = 1;
+			
+			// aapt resource value: 1
+			public static int ad_image_view = 1;
+			
+			// aapt resource value: 1
+			public static int ad_in_progress_label = 1;
+			
+			// aapt resource value: 1
+			public static int ad_label = 1;
+			
 			// aapt resource value: 2131492886
 			public static int alertTitle = 2131492886;
+			
+			// aapt resource value: 1
+			public static int android_pay = 1;
+			
+			// aapt resource value: 1
+			public static int android_pay_dark = 1;
+			
+			// aapt resource value: 1
+			public static int android_pay_light = 1;
+			
+			// aapt resource value: 1
+			public static int android_pay_light_with_border = 1;
+			
+			// aapt resource value: 0
+			public static int app_name = 0;
 			
 			// aapt resource value: 2131492870
 			public static int async = 2131492870;
 			
+			// aapt resource value: 1
+			public static int audio_empty_message = 1;
+			
+			// aapt resource value: 1
+			public static int audio_list_view = 1;
+			
 			// aapt resource value: 2131492888
 			public static int auto = 2131492888;
+			
+			// aapt resource value: 1
+			public static int background_image_view = 1;
+			
+			// aapt resource value: 1
+			public static int background_place_holder_image_view = 1;
 			
 			// aapt resource value: 2131492871
 			public static int blocking = 2131492871;
 			
+			// aapt resource value: 1
+			public static int blurred_background_image_view = 1;
+			
+			// aapt resource value: 1
+			public static int book_now = 1;
+			
 			// aapt resource value: 2131492890
 			public static int bottom = 2131492890;
+			
+			// aapt resource value: 1
+			public static int button = 1;
 			
 			// aapt resource value: 2131492891
 			public static int buttonPanel = 2131492891;
 			
+			// aapt resource value: 1
+			public static int button_0 = 1;
+			
+			// aapt resource value: 1
+			public static int button_1 = 1;
+			
+			// aapt resource value: 1
+			public static int button_2 = 1;
+			
+			// aapt resource value: 1
+			public static int button_3 = 1;
+			
+			// aapt resource value: 1
+			public static int button_play_pause_toggle = 1;
+			
+			// aapt resource value: 1
+			public static int buyButton = 1;
+			
+			// aapt resource value: 1
+			public static int buy_now = 1;
+			
+			// aapt resource value: 1
+			public static int buy_with = 1;
+			
+			// aapt resource value: 1
+			public static int buy_with_google = 1;
+			
 			// aapt resource value: 2131492892
 			public static int cancel_action = 2131492892;
+			
+			// aapt resource value: 1
+			public static int cast_button_type_closed_caption = 1;
+			
+			// aapt resource value: 1
+			public static int cast_button_type_custom = 1;
+			
+			// aapt resource value: 1
+			public static int cast_button_type_empty = 1;
+			
+			// aapt resource value: 1
+			public static int cast_button_type_forward_30_seconds = 1;
+			
+			// aapt resource value: 1
+			public static int cast_button_type_mute_toggle = 1;
+			
+			// aapt resource value: 1
+			public static int cast_button_type_play_pause_toggle = 1;
+			
+			// aapt resource value: 1
+			public static int cast_button_type_rewind_30_seconds = 1;
+			
+			// aapt resource value: 1
+			public static int cast_button_type_skip_next = 1;
+			
+			// aapt resource value: 1
+			public static int cast_button_type_skip_previous = 1;
+			
+			// aapt resource value: 1
+			public static int cast_featurehighlight_help_text_body_view = 1;
+			
+			// aapt resource value: 1
+			public static int cast_featurehighlight_help_text_header_view = 1;
+			
+			// aapt resource value: 1
+			public static int cast_featurehighlight_view = 1;
+			
+			// aapt resource value: 1
+			public static int cast_notification_id = 1;
 			
 			// aapt resource value: 2131492893
 			public static int center = 2131492893;
@@ -3166,14 +4234,32 @@ namespace TrackApp.Droid
 			// aapt resource value: 2131492872
 			public static int chronometer = 2131492872;
 			
+			// aapt resource value: 1
+			public static int classic = 1;
+			
+			// aapt resource value: 1
+			public static int contact = 1;
+			
 			// aapt resource value: 2131492896
 			public static int container = 2131492896;
+			
+			// aapt resource value: 1
+			public static int container_all = 1;
+			
+			// aapt resource value: 1
+			public static int container_current = 1;
 			
 			// aapt resource value: 2131492897
 			public static int contentPanel = 2131492897;
 			
+			// aapt resource value: 1
+			public static int controllers = 1;
+			
 			// aapt resource value: 2131492898
 			public static int coordinator = 2131492898;
+			
+			// aapt resource value: 1
+			public static int crash_reporting_present = 1;
 			
 			// aapt resource value: 2131492899
 			public static int custom = 2131492899;
@@ -3181,11 +4267,23 @@ namespace TrackApp.Droid
 			// aapt resource value: 2131492900
 			public static int customPanel = 2131492900;
 			
+			// aapt resource value: 1
+			public static int dark = 1;
+			
+			// aapt resource value: 1
+			public static int date = 1;
+			
 			// aapt resource value: 2131492901
 			public static int decor_content_parent = 2131492901;
 			
 			// aapt resource value: 2131492902
 			public static int default_activity_button = 2131492902;
+			
+			// aapt resource value: 1
+			public static int demote_common_words = 1;
+			
+			// aapt resource value: 1
+			public static int demote_rfc822_hostnames = 1;
 			
 			// aapt resource value: 2131492903
 			public static int design_bottom_sheet = 2131492903;
@@ -3202,14 +4300,29 @@ namespace TrackApp.Droid
 			// aapt resource value: 2131492907
 			public static int design_navigation_view = 2131492907;
 			
+			// aapt resource value: 1
+			public static int donate_with = 1;
+			
+			// aapt resource value: 1
+			public static int donate_with_google = 1;
+			
 			// aapt resource value: 2131492908
 			public static int edit_query = 2131492908;
+			
+			// aapt resource value: 1
+			public static int email = 1;
 			
 			// aapt resource value: 2131492909
 			public static int end = 2131492909;
 			
 			// aapt resource value: 2131492910
 			public static int end_padder = 2131492910;
+			
+			// aapt resource value: 1
+			public static int end_text = 1;
+			
+			// aapt resource value: 1
+			public static int expanded_controller_layout = 1;
 			
 			// aapt resource value: 2131492912
 			public static int expanded_menu = 2131492912;
@@ -3229,8 +4342,32 @@ namespace TrackApp.Droid
 			// aapt resource value: 2131492916
 			public static int ghost_view = 2131492916;
 			
+			// aapt resource value: 1
+			public static int google_wallet_classic = 1;
+			
+			// aapt resource value: 1
+			public static int google_wallet_grayscale = 1;
+			
+			// aapt resource value: 1
+			public static int google_wallet_monochrome = 1;
+			
+			// aapt resource value: 1
+			public static int grayscale = 1;
+			
+			// aapt resource value: 1
+			public static int holo_dark = 1;
+			
+			// aapt resource value: 1
+			public static int holo_light = 1;
+			
 			// aapt resource value: 2131492917
 			public static int home = 2131492917;
+			
+			// aapt resource value: 1
+			public static int html = 1;
+			
+			// aapt resource value: 1
+			public static int hybrid = 1;
 			
 			// aapt resource value: 2131492874
 			public static int icon = 2131492874;
@@ -3238,11 +4375,41 @@ namespace TrackApp.Droid
 			// aapt resource value: 2131492875
 			public static int icon_group = 2131492875;
 			
+			// aapt resource value: 1
+			public static int icon_only = 1;
+			
+			// aapt resource value: 1
+			public static int icon_uri = 1;
+			
+			// aapt resource value: 1
+			public static int icon_view = 1;
+			
 			// aapt resource value: 2131492920
 			public static int image = 2131492920;
 			
+			// aapt resource value: 1
+			public static int index_entity_types = 1;
+			
 			// aapt resource value: 2131492876
 			public static int info = 2131492876;
+			
+			// aapt resource value: 1
+			public static int instant_message = 1;
+			
+			// aapt resource value: 1
+			public static int intent_action = 1;
+			
+			// aapt resource value: 1
+			public static int intent_activity = 1;
+			
+			// aapt resource value: 1
+			public static int intent_data = 1;
+			
+			// aapt resource value: 1
+			public static int intent_data_id = 1;
+			
+			// aapt resource value: 1
+			public static int intent_extra_data = 1;
 			
 			// aapt resource value: 2131492877
 			public static int italic = 2131492877;
@@ -3253,8 +4420,14 @@ namespace TrackApp.Droid
 			// aapt resource value: 2131492924
 			public static int largeLabel = 2131492924;
 			
+			// aapt resource value: 1
+			public static int large_icon_uri = 1;
+			
 			// aapt resource value: 2131492925
 			public static int left = 2131492925;
+			
+			// aapt resource value: 1
+			public static int light = 1;
 			
 			// aapt resource value: 2131492878
 			public static int line1 = 2131492878;
@@ -3268,8 +4441,26 @@ namespace TrackApp.Droid
 			// aapt resource value: 2131492929
 			public static int list_item = 2131492929;
 			
+			// aapt resource value: 1
+			public static int live_stream_indicator = 1;
+			
+			// aapt resource value: 1
+			public static int live_stream_seek_bar = 1;
+			
+			// aapt resource value: 1
+			public static int loading_indicator = 1;
+			
+			// aapt resource value: 1
+			public static int logo_only = 1;
+			
 			// aapt resource value: 2131492930
 			public static int masked = 2131492930;
+			
+			// aapt resource value: 1
+			public static int match_global_nicknames = 1;
+			
+			// aapt resource value: 1
+			public static int match_parent = 1;
 			
 			// aapt resource value: 2131492931
 			public static int media_actions = 2131492931;
@@ -3279,6 +4470,9 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 2131492933
 			public static int mini = 2131492933;
+			
+			// aapt resource value: 1
+			public static int monochrome = 1;
 			
 			// aapt resource value: 2131492915
 			public static int mr_art = 2131492915;
@@ -3376,6 +4570,12 @@ namespace TrackApp.Droid
 			// aapt resource value: 2131492883
 			public static int notification_main_column_container = 2131492883;
 			
+			// aapt resource value: 1
+			public static int omnibox_title_section = 1;
+			
+			// aapt resource value: 1
+			public static int omnibox_url_section = 1;
+			
 			// aapt resource value: 2131492941
 			public static int parallax = 2131492941;
 			
@@ -3388,6 +4588,39 @@ namespace TrackApp.Droid
 			// aapt resource value: 2131492944
 			public static int pin = 2131492944;
 			
+			// aapt resource value: 1
+			public static int place_autocomplete_clear_button = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_powered_by_google = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_prediction_primary_text = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_prediction_secondary_text = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_progress = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_search_button = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_search_input = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_separator = 1;
+			
+			// aapt resource value: 1
+			public static int plain = 1;
+			
+			// aapt resource value: 1
+			public static int production = 1;
+			
+			// aapt resource value: 1
+			public static int progressBar = 1;
+			
 			// aapt resource value: 2131492945
 			public static int progress_circular = 2131492945;
 			
@@ -3397,6 +4630,9 @@ namespace TrackApp.Droid
 			// aapt resource value: 2131492947
 			public static int radio = 2131492947;
 			
+			// aapt resource value: 1
+			public static int rfc822 = 1;
+			
 			// aapt resource value: 2131492948
 			public static int right = 2131492948;
 			
@@ -3405,6 +4641,12 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 2131492885
 			public static int right_side = 2131492885;
+			
+			// aapt resource value: 1
+			public static int sandbox = 1;
+			
+			// aapt resource value: 1
+			public static int satellite = 1;
 			
 			// aapt resource value: 2131492951
 			public static int save_image_matrix = 2131492951;
@@ -3460,11 +4702,23 @@ namespace TrackApp.Droid
 			// aapt resource value: 2131492968
 			public static int search_voice_btn = 2131492968;
 			
+			// aapt resource value: 1
+			public static int seek_bar = 1;
+			
+			// aapt resource value: 1
+			public static int seek_bar_controls = 1;
+			
+			// aapt resource value: 1
+			public static int selectionDetails = 1;
+			
 			// aapt resource value: 2131492969
 			public static int select_dialog_listview = 2131492969;
 			
 			// aapt resource value: 2131492970
 			public static int shortcut = 2131492970;
+			
+			// aapt resource value: 1
+			public static int slide = 1;
 			
 			// aapt resource value: 0
 			public static int sliding_tabs = 0;
@@ -3493,11 +4747,23 @@ namespace TrackApp.Droid
 			// aapt resource value: 2131492978
 			public static int src_over = 2131492978;
 			
+			// aapt resource value: 1
+			public static int standard = 1;
+			
 			// aapt resource value: 2131492979
 			public static int start = 2131492979;
 			
+			// aapt resource value: 1
+			public static int start_text = 1;
+			
 			// aapt resource value: 2131492980
 			public static int status_bar_latest_event_content = 2131492980;
+			
+			// aapt resource value: 1
+			public static int status_text = 1;
+			
+			// aapt resource value: 1
+			public static int strict_sandbox = 1;
 			
 			// aapt resource value: 2131492981
 			public static int submenuarrow = 2131492981;
@@ -3505,14 +4771,29 @@ namespace TrackApp.Droid
 			// aapt resource value: 2131492982
 			public static int submit_area = 2131492982;
 			
+			// aapt resource value: 1
+			public static int subtitle_view = 1;
+			
 			// aapt resource value: 2131492983
 			public static int tabMode = 2131492983;
+			
+			// aapt resource value: 1
+			public static int tab_host = 1;
 			
 			// aapt resource value: 2131492886
 			public static int tag_transition_group = 2131492886;
 			
+			// aapt resource value: 1
+			public static int terrain = 1;
+			
+			// aapt resource value: 1
+			public static int test = 1;
+			
 			// aapt resource value: 2131492887
 			public static int text = 2131492887;
+			
+			// aapt resource value: 1
+			public static int text1 = 1;
 			
 			// aapt resource value: 2131492888
 			public static int text2 = 2131492888;
@@ -3529,8 +4810,20 @@ namespace TrackApp.Droid
 			// aapt resource value: 2131492988
 			public static int textSpacerNoTitle = 2131492988;
 			
+			// aapt resource value: 1
+			public static int textTitle = 1;
+			
+			// aapt resource value: 1
+			public static int text_empty_message = 1;
+			
 			// aapt resource value: 2131492989
 			public static int text_input_password_toggle = 2131492989;
+			
+			// aapt resource value: 1
+			public static int text_list_view = 1;
+			
+			// aapt resource value: 1
+			public static int thing_proto = 1;
 			
 			// aapt resource value: 2131492889
 			public static int time = 2131492889;
@@ -3543,6 +4836,9 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 2131492995
 			public static int title_template = 2131492995;
+			
+			// aapt resource value: 1
+			public static int title_view = 1;
 			
 			// aapt resource value: 0
 			public static int toolbar = 0;
@@ -3577,6 +4873,9 @@ namespace TrackApp.Droid
 			// aapt resource value: 2131493005
 			public static int up = 2131493005;
 			
+			// aapt resource value: 1
+			public static int url = 1;
+			
 			// aapt resource value: 2131493006
 			public static int view_offset_helper = 2131493006;
 			
@@ -3585,6 +4884,9 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 2131492989
 			public static int volume_item_container = 2131492989;
+			
+			// aapt resource value: 1
+			public static int wide = 1;
 			
 			// aapt resource value: 2131493008
 			public static int wrap_content = 2131493008;
@@ -3617,11 +4919,17 @@ namespace TrackApp.Droid
 			// aapt resource value: 2131558405
 			public static int cancel_button_image_alpha = 2131558405;
 			
+			// aapt resource value: 1
+			public static int cast_libraries_material_featurehighlight_pulse_base_alpha = 1;
+			
 			// aapt resource value: 2131558406
 			public static int config_tooltipAnimTime = 2131558406;
 			
 			// aapt resource value: 2131558407
 			public static int design_snackbar_text_max_lines = 2131558407;
+			
+			// aapt resource value: 1
+			public static int google_play_services_version = 1;
 			
 			// aapt resource value: 2131558408
 			public static int hide_password_duration = 2131558408;
@@ -3751,6 +5059,24 @@ namespace TrackApp.Droid
 			// aapt resource value: 2131689498
 			public static int abc_select_dialog_material = 2131689498;
 			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_activity = 1;
+			
+			// aapt resource value: 1
+			public static int cast_help_text = 1;
+			
+			// aapt resource value: 1
+			public static int cast_intro_overlay = 1;
+			
+			// aapt resource value: 1
+			public static int cast_mini_controller = 1;
+			
+			// aapt resource value: 1
+			public static int cast_tracks_chooser_dialog_layout = 1;
+			
+			// aapt resource value: 1
+			public static int cast_tracks_chooser_dialog_row_layout = 1;
+			
 			// aapt resource value: 2131689499
 			public static int design_bottom_navigation_item = 2131689499;
 			
@@ -3855,6 +5181,18 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 2131689478
 			public static int notification_template_part_time = 2131689478;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_fragment = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_item_powered_by_google = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_item_prediction = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_progress = 1;
 			
 			// aapt resource value: 2131689528
 			public static int select_dialog_item_material = 2131689528;
@@ -3999,6 +5337,9 @@ namespace TrackApp.Droid
 			// aapt resource value: 2132082717
 			public static int abc_toolbar_collapse_description = 2132082717;
 			
+			// aapt resource value: 1
+			public static int accept = 1;
+			
 			// aapt resource value: 2132082718
 			public static int appbar_scrolling_view_behavior = 2132082718;
 			
@@ -4008,8 +5349,203 @@ namespace TrackApp.Droid
 			// aapt resource value: 2132082719
 			public static int bottom_sheet_behavior = 2132082719;
 			
+			// aapt resource value: 1
+			public static int cast_ad_label = 1;
+			
+			// aapt resource value: 1
+			public static int cast_casting_to_device = 1;
+			
+			// aapt resource value: 1
+			public static int cast_closed_captions = 1;
+			
+			// aapt resource value: 1
+			public static int cast_closed_captions_unavailable = 1;
+			
+			// aapt resource value: 1
+			public static int cast_disconnect = 1;
+			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_ad_image_description = 1;
+			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_ad_in_progress = 1;
+			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_background_image = 1;
+			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_live_stream_indicator = 1;
+			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_loading = 1;
+			
+			// aapt resource value: 1
+			public static int cast_expanded_controller_skip_ad_label = 1;
+			
+			// aapt resource value: 1
+			public static int cast_forward = 1;
+			
+			// aapt resource value: 1
+			public static int cast_forward_10 = 1;
+			
+			// aapt resource value: 1
+			public static int cast_forward_30 = 1;
+			
+			// aapt resource value: 1
+			public static int cast_intro_overlay_button_text = 1;
+			
+			// aapt resource value: 1
+			public static int cast_invalid_stream_duration_text = 1;
+			
+			// aapt resource value: 1
+			public static int cast_invalid_stream_position_text = 1;
+			
+			// aapt resource value: 1
+			public static int cast_mute = 1;
+			
+			// aapt resource value: 1
+			public static int cast_notification_connected_message = 1;
+			
+			// aapt resource value: 1
+			public static int cast_notification_connecting_message = 1;
+			
+			// aapt resource value: 1
+			public static int cast_notification_disconnect = 1;
+			
+			// aapt resource value: 1
+			public static int cast_pause = 1;
+			
+			// aapt resource value: 1
+			public static int cast_play = 1;
+			
+			// aapt resource value: 1
+			public static int cast_rewind = 1;
+			
+			// aapt resource value: 1
+			public static int cast_rewind_10 = 1;
+			
+			// aapt resource value: 1
+			public static int cast_rewind_30 = 1;
+			
+			// aapt resource value: 1
+			public static int cast_seek_bar = 1;
+			
+			// aapt resource value: 1
+			public static int cast_skip_next = 1;
+			
+			// aapt resource value: 1
+			public static int cast_skip_prev = 1;
+			
+			// aapt resource value: 1
+			public static int cast_stop = 1;
+			
+			// aapt resource value: 1
+			public static int cast_stop_live_stream = 1;
+			
+			// aapt resource value: 1
+			public static int cast_tracks_chooser_dialog_audio = 1;
+			
+			// aapt resource value: 1
+			public static int cast_tracks_chooser_dialog_cancel = 1;
+			
+			// aapt resource value: 1
+			public static int cast_tracks_chooser_dialog_closed_captions = 1;
+			
+			// aapt resource value: 1
+			public static int cast_tracks_chooser_dialog_default_track_name = 1;
+			
+			// aapt resource value: 1
+			public static int cast_tracks_chooser_dialog_none = 1;
+			
+			// aapt resource value: 1
+			public static int cast_tracks_chooser_dialog_no_audio_tracks = 1;
+			
+			// aapt resource value: 1
+			public static int cast_tracks_chooser_dialog_no_text_tracks = 1;
+			
+			// aapt resource value: 1
+			public static int cast_tracks_chooser_dialog_ok = 1;
+			
+			// aapt resource value: 1
+			public static int cast_tracks_chooser_dialog_subtitles = 1;
+			
+			// aapt resource value: 1
+			public static int cast_unmute = 1;
+			
 			// aapt resource value: 2132082720
 			public static int character_counter_pattern = 2132082720;
+			
+			// aapt resource value: 1
+			public static int common_google_play_services_enable_button = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_play_services_enable_text = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_play_services_enable_title = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_play_services_install_button = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_play_services_install_text = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_play_services_install_title = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_play_services_notification_ticker = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_play_services_unknown_issue = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_play_services_unsupported_text = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_play_services_update_button = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_play_services_update_text = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_play_services_update_title = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_play_services_updating_text = 1;
+			
+			// aapt resource value: 1
+			public static int common_google_play_services_wear_update_text = 1;
+			
+			// aapt resource value: 1
+			public static int common_open_on_phone = 1;
+			
+			// aapt resource value: 1
+			public static int common_signin_button_text = 1;
+			
+			// aapt resource value: 1
+			public static int common_signin_button_text_long = 1;
+			
+			// aapt resource value: 1
+			public static int create_calendar_message = 1;
+			
+			// aapt resource value: 1
+			public static int create_calendar_title = 1;
+			
+			// aapt resource value: 1
+			public static int debug_menu_ad_information = 1;
+			
+			// aapt resource value: 1
+			public static int debug_menu_creative_preview = 1;
+			
+			// aapt resource value: 1
+			public static int debug_menu_title = 1;
+			
+			// aapt resource value: 1
+			public static int debug_menu_troubleshooting = 1;
+			
+			// aapt resource value: 1
+			public static int decline = 1;
 			
 			// aapt resource value: 0
 			public static int Hello = 0;
@@ -4092,11 +5628,35 @@ namespace TrackApp.Droid
 			// aapt resource value: 2132082725
 			public static int path_password_strike_through = 2132082725;
 			
+			// aapt resource value: 1
+			public static int place_autocomplete_clear_button = 1;
+			
+			// aapt resource value: 1
+			public static int place_autocomplete_search_hint = 1;
+			
 			// aapt resource value: 2132082726
 			public static int search_menu_title = 2132082726;
 			
 			// aapt resource value: 2132082689
 			public static int status_bar_notification_info_overflow = 2132082689;
+			
+			// aapt resource value: 1
+			public static int store_picture_message = 1;
+			
+			// aapt resource value: 1
+			public static int store_picture_title = 1;
+			
+			// aapt resource value: 1
+			public static int tagmanager_preview_dialog_button = 1;
+			
+			// aapt resource value: 1
+			public static int tagmanager_preview_dialog_message = 1;
+			
+			// aapt resource value: 1
+			public static int tagmanager_preview_dialog_title = 1;
+			
+			// aapt resource value: 1
+			public static int wallet_buy_button_place_holder = 1;
 			
 			static String()
 			{
@@ -4633,6 +6193,18 @@ namespace TrackApp.Droid
 			// aapt resource value: 2132148228
 			public static int CardView_Light = 2132148228;
 			
+			// aapt resource value: 1
+			public static int CastExpandedController = 1;
+			
+			// aapt resource value: 1
+			public static int CastIntroOverlay = 1;
+			
+			// aapt resource value: 1
+			public static int CastMiniController = 1;
+			
+			// aapt resource value: 1
+			public static int CustomCastTheme = 1;
+			
 			// aapt resource value: 0
 			public static int MainTheme = 0;
 			
@@ -4867,6 +6439,18 @@ namespace TrackApp.Droid
 			// aapt resource value: 2132148469
 			public static int TextAppearance_AppCompat_Widget_TextView_SpinnerItem = 2132148469;
 			
+			// aapt resource value: 1
+			public static int TextAppearance_CastIntroOverlay_Button = 1;
+			
+			// aapt resource value: 1
+			public static int TextAppearance_CastIntroOverlay_Title = 1;
+			
+			// aapt resource value: 1
+			public static int TextAppearance_CastMiniController_Subtitle = 1;
+			
+			// aapt resource value: 1
+			public static int TextAppearance_CastMiniController_Title = 1;
+			
 			// aapt resource value: 2132148225
 			public static int TextAppearance_Compat_Notification = 2132148225;
 			
@@ -5026,6 +6610,12 @@ namespace TrackApp.Droid
 			// aapt resource value: 2132148517
 			public static int Theme_AppCompat_NoActionBar = 2132148517;
 			
+			// aapt resource value: 1
+			public static int Theme_AppInvite_Preview = 1;
+			
+			// aapt resource value: 1
+			public static int Theme_AppInvite_Preview_Base = 1;
+			
 			// aapt resource value: 2132148518
 			public static int Theme_Design = 2132148518;
 			
@@ -5044,6 +6634,9 @@ namespace TrackApp.Droid
 			// aapt resource value: 2132148523
 			public static int Theme_Design_NoActionBar = 2132148523;
 			
+			// aapt resource value: 1
+			public static int Theme_IAPTheme = 1;
+			
 			// aapt resource value: 2132148510
 			public static int Theme_MediaRouter = 2132148510;
 			
@@ -5055,6 +6648,18 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 2132148513
 			public static int Theme_MediaRouter_Light_DarkControlPanel = 2132148513;
+			
+			// aapt resource value: 1
+			public static int WalletFragmentDefaultButtonTextAppearance = 1;
+			
+			// aapt resource value: 1
+			public static int WalletFragmentDefaultDetailsHeaderTextAppearance = 1;
+			
+			// aapt resource value: 1
+			public static int WalletFragmentDefaultDetailsTextAppearance = 1;
+			
+			// aapt resource value: 1
+			public static int WalletFragmentDefaultStyle = 1;
 			
 			// aapt resource value: 2132148524
 			public static int Widget_AppCompat_ActionBar = 2132148524;
@@ -5495,6 +7100,20 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 1
 			public static int ActivityChooserView_initialActivityCount = 1;
+			
+			public static int[] AdsAttrs = new int[] {
+					1,
+					1,
+					1};
+			
+			// aapt resource value: 0
+			public static int AdsAttrs_adSize = 0;
+			
+			// aapt resource value: 1
+			public static int AdsAttrs_adSizes = 1;
+			
+			// aapt resource value: 2
+			public static int AdsAttrs_adUnitId = 2;
 			
 			public static int[] AlertDialog = new int[] {
 					16842994,
@@ -6146,6 +7765,9 @@ namespace TrackApp.Droid
 			// aapt resource value: 280
 			public static int AppCompatTheme_windowNoTitle = 280;
 			
+			public static int[] AppDataSearch = new int[] {
+					0};
+			
 			public static int[] BottomNavigationView = new int[] {
 					2130968701,
 					2130968749,
@@ -6241,6 +7863,164 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 18
 			public static int CardView_contentPaddingTop = 18;
+			
+			public static int[] CastExpandedController = new int[] {
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1};
+			
+			// aapt resource value: 3
+			public static int CastExpandedController_castButtonColor = 3;
+			
+			// aapt resource value: 18
+			public static int CastExpandedController_castClosedCaptionsButtonDrawable = 18;
+			
+			// aapt resource value: 2
+			public static int CastExpandedController_castControlButtons = 2;
+			
+			// aapt resource value: 16
+			public static int CastExpandedController_castForward30ButtonDrawable = 16;
+			
+			// aapt resource value: 17
+			public static int CastExpandedController_castMuteToggleButtonDrawable = 17;
+			
+			// aapt resource value: 5
+			public static int CastExpandedController_castPauseButtonDrawable = 5;
+			
+			// aapt resource value: 4
+			public static int CastExpandedController_castPlayButtonDrawable = 4;
+			
+			// aapt resource value: 9
+			public static int CastExpandedController_castRewind30ButtonDrawable = 9;
+			
+			// aapt resource value: 0
+			public static int CastExpandedController_castSeekBarProgressDrawable = 0;
+			
+			// aapt resource value: 1
+			public static int CastExpandedController_castSeekBarThumbDrawable = 1;
+			
+			// aapt resource value: 8
+			public static int CastExpandedController_castSkipNextButtonDrawable = 8;
+			
+			// aapt resource value: 7
+			public static int CastExpandedController_castSkipPreviousButtonDrawable = 7;
+			
+			// aapt resource value: 6
+			public static int CastExpandedController_castStopButtonDrawable = 6;
+			
+			public static int[] CastIntroOverlay = new int[] {
+					1,
+					1,
+					1,
+					1,
+					1,
+					1};
+			
+			// aapt resource value: 0
+			public static int CastIntroOverlay_castBackgroundColor = 0;
+			
+			// aapt resource value: 1
+			public static int CastIntroOverlay_castButtonBackgroundColor = 1;
+			
+			// aapt resource value: 3
+			public static int CastIntroOverlay_castButtonText = 3;
+			
+			// aapt resource value: 2
+			public static int CastIntroOverlay_castButtonTextAppearance = 2;
+			
+			// aapt resource value: 5
+			public static int CastIntroOverlay_castFocusRadius = 5;
+			
+			// aapt resource value: 4
+			public static int CastIntroOverlay_castTitleTextAppearance = 4;
+			
+			public static int[] CastMiniController = new int[] {
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1};
+			
+			// aapt resource value: 4
+			public static int CastMiniController_castBackground = 4;
+			
+			// aapt resource value: 6
+			public static int CastMiniController_castButtonColor = 6;
+			
+			// aapt resource value: 24
+			public static int CastMiniController_castClosedCaptionsButtonDrawable = 24;
+			
+			// aapt resource value: 3
+			public static int CastMiniController_castControlButtons = 3;
+			
+			// aapt resource value: 22
+			public static int CastMiniController_castForward30ButtonDrawable = 22;
+			
+			// aapt resource value: 17
+			public static int CastMiniController_castLargePauseButtonDrawable = 17;
+			
+			// aapt resource value: 16
+			public static int CastMiniController_castLargePlayButtonDrawable = 16;
+			
+			// aapt resource value: 18
+			public static int CastMiniController_castLargeStopButtonDrawable = 18;
+			
+			// aapt resource value: 23
+			public static int CastMiniController_castMuteToggleButtonDrawable = 23;
+			
+			// aapt resource value: 8
+			public static int CastMiniController_castPauseButtonDrawable = 8;
+			
+			// aapt resource value: 7
+			public static int CastMiniController_castPlayButtonDrawable = 7;
+			
+			// aapt resource value: 5
+			public static int CastMiniController_castProgressBarColor = 5;
+			
+			// aapt resource value: 21
+			public static int CastMiniController_castRewind30ButtonDrawable = 21;
+			
+			// aapt resource value: 1
+			public static int CastMiniController_castShowImageThumbnail = 1;
+			
+			// aapt resource value: 20
+			public static int CastMiniController_castSkipNextButtonDrawable = 20;
+			
+			// aapt resource value: 19
+			public static int CastMiniController_castSkipPreviousButtonDrawable = 19;
+			
+			// aapt resource value: 9
+			public static int CastMiniController_castStopButtonDrawable = 9;
+			
+			// aapt resource value: 2
+			public static int CastMiniController_castSubtitleTextAppearance = 2;
+			
+			// aapt resource value: 0
+			public static int CastMiniController_castTitleTextAppearance = 0;
 			
 			public static int[] CollapsingToolbarLayout = new int[] {
 					2130968658,
@@ -6386,6 +8166,64 @@ namespace TrackApp.Droid
 			// aapt resource value: 1
 			public static int CoordinatorLayout_statusBarBackground = 1;
 			
+			public static int[] Corpus = new int[] {
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1};
+			
+			// aapt resource value: 2
+			public static int Corpus_contentProviderUri = 2;
+			
+			// aapt resource value: 0
+			public static int Corpus_corpusId = 0;
+			
+			// aapt resource value: 1
+			public static int Corpus_corpusVersion = 1;
+			
+			// aapt resource value: 6
+			public static int Corpus_documentMaxAgeSecs = 6;
+			
+			// aapt resource value: 7
+			public static int Corpus_perAccountTemplate = 7;
+			
+			// aapt resource value: 4
+			public static int Corpus_schemaOrgType = 4;
+			
+			// aapt resource value: 5
+			public static int Corpus_semanticallySearchable = 5;
+			
+			// aapt resource value: 3
+			public static int Corpus_trimmable = 3;
+			
+			public static int[] CustomCastTheme = new int[] {
+					1,
+					1,
+					1};
+			
+			// aapt resource value: 2
+			public static int CustomCastTheme_castExpandedControllerStyle = 2;
+			
+			// aapt resource value: 0
+			public static int CustomCastTheme_castIntroOverlayStyle = 0;
+			
+			// aapt resource value: 1
+			public static int CustomCastTheme_castMiniControllerStyle = 1;
+			
+			public static int[] CustomWalletTheme = new int[] {
+					1,
+					1};
+			
+			// aapt resource value: 1
+			public static int CustomWalletTheme_toolbarTextColorStyle = 1;
+			
+			// aapt resource value: 0
+			public static int CustomWalletTheme_windowTransitionStyle = 0;
+			
 			public static int[] DesignTheme = new int[] {
 					2130968639,
 					2130968640,
@@ -6433,6 +8271,16 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 7
 			public static int DrawerArrowToggle_thickness = 7;
+			
+			public static int[] FeatureParam = new int[] {
+					1,
+					1};
+			
+			// aapt resource value: 0
+			public static int FeatureParam_paramName = 0;
+			
+			// aapt resource value: 1
+			public static int FeatureParam_paramValue = 1;
 			
 			public static int[] FloatingActionButton = new int[] {
 					2130968629,
@@ -6540,6 +8388,74 @@ namespace TrackApp.Droid
 			// aapt resource value: 2
 			public static int ForegroundLinearLayout_foregroundInsidePadding = 2;
 			
+			public static int[] GlobalSearch = new int[] {
+					1,
+					1,
+					1,
+					1,
+					1,
+					1};
+			
+			public static int[] GlobalSearchCorpus = new int[] {
+					1};
+			
+			// aapt resource value: 0
+			public static int GlobalSearchCorpus_allowShortcuts = 0;
+			
+			public static int[] GlobalSearchSection = new int[] {
+					1,
+					1};
+			
+			// aapt resource value: 1
+			public static int GlobalSearchSection_sectionContent = 1;
+			
+			// aapt resource value: 0
+			public static int GlobalSearchSection_sectionType = 0;
+			
+			// aapt resource value: 3
+			public static int GlobalSearch_defaultIntentAction = 3;
+			
+			// aapt resource value: 5
+			public static int GlobalSearch_defaultIntentActivity = 5;
+			
+			// aapt resource value: 4
+			public static int GlobalSearch_defaultIntentData = 4;
+			
+			// aapt resource value: 0
+			public static int GlobalSearch_searchEnabled = 0;
+			
+			// aapt resource value: 1
+			public static int GlobalSearch_searchLabel = 1;
+			
+			// aapt resource value: 2
+			public static int GlobalSearch_settingsDescription = 2;
+			
+			public static int[] IMECorpus = new int[] {
+					1,
+					1,
+					1,
+					1,
+					1,
+					1};
+			
+			// aapt resource value: 0
+			public static int IMECorpus_inputEnabled = 0;
+			
+			// aapt resource value: 1
+			public static int IMECorpus_sourceClass = 1;
+			
+			// aapt resource value: 5
+			public static int IMECorpus_toAddressesSection = 5;
+			
+			// aapt resource value: 3
+			public static int IMECorpus_userInputSection = 3;
+			
+			// aapt resource value: 2
+			public static int IMECorpus_userInputTag = 2;
+			
+			// aapt resource value: 4
+			public static int IMECorpus_userInputValue = 4;
+			
 			public static int[] LinearLayoutCompat = new int[] {
 					16843046,
 					16843047,
@@ -6605,6 +8521,114 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 1
 			public static int ListPopupWindow_android_dropDownVerticalOffset = 1;
+			
+			public static int[] LoadingImageView = new int[] {
+					1,
+					1,
+					1};
+			
+			// aapt resource value: 2
+			public static int LoadingImageView_circleCrop = 2;
+			
+			// aapt resource value: 1
+			public static int LoadingImageView_imageAspectRatio = 1;
+			
+			// aapt resource value: 0
+			public static int LoadingImageView_imageAspectRatioAdjust = 0;
+			
+			public static int[] MapAttrs = new int[] {
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1};
+			
+			// aapt resource value: 22
+			public static int MapAttrs_ambientEnabled = 22;
+			
+			// aapt resource value: 1
+			public static int MapAttrs_cameraBearing = 1;
+			
+			// aapt resource value: 24
+			public static int MapAttrs_cameraMaxZoomPreference = 24;
+			
+			// aapt resource value: 23
+			public static int MapAttrs_cameraMinZoomPreference = 23;
+			
+			// aapt resource value: 2
+			public static int MapAttrs_cameraTargetLat = 2;
+			
+			// aapt resource value: 3
+			public static int MapAttrs_cameraTargetLng = 3;
+			
+			// aapt resource value: 4
+			public static int MapAttrs_cameraTilt = 4;
+			
+			// aapt resource value: 5
+			public static int MapAttrs_cameraZoom = 5;
+			
+			// aapt resource value: 33
+			public static int MapAttrs_latLngBoundsNorthEastLatitude = 33;
+			
+			// aapt resource value: 34
+			public static int MapAttrs_latLngBoundsNorthEastLongitude = 34;
+			
+			// aapt resource value: 25
+			public static int MapAttrs_latLngBoundsSouthWestLatitude = 25;
+			
+			// aapt resource value: 32
+			public static int MapAttrs_latLngBoundsSouthWestLongitude = 32;
+			
+			// aapt resource value: 6
+			public static int MapAttrs_liteMode = 6;
+			
+			// aapt resource value: 0
+			public static int MapAttrs_mapType = 0;
+			
+			// aapt resource value: 7
+			public static int MapAttrs_uiCompass = 7;
+			
+			// aapt resource value: 21
+			public static int MapAttrs_uiMapToolbar = 21;
+			
+			// aapt resource value: 8
+			public static int MapAttrs_uiRotateGestures = 8;
+			
+			// aapt resource value: 9
+			public static int MapAttrs_uiScrollGestures = 9;
+			
+			// aapt resource value: 16
+			public static int MapAttrs_uiTiltGestures = 16;
+			
+			// aapt resource value: 17
+			public static int MapAttrs_uiZoomControls = 17;
+			
+			// aapt resource value: 18
+			public static int MapAttrs_uiZoomGestures = 18;
+			
+			// aapt resource value: 19
+			public static int MapAttrs_useViewLifecycle = 19;
+			
+			// aapt resource value: 20
+			public static int MapAttrs_zOrderOnTop = 20;
 			
 			public static int[] MediaRouteButton = new int[] {
 					16843072,
@@ -6981,6 +9005,56 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 22
 			public static int SearchView_voiceIcon = 22;
+			
+			public static int[] Section = new int[] {
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1};
+			
+			public static int[] SectionFeature = new int[] {
+					1};
+			
+			// aapt resource value: 0
+			public static int SectionFeature_featureType = 0;
+			
+			// aapt resource value: 4
+			public static int Section_indexPrefixes = 4;
+			
+			// aapt resource value: 2
+			public static int Section_noIndex = 2;
+			
+			// aapt resource value: 6
+			public static int Section_schemaOrgProperty = 6;
+			
+			// aapt resource value: 1
+			public static int Section_sectionFormat = 1;
+			
+			// aapt resource value: 0
+			public static int Section_sectionId = 0;
+			
+			// aapt resource value: 3
+			public static int Section_sectionWeight = 3;
+			
+			// aapt resource value: 5
+			public static int Section_subsectionSeparator = 5;
+			
+			public static int[] SignInButton = new int[] {
+					1,
+					1,
+					1};
+			
+			// aapt resource value: 0
+			public static int SignInButton_buttonSize = 0;
+			
+			// aapt resource value: 1
+			public static int SignInButton_colorScheme = 1;
+			
+			// aapt resource value: 2
+			public static int SignInButton_scopeUris = 2;
 			
 			public static int[] SnackbarLayout = new int[] {
 					16843039,
@@ -7443,6 +9517,70 @@ namespace TrackApp.Droid
 			
 			// aapt resource value: 4
 			public static int View_theme = 4;
+			
+			public static int[] WalletFragmentOptions = new int[] {
+					1,
+					1,
+					1,
+					1};
+			
+			// aapt resource value: 0
+			public static int WalletFragmentOptions_appTheme = 0;
+			
+			// aapt resource value: 1
+			public static int WalletFragmentOptions_environment = 1;
+			
+			// aapt resource value: 3
+			public static int WalletFragmentOptions_fragmentMode = 3;
+			
+			// aapt resource value: 2
+			public static int WalletFragmentOptions_fragmentStyle = 2;
+			
+			public static int[] WalletFragmentStyle = new int[] {
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1};
+			
+			// aapt resource value: 3
+			public static int WalletFragmentStyle_buyButtonAppearance = 3;
+			
+			// aapt resource value: 0
+			public static int WalletFragmentStyle_buyButtonHeight = 0;
+			
+			// aapt resource value: 2
+			public static int WalletFragmentStyle_buyButtonText = 2;
+			
+			// aapt resource value: 1
+			public static int WalletFragmentStyle_buyButtonWidth = 1;
+			
+			// aapt resource value: 6
+			public static int WalletFragmentStyle_maskedWalletDetailsBackground = 6;
+			
+			// aapt resource value: 8
+			public static int WalletFragmentStyle_maskedWalletDetailsButtonBackground = 8;
+			
+			// aapt resource value: 7
+			public static int WalletFragmentStyle_maskedWalletDetailsButtonTextAppearance = 7;
+			
+			// aapt resource value: 5
+			public static int WalletFragmentStyle_maskedWalletDetailsHeaderTextAppearance = 5;
+			
+			// aapt resource value: 16
+			public static int WalletFragmentStyle_maskedWalletDetailsLogoImageType = 16;
+			
+			// aapt resource value: 9
+			public static int WalletFragmentStyle_maskedWalletDetailsLogoTextColor = 9;
+			
+			// aapt resource value: 4
+			public static int WalletFragmentStyle_maskedWalletDetailsTextAppearance = 4;
 			
 			static Styleable()
 			{

@@ -84,5 +84,51 @@ namespace TrackApp.ServerLayer.Save
                 }
             }
         }
+
+        public async Task DeleteRoute()
+        {
+
+            if (Routes != null && RouteInfo != null)
+            {
+                try
+                {
+                    var context = AwsUtils.GetContext();
+
+                    //make routes batch
+                    var routesBatch = context.CreateBatchWrite<Route>();
+                    routesBatch.AddDeleteItems(Routes);
+
+                    //make route info batch
+                    var routesInfoBatch = context.CreateBatchWrite<RouteInfo>();
+                    routesInfoBatch.AddDeleteItem(RouteInfo);
+
+                    //save with super batch
+                    var superBatch = new MultiTableBatchWrite(routesBatch, routesInfoBatch);
+                    await superBatch.ExecuteAsync();
+                }
+                catch (AmazonDynamoDBException e)
+                {
+                    Console.WriteLine("AmazonDynamoDBException CAUGHT: " + e.Message);
+                    throw new AmazonServiceException("AmazonDynamoDBException CAUGHT: " + e.Message);
+                }
+                catch (AmazonServiceException e)
+                {
+                    Console.WriteLine("AmazonServiceException CAUGHT: " + e.Message);
+                    throw new AmazonServiceException("AmazonServiceException CAUGHT: " + e.Message);
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Exception CAUGHT: " + e.Message);
+                    throw new Exception("Exception CAUGHT: " + e.Message);
+
+                }
+
+            }
+            else
+            {
+                throw new Exception("Routes or RouteInfo are null!");
+            }
+        }
     }
 }

@@ -65,18 +65,26 @@ namespace TrackApp.ClientLayer
         public const string EDIT_FINALIZE_MESSAGE = "Datele au fost salvate!";
 
         // map tabbed page
-        public const string MAP_PAGE_TITLE = "Grupuri";
+        public const string MAPER_PAGE_TITLE = "Grupuri";
         public const string REQUEST_PAGE_TITLE = "Cereri";
         public const string TOOL_BAR_ADD_GROUP = "Creaza grup";
 
         //group tabbed page
         public const string MEMBERS_PAGE_TITLE = "Membrii";
         public const string NOTIFICATIONS_PAGE_TITLE = "Istoric";
+        public const string GENERAL_GROUP_PAGE_TITLE = "Harta";
         public const string START_PROCESS_SIGNAL = "Asteptati sa se incarce datele!";
         public const string GROUP_TITLE = "Grup";
 
         //group members and routes pages
         public const string ADD_ROUTE_TOOL_BAR_TITLE = "Creaza ruta";
+        public const string REMOVE_ROUTE_TOOL_BAR_TITLE = "Sterge ruta";
+        public const string MAKE_ROUTE_ACTIVE_TOOL_BAR_TITLE = "Fa ruta curenta activa";
+
+        //map namespace
+        public const string MAP_TABBED_PAGE_TITLE = "Harta";
+        public const string MAP_PAGE_TITLE = "Harta";
+        public const string MAP_ACTIVE_ROUTE_TITLE = "Ruta";
 
     }
 }

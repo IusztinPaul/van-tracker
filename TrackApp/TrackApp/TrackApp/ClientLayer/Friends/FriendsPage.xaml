@@ -96,6 +96,8 @@
                                         Grid.RowSpan="2"    
                                         Grid.Column="2"
                                         Margin="1"
+                                        TextColor="White"
+                                        FontAttributes="Bold"
                                         Text="{StaticResource BtnText}"
                                         FontSize="Micro"
                                         BindingContext="{Binding Source={x:Reference FriendsList}, Path=BindingContext}"

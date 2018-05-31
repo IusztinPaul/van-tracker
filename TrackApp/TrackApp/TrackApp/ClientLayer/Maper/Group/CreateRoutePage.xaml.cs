@@ -251,7 +251,7 @@ namespace TrackApp.ClientLayer.Maper.Group
                     string newDriverString = ""; //updated driver string in group
                     int indexOfDriver = -1;
 
-                    //find this user in group
+                    //find this user in the group drivers
                     foreach (var driver in group.Drivers)
                         if (driver.Trim().StartsWith(driverUsername.Trim()))
                         {
@@ -262,6 +262,27 @@ namespace TrackApp.ClientLayer.Maper.Group
                             indexOfDriver = group.Drivers.IndexOf(driver);
                             break;
                         }
+
+                    //make the route active if it's the first one for the tapped user
+                    bool hasActiveRoute = false;
+                    if (group.ActiveDriverRoutes != null)
+                    {
+                        foreach (var routeActive in group.ActiveDriverRoutes)
+                            if (routeActive.Trim().StartsWith(driverUsername.Trim()))
+                            {
+                                hasActiveRoute = true;
+                                break;
+                            }
+                    }
+                    else
+                    {
+                        group.ActiveDriverRoutes = new List<string>();
+                    }
+
+                    if (!hasActiveRoute) // add it to active routes if not found
+                        group.ActiveDriverRoutes.Add(driverUsername + 
+                            ClientConsts.CONCAT_SPECIAL_CHARACTER + 
+                            (numberOfRoutesInGroup + 1).ToString());
 
                     //normally it is not possible
                     if (numberOfRoutesInGroup == -1)

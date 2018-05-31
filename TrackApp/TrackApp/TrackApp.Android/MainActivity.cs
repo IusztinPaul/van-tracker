@@ -31,6 +31,7 @@ namespace TrackApp.Droid
 
             //plugins inits
             Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, bundle);
+            Xamarin.FormsMaps.Init(this, bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());

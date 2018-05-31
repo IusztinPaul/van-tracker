@@ -47,11 +47,11 @@ namespace TrackApp
 
             var roledUser = new RoledTrackUser(user)
             {
-                Role = "Administrator"
+                Role = RoledTrackUser.TYPE_ADMINISTRATOR
             };
 
-          //    MainPage = new NavigationPage(new GroupTabbedPage(roledUser, "TestGroup2")); 
-             MainPage = new NavigationPage(new LoginPage(user));
+              MainPage = new NavigationPage(new MapGroupsPage(user)); 
+           //  MainPage = new NavigationPage(new LoginPage(user));
            // MainPage = new NavigationPage(new CreateRoutePage("TestGroup2", "Leppar"));
             // MainPage = new DemoPickPage();
 		}

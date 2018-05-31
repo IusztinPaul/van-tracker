@@ -47,28 +47,40 @@ namespace TrackApp.ClientLayer.Maper.Group
             IsBusy = true;
             (OnRefreshCommand as Command)?.ChangeCanExecute();
 
-            try { 
-            //find tapped user driver in group
-            var group = await QueryHashLoader.LoadData<DataFormat.Group>(groupName);
-            int numberOfRoutesInGroup = -1;
-
-            foreach(string drivers in group.Drivers)
+            try
             {
-                var items = drivers.Split(ClientConsts.CONCAT_SPECIAL_CHARACTER[0]);
-                var name = items[0];
 
-                if(name.Equals(tappedUsername.Username))
+                //find tapped user driver in group
+                var group = await QueryHashLoader.LoadData<DataFormat.Group>(groupName);
+                int numberOfRoutesInGroup = -1;
+
+                foreach (string drivers in group.Drivers)
                 {
-                    numberOfRoutesInGroup = Int32.Parse(items[1]);
-                    break;
+                    var items = drivers.Split(ClientConsts.CONCAT_SPECIAL_CHARACTER[0]);
+                    var name = items[0];
+
+                    if (name.Equals(tappedUsername.Username))
+                    {
+                        numberOfRoutesInGroup = Int32.Parse(items[1]);
+                        break;
+                    }
                 }
-            }
 
-            if (numberOfRoutesInGroup == -1)
-                throw new Exception("The driver should be 100% in the group. There are problems in your logic!!!!");
+                //find active route
+                int activeRouteCount = -1;
+                if(group.ActiveDriverRoutes != null)
+                    foreach (string activeRoutes in group.ActiveDriverRoutes)
+                        if (activeRoutes.Trim().StartsWith(tappedUsername.Username))
+                        {
+                            activeRouteCount = Int32.Parse(activeRoutes.Split(ClientConsts.CONCAT_SPECIAL_CHARACTER[0])[1]);
+                            break;
+                        }
 
-            //query routes
-            var routes = await QueryRoute.QueryRouteInfo(tappedUsername.Username, groupName, numberOfRoutesInGroup);
+                if (numberOfRoutesInGroup == -1)
+                    throw new Exception("The driver should be 100% in the group. There are problems in your logic!!!!");
+
+                //query routes
+                var routes = await QueryRoute.QueryRouteInfo(tappedUsername.Username, groupName, numberOfRoutesInGroup);
 
                 //bind view
                 if (routes == null)
@@ -76,6 +88,14 @@ namespace TrackApp.ClientLayer.Maper.Group
                 else
                 {
                     RoutesList = new ObservableCollection<RouteInfo>(routes);
+
+                    //set label name color
+                    foreach (var routeinfo in RoutesList)
+                        if (routeinfo.Count == activeRouteCount)
+                            routeinfo.LabelColor = Color.Red;
+                        else
+                            routeinfo.LabelColor = Color.Black;
+                    //sort
                     RoutesList.Sort<RouteInfo>((a, b) => a.RouteName.CompareTo(b.RouteName));
                 }
 
@@ -110,5 +130,5 @@ namespace TrackApp.ClientLayer.Maper.Group
         }
     }
 
-   
+
 }
