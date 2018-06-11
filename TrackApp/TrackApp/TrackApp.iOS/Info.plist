@@ -34,7 +34,5 @@
 	<string>TrackApp</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
-	<key>NSHomeKitUsageDescription</key>
-	<string>Allows the app to control HomeKit enabled devices.</string>
 </dict>
 </plist>

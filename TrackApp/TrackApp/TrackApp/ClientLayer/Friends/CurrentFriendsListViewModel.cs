@@ -20,7 +20,8 @@ namespace TrackApp.ClientLayer.Friends
 
         public ObservableCollection<TrackUser> _currentUserFriends;
         public ObservableCollection<TrackUser> CurrentUserFriends
-        { get => _currentUserFriends;
+        {
+            get => _currentUserFriends;
             set
             {
                 _currentUserFriends = value;
@@ -29,14 +30,14 @@ namespace TrackApp.ClientLayer.Friends
         }
 
         public CurrentFriendsListViewModel(TrackUser currentUser) : base(currentUser)
-        { 
+        {
             //set commands
             this.OnButtonTappedCommand = new Command(OnButtonUnfollowCommand);
             OnRefreshCommand = new Command(() => Device.BeginInvokeOnMainThread(async () => await PopulateAsync()), () => !IsBusy);
         }
 
 
-         public override async Task PopulateAsync()
+        public override async Task PopulateAsync()
         {
 
             // if already refreshing don't populate
@@ -166,6 +167,7 @@ namespace TrackApp.ClientLayer.Friends
             currentUserFriends = await new QueryUser().LoadData<UserFriends>(currentUser.Username);
 
             //remove id from db object and after update it in the database (current user friend list)
+            /* -> TODO reimplement this behaviour
             if (currentUserFriends.Friends != null && currentUserFriends.Friends.Count == 1)
             {
                 // can't delete the last item in a list so we delete the whole row
@@ -182,19 +184,22 @@ namespace TrackApp.ClientLayer.Friends
                         Friends = new List<string>(),
                         Notifications = currentUserFriends.Notifications,
                         GroupRequests = currentUserFriends.GroupRequests,
-                        Groups = currentUserFriends.Groups
+                        Groups = currentUserFriends.Groups,
+                        VersionNumber = currentUserFriends.VersionNumber
                     }
                     };
                     await s.SaveData();
                 }
             }
             else
+            {*/
+
+            if (currentUserFriends != null && currentUserFriends.Friends != null)
             {
                 currentUserFriends?.Friends.Remove(clickUser.Username);
                 var s = new SaveUserFriends { UserFriends = currentUserFriends };
                 await s.SaveData();
             }
-
 
             //update notifications for the unfollowed user
             var clickedUserFriendsObj = await new QueryUser().LoadData<UserFriends>(clickUser.Username);
@@ -202,12 +207,12 @@ namespace TrackApp.ClientLayer.Friends
 
             //create objects if needed
             if (clickedUserFriendsObj == null)
-                clickedUserFriendsObj = new UserFriends { Username = clickUser.Username , Friends = clickedUserFriendsObj?.Friends};
+                clickedUserFriendsObj = new UserFriends { Username = clickUser.Username, Friends = clickedUserFriendsObj?.Friends };
 
             //create objects if needed            
-            if(clickedUserFriendsObj != null && clickedUserFriendsObj.Notifications == null)
+            if (clickedUserFriendsObj != null && clickedUserFriendsObj.Notifications == null)
                 clickedUserFriendsObj.Notifications = new List<string>();
-            
+
             //add the real index of the item so we will display the items in the ordered they where 
             //really added (dynamodb sorts the elements inside the db)
             clickedUserFriendsObj.Notifications.AddIndexedString(notifStorage);

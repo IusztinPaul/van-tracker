@@ -48,15 +48,24 @@ namespace TrackApp.DataFormat
 
         public override string ToString()
         {
-            return Country + " " + Region + " " + City + " str. " + Street + " nr. " + Nr + " " + Block;
+             return Country + " " + Region + " " + City + ", " + Street + " " + Nr + ", " + Block;
+          //  return Country + " " + Region + " " + City;
         }
 
         public override bool Equals(object obj)
         {
             var item = obj as Location;
             if (item != null)
-                return item.Country.Equals(Country) && item.Region.Equals(Region) && item.City.Equals(City) && 
+            {
+                if (item.Block == null)
+                    item.Block = "";
+
+                if (Block == null)
+                    Block = "";
+
+                return item.Country.Equals(Country) && item.Region.Equals(Region) && item.City.Equals(City) &&
                     item.Street.Equals(Street) && item.Nr.Equals(Nr) && item.Block.Equals(Block);
+            }
 
             return false;
         }

@@ -10,7 +10,8 @@ using TrackApp.ServerLayer.Save;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Plugin.Permissions.Abstractions;
-
+using TrackApp.ServerLayer.Query;
+using System.Threading.Tasks;
 
 namespace TrackApp.ClientLayer.Profile
 {
@@ -37,6 +38,9 @@ namespace TrackApp.ClientLayer.Profile
 
             try
             {
+                //firstly bring the last version of the user in the memory
+                this.currentUser = await QueryHashLoader.LoadData<TrackUser>(currentUser.Username);
+
                 var newUser = GetTrackUserWithValidatedData();
 
                 //change view back to labels and save the data from the entryfields only if the data is valid
@@ -103,11 +107,17 @@ namespace TrackApp.ClientLayer.Profile
             {
                 bindCont.IsSaving = false;
                 bindCont.ShowGridData = -1;
+
+                //after the edit finished restart looping for location
+                App.locationServiceController.StartLocationLoop(currentUser.Username);
             }
         }
 
         public async void TbItemEditListener(object source, EventArgs args)
         {
+            //stop loop while editing the profile
+            App.locationServiceController.StopLocationLooper();
+
             //first ask for storage permission
             var result = await PermissionsCaller.PermissionStorageCaller(this);
             if (result.Equals(PermissionStatus.Granted))
@@ -189,7 +199,10 @@ namespace TrackApp.ClientLayer.Profile
                     Nr = EtAddressNumber.Text?.Trim(),
                     City = EtCity.Text?.Trim(),
                     Block = EtBlock.Text?.Trim()
-                }
+                },
+                Latitude = this.currentUser.Latitude,
+                Longitude = this.currentUser.Longitude,
+                VersionNumber = this.currentUser.VersionNumber
             };
 
             return newUser;
@@ -214,9 +227,19 @@ namespace TrackApp.ClientLayer.Profile
             }
         }
 
-        public void LogoutListener(object source, EventArgs args)
+        public async void LogoutListener(object source, EventArgs args)
         {
-            App.Current.MainPage = new NavigationPage(new LoginPage(currentUser));
+            // stop the service method if the user logs out
+            App.locationServiceController.StopLocationLooper();
+
+            //put the login flag on no user
+            Application.Current.Properties[ClientConsts.LOGIN_KEY_FLAG] = ClientConsts.LOGIN_NO_USER_FLAG;
+            await Application.Current.SavePropertiesAsync();
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                App.Current.MainPage = new NavigationPage(new LoginPage(currentUser));
+            });
         }
 
         public async void ResetPasswordListener(object source, EventArgs args)

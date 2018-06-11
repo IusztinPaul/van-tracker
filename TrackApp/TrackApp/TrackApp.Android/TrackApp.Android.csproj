@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{90E7A61A-355D-423F-80B7-608EB348FFCF}</ProjectGuid>
+    <ProjectGuid>{08D2C575-E15C-4C71-955B-65356B624CA5}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{c9e5eea5-ca05-42a1-839b-61506e0a37df}</TemplateGuid>
     <OutputType>Library</OutputType>
@@ -49,30 +49,40 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AWSSDK.CognitoIdentity">
-      <Version>3.3.2.22</Version>
+      <Version>3.3.2.23</Version>
     </PackageReference>
     <PackageReference Include="AWSSDK.Core">
-      <Version>3.3.23</Version>
+      <Version>3.3.24</Version>
     </PackageReference>
     <PackageReference Include="AWSSDK.DynamoDBv2">
-      <Version>3.3.8</Version>
+      <Version>3.3.9</Version>
     </PackageReference>
     <PackageReference Include="Plugin.Permissions">
       <Version>3.0.0.12</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="3.0.0.482510" />
+    <PackageReference Include="TK.CustomMap">
+      <Version>2.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugin.Geolocator">
+      <Version>4.5.0.6</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="3.0.0.550146" />
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2" />
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="27.0.2" />
     <PackageReference Include="Xamarin.Android.Support.v4" Version="27.0.2" />
     <PackageReference Include="Xamarin.Android.Support.v7.CardView" Version="27.0.2" />
     <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="27.0.2" />
     <PackageReference Include="Xamarin.Forms.Maps">
-      <Version>3.0.0.482510</Version>
+      <Version>3.0.0.550146</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CircleImageRenderer.cs" />
+    <Compile Include="ControlLocationServiceAndroid.cs" />
     <Compile Include="CustomEntryRenderer.cs" />
+    <Compile Include="LocationSBinder.cs" />
+    <Compile Include="LocationService.cs" />
+    <Compile Include="LocationServiceConnection.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MessageAndroid.cs" />
     <Compile Include="PickturePickerDroid.cs" />
@@ -145,6 +155,15 @@
     <AndroidResource Include="Resources\drawable\profile_icon_black.png" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\red_cross_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\thick_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\thick_icon_black.png" />
+  </ItemGroup>
+  <ItemGroup>
     <AndroidResource Include="Resources\drawable\unfollow_icon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -154,16 +173,7 @@
     <AndroidResource Include="Resources\drawable\vantrackerlogo.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\thick_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\x_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\thick_icon_black.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\red_cross_icon.png" />
   </ItemGroup>
   <Import Project="..\TrackApp\TrackApp.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Xamarin.Forms;
 
 namespace TrackApp.ClientLayer
 {
     public static class ClientConsts
     {
-
         //concat special caracter
         public const string CONCAT_SPECIAL_CHARACTER = "#";
 
         //special notification signals
         public const string ADD_SIGNAL = "add";
         public const string REMOVE_SIGNAL = "remove";
+
         //special type signals 
         public const string ADMINISTRATOR_SIGNAL = "a";
         public const string DRIVER_SIGNAL = "d";
@@ -41,6 +39,8 @@ namespace TrackApp.ClientLayer
         public const string NOT_DELIVERED_ICON = "red_cross_icon.png";
 
         // login and sign up constants 
+        public const string LOGIN_KEY_FLAG = "login"; // key for App.Current.Properties for login ( value = username/LOGIN_NO_USER_FLAG)
+        public const string LOGIN_NO_USER_FLAG = "$$$";
         public const int PASSWORD_LENGTH_MINIMUM = 6;
         public static readonly string PASSWORD_LENGTH_STRING = "Parola de minim " + PASSWORD_LENGTH_MINIMUM + " caractere";
         public static readonly string PASSWORD_REPEAT = "Repeta parola";
@@ -70,7 +70,7 @@ namespace TrackApp.ClientLayer
         public const string TOOL_BAR_ADD_GROUP = "Creaza grup";
 
         //group tabbed page
-        public const string MEMBERS_PAGE_TITLE = "Membrii";
+        public const string MEMBERS_PAGE_TITLE = "Membri";
         public const string NOTIFICATIONS_PAGE_TITLE = "Istoric";
         public const string GENERAL_GROUP_PAGE_TITLE = "Harta";
         public const string START_PROCESS_SIGNAL = "Asteptati sa se incarce datele!";
@@ -79,12 +79,21 @@ namespace TrackApp.ClientLayer
         //group members and routes pages
         public const string ADD_ROUTE_TOOL_BAR_TITLE = "Creaza ruta";
         public const string REMOVE_ROUTE_TOOL_BAR_TITLE = "Sterge ruta";
-        public const string MAKE_ROUTE_ACTIVE_TOOL_BAR_TITLE = "Fa ruta curenta activa";
+        public const string SEE_USER_POSITON_TOOL_BAR_TITLE = "Vezi pozitie";
+        public const string MAKE_ROUTE_ACTIVE_TOOL_BAR_TITLE = "Ruta activa";
 
         //map namespace
         public const string MAP_TABBED_PAGE_TITLE = "Harta";
         public const string MAP_PAGE_TITLE = "Harta";
         public const string MAP_ACTIVE_ROUTE_TITLE = "Ruta";
+        public const string MAP_CALIBRATE_TOOL_BAR_ITEM_TITLE = "Centreaza";
 
+        public const double CIRCLE_RADIUS = 8;
+        public const float CIRCLE_STROKE_WIDTH = 4f;
+        public const float LINE_WIDTH = 35f;
+        public const double FROM_KM_MAP_DISTANCE = 0.2f;
+
+        public static readonly Color[] Colours = new Color[] { Color.DarkRed, Color.DarkBlue, Color.DarkGreen,  Color.Orange, Color.Teal, Color.Yellow, Color.Brown, Color.Cyan, Color.Purple, Color.Violet };
+        public static readonly int MAX_DRIVERS_IN_GROUP = Colours.Length;
     }
 }

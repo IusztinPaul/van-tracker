@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.IO;
 using Android.Content;
 using Plugin.Permissions;
+using TK.CustomMap.Droid;
 
 namespace TrackApp.Droid
 {
@@ -32,6 +33,7 @@ namespace TrackApp.Droid
             //plugins inits
             Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, bundle);
             Xamarin.FormsMaps.Init(this, bundle);
+            TKGoogleMaps.Init(this, bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());

@@ -83,7 +83,6 @@
                         HeightRequest="40"
                        />
 
-
                 <ListView x:Name="UsersList"
                       CachingStrategy="RecycleElement"
                       HasUnevenRows="True"

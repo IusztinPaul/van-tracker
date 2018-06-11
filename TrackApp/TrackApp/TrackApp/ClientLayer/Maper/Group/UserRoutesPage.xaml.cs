@@ -19,14 +19,26 @@ namespace TrackApp.ClientLayer.Maper.Group
                 //toolbar items
                 ToolbarItem addRoute = new ToolbarItem();
                 addRoute.Text = ClientConsts.ADD_ROUTE_TOOL_BAR_TITLE;
-                addRoute.Priority = 0;
+                addRoute.Priority = 1;
                 addRoute.Order = ToolbarItemOrder.Primary;
                 addRoute.Icon = ClientConsts.ADD_ITEM_ICON;
                 addRoute.Command = new Command( () => {
                     Device.BeginInvokeOnMainThread(async () => await Navigation.PushAsync(new CreateRouteGenericPage(groupName, tappedUser.Username)));
                     });
 
+                //make see driver toolbar item 
+                ToolbarItem seeDriverTbItem = new ToolbarItem();
+                seeDriverTbItem.Text = ClientConsts.SEE_USER_POSITON_TOOL_BAR_TITLE;
+                seeDriverTbItem.Priority = 0;
+                seeDriverTbItem.Order = ToolbarItemOrder.Secondary;
+                seeDriverTbItem.Command = new Command(async () =>
+                {
+                    await Navigation.PushAsync(new SeeUserPage(currentUser, tappedUser.Username));
+                });
+
                 this.ToolbarItems.Add(addRoute);
+                this.ToolbarItems.Add(seeDriverTbItem);
+
             }
             else if (currentUser.Role.Equals(RoledTrackUser.TYPE_NONE))
             {

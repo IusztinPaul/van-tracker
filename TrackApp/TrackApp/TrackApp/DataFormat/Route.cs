@@ -31,7 +31,7 @@ namespace TrackApp.DataFormat
         {
             get
             {
-                return Location.Street;
+                return Location.Street + "\t\t" + DateTime.ToString();
             }
         }
 

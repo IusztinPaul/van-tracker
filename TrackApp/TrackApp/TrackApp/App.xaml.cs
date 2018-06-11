@@ -23,6 +23,8 @@ namespace TrackApp
 	public partial class App : Application
 	{
 
+        public static IControlLocationService locationServiceController;
+
 	    public App ()
 		{
 			InitializeComponent();
@@ -50,8 +52,8 @@ namespace TrackApp
                 Role = RoledTrackUser.TYPE_ADMINISTRATOR
             };
 
-              MainPage = new NavigationPage(new MapGroupsPage(user)); 
-           //  MainPage = new NavigationPage(new LoginPage(user));
+            //  MainPage = new NavigationPage(new MapGroupsPage(user)); 
+             MainPage = new NavigationPage(new LoginPage(null));
            // MainPage = new NavigationPage(new CreateRoutePage("TestGroup2", "Leppar"));
             // MainPage = new DemoPickPage();
 		}
@@ -60,13 +62,17 @@ namespace TrackApp
 		{
             // Handle when your app starts
 
-            
-            
+            // get a static reference to a service controller
+            locationServiceController = DependencyService.Get<IControlLocationService>().GetInstance();
+            locationServiceController.StartService();
+
+            if (!Application.Current.Properties.ContainsKey(ClientConsts.LOGIN_KEY_FLAG)) //initialize login property
+                Application.Current.Properties[ClientConsts.LOGIN_KEY_FLAG] = ClientConsts.LOGIN_NO_USER_FLAG;
+
             //make connection with the dynamo DB
             try
             {
                 AwsUtils.GetContext();
-
             }
             catch (AmazonDynamoDBException e) // problems with the service
             {
@@ -81,9 +87,6 @@ namespace TrackApp
                 Console.WriteLine("EXCEPTION COUGHT: " + e.Message);
                 Console.WriteLine("TYPE: " + e.GetType());
             }
-
-            
-            
         }
 
 		protected override void OnSleep ()

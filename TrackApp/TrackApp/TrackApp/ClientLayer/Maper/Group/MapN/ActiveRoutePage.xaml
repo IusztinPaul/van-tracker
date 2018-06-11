@@ -2,11 +2,103 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TrackApp.ClientLayer.Maper.Group.MapN.ActiveRoutePage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="ListViewHeaderTitle">Adrese</x:String>
+            <x:String x:Key="ListViewHeaderTitleAdministrator">Rute active</x:String>
+            <x:String x:Key="NoActiveRouteText">Nu exista</x:String>
+            <x:String x:Key="SearchBoxPlaceHolder">Cauta</x:String>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout
+            Orientation="Vertical"
+            Spacing="2">
+
+            <SearchBar 
+                         x:Name="SrcBarData"
+                       Placeholder="{StaticResource SearchBoxPlaceHolder}"
+                        TextChanged="OnTextChanged"
+                        Margin="2,8,2,4"
+                        HeightRequest="40"
+                       />
+
+            <ListView x:Name="ActiveRoutesList"
+                      HeightRequest="{Binding ListViewAdministratorHeight}"
+                      IsVisible="{Binding AdministratorShowList}"
+                      CachingStrategy="RecycleElement"
+                      HasUnevenRows="True"
+                      ItemsSource="{Binding AdministratorRouteInfoListView}"
+                      IsPullToRefreshEnabled="True"
+                      RefreshCommand="{Binding OnRefreshCommand}"
+                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                      >
+                <ListView.Header>
+                    <Label 
+                        Text="{StaticResource ListViewHeaderTitleAdministrator}" 
+                        HorizontalOptions="StartAndExpand" 
+                        Margin="{StaticResource Margins}" 
+                        TextColor="Black"
+                        FontSize="{StaticResource LabelFontSize}"/>
+                </ListView.Header>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell 
+                                Text="{Binding OwnerUsername}"
+                                Detail="{Binding RouteName, StringFormat='Ruta {0}'}"
+                                TextColor="{Binding UserColor}"
+                                DetailColor="{StaticResource TextColor}"
+                                />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+
+            <ListView x:Name="AddressesListView"
+                      CachingStrategy="RecycleElement"
+                      IsVisible="{Binding DriverShowList}"
+                      HeightRequest="{Binding ListViewDriverHeight}"
+                      HasUnevenRows="True"
+                      ItemsSource="{Binding AddressesList}"
+                      IsPullToRefreshEnabled="True"
+                      RefreshCommand="{Binding OnRefreshCommand}"
+                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                      >
+
+                <ListView.Header>
+                    <Label 
+                        Text="{StaticResource ListViewHeaderTitle}" 
+                        HorizontalOptions="StartAndExpand" 
+                        Margin="{StaticResource Margins}" 
+                        TextColor="Black"
+                        FontSize="{StaticResource LabelFontSize}"/>
+                </ListView.Header>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell
+                            Text="{Binding UpperRouteText}"
+                            Detail="{Binding BottomRouteText}"
+                            TextColor="Black"
+                            DetailColor="DarkGray"
+                            ImageSource="{Binding Icon}"
+                            />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Label 
+                        x:Name="LblNoActiveRouteAlert"
+                        IsVisible="{Binding ShowNoActiveRouteAlert}"
+                        Text="{StaticResource NoActiveRouteText}"
+                        HorizontalOptions="StartAndExpand" 
+                        Margin="8,0, 8, 2" 
+                        TextColor="Red"
+                        FontSize="{StaticResource InfoFontSize}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

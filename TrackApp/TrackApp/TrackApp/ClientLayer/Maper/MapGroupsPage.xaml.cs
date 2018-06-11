@@ -63,8 +63,17 @@ namespace TrackApp.ClientLayer.Maper
                     //ask for permissions
                     var result = await PermissionsCaller.PermissionLocationCaller(this);
 
-                    if (result.Equals(PermissionStatus.Granted) || roledUser.Equals(RoledTrackUser.TYPE_ADMINISTRATOR))
+                    if (result.Equals(PermissionStatus.Granted))
+                    {
+                        if (App.locationServiceController.IsLoopRunning()) // if it was started before stop it
+                            App.locationServiceController.StopLocationLooper();
+
+                        if(!App.locationServiceController.IsLoopRunning() && roledUser.Role.Equals(RoledTrackUser.TYPE_DRIVER))
+                            App.locationServiceController.StartLocationLoop(roledUser.Username); //start if fresh always with the current user
+
+                        //navigate to the group page
                         await Navigation.PushAsync(new GroupTabbedPage(roledUser, item.Name));
+                    }
                     else
                         await DisplayAlert("Atentie", "Nu va putem lasa sa accesati grupurile fara acces la locatia dumneavoastra!", "Ok");
                 }

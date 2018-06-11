@@ -30,12 +30,16 @@ namespace TrackApp.ClientLayer.Maper.Group {
         private global::Xamarin.Forms.Button BtnSaveData;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.Button BtnDeleteData;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(EditAddressPage));
             contentStackLayout = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.StackLayout>(this, "contentStackLayout");
             EntryAddressName = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TrackApp.ClientLayer.CustomUI.CustomEntry>(this, "EntryAddressName");
             EntryAddressDetail = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TrackApp.ClientLayer.CustomUI.CustomEntry>(this, "EntryAddressDetail");
             BtnSaveData = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "BtnSaveData");
+            BtnDeleteData = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "BtnDeleteData");
         }
     }
 }

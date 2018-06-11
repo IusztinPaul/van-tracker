@@ -21,6 +21,7 @@ namespace TrackApp.ServerLayer
         public const string GROUPS_DB_NAME = "Groups";
         public const string ROUTES_DB_NAME = "RoutesDb";
         public const string ROUTES_INFO_DB_NAME = "RoutesInfo";
+        public const string POSITION_DB_NAME = "Positions";
 
         //aws databases hashkeys
         public const string USER_DATA_HASHKEY = "Username";

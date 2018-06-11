@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TrackApp.ClientLayer.Exceptions;
+﻿using TrackApp.ClientLayer.Exceptions;
+using Xamarin.Forms;
 
 namespace TrackApp.DataFormat.UserData
 {
@@ -25,5 +23,6 @@ namespace TrackApp.DataFormat.UserData
                     throw new TypeException("Wrong role given to the user");
             }
         }
+       
     }
 }

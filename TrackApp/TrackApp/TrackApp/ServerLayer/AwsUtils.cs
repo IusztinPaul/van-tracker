@@ -58,7 +58,9 @@ namespace TrackApp.ServerLayer
             }
         }
 
-        public static DynamoDBContext DDBContextV2 //v2 allows duplicates in lists
+        private static DynamoDBContext _contextSkipVersioning;
+      
+        public static DynamoDBContext DDBContextSkipVersioning 
         {
             get
             {
@@ -68,13 +70,13 @@ namespace TrackApp.ServerLayer
                 if (_client == null)
                     _client = new AmazonDynamoDBClient(Credentials, ServerConsts.DYNAMODB_REGION);
 
-                if (_context == null)
-                    _context = new DynamoDBContext(DynamoDBClient, new DynamoDBContextConfig
+                if (_contextSkipVersioning == null)
+                    _contextSkipVersioning = new DynamoDBContext(DynamoDBClient, new DynamoDBContextConfig
                     {
-                        Conversion = DynamoDBEntryConversion.V2 //here is the setup
+                        SkipVersionCheck = true //here is the setup
                     });
 
-                return _context;
+                return _contextSkipVersioning;
             }
         }
 
@@ -83,9 +85,9 @@ namespace TrackApp.ServerLayer
             return AwsUtils.DDBContext;
         }
 
-        public static DynamoDBContext GetContextV2()
+        public static DynamoDBContext GetContextSkipVersionCheck()
         {
-            return DDBContextV2;
+            return DDBContextSkipVersioning;
         }
     }
 }

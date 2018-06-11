@@ -18,6 +18,8 @@ namespace TrackApp.DataFormat.UserData
 
         [DynamoDBProperty("Groups")]
         public List<string> Groups { get; set; } // groupname#a/d (administrator/driver) 
+        [DynamoDBVersion]
+        public int? VersionNumber { get; set; }
 
     }
 }

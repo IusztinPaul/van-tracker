@@ -11,47 +11,49 @@ using TrackApp.ServerLayer.Query;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Amazon.Runtime;
+using Plugin.Geolocator;
+using Plugin.Permissions.Abstractions;
 
 namespace TrackApp.ClientLayer.Validation
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SignUpPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class SignUpPage : ContentPage
+    {
         //TODO add custom renderer for the progress bar 
         //TODO add a second password entry for validation
         //TODO add placeholders that go up when you write something
 
-		public SignUpPage ()
-		{
-			InitializeComponent ();
-		    BtnSaveUser.Clicked += async (source, args) =>
-		    {
+        public SignUpPage()
+        {
+            InitializeComponent();
+            BtnSaveUser.Clicked += async (source, args) =>
+            {
                 //reset the progess bar 
-		        ProgBarSaveBtn.Progress = 0d;
+                ProgBarSaveBtn.Progress = 0d;
                 ProgBarSaveBtn.IsVisible = true;
-		        
+
                 await BtnSaveUserListener();
 
                 // make the prog bar invisible
-		        ProgBarSaveBtn.IsVisible = false;
+                ProgBarSaveBtn.IsVisible = false;
             };
 
-        
+
             //to avoid internal null pointer exception
-		    EntryUsername.Text = "";
-		    EntryFirstName.Text = "";
-		    EntryLastName.Text = "";
-		    EntryPassword.Text = "";
-		    EntryPhoneNumber.Text = "";
-		    EntryEmail.Text = "";
-           // EntryCountry.Text = "";
+            EntryUsername.Text = "";
+            EntryFirstName.Text = "";
+            EntryLastName.Text = "";
+            EntryPassword.Text = "";
+            EntryPhoneNumber.Text = "";
+            EntryEmail.Text = "";
+            // EntryCountry.Text = "";
             EntryRegion.Text = "";
             EntryCity.Text = "";
             EntryStreet.Text = "";
             EntryNr.Text = "";
             EntryBlock.Text = "";
 
-		}
+        }
         #region Username
         private async Task<string> GetEntryUsername()
         {
@@ -242,103 +244,123 @@ namespace TrackApp.ClientLayer.Validation
             BtnSaveUser.IsEnabled = false;
 
             //first ask for permissions
-            await PermissionsCaller.PermissionLocationCaller(this);
+            var status = await PermissionsCaller.PermissionLocationCaller(this);
             await PermissionsCaller.PermissionStorageCaller(this);
 
             double progBarIncrementRate = 1d / 5d;
             double progBarCurentValue = 0d;
 
-            try
+            if (status.Equals(PermissionStatus.Granted))
             {
-                string username, firstName, lastName, password, phoneNumber, Email;
-                string country, region, city, street, nr, block;
-
-                // grab the data and animate the progress bar 
-                username = await GetEntryUsername();
-                progBarCurentValue += progBarIncrementRate;
-                await InscreaseProgBar(progBarCurentValue);
-
-                firstName = GetEntryFirstName();
-
-                lastName = GetEntryLastName();
-                progBarCurentValue += progBarIncrementRate;
-                await InscreaseProgBar(progBarCurentValue);
-
-                password = GetEntryPassword();
-
-                phoneNumber = GetEntryPhoneNumber();
-
-                Email = GetEntryEmail();
-                progBarCurentValue += progBarIncrementRate;
-                await InscreaseProgBar(progBarCurentValue);
-
-                country = GetCountry();
-                region = GetRegion();
-                city = GetCity();
-                street = GetAddress();
-                nr = GetNumberAddress();
-                block = GetBlock();
-
-                progBarCurentValue += progBarIncrementRate;
-                await InscreaseProgBar(progBarCurentValue);
-
-                // create user object
-                TrackUser user = new TrackUser()
+                try
                 {
-                    Email = Email,
-                    FirstName = firstName,
-                    LastName = lastName,
-                    Password = password,
-                    Phone = phoneNumber,
-                    Username = username,
-                    Location = new DataFormat.Location
+                    string username, firstName, lastName, password, phoneNumber, Email;
+                    string country, region, city, street, nr, block;
+
+                    // grab the data and animate the progress bar 
+                    username = await GetEntryUsername();
+                    progBarCurentValue += progBarIncrementRate;
+                    await InscreaseProgBar(progBarCurentValue);
+
+                    firstName = GetEntryFirstName();
+
+                    lastName = GetEntryLastName();
+                    progBarCurentValue += progBarIncrementRate;
+                    await InscreaseProgBar(progBarCurentValue);
+
+                    password = GetEntryPassword();
+
+                    phoneNumber = GetEntryPhoneNumber();
+
+                    Email = GetEntryEmail();
+                    progBarCurentValue += progBarIncrementRate;
+                    await InscreaseProgBar(progBarCurentValue);
+
+                    country = GetCountry();
+                    region = GetRegion();
+                    city = GetCity();
+                    street = GetAddress();
+                    nr = GetNumberAddress();
+                    block = GetBlock();
+
+                    progBarCurentValue += progBarIncrementRate;
+                    await InscreaseProgBar(progBarCurentValue);
+
+                    // create user object
+                    TrackUser user = new TrackUser()
                     {
-                        Country = country,
-                        Region = region,
-                        City = city,
-                        Street = street,
-                        Nr = nr,
-                        Block = block
-                    }
-                };
+                        Email = Email,
+                        FirstName = firstName,
+                        LastName = lastName,
+                        Password = password,
+                        Phone = phoneNumber,
+                        Username = username,
+                        Location = new DataFormat.Location
+                        {
+                            Country = country,
+                            Region = region,
+                            City = city,
+                            Street = street,
+                            Nr = nr,
+                            Block = block
+                        },
+                        Latitude = TrackUser.NO_POSITION_VALUE,
+                        Longitude = TrackUser.NO_POSITION_VALUE
+                    };
 
-                var saver = new SaveUser {TrackUser = user}; // create saver object
-                await saver.SaveData(); // save data async
+                    //if the validation was ok save the user with his current location
+                    var locator = CrossGeolocator.Current;
+                    var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(1), null, true);
+                    user.Latitude = position.Latitude;
+                    user.Longitude = position.Longitude;
 
-                progBarCurentValue += progBarIncrementRate;
-                await InscreaseProgBar(progBarCurentValue);
+                    var saver = new SaveUser { TrackUser = user }; // create saver object
+                    await saver.SaveData(); // save data async
 
+                    progBarCurentValue += progBarIncrementRate;
+                    await InscreaseProgBar(progBarCurentValue);
 
-                DependencyService.Get<IMessage>().LongAlert(ClientConsts.ACCOUNT_CREATED_MESSAGE);
-                Thread.Sleep(100); // display message for 100 millisecond
-                Application.Current.MainPage = new MainPage(user); // go to the main page of the app
+                    Application.Current.Properties[ClientConsts.LOGIN_KEY_FLAG] = user.Username; // keep the user logged in
+                    await Application.Current.SavePropertiesAsync();
 
+                    DependencyService.Get<IMessage>().LongAlert(ClientConsts.ACCOUNT_CREATED_MESSAGE);
+                    Thread.Sleep(100); // display message for 100 millisecond
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        Application.Current.MainPage = new MainPage(user); // go to the main page of the app
+                    });
+
+                }
+                catch (AmazonServiceException e) // if there are problems with the service or with the internet
+                {
+                    DependencyService.Get<IMessage>().ShortAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE2);
+                }
+                catch (ValidationException e) // show error message to the user
+                {
+                    DependencyService.Get<IMessage>().ShortAlert(e.Message);
+                }
+                catch (WebException e)
+                {
+                    DependencyService.Get<IMessage>().LongAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE1);
+                }
+                catch (Exception e) // in case of unexpected error like Error: NameResolutionFailure
+                {
+                    DependencyService.Get<IMessage>().ShortAlert(ClientConsts.INTERNET_EXCEPTION_MESSAGE);
+                }
+                finally
+                {
+                    BtnSaveUser.IsEnabled = true;
+                }
             }
-            catch (AmazonServiceException e) // if there are problems with the service or with the internet
+            else
             {
-                DependencyService.Get<IMessage>().ShortAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE2);
-            }
-            catch (ValidationException e) // show error message to the user
-            {
-                DependencyService.Get<IMessage>().ShortAlert(e.Message);
-            }
-            catch (WebException e)
-            {
-                DependencyService.Get<IMessage>().LongAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE1);
-            }
-            catch (Exception e) // in case of unexpected error like Error: NameResolutionFailure
-            {
-                DependencyService.Get<IMessage>().ShortAlert(ClientConsts.INTERNET_EXCEPTION_MESSAGE);
-            }
-            finally
-            {
-                BtnSaveUser.IsEnabled = true;
+                await DisplayAlert("Atentie", "Fara a obtine aprobarea dumneavoastra de a avea acces asupra locatiei nu va putem lasa sa continuati", "Ok");
             }
         }
 
-	    private async Task InscreaseProgBar(double currentValue)
-	    {
-	        await ProgBarSaveBtn.ProgressTo(currentValue, 250, Easing.Linear);
-	    }
+        private async Task InscreaseProgBar(double currentValue)
+        {
+            await ProgBarSaveBtn.ProgressTo(currentValue, 250, Easing.Linear);
+        }
     }
 }

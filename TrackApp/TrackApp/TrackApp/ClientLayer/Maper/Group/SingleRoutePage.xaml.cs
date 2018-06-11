@@ -65,7 +65,7 @@ namespace TrackApp.ClientLayer.Maper.Group
                 //remove route
                 ToolbarItem removeRouteTbItem = new ToolbarItem();
                 removeRouteTbItem.Text = ClientConsts.REMOVE_ROUTE_TOOL_BAR_TITLE;
-                removeRouteTbItem.Priority = 0;
+                removeRouteTbItem.Priority = 1;
                 removeRouteTbItem.Order = ToolbarItemOrder.Secondary;
                 removeRouteTbItem.Command = new Command(async () =>
                 {
@@ -130,7 +130,7 @@ namespace TrackApp.ClientLayer.Maper.Group
                     if(group.ActiveDriverRoutes != null)
                         foreach(var currentRoute in group.ActiveDriverRoutes)
                         {
-                            if(currentRoute.Trim().StartsWith(tappedUsername.Trim()))
+                            if((currentRoute.Split(ClientConsts.CONCAT_SPECIAL_CHARACTER[0])[0]).Trim().Equals(tappedUsername.Trim()))
                             {
                                 activeRouteData = currentRoute;
                                 indexOfChangingData = group.ActiveDriverRoutes.IndexOf(currentRoute);

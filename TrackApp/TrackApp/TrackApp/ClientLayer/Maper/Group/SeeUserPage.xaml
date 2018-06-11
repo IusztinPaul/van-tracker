@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customUi="clr-namespace:TrackApp.ClientLayer.CustomUI"
+             x:Class="TrackApp.ClientLayer.Maper.Group.SeeUserPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="DescriptionEntry">Numarul de ore de cand vrei sa stii pozitia</x:String>
+            <x:String x:Key="DescriptionLabel">Daca nu o sa se gaseasca o pozitie exacta la ora data, o sa se caute pozitii noi spre prezent</x:String>
+            <x:String x:Key="BtnText">Continua</x:String>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+                x:Name="stackData"
+                Orientation="Vertical" 
+                VerticalOptions="CenterAndExpand"
+                Margin="{StaticResource Margins}"
+                Spacing="15">
+
+                <Label 
+                    Text="{StaticResource DescriptionLabel}" 
+                    FontSize="{StaticResource InfoFontSize}"
+                    HorizontalOptions="StartAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Margin="2"
+                    />
+
+                <customUi:CustomEntry x:Name="EntryNumberOfHours"
+                                              Placeholder="{StaticResource DescriptionEntry}"
+                                      VerticalOptions="CenterAndExpand"
+                                              />
+                
+                <Button x:Name="BtnContinue"
+                        Text="{StaticResource BtnText}"
+                        VerticalOptions="CenterAndExpand"
+                        Margin="8"/>
+                
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+
+</ContentPage>

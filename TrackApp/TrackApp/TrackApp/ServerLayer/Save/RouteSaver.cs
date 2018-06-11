@@ -19,7 +19,7 @@ namespace TrackApp.ServerLayer.Save
             {
                 try
                 {
-                    var context = AwsUtils.GetContext();
+                    var context = AwsUtils.GetContextSkipVersionCheck();
 
                 //make routes batch
                 var routesBatch = context.CreateBatchWrite<Route>();
@@ -64,6 +64,35 @@ namespace TrackApp.ServerLayer.Save
                 try { 
                 var context = AwsUtils.GetContext();
                 await context.SaveAsync<Route>(route);
+                }
+                catch (AmazonDynamoDBException e)
+                {
+                    Console.WriteLine("AmazonDynamoDBException CAUGHT: " + e.Message);
+                    throw new AmazonServiceException("AmazonDynamoDBException CAUGHT: " + e.Message);
+                }
+                catch (AmazonServiceException e)
+                {
+                    Console.WriteLine("AmazonServiceException CAUGHT: " + e.Message);
+                    throw new AmazonServiceException("AmazonServiceException CAUGHT: " + e.Message);
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Exception CAUGHT: " + e.Message);
+                    throw new Exception("Exception CAUGHT: " + e.Message);
+
+                }
+            }
+        }
+
+        public static async Task DeleteSingleRoute(Route route)
+        {
+            if (route != null)
+            {
+                try
+                {
+                    var context = AwsUtils.GetContext();
+                    await context.DeleteAsync<Route>(route);
                 }
                 catch (AmazonDynamoDBException e)
                 {

@@ -100,13 +100,13 @@ namespace TrackApp.ServerLayer.Query
                                     count, addressesRange);
         }
 
-        public static async Task<IEnumerable<Route>> QueryRoutes(string routeId, int addressRange)
+        public static async Task<IEnumerable<Route>> QueryRoutes(string routeHashKey, int addressRange)
         {
             try
             {
                 var context = AwsUtils.GetContext();
                 return await context.QueryAsync<Route>(
-                   routeId,
+                   routeHashKey,
                    QueryOperator.LessThanOrEqual,
                    new List<object> { addressRange }).GetRemainingAsync();
             }

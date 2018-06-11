@@ -27,6 +27,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\CustomUI\AddAdressView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\CustomUI\CircleImage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\CustomUI\CustomEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\CustomUI\IControlLocationService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\CustomUI\IMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\CustomUI\IPicturePicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Exceptions\TypeException.cs" />
@@ -87,16 +88,23 @@
       <DependentUpon>ActiveRoutePage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\MapN\ActiveRouteViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\MapN\MapPage.xaml.cs">
       <DependentUpon>MapPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\MapN\ActualMapTabbedPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\MapN\MapPageModelView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\SeeUserPage.xaml.cs">
+      <DependentUpon>SeeUserPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\SingleRoutePage.xaml.cs">
       <DependentUpon>SingleRoutePage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\SingleRouteViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\SingleUserModelView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\UserRoutesPage.xaml.cs">
       <DependentUpon>UserRoutesPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -107,6 +115,8 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\MapGroupsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\MapTabbedPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\MapThread\BaseThread.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\MapThread\MapUserGeneratorThread.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\RequestsPage.xaml.cs">
       <DependentUpon>RequestsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -135,8 +145,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\DataConsts.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\DBIdObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\Group.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataFormat\HashedTKCircle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\Location.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\LocationTypeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataFormat\PositionDB.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\Route.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\RouteInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\UserData\RoledTrackUser.cs" />
@@ -144,12 +156,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)ClientLayer\MainPage.xaml.cs">
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\UserData\UserFriends.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Query\QueryPositions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Query\QueryRoute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\GroupAndRouteSaver.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\MultiTableBatchGroupsUserFriends.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Query\QueryHashLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Query\QueryUser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\ISaveData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\PositionSaver.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\RouteSaver.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\SaveGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\SaveUser.cs" />
@@ -216,6 +230,10 @@
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\MapN\ActiveRoutePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ClientLayer\Maper\Group\SeeUserPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

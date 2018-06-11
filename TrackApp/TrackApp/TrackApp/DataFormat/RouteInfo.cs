@@ -1,5 +1,5 @@
 ﻿using Amazon.DynamoDBv2.DataModel;
-using System.Drawing;
+using Xamarin.Forms;
 using TrackApp.ServerLayer;
 
 namespace TrackApp.DataFormat
@@ -7,6 +7,8 @@ namespace TrackApp.DataFormat
     [DynamoDBTable(ServerConsts.ROUTES_INFO_DB_NAME)]
     public class RouteInfo
     {
+        public const string UPPER_TEXT = " lucreaza la ";
+
         [DynamoDBHashKey]
         public string RouteId { get; set; } // groupname#username
         [DynamoDBRangeKey]
@@ -18,6 +20,8 @@ namespace TrackApp.DataFormat
         [DynamoDBIgnore]
         public Color LabelColor { get; set; }
         [DynamoDBIgnore]
+        public Color UserColor { get; set; } = Color.Black;
+        [DynamoDBIgnore]
         public string OwnerUsername { get
             {
                 return RouteId.Split(ServerConsts.CONCAT_SPECIAL_CHARACTER[0])[1];
@@ -26,7 +30,7 @@ namespace TrackApp.DataFormat
         [DynamoDBIgnore]
         public string ActiveRouteText { get
             {
-                return OwnerUsername + " lucreaza la ruta " + RouteName;
+                return OwnerUsername + UPPER_TEXT + RouteName;
             } }
     }
 }

@@ -112,11 +112,16 @@ class MonoPackageManager_Resources {
 		"AWSSDK.DynamoDBv2.dll",
 		"AWSSDK.SecurityToken.dll",
 		"FormsViewGroup.dll",
+		"GoogleMapsUtilityBinding.dll",
+		"Newtonsoft.Json.dll",
 		"PCLCrypto.dll",
 		"PCLStorage.Abstractions.dll",
 		"PCLStorage.dll",
 		"Plugin.CurrentActivity.dll",
+		"Plugin.Geolocator.dll",
 		"Plugin.Permissions.dll",
+		"TK.CustomMap.Android.dll",
+		"TK.CustomMap.dll",
 		"Validation.dll",
 		"Xamarin.Android.Arch.Core.Common.dll",
 		"Xamarin.Android.Arch.Lifecycle.Common.dll",
@@ -147,6 +152,8 @@ class MonoPackageManager_Resources {
 		"Xamarin.GooglePlayServices.Tasks.dll",
 		"Xamarin.GooglePlayServices.Base.dll",
 		"Xamarin.GooglePlayServices.Maps.dll",
+		"Xamarin.GooglePlayServices.Places.dll",
+		"Xamarin.GooglePlayServices.Location.dll",
 	};
 	public static final String[] Dependencies = new String[]{
 	};

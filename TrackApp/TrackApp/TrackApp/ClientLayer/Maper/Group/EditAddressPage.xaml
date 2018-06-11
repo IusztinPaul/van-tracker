@@ -10,6 +10,7 @@
             <x:String x:Key="EntryAddressPlaceholder">Nume adresa</x:String>
             <x:String x:Key="EntryAddressDetailPlaceholder">nr. * bl. * sc. *</x:String>
             <x:String x:Key="BtnText">Salveaza</x:String>
+            <x:String x:Key="BtnDeleteText">Sterge</x:String>
         </ResourceDictionary>
     </ContentPage.Resources>
     
@@ -31,13 +32,20 @@
                                           Placeholder="{StaticResource EntryAddressDetailPlaceholder}"
                                       VerticalOptions="CenterAndExpand"
                                           />
-            <Button x:Name="BtnSaveData"
+            
+                <Button x:Name="BtnSaveData"
                         Text="{StaticResource BtnText}"
                         VerticalOptions="CenterAndExpand"
                         FontAttributes="Bold"
                         Margin="8"/>
 
-        </StackLayout>
+                <Button x:Name="BtnDeleteData"
+                        Text="{StaticResource BtnDeleteText}"
+                        VerticalOptions="CenterAndExpand"
+                        FontAttributes="Bold"
+                        Margin="8"/>
+
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
     

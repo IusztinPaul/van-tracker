@@ -20,7 +20,7 @@ namespace TrackApp.ServerLayer.Save
             {
                 try
                 {
-                    var context = AwsUtils.GetContextV2();
+                    var context = AwsUtils.GetContext();
                     await context.SaveAsync(UserFriends);
                 }
                 catch (AmazonDynamoDBException e)

@@ -70,7 +70,7 @@ namespace TrackApp.ClientLayer.Maper.Group
                 int activeRouteCount = -1;
                 if(group.ActiveDriverRoutes != null)
                     foreach (string activeRoutes in group.ActiveDriverRoutes)
-                        if (activeRoutes.Trim().StartsWith(tappedUsername.Username))
+                        if ((activeRoutes.Split(ClientConsts.CONCAT_SPECIAL_CHARACTER[0])[0]).Trim().StartsWith(tappedUsername.Username))
                         {
                             activeRouteCount = Int32.Parse(activeRoutes.Split(ClientConsts.CONCAT_SPECIAL_CHARACTER[0])[1]);
                             break;
