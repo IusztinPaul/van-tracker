@@ -19,10 +19,6 @@ namespace TrackApp.ClientLayer.Validation
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SignUpPage : ContentPage
     {
-        //TODO add custom renderer for the progress bar 
-        //TODO add a second password entry for validation
-        //TODO add placeholders that go up when you write something
-
         public SignUpPage()
         {
             InitializeComponent();
@@ -303,19 +299,11 @@ namespace TrackApp.ClientLayer.Validation
                             Street = street,
                             Nr = nr,
                             Block = block
-                        },
-                        Latitude = TrackUser.NO_POSITION_VALUE,
-                        Longitude = TrackUser.NO_POSITION_VALUE
+                        }
                     };
 
-                    //if the validation was ok save the user with his current location
-                    var locator = CrossGeolocator.Current;
-                    var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(1), null, true);
-                    user.Latitude = position.Latitude;
-                    user.Longitude = position.Longitude;
-
                     var saver = new SaveUser { TrackUser = user }; // create saver object
-                    await saver.SaveData(); // save data async
+                    await saver.SaveUserAndUserFriends(null); // save user and initialize userFriends object
 
                     progBarCurentValue += progBarIncrementRate;
                     await InscreaseProgBar(progBarCurentValue);
@@ -354,6 +342,7 @@ namespace TrackApp.ClientLayer.Validation
             }
             else
             {
+                BtnSaveUser.IsEnabled = true;
                 await DisplayAlert("Atentie", "Fara a obtine aprobarea dumneavoastra de a avea acces asupra locatiei nu va putem lasa sa continuati", "Ok");
             }
         }

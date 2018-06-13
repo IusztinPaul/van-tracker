@@ -12,7 +12,7 @@ namespace TrackApp.ClientLayer
         public const string REMOVE_SIGNAL = "remove";
 
         //special type signals 
-        public const string ADMINISTRATOR_SIGNAL = "a";
+        public const string ADMINISTRATOR_SIGNAL = "a"; // used as group and userfriends signals
         public const string DRIVER_SIGNAL = "d";
 
         //main page consts

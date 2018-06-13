@@ -16,7 +16,7 @@ namespace TrackApp.ServerLayer.Save
             {
                 try
                 {
-                    var context = AwsUtils.GetContext();
+                    var context = AwsUtils.GetContextSkipVersionCheck();
                     await context.SaveAsync(TrackUser);
                 }
                 catch (AmazonDynamoDBException e)
@@ -41,6 +41,47 @@ namespace TrackApp.ServerLayer.Save
                 throw new Exception("TrackUser has no Id/Username!!!");
         }
 
-       
+        public async Task SaveUserAndUserFriends(UserFriends userFriends)
+        {
+            if (TrackUser.Username != null)
+            {
+                try
+                {
+                    var context = AwsUtils.GetContextSkipVersionCheck();
+
+                    var userFriendsBatch = context.CreateBatchWrite<UserFriends>();
+                    var userBatch = context.CreateBatchWrite<TrackUser>();
+
+                    userBatch.AddPutItem(TrackUser);
+
+                    if (userFriends == null)
+                        userFriendsBatch.AddPutItem(new UserFriends { Username = TrackUser.Username });
+                    else
+                        userFriendsBatch.AddPutItem(userFriends);
+
+                    MultiTableBatchWrite multiBatch = new MultiTableBatchWrite(userFriendsBatch, userBatch);
+                    await multiBatch.ExecuteAsync();
+                }
+                catch (AmazonDynamoDBException e)
+                {
+                    Console.WriteLine("AmazonDynamoDBException CAUGHT: " + e.Message);
+                    throw new AmazonServiceException("AmazonDynamoDBException CAUGHT: " + e.Message);
+                }
+                catch (AmazonServiceException e)
+                {
+                    Console.WriteLine("AmazonServiceException CAUGHT: " + e.Message);
+                    throw new AmazonServiceException("AmazonServiceException CAUGHT: " + e.Message);
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Exception CAUGHT: " + e.Message);
+                    throw new Exception("Exception CAUGHT: " + e.Message);
+
+                }
+            }
+            else
+                throw new Exception("TrackUser has no Id/Username!!!");
+        }
     }
 }

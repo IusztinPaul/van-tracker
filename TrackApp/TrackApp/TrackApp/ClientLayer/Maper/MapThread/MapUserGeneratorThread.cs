@@ -21,7 +21,7 @@ namespace TrackApp.ClientLayer.Maper.MapThread
         public const int SLEEP_TIME_LOOP_MILISECONDS = 1000;
 
         public const long START_ADMINISTRATOR_LOOK_UP_POSITION_TIME_HOURS = 1;
-        public const long END_ADMINISTRATOR_LOOK_UP_POSITION_TIME_HOURS = 20 * 24; //20 days
+        public const long END_ADMINISTRATOR_LOOK_UP_POSITION_TIME_HOURS = 22 * 24; //22 days
 
         private string _username;
         private MapPageModelView modelView;
@@ -178,7 +178,7 @@ namespace TrackApp.ClientLayer.Maper.MapThread
                     positions = await QueryPositions.QueryPositionsInLastHours(username, time);
                     if(positions != null)
                     {
-                        positionsList = positions.ToList();
+                        positionsList = positions.ToList(); //TODO optimize get location method
                         if (positionsList != null && positionsList.Count > 0)
                         {
                             positionsList.Sort((a, b) => -a.DateTime.CompareTo(b.DateTime)); //sort in descending order to get the biggest datetime item

@@ -16,7 +16,16 @@ namespace TrackApp.ClientLayer.Maper.Group
 		{
 			InitializeComponent ();
             BindingContext = new GroupNotificationPageViewModel(currentUser, groupName);
-		}
+
+            GroupNotifications.ItemSelected += (s, a) =>
+            {
+                if (a.SelectedItem != null)
+                {
+                    (s as ListView).SelectedItem = null;
+                }
+            }; //non selectable list
+
+        }
 
         protected override void OnAppearing()
         {

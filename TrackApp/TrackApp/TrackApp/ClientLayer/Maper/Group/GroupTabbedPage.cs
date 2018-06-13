@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using TrackApp.ClientLayer.CustomUI;
 using TrackApp.ClientLayer.Exceptions;
 using TrackApp.DataFormat.UserData;
+using TrackApp.ServerLayer.Query;
 using Xamarin.Forms;
 
 namespace TrackApp.ClientLayer.Maper.Group
 {
     public class GroupTabbedPage : TabbedPage
     {
+        public static readonly string NO_MORE_DRIVERS_ALERT_TEXT = $"Numarul maxim de {ClientConsts.MAX_DRIVERS_IN_GROUP} a fost atins!";
 
         public GroupTabbedPage(RoledTrackUser currentUser, string groupName)
         {
@@ -37,7 +41,13 @@ namespace TrackApp.ClientLayer.Maper.Group
                 addFriend.Priority = 0;
                 addFriend.Order = ToolbarItemOrder.Primary;
                 addFriend.Icon = ClientConsts.ADD_ITEM_ICON;
-                addFriend.Command = new Command(() => Navigation.PushAsync(new AddMemberPage(currentUser, groupName)));
+                addFriend.Command = new Command(async () => {
+                    var numberOfDrivers = await GetNumberOfDrivers(groupName);
+                    if (numberOfDrivers != null && numberOfDrivers < ClientConsts.MAX_DRIVERS_IN_GROUP)
+                        await Navigation.PushAsync(new AddMemberPage(currentUser, groupName));
+                    else
+                        Device.BeginInvokeOnMainThread(() => DependencyService.Get<IMessage>().LongAlert(NO_MORE_DRIVERS_ALERT_TEXT));
+                    });
 
                 this.ToolbarItems.Add(addFriend);
             }
@@ -45,6 +55,26 @@ namespace TrackApp.ClientLayer.Maper.Group
             {
                 throw new TypeException("RoledTrackUser.TYPE_NONE occured");
             }
+        }
+
+        private async Task<int?> GetNumberOfDrivers(string groupName)
+        {
+            try
+            {
+                var group = await QueryHashLoader.LoadData<DataFormat.Group>(groupName);
+
+                if (group != null && group.Drivers != null)
+                    return group.Drivers.Count;
+
+                if (group.Drivers == null)
+                    return 0;
+
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.StackTrace); 
+            }
+
+            return null;
         }
     }
 }

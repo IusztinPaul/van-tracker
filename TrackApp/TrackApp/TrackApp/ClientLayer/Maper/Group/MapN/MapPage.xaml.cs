@@ -16,7 +16,7 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MapPage : ContentPage
     {
-        public static readonly Position DEFAULT_MAP_POSITION = new Position(45.765340, 21.198442);
+        public static readonly Position DEFAULT_MAP_POSITION = new Position(45.7489, 21.2087); //Timisoara Romania
         public const string DISPLAY_ACTION_SHEET_TITLE = "Centraza";
         public const string DISPLAY_ACTION_SHEET_CANCEL_BUTTON_TEXT = "Renunta";
 

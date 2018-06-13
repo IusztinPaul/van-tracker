@@ -158,12 +158,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)DataFormat\UserData\UserFriends.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Query\QueryPositions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Query\QueryRoute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\FriendsBatchSaver.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\GroupAndRouteSaver.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\MultiTableBatchGroupsUserFriends.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Query\QueryHashLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Query\QueryUser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\ISaveData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\PositionSaver.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\RequestsSavercs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\RouteSaver.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\SaveGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServerLayer\Save\SaveUser.cs" />

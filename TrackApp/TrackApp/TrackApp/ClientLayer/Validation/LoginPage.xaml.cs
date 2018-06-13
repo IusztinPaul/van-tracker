@@ -166,12 +166,6 @@ namespace TrackApp.ClientLayer.Validation
                     progBarCurentValue += progBarIncrementRate;
                     await InscreaseProgBar(progBarCurentValue);
 
-                    //if the validation was ok save the user with his current location
-                    var locator = CrossGeolocator.Current;
-                    var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(1), null, true);
-                    user.Latitude = position.Latitude;
-                    user.Longitude = position.Longitude;
-
                     await new SaveUser { TrackUser = user }.SaveData();
                     progBarCurentValue += progBarIncrementRate;
                     await InscreaseProgBar(progBarCurentValue);

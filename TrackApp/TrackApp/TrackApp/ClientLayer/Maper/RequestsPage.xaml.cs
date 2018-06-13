@@ -12,8 +12,7 @@ namespace TrackApp.ClientLayer.Maper
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class RequestsPage : ContentPage
 	{
-        //TODO change this to a higher number 
-        public const int MAX_SIZE_REQUEST_NOTIFICATIONS = 2;
+        public const int MAX_SIZE_REQUEST_NOTIFICATIONS = 40;
 
 		public RequestsPage (TrackUser currentUser)
 		{

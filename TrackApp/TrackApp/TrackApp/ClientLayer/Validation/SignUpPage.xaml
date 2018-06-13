@@ -32,15 +32,6 @@
                          Spacing="15"
                          >
 
-                <ProgressBar x:Name="ProgBarSaveBtn"
-                             Progress="0.0"
-                             Margin="{StaticResource Margins}"
-                             VerticalOptions="CenterAndExpand"
-                             HorizontalOptions="CenterAndExpand"
-                             WidthRequest="320"
-                             HeightRequest="20"
-                             IsVisible="False"/>
-
                 <Label Text="{StaticResource DescriptionLabel}" FontSize="{StaticResource LabelFontSize}"/>
 
 
@@ -169,6 +160,15 @@
                         Text="{StaticResource BtnText}"
                         VerticalOptions="CenterAndExpand"
                         Margin="8"/>
+
+                <ProgressBar x:Name="ProgBarSaveBtn"
+                             Progress="0.0"
+                             Margin="{StaticResource Margins}"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="CenterAndExpand"
+                             WidthRequest="320"
+                             HeightRequest="20"
+                             IsVisible="False"/>
 
             </StackLayout>
         </ScrollView>

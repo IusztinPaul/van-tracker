@@ -7,7 +7,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <x:String x:Key="DescriptionLabel">Toate campurile sunt obligatorii</x:String>
-            <x:String x:Key="GroupName">Nume grup ('$' si '#' excluse)</x:String>
+            <x:String x:Key="GroupName">Nume ruta('$' si '#' excluse)</x:String>
             <x:String x:Key="Country">Tara</x:String>
             <x:String x:Key="Region">Regiune (ex. Timis)</x:String>
             <x:String x:Key="City">Oras</x:String>

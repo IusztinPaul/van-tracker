@@ -70,7 +70,7 @@ namespace TrackApp.ClientLayer.Friends
                 else
                 {
 
-                    viewmodel.CurrentUserFriends = new ObservableCollection<TrackUser>(viewmodel.AllCurrentFriends.Where(x => x.Username.ToUpper().StartsWith(e.NewTextValue.ToUpper())));
+                    viewmodel.CurrentUserFriends = new ObservableCollection<TrackUser>(viewmodel.AllCurrentFriends.Where(x => x.Username.ToUpper().StartsWith(e.NewTextValue.Trim().ToUpper())));
                 }
             }
         }

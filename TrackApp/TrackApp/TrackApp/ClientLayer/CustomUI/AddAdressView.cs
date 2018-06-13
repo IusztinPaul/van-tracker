@@ -22,7 +22,7 @@ namespace TrackApp.ClientLayer.CustomUI
 
             ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
             ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
-            ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(30) });
+            ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(40) });
             ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
 
             LabelIncorrectRedStar.Text = "*";

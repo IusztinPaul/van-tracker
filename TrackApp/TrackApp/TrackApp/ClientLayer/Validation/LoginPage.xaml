@@ -8,10 +8,10 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <x:String x:Key="UsernameLabel">Nume account</x:String>
+            <x:String x:Key="UsernameLabel">Nume cont</x:String>
             <x:String x:Key="PasswordLabel">Parola</x:String>
             <x:String x:Key="ButtonLabel">Logare</x:String>
-            <x:String x:Key="GoToSignUpLabel1">Nu ai un account?</x:String>
+            <x:String x:Key="GoToSignUpLabel1">Nu ai un cont?</x:String>
             <x:String x:Key="GoToSignUpLabel2"> Inscrie-te aici!</x:String>
         </ResourceDictionary>
     </ContentPage.Resources>

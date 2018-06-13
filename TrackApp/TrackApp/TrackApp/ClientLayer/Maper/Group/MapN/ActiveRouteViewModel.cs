@@ -308,10 +308,10 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
                 else
                 {
                     AdministratorRouteInfoListView = new ObservableCollection<RouteInfo>(
-                        _allAdministratorRouteInfoView.Where((x) => 
-                        x.RouteName.ToUpper().StartsWith(searchBarText.ToUpper()) || 
-                        x.OwnerUsername.ToUpper().StartsWith(searchBarText.ToUpper()))
-                        );
+                        _allAdministratorRouteInfoView.Where((x) =>
+                        searchBarText.ToUpper().Contains(x.RouteName.ToUpper()) ||
+                        searchBarText.ToUpper().Contains(x.OwnerUsername.ToUpper())
+                        ));
                 }
             }
             else if (currentUser.Role.Equals(RoledTrackUser.TYPE_DRIVER))
@@ -323,10 +323,10 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
                 else
                 {
                     AddressesList = new ObservableCollection<Route>(
-                        _allAddressesList.Where((x) => 
-                        x.Location.Street.ToUpper().Contains(searchBarText.ToUpper()) || 
-                        x.Location.Nr.Contains(searchBarText))
-                        );
+                        _allAddressesList.Where((x) =>
+                        searchBarText.ToUpper().Contains(x.Location.Street.ToUpper()) ||
+                        searchBarText.Contains(x.Location.Nr)
+                        ));
                 }
             }
             else throw new Exception("There is no other possible role!");

@@ -21,7 +21,7 @@ namespace TrackApp.ClientLayer.Maper.Group
         //second and final step of creating a route
 
         public const string ADDRESS_NAME_PLACEHOLDER = "Nume adresa";
-        public const string ADDRESS_DETAIL_PLACEHOLDER = "numar-numar sau nr. * bl. * sc. *";
+        public const string ADDRESS_DETAIL_PLACEHOLDER = "nr-nr sau nr. * bl. * sc. *";
         public const string LABEL_TITLE_TEXT = "Creeaza ruta";
         public const string LABEL_DETAIL_TEXT = "Exemplu:\nNume adresa: Lugojului\nRestul pot fi completate in felul urmator:\n --- 2-10 -> toate numerele intre 2 si 10 inclusiv cu numele adresei de mai sus\n --- 1-1 adresa cu numele de mai sus si numarul 1\n --- nr. 3 bl. 5 sc. 8 -> se ia efectiv locuinta/blocul cu adresa de mai sus (datele trebuie introduse in aceasta ordine)\n";
         public const string TEXT_BUTTON_NEW_ADDRESS = "Adauga noua adresa";
@@ -417,12 +417,13 @@ namespace TrackApp.ClientLayer.Maper.Group
                 finally
                 {
                     stackContent.Children.Remove(activityIndicator);
-                   // if (button != null) button.IsEnabled = true;
+                   if (button != null) button.IsEnabled = true;
                 }
             }
             else
             {
                 DependencyService.Get<IMessage>().ShortAlert(TEXT_NO_DATA_TO_SAVE);
+                if (button != null) button.IsEnabled = true;
                 stackContent.Children.Remove(activityIndicator);
             }
         }

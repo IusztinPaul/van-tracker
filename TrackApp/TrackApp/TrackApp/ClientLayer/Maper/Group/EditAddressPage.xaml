@@ -9,6 +9,7 @@
             <x:String x:Key="DescriptionLabel">Schimba adresa</x:String>
             <x:String x:Key="EntryAddressPlaceholder">Nume adresa</x:String>
             <x:String x:Key="EntryAddressDetailPlaceholder">nr. * bl. * sc. *</x:String>
+            <x:String x:Key="EntryAddressDetailLabel">nr. * bl. * sc. *</x:String>
             <x:String x:Key="BtnText">Salveaza</x:String>
             <x:String x:Key="BtnDeleteText">Sterge</x:String>
         </ResourceDictionary>
@@ -20,7 +21,8 @@
             x:Name="contentStackLayout"
             Margin="{StaticResource Margins}"
             Orientation="Vertical"
-            VerticalOptions="CenterAndExpand">
+            VerticalOptions="CenterAndExpand"
+            Spacing="5">
             
             <Label Text="{StaticResource DescriptionLabel}" FontSize="{StaticResource LabelFontSize}"/>
             
@@ -28,7 +30,13 @@
                                               Placeholder="{StaticResource EntryAddressPlaceholder}"
                                       VerticalOptions="CenterAndExpand"
                                               />
-            <customUi:CustomEntry x:Name="EntryAddressDetail"
+
+                <Label Text="{StaticResource EntryAddressDetailLabel}" 
+                       FontSize="12"
+                       FontAttributes="Italic"
+                       TextColor="Gray"/>
+            
+                <customUi:CustomEntry x:Name="EntryAddressDetail"
                                           Placeholder="{StaticResource EntryAddressDetailPlaceholder}"
                                       VerticalOptions="CenterAndExpand"
                                           />

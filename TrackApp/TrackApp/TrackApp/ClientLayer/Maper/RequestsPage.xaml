@@ -75,11 +75,11 @@
 
                                 <Label 
                                         HorizontalOptions="Start"
-                                        VerticalOptions="End"
+                                        VerticalOptions="CenterAndExpand"
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         TextColor="DarkGray" 
-                                        Text="{Binding Username, StringFormat='{0} te-a invitat in'}"
+                                        Text="{Binding Username, StringFormat='Invitat de {0}'}"
                                         FontAttributes="Bold"
                                         FontSize="15"
                                         Margin="7,0"
@@ -87,11 +87,11 @@
 
                                 <Label
                                         HorizontalOptions="Start"
-                                        VerticalOptions="Start"
+                                        VerticalOptions="CenterAndExpand"
                                         Grid.Row="1"
                                         Grid.Column="1"
                                         Text="{Binding BottomDisplayText}" 
-                                        FontSize="15"
+                                        FontSize="11"
                                         TextColor="DarkGray" 
                                         FontAttributes="Italic, Bold" 
                                         Margin="7,0"

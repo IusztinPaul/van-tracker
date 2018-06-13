@@ -21,7 +21,7 @@ namespace TrackApp.ClientLayer.Maper.Group
         public const string DISPLAY_ALERT_ATTENTION_CONTENT = "Acest utilizator a primit deja o invitatie!";
 
 
-        public const string ADMINISTRATOR_STATE_DISPLAY = "administrator";
+        public const string ADMINISTRATOR_STATE_DISPLAY = "administrator"; //used ass request logic signals
         public const string DRIVER_STATE_DISPLAY = "sofer";
 
         public const string ADMINISTRATOR_STATE_DB = "administrator";

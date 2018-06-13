@@ -18,7 +18,7 @@ namespace TrackApp.DataFormat
         [DynamoDBProperty]
         public bool Delivered { get; set; } = false;
         [DynamoDBProperty]
-        public DateTime DateTime { get; set; } //datetime for delivery
+        public DateTime DateTime { get; set; } = DateTime.UtcNow; //datetime for delivery
 
         [DynamoDBIgnore]
         public string BottomRouteText { get
@@ -31,7 +31,7 @@ namespace TrackApp.DataFormat
         {
             get
             {
-                return Location.Street + "\t\t" + DateTime.ToString();
+                return Location.Street + "\t\t\t la " + DateTime.ToLocalTime().ToString(@"dd\/MM\/yyyy HH:mm");
             }
         }
 

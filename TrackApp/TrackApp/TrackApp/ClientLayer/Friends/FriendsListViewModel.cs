@@ -41,9 +41,6 @@ namespace TrackApp.ClientLayer.Friends
             OnButtonTappedCommand = new Command(OnButtonTapped);
             OnRefreshCommand = new Command(() => Device.BeginInvokeOnMainThread(async () => await PopulateAsync()),
                 () => !IsBusy); // repopulate the data, refresh command for the list
-
-            //populate
-            // Populate(); //async method to populate the view
         }
 
 
@@ -57,8 +54,6 @@ namespace TrackApp.ClientLayer.Friends
             //set the refresh state so another refresh wont be possible
             IsBusy = true;
             ((Command)OnRefreshCommand).ChangeCanExecute();
-
-            Console.Write("STARTED");
 
             try
 
@@ -162,10 +157,12 @@ namespace TrackApp.ClientLayer.Friends
         {
 
             //first refresh the view
-            TrackUsers.Remove(selectedUser);
+            if(TrackUsers.IndexOf(selectedUser) != -1)
+                TrackUsers.Remove(selectedUser);
 
             //delete it also from the cached list
-            _allUsers.Remove(selectedUser);
+            if(TrackUsers.IndexOf(selectedUser) != -1)
+                _allUsers.Remove(selectedUser);
 
             var query = new QueryUser();
 
@@ -214,15 +211,8 @@ namespace TrackApp.ClientLayer.Friends
                     selectedUserList.Notifications = new List<string> { notifStorage + ClientConsts.CONCAT_SPECIAL_CHARACTER + "0" };
             }
 
-
-            //save the current currentUser list
-            var saver = new SaveUserFriends { UserFriends = userList };
-            await saver.SaveData();
-
-
-            //save the selected currentUser list
-            saver.UserFriends = selectedUserList;
-            await saver.SaveData();
+            // save both UserFriends objects
+            await FriendsBatchSaver.SaveUserFriends(userList, selectedUserList);
 
             //refresh the current user friends list
             currentUserFriends = await new QueryUser().LoadData<UserFriends>(currentUser.Username);

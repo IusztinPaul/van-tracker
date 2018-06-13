@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,6 +42,11 @@ namespace TrackApp.ClientLayer
                 Instance = this;
         }
 
+        public void ChangeProfilePicture(string imageEncodedString64)
+        {
+            byte[] Base64Stream = Convert.FromBase64String(Icon);
+            ImgProfile.Source = ImageSource.FromStream(() => new MemoryStream(Base64Stream));
+        }
 
         protected override void OnAppearing()
         {

@@ -20,12 +20,15 @@ namespace TrackApp.ClientLayer.Profile
     {
 
         private TrackUser currentUser;
+        private string userIcon;
 
         public ProfilePage(TrackUser currentUser)
         {
             InitializeComponent();
             BindingContext = new ProfileViewModel(currentUser);
+
             this.currentUser = currentUser;
+            userIcon = currentUser.Icon;
         }
 
 
@@ -149,10 +152,12 @@ namespace TrackApp.ClientLayer.Profile
                 // add pick image gesture recognizer
                 TapGestureRecognizer pickPictureRecognizer = new TapGestureRecognizer();
                 pickPictureRecognizer.Tapped += ChangeProfilePhotoListener;
+                ImgProfile.GestureRecognizers.Clear();
                 ImgProfile.GestureRecognizers.Add(pickPictureRecognizer);
 
                 //setup hint label
                 LbChangePhoto.IsVisible = true;
+                LbChangePhoto.GestureRecognizers.Clear();
                 LbChangePhoto.GestureRecognizers.Add(new TapGestureRecognizer
                 {
                     Command = new Command(() => ChangeProfilePhotoListener(null, null))
@@ -186,7 +191,7 @@ namespace TrackApp.ClientLayer.Profile
             {
                 Username = this.currentUser.Username,
                 Password = this.currentUser.Password,
-                Icon = this.currentUser.Icon, //this parameter it is set in the tap gesture recognizer defined in the TbItemEditListener method
+                Icon = userIcon, //this parameter it is set in the tap gesture recognizer defined in the TbItemEditListener method
                 FirstName = EtFirstName.Text?.Trim(),
                 LastName = EtLastName.Text?.Trim(),
                 Email = EtEmail.Text?.Trim(),
@@ -199,10 +204,7 @@ namespace TrackApp.ClientLayer.Profile
                     Nr = EtAddressNumber.Text?.Trim(),
                     City = EtCity.Text?.Trim(),
                     Block = EtBlock.Text?.Trim()
-                },
-                Latitude = this.currentUser.Latitude,
-                Longitude = this.currentUser.Longitude,
-                VersionNumber = this.currentUser.VersionNumber
+                }
             };
 
             return newUser;
@@ -221,9 +223,13 @@ namespace TrackApp.ClientLayer.Profile
                 byte[] imgBytes = memoryStream.ToArray();
                 string iconString = Convert.ToBase64String(imgBytes);
 
+                //update data to save
+                userIcon = iconString;
+
                 //update user so the binding will fire
-                currentUser.Icon = iconString;
+                this.currentUser.Icon = iconString;
                 (BindingContext as ProfileViewModel).CurrentUser = new TrackUser(currentUser); // fire the binding
+                NavigationMasterPage.Instance.ChangeProfilePhoto(iconString); // change mater detail photo
             }
         }
 

@@ -20,7 +20,7 @@ namespace TrackApp.ServerLayer.Save
             if (Group != null && UserFriends != null) {
                 try
                 {
-                    var context = AwsUtils.GetContext();
+                    var context = AwsUtils.GetContextSkipVersionCheck();
 
                     var groupBatch = context.CreateBatchWrite<Group>();
                     var userFriendsBatch = context.CreateBatchWrite<UserFriends>();

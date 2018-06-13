@@ -28,6 +28,8 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
 
         public const int LINE_DISPLAY_LOOPER = 6;
 
+        public static readonly string NO_POS_ALERT_TEXT = $"Nu a fost gasita nici o locatie in ultimele {MapUserGeneratorThread.END_ADMINISTRATOR_LOOK_UP_POSITION_TIME_HOURS / 24} zile";
+
         private ObservableCollection<TKCircle> _userCurrentPositions;
         public ObservableCollection<TKCircle> UserCurrentPositions
         {
@@ -233,6 +235,8 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
 
             if (lat != TrackUser.NO_POSITION_VALUE && lng != TrackUser.NO_POSITION_VALUE)
                 SetMapRegion(new Position(lat, lng));
+            else
+                Device.BeginInvokeOnMainThread( () => DependencyService.Get<IMessage>().LongAlert(NO_POS_ALERT_TEXT));
         }
 
        

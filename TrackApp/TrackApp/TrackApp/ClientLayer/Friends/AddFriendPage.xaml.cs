@@ -28,7 +28,7 @@ namespace TrackApp.ClientLayer.Friends
                     var tappedUser = args.SelectedItem as TrackUser;
                     if (tappedUser != null)
                     {
-                        await Navigation.PushAsync(new NavigationPage(new ProfilePageNoToolbar(tappedUser)));
+                        await Navigation.PushAsync(new ProfilePageNoToolbar(tappedUser));
                     }
                       
                 };
@@ -65,7 +65,7 @@ namespace TrackApp.ClientLayer.Friends
                 else
                 {
 
-                    viewmodel.TrackUsers = new ObservableCollection<TrackUser>(viewmodel.GetAllUsers().Where(x => x.Username.ToUpper().StartsWith(e.NewTextValue.ToUpper())));
+                    viewmodel.TrackUsers = new ObservableCollection<TrackUser>(viewmodel.GetAllUsers().Where(x => x.Username.ToUpper().StartsWith(e.NewTextValue.Trim().ToUpper())));
                 }
             }
 

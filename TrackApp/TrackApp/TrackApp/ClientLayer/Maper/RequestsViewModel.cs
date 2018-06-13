@@ -128,13 +128,12 @@ namespace TrackApp.ClientLayer.Maper
 
                 try
                 {
-                    
                     var group = await QueryHashLoader.LoadData<DataFormat.Group>(notif.GroupName);
 
                     if (group != null) {
 
                         // add member to group logic
-                        if (notif.Type == AddMemberPage.ADMINISTRATOR_STATE_DISPLAY)
+                        if (notif.Type.Equals(AddMemberPage.ADMINISTRATOR_STATE_DISPLAY))
                             if (group.Admins != null)
                                 group.Admins.Add(currentUser.Username);
                             else
@@ -162,9 +161,6 @@ namespace TrackApp.ClientLayer.Maper
                         //don't hold more than a constant number of notifications
                         group.Notifications = group.Notifications.ResizeIfNeeded(RequestsPage.MAX_SIZE_REQUEST_NOTIFICATIONS, 2, sort: true);
 
-                        //save data to database
-                        var saver = new SaveGroup { Group = group };
-                        await saver.SaveData();
                     }
                     else
                     {
@@ -176,7 +172,7 @@ namespace TrackApp.ClientLayer.Maper
 
                     if(currentUserFriends != null)
                     {
-                        string dbType = notif.Type == AddMemberPage.ADMINISTRATOR_STATE_DISPLAY ? AddMemberPage.ADMINISTRATOR_STATE_DB : AddMemberPage.DRIVER_STATE_DB;
+                        string dbType = notif.Type.Equals(AddMemberPage.ADMINISTRATOR_STATE_DISPLAY) ? AddMemberPage.ADMINISTRATOR_STATE_DB : AddMemberPage.DRIVER_STATE_DB;
                         string requestToDelete = notif.GroupName + ClientConsts.CONCAT_SPECIAL_CHARACTER +
                                                 notif.Username + ClientConsts.CONCAT_SPECIAL_CHARACTER +
                                                 dbType + ClientConsts.CONCAT_SPECIAL_CHARACTER +
@@ -185,7 +181,6 @@ namespace TrackApp.ClientLayer.Maper
                         if (currentUserFriends.GroupRequests.Count == 1)
                         {
                             currentUserFriends.GroupRequests.Clear();
-                            await ISaveData.DeleteOnlyHashKeyData<UserFriends>(currentUser.Username); // delete it first otherwise if only one item remains in the request list it wont be delted from the db
                         }
                         else
                         {
@@ -211,13 +206,12 @@ namespace TrackApp.ClientLayer.Maper
                             currentUserFriends.Groups = new List<string>();
 
                         string groupStringType = notif.GroupName + ClientConsts.CONCAT_SPECIAL_CHARACTER +
-                            (notif.Type == AddMemberPage.ADMINISTRATOR_STATE_DISPLAY ? ClientConsts.ADMINISTRATOR_SIGNAL : ClientConsts.DRIVER_SIGNAL);
+                            (notif.Type.Equals(AddMemberPage.ADMINISTRATOR_STATE_DISPLAY) ? ClientConsts.ADMINISTRATOR_SIGNAL : ClientConsts.DRIVER_SIGNAL);
 
                         currentUserFriends.Groups.Add(groupStringType);
 
                         //save data to database
-                        var saver = new SaveUserFriends { UserFriends = currentUserFriends};
-                        await saver.SaveData();
+                        await RequestsSavercs.SaveGroupAndUserFriends(group, currentUserFriends);
 
                     } else
                     {
@@ -275,10 +269,7 @@ namespace TrackApp.ClientLayer.Maper
                         group.Notifications.Add(groupNotification);
                         //don't hold more than a constant number of notifications
                         group.Notifications = group.Notifications.ResizeIfNeeded(RequestsPage.MAX_SIZE_REQUEST_NOTIFICATIONS, 2, sort: true);
-
-                        //save data to database
-                        var saver = new SaveGroup { Group = group };
-                        await saver.SaveData();
+                       
                     }
                     else
                     {
@@ -290,7 +281,7 @@ namespace TrackApp.ClientLayer.Maper
 
                     if (currentUserFriends != null)
                     {
-                        string dbType = notif.Type == AddMemberPage.ADMINISTRATOR_STATE_DISPLAY ? AddMemberPage.ADMINISTRATOR_STATE_DB : AddMemberPage.DRIVER_STATE_DB;
+                        string dbType = notif.Type.Equals(AddMemberPage.ADMINISTRATOR_STATE_DISPLAY) ? AddMemberPage.ADMINISTRATOR_STATE_DB : AddMemberPage.DRIVER_STATE_DB;
                         string requestToDelete = notif.GroupName + ClientConsts.CONCAT_SPECIAL_CHARACTER +
                                                 notif.Username + ClientConsts.CONCAT_SPECIAL_CHARACTER +
                                                 dbType + ClientConsts.CONCAT_SPECIAL_CHARACTER +
@@ -299,7 +290,6 @@ namespace TrackApp.ClientLayer.Maper
                         if (currentUserFriends.GroupRequests.Count == 1)
                         {
                             currentUserFriends.GroupRequests.Clear();
-                            await ISaveData.DeleteOnlyHashKeyData<UserFriends>(currentUser.Username); // delete it first otherwise if only one item remains in the request list it wont be delted from the db
                         }
                         else
                         {
@@ -320,10 +310,9 @@ namespace TrackApp.ClientLayer.Maper
                             }
                         }
 
-                        //save data to database
-                        var saver = new SaveUserFriends { UserFriends = currentUserFriends };
-                        await saver.SaveData();
 
+                        //save the updated data
+                        await RequestsSavercs.SaveGroupAndUserFriends(group, currentUserFriends);
                     }
                     else
                     {
@@ -363,7 +352,7 @@ namespace TrackApp.ClientLayer.Maper
         {
             public string Username { get; set; } // from who you get the notification
             public string GroupName { get; set; } // the group that you are invited to
-            public string Type { get; set; } // administrator or sofer ( it is mapped from the database to romanian)
+            public string Type { get; set; } // administrator or driver ( it is mapped from the database to romanian)
             public int Index { get; set; }
             public string Icon { get
                 {

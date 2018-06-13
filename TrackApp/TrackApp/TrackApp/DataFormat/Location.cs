@@ -48,8 +48,12 @@ namespace TrackApp.DataFormat
 
         public override string ToString()
         {
-             return Country + " " + Region + " " + City + ", " + Street + " " + Nr + ", " + Block;
-          //  return Country + " " + Region + " " + City;
+            var s = Country + " " + Region + " " + City + ", " + Street + " " + Nr;
+
+            if (Block != null && !Block.Trim().Equals("-"))
+                s = s+ " " + Block;
+
+            return s;
         }
 
         public override bool Equals(object obj)

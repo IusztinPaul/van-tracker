@@ -182,7 +182,7 @@ namespace TrackApp.ClientLayer.Maper.Group
                             var userFriends = await QueryHashLoader.LoadData<UserFriends>(user.Username);
 
                             if (userFriends == null)
-                                userFriends = new UserFriends();
+                                userFriends = new UserFriends() { Username = user.Username };
 
                             if (userFriends != null && userFriends.GroupRequests == null)
                                 userFriends.GroupRequests = new List<string>();

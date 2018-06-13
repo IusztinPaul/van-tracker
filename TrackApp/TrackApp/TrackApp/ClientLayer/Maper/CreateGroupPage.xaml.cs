@@ -32,12 +32,14 @@ namespace TrackApp.ClientLayer.Maper
                 // show activity indicator
                 ActIndSaveData.IsVisible = true;
                 ActIndSaveData.IsRunning = true;
+                BtnSaveData.IsEnabled = false;
 
                 await BtnCreateGroupListener(source, args);
 
                 // hide activity indicator
                 ActIndSaveData.IsVisible = false;
                 ActIndSaveData.IsRunning = false;
+                BtnSaveData.IsEnabled = true;
             };
         }
 

@@ -31,13 +31,7 @@ namespace TrackApp.DataFormat.UserData
         public string Email { get; set; }
         [DynamoDBProperty]
         public string Icon { get; set; } //member with which the Icon it is stored in the DB serialized as a string
-        [DynamoDBProperty]
-        public double Latitude { get; set; } //position attribute
-        [DynamoDBProperty]
-        public double Longitude { get; set; } //position attribute
-        [DynamoDBVersion]
-        public int? VersionNumber { get; set; }
-
+        
         [DynamoDBIgnore]
         public ImageSource IconSource //member which it is called from the code
         {

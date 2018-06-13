@@ -166,39 +166,10 @@ namespace TrackApp.ClientLayer.Friends
             //after update the currentUser obj in case it was changed from a different device
             currentUserFriends = await new QueryUser().LoadData<UserFriends>(currentUser.Username);
 
-            //remove id from db object and after update it in the database (current user friend list)
-            /* -> TODO reimplement this behaviour
-            if (currentUserFriends.Friends != null && currentUserFriends.Friends.Count == 1)
-            {
-                // can't delete the last item in a list so we delete the whole row
-                await ISaveData.DeleteOnlyHashKeyData<UserFriends>(currentUserFriends.Username);
-
-                // if there are any notifications save them again
-                if( (currentUserFriends.Notifications != null && currentUserFriends.Notifications.Count != 0) || 
-                    (currentUserFriends.GroupRequests != null && currentUserFriends.GroupRequests.Count != 0) ||
-                    (currentUserFriends.Groups != null && currentUserFriends.Groups.Count != 0) )
-                {
-                    var s = new SaveUserFriends { UserFriends = new UserFriends
-                    {
-                        Username = currentUserFriends.Username,
-                        Friends = new List<string>(),
-                        Notifications = currentUserFriends.Notifications,
-                        GroupRequests = currentUserFriends.GroupRequests,
-                        Groups = currentUserFriends.Groups,
-                        VersionNumber = currentUserFriends.VersionNumber
-                    }
-                    };
-                    await s.SaveData();
-                }
-            }
-            else
-            {*/
 
             if (currentUserFriends != null && currentUserFriends.Friends != null)
             {
                 currentUserFriends?.Friends.Remove(clickUser.Username);
-                var s = new SaveUserFriends { UserFriends = currentUserFriends };
-                await s.SaveData();
             }
 
             //update notifications for the unfollowed user
@@ -220,9 +191,8 @@ namespace TrackApp.ClientLayer.Friends
             //resize the notifications if the length exceeded the desired value
             clickedUserFriendsObj.Notifications = clickedUserFriendsObj.Notifications.ResizeIfNeeded(NotificationPage.NOTIFICATION_MAX_NUMBER, 2, sort: true);
 
-            //save the updated obj
-            var saver = new SaveUserFriends { UserFriends = clickedUserFriendsObj };
-            await saver.SaveData();
+            //save the updated UserFriends objects
+            await FriendsBatchSaver.SaveUserFriends(currentUserFriends, clickedUserFriendsObj);
         }
     }
 }

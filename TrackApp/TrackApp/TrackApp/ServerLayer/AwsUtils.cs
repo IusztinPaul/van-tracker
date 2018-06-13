@@ -73,6 +73,7 @@ namespace TrackApp.ServerLayer
                 if (_contextSkipVersioning == null)
                     _contextSkipVersioning = new DynamoDBContext(DynamoDBClient, new DynamoDBContextConfig
                     {
+                        ConsistentRead = true,
                         SkipVersionCheck = true //here is the setup
                     });
 
