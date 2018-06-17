@@ -12,8 +12,6 @@ namespace TrackApp.ClientLayer.Friends
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class FriendsPage : ContentPage
 	{
-        //TODO add activity indicator when a user clicks to go to a specific profile
-
         private TrackUser currentUser;
 
 		public FriendsPage (TrackUser trackUser)

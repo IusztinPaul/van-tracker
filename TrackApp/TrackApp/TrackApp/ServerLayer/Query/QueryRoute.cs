@@ -107,7 +107,7 @@ namespace TrackApp.ServerLayer.Query
                 var context = AwsUtils.GetContext();
                 return await context.QueryAsync<Route>(
                    routeHashKey,
-                   QueryOperator.LessThanOrEqual,
+                   QueryOperator.LessThan,
                    new List<object> { addressRange }).GetRemainingAsync();
             }
             catch (AmazonDynamoDBException e)

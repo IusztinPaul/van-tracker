@@ -21,9 +21,9 @@ namespace TrackApp.ClientLayer.Maper.Group
         //second and final step of creating a route
 
         public const string ADDRESS_NAME_PLACEHOLDER = "Nume adresa";
-        public const string ADDRESS_DETAIL_PLACEHOLDER = "nr-nr sau nr. * bl. * sc. *";
+        public const string ADDRESS_DETAIL_PLACEHOLDER = "nr-nr sau nr.* bl.* sc.* ap.*";
         public const string LABEL_TITLE_TEXT = "Creeaza ruta";
-        public const string LABEL_DETAIL_TEXT = "Exemplu:\nNume adresa: Lugojului\nRestul pot fi completate in felul urmator:\n --- 2-10 -> toate numerele intre 2 si 10 inclusiv cu numele adresei de mai sus\n --- 1-1 adresa cu numele de mai sus si numarul 1\n --- nr. 3 bl. 5 sc. 8 -> se ia efectiv locuinta/blocul cu adresa de mai sus (datele trebuie introduse in aceasta ordine)\n";
+        public const string LABEL_DETAIL_TEXT = "Exemplu:\nNume adresa: Lugojului\nRestul pot fi completate in felul urmator:\n --- 2-10 -> toate numerele intre 2 si 10 inclusiv cu numele adresei de mai sus\n --- 1-1 adresa cu numele de mai sus si numarul 1\n --- nr. 3 bl. 5 sc. 8 ap. 2-> se ia efectiv locuinta/blocul cu adresa de mai sus (datele trebuie introduse in aceasta ordine, dar unele din ele pot fi excluse)\n";
         public const string TEXT_BUTTON_NEW_ADDRESS = "Adauga noua adresa";
         public const string TEXT_ADDRESS_NAME_EXCEPTION = "Adresa {0} nu e completata";
         public const string TEXT_ADDRESS_DETAIL_EXCEPTION = "Un detaliu de la o adresa este scris incorect";
@@ -31,7 +31,7 @@ namespace TrackApp.ClientLayer.Maper.Group
         public const string TEXT_NO_DATA_TO_SAVE = "Nu exista date de salvat!";
         public const string TEXT_DATA_SAVED = "Datele au fost salvate cu succes!";
 
-        public const string DETAIL_DATA_PATTERN = @"^\s*(nr\.(.+?))?\s*(bl\.(.+?))?\s*(sc\.(.+?))?\s*$";
+        public const string DETAIL_DATA_PATTERN = @"^\s*(nr\.\s*([^\s]+?))?\s*(bl\.\s*([^\s]+?))?\s*(sc\.\s*([^\s]+?))?\s*(ap\.\s*([^\s]+?))?\s*$";
 
         private List<List<AddressEntryAndDetailEntry>> routeData = new List<List<AddressEntryAndDetailEntry>>();
         private List<StackLayout> addressesStacks = new List<StackLayout>();
@@ -327,7 +327,8 @@ namespace TrackApp.ClientLayer.Maper.Group
                                             Region = region,
                                             Street = routeData[l][m].AddressEntry.Text?.Trim(),
                                             Nr = k.ToString(),
-                                        }
+                                        },
+                                        DateTime = DateTime.UtcNow
                                     };
 
                                     if (!routes.Contains(route))
@@ -351,8 +352,9 @@ namespace TrackApp.ClientLayer.Maper.Group
                                         Region = region,
                                         Street = routeData[l][m].AddressEntry.Text?.Trim(),
                                         Nr = groups[2].Value?.Trim(),
-                                        Block = groups[3].Value?.Trim() + " " + groups[5].Value?.Trim()
-                                    }
+                                        Block = groups[3].Value?.Trim() + " " + groups[5].Value?.Trim() + " " + groups[7].Value?.Trim()
+                                    },
+                                    DateTime = DateTime.UtcNow
                                 };
 
                                 if (!routes.Contains(route))
@@ -394,7 +396,6 @@ namespace TrackApp.ClientLayer.Maper.Group
                     }
 
                     //after data it's saved leave page
-                    //TODO make pop logic work
                     Device.BeginInvokeOnMainThread(async () => await Navigation.PopAsync());
                     DependencyService.Get<IMessage>().ShortAlert(TEXT_DATA_SAVED);
                 }

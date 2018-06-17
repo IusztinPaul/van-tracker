@@ -18,10 +18,10 @@ namespace TrackApp.ClientLayer.Maper.MapThread
 {
     public class MapUserGeneratorThread 
     {
-        public const int SLEEP_TIME_LOOP_MILISECONDS = 1000;
+        public const int SLEEP_TIME_LOOP_MILISECONDS = ClientConsts.UPDATE_CIRCLE_LOCATION_LOOP_TIME_MILISECONDS;
 
         public const long START_ADMINISTRATOR_LOOK_UP_POSITION_TIME_HOURS = 1;
-        public const long END_ADMINISTRATOR_LOOK_UP_POSITION_TIME_HOURS = 22 * 24; //22 days
+        public const long END_ADMINISTRATOR_LOOK_UP_POSITION_TIME_HOURS = 12; 
 
         private string _username;
         private MapPageModelView modelView;
@@ -134,7 +134,7 @@ namespace TrackApp.ClientLayer.Maper.MapThread
                             modelView.AddCircle(circleIndex, lastCircle);
                         });
                 }
-                else // add dummy circle if there is no data
+                else // add dummy circle if there is no data so it will fill the array
                 {
                     var circle = new TKCircle
                     {
@@ -155,7 +155,8 @@ namespace TrackApp.ClientLayer.Maper.MapThread
 
                 cancellationToken.ThrowIfCancellationRequested();
 
-                Thread.Sleep(SLEEP_TIME_LOOP_MILISECONDS);
+                await Task.Delay(SLEEP_TIME_LOOP_MILISECONDS);
+                Console.WriteLine("CALIBRATING circle for {0}", _username);
             }
         }
 
@@ -171,26 +172,34 @@ namespace TrackApp.ClientLayer.Maper.MapThread
             {
                 // get last known position of the driver within END_ADMINISTRATOR_LOOK_UP_POSITION_TIME_MILISECONDS days
                 long time = START_ADMINISTRATOR_LOOK_UP_POSITION_TIME_HOURS;
-                IEnumerable<PositionDB> positions;
+                IEnumerable<PositionDB> positions = null;
                 List<PositionDB> positionsList = null;
+                bool found = false;
+
                 while(time <= END_ADMINISTRATOR_LOOK_UP_POSITION_TIME_HOURS)
                 {
                     positions = await QueryPositions.QueryPositionsInLastHours(username, time);
                     if(positions != null)
                     {
-                        positionsList = positions.ToList(); //TODO optimize get location method
-                        if (positionsList != null && positionsList.Count > 0)
+                        // break at the first positions found ( test for Count == 1)
+                        foreach(var pos in positions)
                         {
-                            positionsList.Sort((a, b) => -a.DateTime.CompareTo(b.DateTime)); //sort in descending order to get the biggest datetime item
+                            found = true;
                             break;
                         }
-                    }
 
-                    time += 3;
+                        if (found) //if a position was found also break from the while loop
+                            break;
+                    }
+                    time += 2;
                 }
 
-                if (positionsList != null && positionsList.Count > 0)
+                if (positions != null && found)
+                {
+                    positionsList = positions.ToList();
+                    positionsList.Sort((a, b) => -a.DateTime.CompareTo(b.DateTime)); //sort in descending order to get the biggest datetime item
                     return new Plugin.Geolocator.Abstractions.Position(positionsList[0].Latitude, positionsList[0].Longitude);
+                }
             }
 
             return null;

@@ -2,6 +2,7 @@ D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\bin\Rel
 D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\bin\Release\TrackApp.Android.pdb
 D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\bin\Release\com.companyname.TrackApp.apk
 D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\bin\Release\com.companyname.TrackApp-Signed.apk
+D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\obj\Release\TrackApp.Android.csprojAssemblyReference.cache
 D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\obj\Release\XbdMerge\Xamarin.GooglePlayServices.Basement.dll
 D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\obj\Release\XbdMerge\Xamarin.GooglePlayServices.Tasks.dll
 D:\Projects\Xamarin\TrackerApp\client\TrackApp\TrackApp\TrackApp.Android\obj\Release\XbdMerge\Xamarin.GooglePlayServices.Base.dll

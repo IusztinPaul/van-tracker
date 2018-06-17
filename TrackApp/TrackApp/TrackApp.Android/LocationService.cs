@@ -10,6 +10,7 @@ using Plugin.Geolocator;
 using Plugin.Geolocator.Abstractions;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
+using TrackApp.ClientLayer;
 using TrackApp.DataFormat;
 using TrackApp.ServerLayer.Save;
 
@@ -19,7 +20,7 @@ namespace TrackApp.Droid
     public class LocationService : Service
     {
         static readonly string TAG = typeof(LocationService).FullName;
-        public const int LOOP_WAIT_TIME_SECONDS = 5;
+        public const int LOOP_WAIT_TIME_SECONDS = ClientConsts.LOCATION_LOOP_WAIT_TIME_MILISECONDS;
 
         public bool IsLoopRunning { get; set; } = false;
         public IBinder Binder { get; private set; }
@@ -94,7 +95,7 @@ namespace TrackApp.Droid
 
                           lastPosition = position;
                           Log.Debug(TAG, "LOOP REPEATING");
-                          Thread.Sleep(LOOP_WAIT_TIME_SECONDS * 1000 + 1); //TODO ADD a smaller loop timer 
+                          Thread.Sleep(LOOP_WAIT_TIME_SECONDS + 1);  
                        }
                   }
                   else

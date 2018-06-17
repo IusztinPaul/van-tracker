@@ -8,8 +8,6 @@ namespace TrackApp.ServerLayer
     
     public static class AwsUtils
     {
-        //TODO add if no internet logic to all methods (like NameResolutionFailure error message)
-
         private static CognitoAWSCredentials _credentials;
 
         public static CognitoAWSCredentials Credentials

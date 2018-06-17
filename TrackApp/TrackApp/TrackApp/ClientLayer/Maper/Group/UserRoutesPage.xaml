@@ -10,7 +10,7 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout x:Name="contentStackLayout">
           
             <ListView x:Name="RoutesList"
                       CachingStrategy="RecycleElement"

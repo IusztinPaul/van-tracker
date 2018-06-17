@@ -28,7 +28,7 @@
           "lib/MonoAndroid10/AWSSDK.Core.dll": {}
         }
       },
-      "AWSSDK.DynamoDBv2/3.3.9": {
+      "AWSSDK.DynamoDBv2/3.3.10": {
         "type": "package",
         "dependencies": {
           "AWSSDK.Core": "[3.3.24, 3.4.0)"
@@ -1056,7 +1056,7 @@
           "build/Xamarin.Build.Download.targets": {}
         }
       },
-      "Xamarin.Forms/3.0.0.550146": {
+      "Xamarin.Forms/3.0.0.561731": {
         "type": "package",
         "dependencies": {
           "Xamarin.Android.Support.Design": "25.4.0.2",
@@ -1084,12 +1084,12 @@
           "build/netstandard2.0/Xamarin.Forms.targets": {}
         }
       },
-      "Xamarin.Forms.Maps/3.0.0.550146": {
+      "Xamarin.Forms.Maps/3.0.0.561731": {
         "type": "package",
         "dependencies": {
           "Xamarin.Android.Support.v7.AppCompat": "25.4.0.2",
           "Xamarin.Android.Support.v7.MediaRouter": "25.4.0.2",
-          "Xamarin.Forms": "3.0.0.550146",
+          "Xamarin.Forms": "3.0.0.561731",
           "Xamarin.GooglePlayServices.Maps": "42.1021.1"
         },
         "compile": {
@@ -1245,6 +1245,7 @@
         "awssdk.core.nuspec",
         "lib/MonoAndroid10/AWSSDK.Core.XML",
         "lib/MonoAndroid10/AWSSDK.Core.dll",
+        "lib/MonoAndroid10/AWSSDK.Core.dll.mdb",
         "lib/MonoAndroid10/AWSSDK.Core.pdb",
         "lib/MonoTouch10/AWSSDK.Core.XML",
         "lib/MonoTouch10/AWSSDK.Core.dll",
@@ -1279,13 +1280,13 @@
         "tools/account-management.ps1"
       ]
     },
-    "AWSSDK.DynamoDBv2/3.3.9": {
-      "sha512": "0mdmb9Y5HxDBE5cKepxvWXE2Sfi9+lQFeC1Udhf3c6MfvaEyxb6jaSbKl6Wv0tH48pkFvT/ATEMIsDejZEB4pg==",
+    "AWSSDK.DynamoDBv2/3.3.10": {
+      "sha512": "5gDo+QJAekb3BkE/BiDCy46O04ZiPg8MKRAdbNIv6g4XZIYbEZuNQ60DLkfGRu1fLfcqwLDpaJn2CKpDUwC9wg==",
       "type": "package",
-      "path": "awssdk.dynamodbv2/3.3.9",
+      "path": "awssdk.dynamodbv2/3.3.10",
       "files": [
         "analyzers/dotnet/cs/AWSSDK.DynamoDBv2.CodeAnalysis.dll",
-        "awssdk.dynamodbv2.3.3.9.nupkg.sha512",
+        "awssdk.dynamodbv2.3.3.10.nupkg.sha512",
         "awssdk.dynamodbv2.nuspec",
         "lib/MonoAndroid10/AWSSDK.DynamoDBv2.XML",
         "lib/MonoAndroid10/AWSSDK.DynamoDBv2.dll",
@@ -4631,10 +4632,10 @@
         "xamarin.build.download.nuspec"
       ]
     },
-    "Xamarin.Forms/3.0.0.550146": {
-      "sha512": "SgkHey7csDf5Xi6rxqt5fMug6faeNMq9JZLFzLHFWLErCTx9RRhSSV8fZeqpfRqsmQVHGwvCTOrzEJ2aaNkGeg==",
+    "Xamarin.Forms/3.0.0.561731": {
+      "sha512": "ZnpuSybty6uZsgInJQD2QoYsjsdzPmu25EltSNJTnwgiQCW0MVZfwU6//jbt4Sf0ZfAiryi8MZFhU1I0NAP6Ew==",
       "type": "package",
-      "path": "xamarin.forms/3.0.0.550146",
+      "path": "xamarin.forms/3.0.0.561731",
       "files": [
         ".signature.p7s",
         "build/netstandard1.0/Mono.Cecil.Mdb.dll",
@@ -4775,14 +4776,14 @@
         "lib/uap10.0/Xamarin.Forms.Platform.dll",
         "lib/uap10.0/Xamarin.Forms.Xaml.dll",
         "lib/uap10.0/Xamarin.Forms.Xaml.xml",
-        "xamarin.forms.3.0.0.550146.nupkg.sha512",
+        "xamarin.forms.3.0.0.561731.nupkg.sha512",
         "xamarin.forms.nuspec"
       ]
     },
-    "Xamarin.Forms.Maps/3.0.0.550146": {
-      "sha512": "9ilg1aaguXiO41SMYlJRQk+cHkoEc4nohN1cfyXkNrXw9h6fqiUd2D3rb3Q0y10wGxblZ5z8g74ipU31ptawog==",
+    "Xamarin.Forms.Maps/3.0.0.561731": {
+      "sha512": "FyLmNS9Wtfccx2K3hvV6uWS9hYRRoRO5f63AgVQdfW+SXShA5bIKLJ1K4HdAf1m9zw0YBm7i2lB6lzMVfRkNww==",
       "type": "package",
-      "path": "xamarin.forms.maps/3.0.0.550146",
+      "path": "xamarin.forms.maps/3.0.0.561731",
       "files": [
         ".signature.p7s",
         "lib/MonoAndroid10/Xamarin.Forms.Maps.Android.dll",
@@ -4806,7 +4807,7 @@
         "lib/uap10.0/Xamarin.Forms.Maps.UWP.dll",
         "lib/uap10.0/Xamarin.Forms.Maps.UWP.pri",
         "lib/uap10.0/Xamarin.Forms.Maps.dll",
-        "xamarin.forms.maps.3.0.0.550146.nupkg.sha512",
+        "xamarin.forms.maps.3.0.0.561731.nupkg.sha512",
         "xamarin.forms.maps.nuspec"
       ]
     },
@@ -4882,7 +4883,7 @@
     "MonoAndroid,Version=v8.1": [
       "AWSSDK.CognitoIdentity >= 3.3.2.23",
       "AWSSDK.Core >= 3.3.24",
-      "AWSSDK.DynamoDBv2 >= 3.3.9",
+      "AWSSDK.DynamoDBv2 >= 3.3.10",
       "Plugin.Permissions >= 3.0.0.12",
       "TK.CustomMap >= 2.0.1",
       "Xam.Plugin.Geolocator >= 4.5.0.6",
@@ -4891,8 +4892,8 @@
       "Xamarin.Android.Support.v7.AppCompat >= 27.0.2",
       "Xamarin.Android.Support.v7.CardView >= 27.0.2",
       "Xamarin.Android.Support.v7.MediaRouter >= 27.0.2",
-      "Xamarin.Forms >= 3.0.0.550146",
-      "Xamarin.Forms.Maps >= 3.0.0.550146"
+      "Xamarin.Forms >= 3.0.0.561731",
+      "Xamarin.Forms.Maps >= 3.0.0.561731"
     ]
   },
   "packageFolders": {
@@ -4938,7 +4939,7 @@
           },
           "AWSSDK.DynamoDBv2": {
             "target": "Package",
-            "version": "[3.3.9, )"
+            "version": "[3.3.10, )"
           },
           "Plugin.Permissions": {
             "target": "Package",
@@ -4974,11 +4975,11 @@
           },
           "Xamarin.Forms": {
             "target": "Package",
-            "version": "[3.0.0.550146, )"
+            "version": "[3.0.0.561731, )"
           },
           "Xamarin.Forms.Maps": {
             "target": "Package",
-            "version": "[3.0.0.550146, )"
+            "version": "[3.0.0.561731, )"
           }
         }
       }

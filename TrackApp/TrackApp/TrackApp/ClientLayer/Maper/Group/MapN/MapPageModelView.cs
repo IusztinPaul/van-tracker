@@ -28,7 +28,7 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
 
         public const int LINE_DISPLAY_LOOPER = 6;
 
-        public static readonly string NO_POS_ALERT_TEXT = $"Nu a fost gasita nici o locatie in ultimele {MapUserGeneratorThread.END_ADMINISTRATOR_LOOK_UP_POSITION_TIME_HOURS / 24} zile";
+        public static readonly string NO_POS_ALERT_TEXT = "Nu a fost gasita nici o locatie in ultimele {0} ore pentru {1}";
 
         private ObservableCollection<TKCircle> _userCurrentPositions;
         public ObservableCollection<TKCircle> UserCurrentPositions
@@ -72,8 +72,20 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
 
         public MapPageModelView(RoledTrackUser[] users, TKCustomMap map, string groupName, RoledTrackUser currentUser)
         {
-            // Bindings have to initialized 
-            UserCurrentPositions = new ObservableCollection<TKCircle>();
+           // prepare memory for the circles so every circle will have it's index(part of memory) when the tasks will start
+            TKCircle[] circles = users != null ? new TKCircle[users.Length] : new TKCircle[0];
+            for (int i = 0; i < circles.Length; i++)
+                circles[i] = new TKCircle
+                {
+                    Center = MapPage.DEFAULT_MAP_POSITION,
+                    Color = Color.Transparent,
+                    StrokeColor = Color.White,
+                    StrokeWidth = ClientConsts.CIRCLE_STROKE_WIDTH,
+                    Radius = 1
+                };
+
+            // Bindings have to be initialized 
+            UserCurrentPositions = new ObservableCollection<TKCircle>(circles);
             MapRegion = MapSpan.FromCenterAndRadius(MapPage.DEFAULT_MAP_POSITION, Distance.FromMiles(ClientConsts.FROM_KM_MAP_DISTANCE));
 
             this.users = users;
@@ -88,7 +100,7 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
 
         public void StartGenerators(bool singleDriver)
         {
-           Array.Sort(users, (a, b) => a.Username.CompareTo(b.Username) ); // map colours to users by sorting them by username
+            Array.Sort(users, (a, b) => a.Username.CompareTo(b.Username)); // map colours to users by sorting them by username
 
             for (int i = 0; i < users.Length; i++)
             {
@@ -114,15 +126,18 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
             try
             {
                 Pins = new ObservableCollection<TKCustomMapPin>();
-
                 Array.Sort(users, (a, b) => a.Username.CompareTo(b.Username)); // map colours to users by sorting them by username
+
+                //firsly calibrate the map so the user does not think that the map freezed cuz the pins take a lot of time to be created
+                if (users.Length > 0 && MapPage.LastKnownLocation.Equals(MapPage.DEFAULT_MAP_POSITION))
+                    await CalibrateMapRegion(users[0].Username);
+                else if (!MapPage.LastKnownLocation.Equals(MapPage.DEFAULT_MAP_POSITION))
+                    SetMapRegion(MapPage.LastKnownLocation);
+                else
+                    SetMapRegion(MapPage.DEFAULT_MAP_POSITION);
 
                 var tasks = users.Select(async (user) => await PopulateWithPinsAndLinesForSingleUser(user.Username));
                 await Task.WhenAll(tasks);
-
-                //calibrate map region and wait for pins
-                if (users.Length > 0)
-                    await CalibrateMapRegion(users[0].Username);
             }
             catch (AmazonServiceException e) // if there are problems with the service or with the internet
             {
@@ -160,8 +175,8 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
 
                 //get current user color
                 int indexOfUser = -1;
-                for(int i = 0; i < users.Length; i++)
-                    if(users[i].Username.Equals(username))
+                for (int i = 0; i < users.Length; i++)
+                    if (users[i].Username.Equals(username))
                     {
                         indexOfUser = i;
                         break;
@@ -176,11 +191,11 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
                 //query routes
                 var routeInfo = await QueryRoute.QuerySingleRouteInfo(username, groupName, routeCount);
                 var routes = await QueryRoute.QueryRoutes(username, groupName, routeCount.ToString(), routeInfo.CountRouteAddresses);
-                
+
                 foreach (var route in routes)
                 {
                     if (route.Delivered == false) // pass this data
-                            continue;
+                        continue;
 
                     //map routes to lat and lng and add them to the pins list
                     var locator = CrossGeolocator.Current;
@@ -215,38 +230,37 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
 
         public async Task CalibrateMapRegion(string username)
         {
-            double lat = TrackUser.NO_POSITION_VALUE, lng = TrackUser.NO_POSITION_VALUE;
             Plugin.Geolocator.Abstractions.Position pos = null;
+            string showUsername = "";
 
             if (currentUser.Role.Equals(RoledTrackUser.TYPE_DRIVER)) // then just get his current position
             {
                 pos = await MapUserGeneratorThread.GetPositionForCurrentType(true, currentUser.Username);
+                showUsername = currentUser.Username;
             }
             else if (currentUser.Role.Equals(RoledTrackUser.TYPE_ADMINISTRATOR))
             {
                 pos = await MapUserGeneratorThread.GetPositionForCurrentType(false, username);
+                showUsername = username;
             }
 
             if (pos != null)
             {
-                lat = pos.Latitude;
-                lng = pos.Longitude;
+                SetMapRegion(new Position(pos.Latitude, pos.Longitude));
             }
-
-            if (lat != TrackUser.NO_POSITION_VALUE && lng != TrackUser.NO_POSITION_VALUE)
-                SetMapRegion(new Position(lat, lng));
             else
-                Device.BeginInvokeOnMainThread( () => DependencyService.Get<IMessage>().LongAlert(NO_POS_ALERT_TEXT));
+            {
+                SetMapRegion(MapPage.DEFAULT_MAP_POSITION); // calibrate the map to the default pos
+                Device.BeginInvokeOnMainThread(() => DependencyService.Get<IMessage>().LongAlert(String.Format(NO_POS_ALERT_TEXT, MapUserGeneratorThread.END_ADMINISTRATOR_LOOK_UP_POSITION_TIME_HOURS, showUsername)));
+            }
         }
 
-       
+
 
         public void AddCircle(int index, TKCircle circle)
         {
             if (UserCurrentPositions != null && index <= UserCurrentPositions.Count)
                 UserCurrentPositions.Insert(index, circle);
-            else
-                UserCurrentPositions.Add(circle);
         }
 
         public void RemoveCircle(int index)

@@ -17,8 +17,6 @@ namespace TrackApp.ClientLayer.Validation
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
-        //TODO change exception message to public const string INTERNET_EXCEPTION_MESSAGE = "Nu este internet!"; from ClientConsts
-        //TODO if no internet show message instead of login page
         private View ScrollViewLoginFails = null;
 
         public LoginPage(TrackUser currentUser)
@@ -62,8 +60,7 @@ namespace TrackApp.ClientLayer.Validation
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            //TODO uncomment login scenario
-            /*
+            
             Task.Run(async () =>
            {
                if (Application.Current.Properties.ContainsKey(ClientConsts.LOGIN_KEY_FLAG) //check to see if the user is logged in
@@ -103,7 +100,7 @@ namespace TrackApp.ClientLayer.Validation
                        }
                    }
                }
-           }); */
+           });
 
         }
 

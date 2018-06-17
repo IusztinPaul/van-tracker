@@ -52,10 +52,7 @@ namespace TrackApp
                 Role = RoledTrackUser.TYPE_ADMINISTRATOR
             };
 
-            //  MainPage = new NavigationPage(new MapGroupsPage(user)); 
-             MainPage = new NavigationPage(new LoginPage(null));
-           // MainPage = new NavigationPage(new CreateRoutePage("TestGroup2", "Leppar"));
-            // MainPage = new DemoPickPage();
+            MainPage = new NavigationPage(new LoginPage(null));
 		}
 
 		protected override void OnStart ()

@@ -17,7 +17,7 @@ namespace TrackApp.ClientLayer
 	    public const string FULL_NAME = "Nume:";
 
         private TrackUser currentUser;
-        public static NavigationMasterPage Instance;
+        public static NavigationMasterPage Instance = null;
 
         public NavigationMasterPage (TrackUser currentUser, MainPage mainPage)
 		{
@@ -42,20 +42,14 @@ namespace TrackApp.ClientLayer
                 Instance = this;
         }
 
-        public void ChangeProfilePicture(string imageEncodedString64)
-        {
-            byte[] Base64Stream = Convert.FromBase64String(Icon);
-            ImgProfile.Source = ImageSource.FromStream(() => new MemoryStream(Base64Stream));
-        }
-
         protected override void OnAppearing()
         {
             base.OnAppearing();
             //setup image source
-            ChangeProfilePhoto(currentUser.IconSource);
+            ChangeProfilePhotoWithImgSource(currentUser.IconSource);
         }
 
-        public void ChangeProfilePhoto(ImageSource img)
+        public void ChangeProfilePhotoWithImgSource(ImageSource img)
         {
             ImgProfile.Source = img;
         }

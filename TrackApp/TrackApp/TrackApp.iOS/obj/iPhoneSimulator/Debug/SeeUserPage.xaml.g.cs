@@ -18,6 +18,9 @@ namespace TrackApp.ClientLayer.Maper.Group {
     public partial class SeeUserPage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.StackLayout stackData;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::TrackApp.ClientLayer.CustomUI.CustomEntry EntryNumberOfHours;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
@@ -26,6 +29,7 @@ namespace TrackApp.ClientLayer.Maper.Group {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(SeeUserPage));
+            stackData = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.StackLayout>(this, "stackData");
             EntryNumberOfHours = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TrackApp.ClientLayer.CustomUI.CustomEntry>(this, "EntryNumberOfHours");
             BtnContinue = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "BtnContinue");
         }

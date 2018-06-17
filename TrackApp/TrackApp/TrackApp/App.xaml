@@ -54,13 +54,13 @@
                         Android="18"/>
             <OnPlatform x:TypeArguments="x:Double"
                         x:Key="Medium">
-                <On Platform="Android" Value="21"/>
-                <On Platform="IOS" Value="21"/>
+                <On Platform="Android" Value="17"/>
+                <On Platform="IOS" Value="17"/>
             </OnPlatform>
             <OnPlatform x:TypeArguments="x:Double"
                         x:Key="Small">
-                <On Platform="Android" Value="14"/>
-                <On Platform="IOS" Value="14"/>
+                <On Platform="Android" Value="13"/>
+                <On Platform="IOS" Value="13"/>
             </OnPlatform>
             
             <!-- Heights -->

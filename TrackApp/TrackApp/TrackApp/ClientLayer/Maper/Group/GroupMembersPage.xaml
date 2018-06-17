@@ -5,7 +5,7 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <x:String x:Key="ListViewHeaderTitle">Membrii</x:String>
+            <x:String x:Key="ListViewHeaderTitle">Membri</x:String>
             <x:String x:Key="SearchBoxPlaceHolder">Cauta membru</x:String>
         </ResourceDictionary>
     </ContentPage.Resources>

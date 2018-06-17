@@ -19,7 +19,7 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
     {
         public const string NOT_AT_ADDRESS_POSITION_MESSAGE = "Nu sunteti la adresa respectiva!";
 
-        public const double METERS_ERROR = 1000;
+        public const double METERS_ERROR = 75;
         public static readonly double LATITUDE_ACCEPTED_ERROR = METERS_ERROR / 111320;
         public static readonly double LONGITUDE_ACCEPTED_ERROR = 40075000 * Math.Cos(LATITUDE_ACCEPTED_ERROR) / 360;
 
@@ -84,7 +84,7 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
                         var addressPositions = await locator.GetPositionsForAddressAsync(item.Location.ToString());
                         if (addressPositions != null)
                         {
-                            DependencyService.Get<IMessage>().ShortAlert("GASIT"); //TODO delete
+                           
                             foreach (var pos in addressPositions)
                                 if (TestPositions(position, pos))
                                 {
@@ -128,10 +128,6 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
 
         private bool TestPositions(Position currentPos, Position givenPos)
         {
-            //TODO delete
-            DependencyService.Get<IMessage>().LongAlert($"lat {currentPos.Latitude - givenPos.Latitude} lng {currentPos.Longitude - givenPos.Longitude}");
-
-
             if ((givenPos.Latitude - LATITUDE_ACCEPTED_ERROR <= currentPos.Latitude) && (currentPos.Latitude <= givenPos.Latitude + LATITUDE_ACCEPTED_ERROR) &&
                 (givenPos.Longitude - LONGITUDE_ACCEPTED_ERROR <= currentPos.Longitude) && (currentPos.Longitude <= givenPos.Longitude + LONGITUDE_ACCEPTED_ERROR))
                 return true;

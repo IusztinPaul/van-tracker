@@ -18,9 +18,6 @@ namespace TrackApp.ClientLayer.Validation {
     public partial class SignUpPage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.ProgressBar ProgBarSaveBtn;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::TrackApp.ClientLayer.CustomUI.CustomEntry EntryUsername;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
@@ -60,12 +57,14 @@ namespace TrackApp.ClientLayer.Validation {
         private global::TrackApp.ClientLayer.CustomUI.CustomEntry EntryBlock;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.ProgressBar ProgBarSaveBtn;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Button BtnSaveUser;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(SignUpPage));
-            ProgBarSaveBtn = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ProgressBar>(this, "ProgBarSaveBtn");
             EntryUsername = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TrackApp.ClientLayer.CustomUI.CustomEntry>(this, "EntryUsername");
             EntryFirstName = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TrackApp.ClientLayer.CustomUI.CustomEntry>(this, "EntryFirstName");
             EntryLastName = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TrackApp.ClientLayer.CustomUI.CustomEntry>(this, "EntryLastName");
@@ -79,6 +78,7 @@ namespace TrackApp.ClientLayer.Validation {
             EntryStreet = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TrackApp.ClientLayer.CustomUI.CustomEntry>(this, "EntryStreet");
             EntryNr = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TrackApp.ClientLayer.CustomUI.CustomEntry>(this, "EntryNr");
             EntryBlock = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TrackApp.ClientLayer.CustomUI.CustomEntry>(this, "EntryBlock");
+            ProgBarSaveBtn = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ProgressBar>(this, "ProgBarSaveBtn");
             BtnSaveUser = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "BtnSaveUser");
         }
     }

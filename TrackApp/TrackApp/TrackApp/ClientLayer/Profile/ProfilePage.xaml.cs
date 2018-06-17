@@ -1,6 +1,7 @@
 ﻿using Amazon.Runtime;
 using System;
 using System.IO;
+using System.IO.Compression;
 using System.Net;
 using TrackApp.ClientLayer.CustomUI;
 using TrackApp.ClientLayer.Exceptions;
@@ -10,8 +11,7 @@ using TrackApp.ServerLayer.Save;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Plugin.Permissions.Abstractions;
-using TrackApp.ServerLayer.Query;
-using System.Threading.Tasks;
+using TrackApp.ClientLayer.Maper.Group.MapN;
 
 namespace TrackApp.ClientLayer.Profile
 {
@@ -31,7 +31,6 @@ namespace TrackApp.ClientLayer.Profile
             userIcon = currentUser.Icon;
         }
 
-
         public async void ButtonSaveDataListener(object source, EventArgs args)
         {
 
@@ -41,9 +40,6 @@ namespace TrackApp.ClientLayer.Profile
 
             try
             {
-                //firstly bring the last version of the user in the memory
-                this.currentUser = await QueryHashLoader.LoadData<TrackUser>(currentUser.Username);
-
                 var newUser = GetTrackUserWithValidatedData();
 
                 //change view back to labels and save the data from the entryfields only if the data is valid
@@ -77,20 +73,20 @@ namespace TrackApp.ClientLayer.Profile
                 await saver.SaveData();
 
                 this.currentUser = newUser; //bind the context to the new user
-                bindCont.CurrentUser = newUser;
+                bindCont.CurrentUser = new TrackUser(newUser);
 
                 //delete the editing gesture recognizers from the image
                 ImgProfile.GestureRecognizers.Clear();
 
                 //change menu profile picture
-                NavigationMasterPage.Instance.ChangeProfilePhoto(currentUser.IconSource);
+                NavigationMasterPage.Instance.ChangeProfilePhotoWithImgSource(currentUser.IconSource);
 
                 DependencyService.Get<IMessage>().ShortAlert(ClientConsts.EDIT_FINALIZE_MESSAGE);
 
             }
             catch (AmazonServiceException e) // if there are problems with the service or with the internet
             {
-                DependencyService.Get<IMessage>().ShortAlert(ClientConsts.DYNAMODB_EXCEPTION_MESSAGE2);
+                DependencyService.Get<IMessage>().ShortAlert("Probleme cu servar-ul sau imaginea este prea mare!");
             }
             catch (ValidationException e)
             {
@@ -218,10 +214,21 @@ namespace TrackApp.ClientLayer.Profile
             {
 
                 //convert image stream to serialized string
+
+                //convert image stream to byte array
+                var byteMemoryStream = new MemoryStream();
+                stream.CopyTo(byteMemoryStream);
+                byte[] imgBytes = byteMemoryStream.ToArray();
+
+                //compress data to stream
                 var memoryStream = new MemoryStream();
-                stream.CopyTo(memoryStream);
-                byte[] imgBytes = memoryStream.ToArray();
-                string iconString = Convert.ToBase64String(imgBytes);
+                using(DeflateStream dstream = new DeflateStream(memoryStream, CompressionLevel.Optimal))
+                {
+                    dstream.Write(imgBytes, 0, imgBytes.Length);
+                }
+
+                //convert stream to encoded string 
+                string iconString = Convert.ToBase64String(memoryStream.ToArray());
 
                 //update data to save
                 userIcon = iconString;
@@ -229,9 +236,10 @@ namespace TrackApp.ClientLayer.Profile
                 //update user so the binding will fire
                 this.currentUser.Icon = iconString;
                 (BindingContext as ProfileViewModel).CurrentUser = new TrackUser(currentUser); // fire the binding
-                NavigationMasterPage.Instance.ChangeProfilePhoto(iconString); // change mater detail photo
+                NavigationMasterPage.Instance?.ChangeProfilePhotoWithImgSource(currentUser.IconSource); // change mater detail photo
             }
         }
+
 
         public async void LogoutListener(object source, EventArgs args)
         {
@@ -241,6 +249,9 @@ namespace TrackApp.ClientLayer.Profile
             //put the login flag on no user
             Application.Current.Properties[ClientConsts.LOGIN_KEY_FLAG] = ClientConsts.LOGIN_NO_USER_FLAG;
             await Application.Current.SavePropertiesAsync();
+
+            //reset map location
+            MapPage.LastKnownLocation = MapPage.DEFAULT_MAP_POSITION;
 
             Device.BeginInvokeOnMainThread(() =>
             {

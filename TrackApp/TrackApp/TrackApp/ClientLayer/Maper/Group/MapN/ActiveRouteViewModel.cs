@@ -309,6 +309,8 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
                 {
                     AdministratorRouteInfoListView = new ObservableCollection<RouteInfo>(
                         _allAdministratorRouteInfoView.Where((x) =>
+                        x.RouteName.ToUpper().StartsWith(searchBarText.ToUpper()) ||
+                        x.OwnerUsername.ToUpper().StartsWith(searchBarText.ToUpper()) ||
                         searchBarText.ToUpper().Contains(x.RouteName.ToUpper()) ||
                         searchBarText.ToUpper().Contains(x.OwnerUsername.ToUpper())
                         ));
@@ -324,6 +326,8 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
                 {
                     AddressesList = new ObservableCollection<Route>(
                         _allAddressesList.Where((x) =>
+                        x.Location.Street.ToUpper().StartsWith(searchBarText.Trim().ToUpper()) || 
+                        x.Location.Nr.StartsWith(searchBarText.Trim()) || 
                         searchBarText.ToUpper().Contains(x.Location.Street.ToUpper()) ||
                         searchBarText.Contains(x.Location.Nr)
                         ));

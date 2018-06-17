@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using TrackApp.ClientLayer;
 using TrackApp.ServerLayer;
 using Xamarin.Forms;
@@ -39,8 +40,18 @@ namespace TrackApp.DataFormat.UserData
             {
                 if(!String.IsNullOrEmpty(Icon)) //convert Icon to ImageSource
                 {
+                    //convert image to stream
                     byte[] Base64Stream = Convert.FromBase64String(Icon);
-                    return ImageSource.FromStream(() => new MemoryStream(Base64Stream));
+                    var inputStream = new MemoryStream(Base64Stream);
+
+                    //decompress image 
+                    var outputStream = new MemoryStream();
+                    using(DeflateStream dstream = new DeflateStream(inputStream, CompressionMode.Decompress))
+                    {
+                        dstream.CopyTo(outputStream);
+                    }
+
+                    return ImageSource.FromStream(() => new MemoryStream(outputStream.ToArray()));
 
                 } else //get default embedded data
                 {

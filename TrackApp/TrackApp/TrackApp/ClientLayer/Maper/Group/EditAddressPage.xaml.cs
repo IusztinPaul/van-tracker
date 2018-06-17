@@ -140,7 +140,7 @@ namespace TrackApp.ClientLayer.Maper.Group
             GroupCollection groups = detailMatch.Groups;
             this.route.Location.Street = addressName;
             this.route.Location.Nr = groups[2].Value?.Trim();
-            this.route.Location.Block = groups[3].Value?.Trim() + " " + groups[5].Value?.Trim();
+            this.route.Location.Block = groups[3].Value?.Trim() + " " + groups[5].Value?.Trim() + " " + groups[7].Value?.Trim();
         }
     }
 }

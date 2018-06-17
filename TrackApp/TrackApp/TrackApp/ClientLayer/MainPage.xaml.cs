@@ -42,5 +42,12 @@ namespace TrackApp.ClientLayer
                 IsPresented = false;
             }
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            bool returnedItem = true;
+            Device.BeginInvokeOnMainThread( async () => returnedItem = await DisplayAlert("Iesit", "Vreti sa iesiti din aplicatie?", "Da", "Nu"));
+            return returnedItem;
+        }
     }
 }

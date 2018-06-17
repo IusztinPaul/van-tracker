@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TrackApp.ClientLayer.Profile;
 using TrackApp.DataFormat.UserData;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -45,7 +46,20 @@ namespace TrackApp.ClientLayer.Maper.Group
             BtnAdministrator.Clicked += AdministratorBtnListener;
             BtnDriver.Clicked += DriverBtnListener;
             BtnGoBack.Clicked += GoBackBtnListener;
-		}
+
+            UsersList.ItemSelected += (s, a) =>
+            {
+                if (a.SelectedItem != null)
+                {
+                    var item = a.SelectedItem as TrackUser;
+                    if (item != null)
+                        Device.BeginInvokeOnMainThread(async () => await Navigation.PushAsync(new ProfilePage(item))); 
+                        
+                    (s as ListView).SelectedItem = null;
+                }
+            };
+
+        }
 
         protected override void OnAppearing()
         {

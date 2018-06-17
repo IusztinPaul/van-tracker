@@ -45,9 +45,9 @@ namespace TrackApp.ClientLayer
         public static readonly string PASSWORD_LENGTH_STRING = "Parola de minim " + PASSWORD_LENGTH_MINIMUM + " caractere";
         public static readonly string PASSWORD_REPEAT = "Repeta parola";
         public const string ACCOUNT_CREATED_MESSAGE = "Contul a fost creat!";
-        public const string INTERNET_EXCEPTION_MESSAGE = "Nu este internet sau exista o problema!";
-        public const string DYNAMODB_EXCEPTION_MESSAGE1 = "Probleme cu internet-ul!";
-        public const string DYNAMODB_EXCEPTION_MESSAGE2 = "Probleme cu server-ul!";
+        public const string INTERNET_EXCEPTION_MESSAGE = "Exista o problema! Reincercati mai tarziu!";
+        public const string DYNAMODB_EXCEPTION_MESSAGE1 = "Probleme cu internet-ul! Reincercati mai tarziu!";
+        public const string DYNAMODB_EXCEPTION_MESSAGE2 = "Probleme cu server-ul! Reincercati mai tarziu!";
 
         // friends constants
         public const string FRIENDS_PAGE_TITLE = "Relatii";
@@ -81,19 +81,26 @@ namespace TrackApp.ClientLayer
         public const string REMOVE_ROUTE_TOOL_BAR_TITLE = "Sterge ruta";
         public const string SEE_USER_POSITON_TOOL_BAR_TITLE = "Vezi pozitie";
         public const string MAKE_ROUTE_ACTIVE_TOOL_BAR_TITLE = "Ruta activa";
+        public const string SEE_PROFILE_ACTIVE_TOOL_BAR_TITLE = "Vezi profil";
+        public const string DELETE_DRIVER_FROM_GROUP_TOOL_BAR_TITLE = "Sterge";
 
         //map namespace
         public const string MAP_TABBED_PAGE_TITLE = "Harta";
         public const string MAP_PAGE_TITLE = "Harta";
         public const string MAP_ACTIVE_ROUTE_TITLE = "Ruta";
         public const string MAP_CALIBRATE_TOOL_BAR_ITEM_TITLE = "Centreaza";
+        public const string SEARCH_BAR_TOOL_BAR_ITEM_TITLE = "Cauta locatie";
 
         public const double CIRCLE_RADIUS = 8;
         public const float CIRCLE_STROKE_WIDTH = 4f;
         public const float LINE_WIDTH = 35f;
-        public const double FROM_KM_MAP_DISTANCE = 0.2f;
+        public const double FROM_KM_MAP_DISTANCE = 0.15f;
 
-        public static readonly Color[] Colours = new Color[] { Color.DarkRed, Color.DarkBlue, Color.DarkGreen,  Color.Orange, Color.Teal, Color.Yellow, Color.Brown, Color.Cyan, Color.Purple, Color.Violet };
+        public static readonly Color[] Colours = new Color[] { Color.DarkRed, Color.DarkBlue, Color.DarkGreen, Color.DarkOrange, Color.DarkViolet, Color.Pink, Color.Silver, Color.Turquoise };
         public static readonly int MAX_DRIVERS_IN_GROUP = Colours.Length;
+
+        //service 
+        public const int LOCATION_LOOP_WAIT_TIME_MILISECONDS = 750;
+        public const int UPDATE_CIRCLE_LOCATION_LOOP_TIME_MILISECONDS = 500;
     }
 }

@@ -12,7 +12,7 @@ namespace TrackApp.ClientLayer.Maper.Group
 {
     public class GroupTabbedPage : TabbedPage
     {
-        public static readonly string NO_MORE_DRIVERS_ALERT_TEXT = $"Numarul maxim de {ClientConsts.MAX_DRIVERS_IN_GROUP} a fost atins!";
+        public static readonly string NO_MORE_DRIVERS_ALERT_TEXT = $"Numarul maxim de {ClientConsts.MAX_DRIVERS_IN_GROUP} soferi a fost atins!";
 
         public GroupTabbedPage(RoledTrackUser currentUser, string groupName)
         {

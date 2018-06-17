@@ -62,9 +62,14 @@ namespace TrackApp.ClientLayer.Maper.Group
             try
             {
                 var userFriends = await QueryHashLoader.LoadData<UserFriends>(currentUser.Username);
+                var group = await QueryHashLoader.LoadData<DataFormat.Group>(groupName);
+
+                if (group != null && group.Drivers == null)
+                    group.Drivers = new List<string>();
 
                 var asyncTasks = new List<Task<TrackUser>>();
                 foreach (string friendUsername in userFriends.Friends)
+                    if(!ExistsInGroup(friendUsername, group))
                 {
                     var task = Task.Run(async () =>
                     {
@@ -77,28 +82,10 @@ namespace TrackApp.ClientLayer.Maper.Group
                 //wait for all the tasks to complete their work
                 var users = await Task.WhenAll(asyncTasks);
 
-                //add data and filter it 
-                IEnumerable<TrackUser> allUsersEnumarble = new List<TrackUser>(users);
-                var group = await QueryHashLoader.LoadData<DataFormat.Group>(groupName);
-
-                if (group != null) // filter the users that already are in the group or have a request
-                    allUsersEnumarble = allUsersEnumarble.Where(x =>
-                    {
-
-                        if (group.Admins.Contains(x.Username) || x.Username.Equals(USERNAME_TRACKUSER_TO_FILTER))
-                            return false;
-
-                        if (group.Drivers != null && group.Drivers.Contains(x.Username))
-                            return false;
-
-                        return true;
-                    });
-
-
                 //bind view and sort it by Username
-                if (allUsersEnumarble != null)
+                if (users != null)
                 {
-                    allUsers = new List<TrackUser>(allUsersEnumarble);
+                    allUsers = new List<TrackUser>(users);
                     allUsers.Sort((a, b) => a.Username.ToUpper().CompareTo(b.Username.ToUpper()));
 
                     Users = new ObservableCollection<TrackUser>(allUsers);
@@ -250,6 +237,28 @@ namespace TrackApp.ClientLayer.Maper.Group
                     );
             }
 
+        }
+
+        private bool ExistsInGroup(string username, DataFormat.Group group)
+        {
+            if (group == null)
+                return false;
+
+            if (group.Admins == null)
+                return false;
+
+            foreach (var admin in group.Admins)
+                if (admin.Equals(username))
+                    return true;
+
+            if (group.Drivers == null)
+                return false;
+
+            foreach (var driver in group.Drivers)
+                if (driver.Split(ClientConsts.CONCAT_SPECIAL_CHARACTER[0])[0].Trim().Equals(username))
+                    return true;
+
+            return false;
         }
     }
 
