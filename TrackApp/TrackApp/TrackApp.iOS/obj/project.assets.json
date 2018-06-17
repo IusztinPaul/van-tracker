@@ -120,7 +120,7 @@
           "lib/xamarinios10/Plugin.Geolocator.dll": {}
         }
       },
-      "Xamarin.Forms/3.0.0.561731": {
+      "Xamarin.Forms/3.0.0.446417": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
@@ -386,7 +386,7 @@
           "lib/xamarinios10/Plugin.Geolocator.dll": {}
         }
       },
-      "Xamarin.Forms/3.0.0.561731": {
+      "Xamarin.Forms/3.0.0.446417": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
@@ -652,7 +652,7 @@
           "lib/xamarinios10/Plugin.Geolocator.dll": {}
         }
       },
-      "Xamarin.Forms/3.0.0.561731": {
+      "Xamarin.Forms/3.0.0.446417": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
@@ -918,7 +918,7 @@
           "lib/xamarinios10/Plugin.Geolocator.dll": {}
         }
       },
-      "Xamarin.Forms/3.0.0.561731": {
+      "Xamarin.Forms/3.0.0.446417": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
@@ -1363,12 +1363,11 @@
         "xam.plugin.geolocator.nuspec"
       ]
     },
-    "Xamarin.Forms/3.0.0.561731": {
-      "sha512": "ZnpuSybty6uZsgInJQD2QoYsjsdzPmu25EltSNJTnwgiQCW0MVZfwU6//jbt4Sf0ZfAiryi8MZFhU1I0NAP6Ew==",
+    "Xamarin.Forms/3.0.0.446417": {
+      "sha512": "9Q6dING0FdSiOlsWUdNUzNiZgEljZ7rez5rn3+77+h0hfaFjSyV0tZQ1y2u2pXzRqgWNjDH3rrcCSoKgkMIxzA==",
       "type": "package",
-      "path": "xamarin.forms/3.0.0.561731",
+      "path": "xamarin.forms/3.0.0.446417",
       "files": [
-        ".signature.p7s",
         "build/netstandard1.0/Mono.Cecil.Mdb.dll",
         "build/netstandard1.0/Mono.Cecil.Pdb.dll",
         "build/netstandard1.0/Mono.Cecil.Rocks.dll",
@@ -1393,27 +1392,23 @@
         "build/netstandard2.0/Xamarin.Forms.Xaml.dll",
         "build/netstandard2.0/Xamarin.Forms.props",
         "build/netstandard2.0/Xamarin.Forms.targets",
-        "lib/MonoAndroid10/Design/Xamarin.Forms.Core.Design.dll",
-        "lib/MonoAndroid10/Design/Xamarin.Forms.Xaml.Design.dll",
         "lib/MonoAndroid10/FormsViewGroup.dll",
+        "lib/MonoAndroid10/FormsViewGroup.dll.mdb",
         "lib/MonoAndroid10/FormsViewGroup.pdb",
         "lib/MonoAndroid10/Xamarin.Forms.Core.dll",
         "lib/MonoAndroid10/Xamarin.Forms.Core.pdb",
         "lib/MonoAndroid10/Xamarin.Forms.Core.xml",
         "lib/MonoAndroid10/Xamarin.Forms.Platform.Android.dll",
+        "lib/MonoAndroid10/Xamarin.Forms.Platform.Android.dll.mdb",
         "lib/MonoAndroid10/Xamarin.Forms.Platform.Android.pdb",
         "lib/MonoAndroid10/Xamarin.Forms.Platform.dll",
         "lib/MonoAndroid10/Xamarin.Forms.Xaml.dll",
         "lib/MonoAndroid10/Xamarin.Forms.Xaml.pdb",
         "lib/MonoAndroid10/Xamarin.Forms.Xaml.xml",
-        "lib/Xamarin.Mac/Design/Xamarin.Forms.Core.Design.dll",
-        "lib/Xamarin.Mac/Design/Xamarin.Forms.Xaml.Design.dll",
         "lib/Xamarin.Mac/Xamarin.Forms.Core.dll",
         "lib/Xamarin.Mac/Xamarin.Forms.Platform.dll",
         "lib/Xamarin.Mac/Xamarin.Forms.Platform.macOS.dll",
         "lib/Xamarin.Mac/Xamarin.Forms.Xaml.dll",
-        "lib/Xamarin.iOS10/Design/Xamarin.Forms.Core.Design.dll",
-        "lib/Xamarin.iOS10/Design/Xamarin.Forms.Xaml.Design.dll",
         "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll",
         "lib/Xamarin.iOS10/Xamarin.Forms.Core.pdb",
         "lib/Xamarin.iOS10/Xamarin.Forms.Core.xml",
@@ -1475,8 +1470,6 @@
         "lib/netstandard2.0/Xamarin.Forms.Xaml.dll",
         "lib/netstandard2.0/Xamarin.Forms.Xaml.pdb",
         "lib/netstandard2.0/Xamarin.Forms.Xaml.xml",
-        "lib/tizen40/Design/Xamarin.Forms.Core.Design.dll",
-        "lib/tizen40/Design/Xamarin.Forms.Xaml.Design.dll",
         "lib/tizen40/Xamarin.Forms.Core.dll",
         "lib/tizen40/Xamarin.Forms.Core.pdb",
         "lib/tizen40/Xamarin.Forms.Core.xml",
@@ -1486,8 +1479,6 @@
         "lib/tizen40/Xamarin.Forms.Xaml.dll",
         "lib/tizen40/Xamarin.Forms.Xaml.pdb",
         "lib/tizen40/Xamarin.Forms.Xaml.xml",
-        "lib/uap10.0/Design/Xamarin.Forms.Core.Design.dll",
-        "lib/uap10.0/Design/Xamarin.Forms.Xaml.Design.dll",
         "lib/uap10.0/Xamarin.Forms.Core.dll",
         "lib/uap10.0/Xamarin.Forms.Core.xml",
         "lib/uap10.0/Xamarin.Forms.Platform.UAP.dll",
@@ -1507,7 +1498,7 @@
         "lib/uap10.0/Xamarin.Forms.Platform.dll",
         "lib/uap10.0/Xamarin.Forms.Xaml.dll",
         "lib/uap10.0/Xamarin.Forms.Xaml.xml",
-        "xamarin.forms.3.0.0.561731.nupkg.sha512",
+        "xamarin.forms.3.0.0.446417.nupkg.sha512",
         "xamarin.forms.nuspec"
       ]
     },
@@ -1561,7 +1552,7 @@
       "Plugin.Permissions >= 3.0.0.12",
       "TK.CustomMap >= 2.0.1",
       "Xam.Plugin.Geolocator >= 4.5.0.6",
-      "Xamarin.Forms >= 3.0.0.561731",
+      "Xamarin.Forms >= 3.0.0.446417",
       "Xamarin.Forms.Maps >= 3.0.0.561731"
     ]
   },
@@ -1624,7 +1615,7 @@
           },
           "Xamarin.Forms": {
             "target": "Package",
-            "version": "[3.0.0.561731, )"
+            "version": "[3.0.0.446417, )"
           },
           "Xamarin.Forms.Maps": {
             "target": "Package",
@@ -1652,6 +1643,19 @@
       "warningLevel": 1,
       "message": "PCLCrypto 1.0.2.15130 depends on Validation (>= 2.0.6 && < 3.0.0) but Validation 2.0.6 was not found. An approximate best match of Validation 2.0.6.15003 was resolved.",
       "libraryId": "Validation",
+      "targetGraphs": [
+        "Xamarin.iOS,Version=v1.0",
+        "Xamarin.iOS,Version=v1.0/win",
+        "Xamarin.iOS,Version=v1.0/win-x64",
+        "Xamarin.iOS,Version=v1.0/win-x86"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package downgrade: Xamarin.Forms from 3.0.0.561731 to 3.0.0.446417. Reference the package directly from the project to select a different version. \r\n TrackApp.iOS -> Xamarin.Forms.Maps 3.0.0.561731 -> Xamarin.Forms (>= 3.0.0.561731) \r\n TrackApp.iOS -> Xamarin.Forms (>= 3.0.0.446417)",
+      "libraryId": "Xamarin.Forms",
       "targetGraphs": [
         "Xamarin.iOS,Version=v1.0",
         "Xamarin.iOS,Version=v1.0/win",
