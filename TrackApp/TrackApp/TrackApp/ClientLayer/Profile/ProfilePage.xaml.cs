@@ -12,6 +12,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Plugin.Permissions.Abstractions;
 using TrackApp.ClientLayer.Maper.Group.MapN;
+using TK.CustomMap;
 
 namespace TrackApp.ClientLayer.Profile
 {
@@ -251,7 +252,8 @@ namespace TrackApp.ClientLayer.Profile
             await Application.Current.SavePropertiesAsync();
 
             //reset map location
-            MapPage.LastKnownLocation = MapPage.DEFAULT_MAP_POSITION;
+            MapPage.LastKnownLocation = MapSpan.FromCenterAndRadius(
+                  MapPage.DEFAULT_MAP_POSITION, Distance.FromMiles(ClientConsts.FROM_KM_MAP_DISTANCE));
 
             Device.BeginInvokeOnMainThread(() =>
             {

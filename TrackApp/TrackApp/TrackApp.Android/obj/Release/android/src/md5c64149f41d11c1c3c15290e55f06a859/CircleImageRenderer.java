@@ -16,6 +16,14 @@ public class CircleImageRenderer
 	}
 
 
+	public CircleImageRenderer (android.content.Context p0)
+	{
+		super (p0);
+		if (getClass () == CircleImageRenderer.class)
+			mono.android.TypeManager.Activate ("TrackApp.Droid.CircleImageRenderer, TrackApp.Android", "Android.Content.Context, Mono.Android", this, new java.lang.Object[] { p0 });
+	}
+
+
 	public CircleImageRenderer (android.content.Context p0, android.util.AttributeSet p1, int p2)
 	{
 		super (p0, p1, p2);
@@ -29,14 +37,6 @@ public class CircleImageRenderer
 		super (p0, p1);
 		if (getClass () == CircleImageRenderer.class)
 			mono.android.TypeManager.Activate ("TrackApp.Droid.CircleImageRenderer, TrackApp.Android", "Android.Content.Context, Mono.Android:Android.Util.IAttributeSet, Mono.Android", this, new java.lang.Object[] { p0, p1 });
-	}
-
-
-	public CircleImageRenderer (android.content.Context p0)
-	{
-		super (p0);
-		if (getClass () == CircleImageRenderer.class)
-			mono.android.TypeManager.Activate ("TrackApp.Droid.CircleImageRenderer, TrackApp.Android", "Android.Content.Context, Mono.Android", this, new java.lang.Object[] { p0 });
 	}
 
 

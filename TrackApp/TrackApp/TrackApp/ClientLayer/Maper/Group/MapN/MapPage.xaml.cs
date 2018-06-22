@@ -18,7 +18,8 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
         public const string DISPLAY_ACTION_SHEET_CANCEL_BUTTON_TEXT = "Renunta";
         public const string NO_ADDRESS_FOUND_TEXT = "Adresa nu exista in baza noastra de date!";
 
-        public static Position LastKnownLocation = DEFAULT_MAP_POSITION;
+        public static MapSpan LastKnownLocation = MapSpan.FromCenterAndRadius(
+                  DEFAULT_MAP_POSITION, Distance.FromMiles(ClientConsts.FROM_KM_MAP_DISTANCE));
 
         private TKCustomMap _map;
 
@@ -114,7 +115,7 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
             locationSearchBar.SearchButtonPressed -= SearchButtonPressed;
 
             //update last know location
-            LastKnownLocation = _map.MapRegion.Center;
+            LastKnownLocation = _map.MapRegion;
         }
 
         private async Task CalibrateMapRegion()

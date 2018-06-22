@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.TrackApp" android:installLocation="preferExternal">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.etheral.trackapp" android:installLocation="preferExternal">
   <!--suppress UsesMinSdkAttributes-->
   <uses-sdk android:minSdkVersion="19" />
   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -14,7 +14,7 @@
   <uses-feature android:name="android.hardware.location.gps" />
   <uses-feature android:name="android.hardware.location.network" />
   <application android:label="TrackApp" android:icon="@drawable/vantrackerlogo" android:name="android.app.Application" android:allowBackup="true">
-    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCsd4ADl1fgaxWlaajLb_o-kmV4nnEx32s" />
+    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyB5sCUyi7VN8rJWawXTnSNMc8Ha5tquQao" />
     <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
     <service android:exported="true" android:name="com.companyname.LocationService" />
     <activity android:configChanges="orientation|screenSize" android:icon="@drawable/icon" android:label="TrackApp" android:theme="@style/MainTheme" android:name="md5c64149f41d11c1c3c15290e55f06a859.MainActivity">
@@ -24,7 +24,7 @@
       </intent-filter>
     </activity>
     <receiver android:name="md5750ca40d81fb486a56754e539b5a1358.NetworkReachability_NetworkStatusChangeBroadcastReceiver" />
-    <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="com.companyname.TrackApp.mono.MonoRuntimeProvider.__mono_init__" />
+    <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="com.etheral.trackapp.mono.MonoRuntimeProvider.__mono_init__" />
     <activity android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:exported="false" />
   </application>
 </manifest>

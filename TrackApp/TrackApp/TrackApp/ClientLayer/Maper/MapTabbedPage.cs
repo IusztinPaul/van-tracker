@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TK.CustomMap;
+using TrackApp.ClientLayer.Maper.Group.MapN;
 using TrackApp.DataFormat.UserData;
 using Xamarin.Forms;
 
@@ -33,6 +35,15 @@ namespace TrackApp.ClientLayer.Maper
             addGroup.Command = new Command(() => Navigation.PushAsync(new CreateGroupPage(currentUser)));
 
             this.ToolbarItems.Add(addGroup);
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            //reset map location when searching a new group
+            MapPage.LastKnownLocation = MapSpan.FromCenterAndRadius(
+                  MapPage.DEFAULT_MAP_POSITION, Distance.FromMiles(ClientConsts.FROM_KM_MAP_DISTANCE));
         }
     }
 }

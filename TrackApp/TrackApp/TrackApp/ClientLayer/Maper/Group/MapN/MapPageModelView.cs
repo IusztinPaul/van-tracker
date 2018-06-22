@@ -129,12 +129,13 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
                 Array.Sort(users, (a, b) => a.Username.CompareTo(b.Username)); // map colours to users by sorting them by username
 
                 //firsly calibrate the map so the user does not think that the map freezed cuz the pins take a lot of time to be created
-                if (users.Length > 0 && MapPage.LastKnownLocation.Equals(MapPage.DEFAULT_MAP_POSITION))
+                if (users.Length > 0 && MapPage.LastKnownLocation.Center.Equals(MapPage.DEFAULT_MAP_POSITION))
                     await CalibrateMapRegion(users[0].Username);
-                else if (!MapPage.LastKnownLocation.Equals(MapPage.DEFAULT_MAP_POSITION))
-                    SetMapRegion(MapPage.LastKnownLocation);
+                else if (!MapPage.LastKnownLocation.Center.Equals(MapPage.DEFAULT_MAP_POSITION))
+                    MapRegion = MapPage.LastKnownLocation;
                 else
-                    SetMapRegion(MapPage.DEFAULT_MAP_POSITION);
+                    MapRegion = MapSpan.FromCenterAndRadius(
+                  MapPage.DEFAULT_MAP_POSITION, Distance.FromMiles(ClientConsts.FROM_KM_MAP_DISTANCE));
 
                 var tasks = users.Select(async (user) => await PopulateWithPinsAndLinesForSingleUser(user.Username));
                 await Task.WhenAll(tasks);

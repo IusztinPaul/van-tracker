@@ -18,7 +18,6 @@ namespace TrackApp.iOS
 
             if (Control != null)
             {
-                //TODO adapt colour to custom entry
                 Control.BackgroundColor = UIColor.FromRGB(10, 10, 10);
                 Control.BorderStyle = UITextBorderStyle.Line;
             }

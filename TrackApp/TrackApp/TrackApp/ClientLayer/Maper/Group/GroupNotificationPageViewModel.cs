@@ -54,7 +54,7 @@ namespace TrackApp.ClientLayer.Maper.Group
 
                 GroupNotifications = new ObservableCollection<GroupNotification>();
 
-                if (group != null)
+                if (group != null && group.Notifications != null)
                 {
                     foreach (string notification in group.Notifications)
                     {

@@ -5331,6 +5331,9 @@ namespace TrackApp.Droid
 			// aapt resource value: 0
 			public static int launcher_foreground = 0;
 			
+			// aapt resource value: 0
+			public static int vantrackerlogo = 0;
+			
 			static Mipmap()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

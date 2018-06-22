@@ -16,7 +16,5 @@ namespace TrackApp.DataFormat
         public double Latitude { get; set; }
         [DynamoDBProperty]
         public double Longitude { get; set; }
-        [DynamoDBVersion]
-        public int? VersionNumber { get; set; } //TODO delete this , redundant, after clearing database
     }
 }
