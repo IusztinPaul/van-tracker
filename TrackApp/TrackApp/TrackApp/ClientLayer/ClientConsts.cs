@@ -100,7 +100,7 @@ namespace TrackApp.ClientLayer
         public static readonly int MAX_DRIVERS_IN_GROUP = Colours.Length;
 
         //service 
-        public const int LOCATION_LOOP_WAIT_TIME_MILISECONDS = 750;
-        public const int UPDATE_CIRCLE_LOCATION_LOOP_TIME_MILISECONDS = 500;
+        public const int LOCATION_LOOP_WAIT_TIME_MILISECONDS = 100;
+        public const int UPDATE_CIRCLE_LOCATION_LOOP_TIME_MILISECONDS = 100;
     }
 }

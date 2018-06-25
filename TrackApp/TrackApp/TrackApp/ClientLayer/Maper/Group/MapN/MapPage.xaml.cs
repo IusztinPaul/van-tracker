@@ -108,6 +108,7 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+
             var bindCont = BindingContext as MapPageModelView;
             if (bindCont != null)
                 bindCont.StopGenerators();

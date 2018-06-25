@@ -97,6 +97,8 @@
                       HeightRequest="0"
                       IsVisible="False"
                       CachingStrategy="RecycleElement"
+                      VerticalOptions="CenterAndExpand"
+                      HorizontalOptions="CenterAndExpand"
                       HasUnevenRows="True"
                       >
                         <ListView.Header>
@@ -107,7 +109,7 @@
                         TextColor="Black"
                         FontSize="{StaticResource LabelFontSize}"/>
                         </ListView.Header>
-                        
+
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <TextCell 

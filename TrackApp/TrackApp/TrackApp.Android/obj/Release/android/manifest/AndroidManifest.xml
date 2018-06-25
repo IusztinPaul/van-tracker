@@ -16,7 +16,7 @@
   <application android:label="TrackApp" android:icon="@drawable/vantrackerlogo" android:name="android.app.Application" android:allowBackup="true">
     <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyB5sCUyi7VN8rJWawXTnSNMc8Ha5tquQao" />
     <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
-    <service android:exported="true" android:name="com.companyname.LocationService" />
+    <service android:exported="true" android:name="com.etheral.LocationService" />
     <activity android:configChanges="orientation|screenSize" android:icon="@drawable/icon" android:label="TrackApp" android:theme="@style/MainTheme" android:name="md5c64149f41d11c1c3c15290e55f06a859.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />

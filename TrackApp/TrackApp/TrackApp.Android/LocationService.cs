@@ -11,16 +11,17 @@ using Plugin.Geolocator.Abstractions;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using TrackApp.ClientLayer;
+using TrackApp.ClientLayer.Maper.Group.MapN;
 using TrackApp.DataFormat;
 using TrackApp.ServerLayer.Save;
 
 namespace TrackApp.Droid
 {
-    [Service(Exported = true, Name = "com.companyname.LocationService")]
+    [Service(Exported = true, Name = "com.etheral.LocationService")]
     public class LocationService : Service
     {
         static readonly string TAG = typeof(LocationService).FullName;
-        public const int LOOP_WAIT_TIME_SECONDS = ClientConsts.LOCATION_LOOP_WAIT_TIME_MILISECONDS;
+        public const int LOOP_WAIT_TIME_MILISECONDS = ClientConsts.LOCATION_LOOP_WAIT_TIME_MILISECONDS;
 
         public bool IsLoopRunning { get; set; } = false;
         public IBinder Binder { get; private set; }
@@ -75,7 +76,8 @@ namespace TrackApp.Droid
                       while (IsLoopRunning)
                       {
                           var locator = CrossGeolocator.Current;
-                          var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(LOOP_WAIT_TIME_SECONDS), null, true);
+                          locator.DesiredAccuracy = ActiveRoutePage.METERS_ERROR - 5;
+                          var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(LOOP_WAIT_TIME_MILISECONDS), null, true);
 
                           if (lastPosition == null || (position != null && (position.Latitude != lastPosition.Latitude || position.Longitude != lastPosition.Longitude)))
                           {
@@ -95,7 +97,7 @@ namespace TrackApp.Droid
 
                           lastPosition = position;
                           Log.Debug(TAG, "LOOP REPEATING");
-                          Thread.Sleep(LOOP_WAIT_TIME_SECONDS + 1);  
+                          Thread.Sleep(LOOP_WAIT_TIME_MILISECONDS + 1);  
                        }
                   }
                   else

@@ -26,7 +26,7 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
         public static readonly double LATITUDE_ACCEPTED_ERROR = METERS_ERROR / 111320;
         public static readonly double LONGITUDE_ACCEPTED_ERROR = 40075000 * Math.Cos(LATITUDE_ACCEPTED_ERROR) / 360;
 
-        public const int LINE_DISPLAY_LOOPER = 6;
+        //public const int LINE_DISPLAY_LOOPER = 6;
 
         public static readonly string NO_POS_ALERT_TEXT = "Nu a fost gasita nici o locatie in ultimele {0} ore pentru {1}";
 
@@ -72,9 +72,9 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
 
         public MapPageModelView(RoledTrackUser[] users, TKCustomMap map, string groupName, RoledTrackUser currentUser)
         {
-           // prepare memory for the circles so every circle will have it's index(part of memory) when the tasks will start
+            // prepare memory for the circles so every circle will have it's index(part of memory) when the tasks will start
             TKCircle[] circles = users != null ? new TKCircle[users.Length] : new TKCircle[0];
-            for (int i = 0; i < circles.Length; i++)
+            for (int i = 0; i < users.Length; i++)
                 circles[i] = new TKCircle
                 {
                     Center = MapPage.DEFAULT_MAP_POSITION,
@@ -96,29 +96,43 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
             this.currentUser = currentUser;
 
             Array.Sort(users, (a, b) => a.Username.CompareTo(b.Username)); // map colours to users by sorting them by username
+
+            for (int i = 0; i < users.Length; i++)
+            {
+                var generator = new MapUserGeneratorThread(users[i].Username, this, i, ClientConsts.Colours[i]);
+                generators[i] = generator;
+            }
         }
 
         public void StartGenerators(bool singleDriver)
         {
-            Array.Sort(users, (a, b) => a.Username.CompareTo(b.Username)); // map colours to users by sorting them by username
-
             for (int i = 0; i < users.Length; i++)
             {
-                var generator = new MapUserGeneratorThread(users[i].Username, singleDriver, this, i, ClientConsts.Colours[i]);
-                generators[i] = generator;
-
-                var task = generators[i].RunTask();
+                var task = generators[i].RunTask(singleDriver);
                 generatorTasks[i] = task;
             }
         }
 
         public void StopGenerators()
         {
-            for (int i = 0; i < generators.Length; i++)
+            for (int i = 0; i < users.Length; i++)
                 if (generators[i] != null)
                     generators[i].StopLoop();
 
-            UserCurrentPositions = new ObservableCollection<TKCircle>();
+            // prepare memory for the circles so every circle will have it's index(part of memory) when the tasks will start
+            TKCircle[] circles = users != null ? new TKCircle[users.Length] : new TKCircle[0];
+            for (int i = 0; i < users.Length; i++)
+                circles[i] = new TKCircle
+                {
+                    Center = MapPage.DEFAULT_MAP_POSITION,
+                    Color = Color.Transparent,
+                    StrokeColor = Color.White,
+                    StrokeWidth = ClientConsts.CIRCLE_STROKE_WIDTH,
+                    Radius = 1
+                };
+
+            // Bindings have to be initialized 
+            UserCurrentPositions = new ObservableCollection<TKCircle>(circles);
         }
 
         public async Task PopulateWithPinsAndLinesForAllUsers()
@@ -126,7 +140,6 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
             try
             {
                 Pins = new ObservableCollection<TKCustomMapPin>();
-                Array.Sort(users, (a, b) => a.Username.CompareTo(b.Username)); // map colours to users by sorting them by username
 
                 //firsly calibrate the map so the user does not think that the map freezed cuz the pins take a lot of time to be created
                 if (users.Length > 0 && MapPage.LastKnownLocation.Center.Equals(MapPage.DEFAULT_MAP_POSITION))
@@ -137,6 +150,7 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
                     MapRegion = MapSpan.FromCenterAndRadius(
                   MapPage.DEFAULT_MAP_POSITION, Distance.FromMiles(ClientConsts.FROM_KM_MAP_DISTANCE));
 
+                //call populate function for every user
                 var tasks = users.Select(async (user) => await PopulateWithPinsAndLinesForSingleUser(user.Username));
                 await Task.WhenAll(tasks);
             }
@@ -261,7 +275,12 @@ namespace TrackApp.ClientLayer.Maper.Group.MapN
         public void AddCircle(int index, TKCircle circle)
         {
             if (UserCurrentPositions != null && index <= UserCurrentPositions.Count)
+            {
+                if(UserCurrentPositions[index] != null)
+                    UserCurrentPositions.RemoveAt(index);
+
                 UserCurrentPositions.Insert(index, circle);
+            }
         }
 
         public void RemoveCircle(int index)

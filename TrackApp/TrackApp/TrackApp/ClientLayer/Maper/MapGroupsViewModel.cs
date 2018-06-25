@@ -136,7 +136,7 @@ namespace TrackApp.ClientLayer.Maper
 
     public class GroupListViewWrapper
     {
-        public string Name { get; set; }
+        public string Name { get; set; } //name of the group
         public string Type { get; set; }
         public string UserTypeIcon
         {

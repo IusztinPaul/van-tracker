@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading;
-using TrackApp.DataFormat.UserData;
 using TrackApp.ServerLayer.Query;
 using Xamarin.Forms;
 using TK.CustomMap;
@@ -26,7 +25,6 @@ namespace TrackApp.ClientLayer.Maper.MapThread
         private string _username;
         private MapPageModelView modelView;
         private int circleIndex;
-        private bool singleDriver;
         private Color userColor;
 
         private TKCircle lastCircle;
@@ -34,10 +32,9 @@ namespace TrackApp.ClientLayer.Maper.MapThread
         private CancellationTokenSource cancellationTokenSource;
         public Task Task { get; private set; }
 
-        public MapUserGeneratorThread(string username, bool singleDriver, MapPageModelView modelView, int cirlceIndex, Color userColor) 
+        public MapUserGeneratorThread(string username, MapPageModelView modelView, int cirlceIndex, Color userColor) 
         {
             _username = username;
-            this.singleDriver = singleDriver;
             this.modelView = modelView;
             this.circleIndex = cirlceIndex;
             this.userColor = userColor;
@@ -48,12 +45,15 @@ namespace TrackApp.ClientLayer.Maper.MapThread
 
         public void StopLoop()
         {
-            isLoopRunning = false;
             cancellationTokenSource.Cancel();
+
             Console.WriteLine("Keep location loop stopped");
+            isLoopRunning = false;
+            lastCircle = null;
+            cancellationTokenSource = new CancellationTokenSource();
         }
 
-        public Task RunTask()
+        public Task RunTask(bool singleDriver)
         {
 
             var cancellationToken = cancellationTokenSource.Token;
@@ -62,7 +62,7 @@ namespace TrackApp.ClientLayer.Maper.MapThread
             {
                 try
                 {
-                    await RunTaskMethod(cancellationToken);
+                    await RunTaskMethod(cancellationToken, singleDriver);
                 }
                 catch(OperationCanceledException)
                 {
@@ -86,11 +86,10 @@ namespace TrackApp.ClientLayer.Maper.MapThread
             return Task;
         }
 
-        private async Task RunTaskMethod(CancellationToken cancellationToken)
+        private async Task RunTaskMethod(CancellationToken cancellationToken, bool singleDriver)
         {
             Console.WriteLine("Keep location driver loop started");
             isLoopRunning = true;
-            
 
             while (isLoopRunning)
             {
@@ -98,16 +97,8 @@ namespace TrackApp.ClientLayer.Maper.MapThread
 
                 if (position != null)
                 {
-                    if (lastCircle == null || (lastCircle.Center.Latitude != position.Latitude || lastCircle.Center.Longitude != position.Longitude))
+                    if (lastCircle == null || (lastCircle != null && (lastCircle.Center.Latitude != position.Latitude || lastCircle.Center.Longitude != position.Longitude)))
                     {
-
-                        if (lastCircle != null)
-                            Device.BeginInvokeOnMainThread(() =>
-                            {
-                                modelView.RemoveCircle(circleIndex);
-                            });
-
-
                         var circle = new TKCircle
                         {
                             Center = new Position(position.Latitude, position.Longitude),
@@ -167,6 +158,7 @@ namespace TrackApp.ClientLayer.Maper.MapThread
             if(singleDriver)
             {
                 var locator = CrossGeolocator.Current;
+                locator.DesiredAccuracy = ActiveRoutePage.METERS_ERROR - 5;
                 return await locator.GetPositionAsync(TimeSpan.FromMilliseconds(SLEEP_TIME_LOOP_MILISECONDS), null, true);
             } else
             {

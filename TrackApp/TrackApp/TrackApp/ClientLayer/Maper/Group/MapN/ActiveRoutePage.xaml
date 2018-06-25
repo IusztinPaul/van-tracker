@@ -26,6 +26,7 @@
                        />
 
             <ListView x:Name="ActiveRoutesList"
+                      HorizontalOptions="CenterAndExpand"
                       HeightRequest="{Binding ListViewAdministratorHeight}"
                       IsVisible="{Binding AdministratorShowList}"
                       CachingStrategy="RecycleElement"
